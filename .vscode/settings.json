@@ -1,0 +1,9 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  "editor.formatOnSave": false,
+
+  "editor.formatOnPaste": false,
+
+  "eslint.validate": ["typescript", "javascript"]
+}
