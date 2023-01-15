@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { ButtonProps, ButtonSizesType } from './Button.types';
+import type { ButtonProps, ButtonSizesType } from './button.types';
 
 export const Button = ({
   primary = false,
