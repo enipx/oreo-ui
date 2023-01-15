@@ -1,7 +1,12 @@
 import * as React from 'react';
 
-import { StyleSheet, Text } from 'react-native';
-import { Container, View, OreoProvider, DefaultTheme } from '@oreo-ui/native';
+import {
+  Container,
+  View,
+  OreoProvider,
+  DefaultTheme,
+  Text,
+} from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
   colors: {
@@ -14,26 +19,11 @@ export default function App() {
     <OreoProvider theme={customTheme}>
       <Container scrollable>
         <View backgroundColor="primary" p="2" size={200}>
-          <Text style={styles.text}>Xello</Text>
+          <Text fontSize="3xl" color="red.500" textTransform="uppercase">
+            Xello
+          </Text>
         </View>
       </Container>
     </OreoProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-  text: {
-    color: '#000',
-    fontSize: 20,
-  },
-});

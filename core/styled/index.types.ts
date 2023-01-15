@@ -17,11 +17,9 @@ import type {
   ShadowProps,
 } from 'styled-system';
 
-import type { ThemeType } from '../theme';
-
 // @file declarations
 export type ThemeTypeProps = {
-  theme?: Partial<ThemeType>;
+  theme?: DefaultTheme;
 };
 
 export interface ThemeStyledProps
@@ -51,6 +49,9 @@ export interface LayoutThemeStyledProps
 export interface TypographyThemeStyledProps
   extends ColorProps,
     TypographyProps,
+    LayoutProps,
+    FlexboxProps,
+    SpaceProps,
     ThemeTypeProps {}
 
 // @styled types definitions
