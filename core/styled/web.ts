@@ -38,16 +38,27 @@ export const baseStyled = (
     return arrayIncludesValueHandler({ value, array: omitProps });
   };
 
+  const _space = isStyledIgnored('space') ? '' : space;
+  const _color = isStyledIgnored('color') ? '' : color;
+  const _typography = isStyledIgnored('typography') ? '' : typography;
+  const _layout = isStyledIgnored('layout') ? '' : layout;
+  const _flexbox = isStyledIgnored('flexbox') ? '' : flexbox;
+  const _grid = isStyledIgnored('grid') ? '' : grid;
+  const _background = isStyledIgnored('background') ? '' : background;
+  const _border = isStyledIgnored('border') ? '' : border;
+  const _position = isStyledIgnored('position') ? '' : position;
+  const _shadow = isStyledIgnored('shadow') ? '' : shadow;
+
   return styled(tag).attrs(applyDefaultThemeHandler)<ThemeStyledProps>`
-    ${isStyledIgnored('color') ? undefined : color}
-    ${isStyledIgnored('space') ? undefined : space}
-    ${isStyledIgnored('typography') ? undefined : typography}
-    ${isStyledIgnored('layout') ? undefined : layout}
-    ${isStyledIgnored('flexbox') ? undefined : flexbox}
-    ${isStyledIgnored('grid') ? undefined : grid}
-    ${isStyledIgnored('background') ? undefined : background}
-    ${isStyledIgnored('border') ? undefined : border}
-    ${isStyledIgnored('position') ? undefined : position}
-    ${isStyledIgnored('shadow') ? undefined : shadow}
+    ${_space}
+    ${_color}
+    ${_typography}
+    ${_layout}
+    ${_flexbox}
+    ${_grid}
+    ${_background}
+    ${_border}
+    ${_position}
+    ${_shadow}
   `;
 };

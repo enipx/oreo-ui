@@ -21,7 +21,7 @@ import type { ThemeType } from '../theme';
 
 // @file declarations
 export type ThemeTypeProps = {
-  theme?: ThemeType;
+  theme?: Partial<ThemeType>;
 };
 
 export interface ThemeStyledProps

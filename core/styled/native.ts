@@ -1,5 +1,5 @@
 // @imports
-import defaultStyled from 'styled-components/native';
+import * as styledComponents from 'styled-components/native';
 import {
   space,
   color,
@@ -11,7 +11,7 @@ import {
   border,
   position,
   shadow,
-  variant as defaultVariant,
+  variant,
 } from 'styled-system';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
@@ -24,9 +24,14 @@ import type {
 } from './index.types';
 
 // @file declarations
-export const styled = defaultStyled;
+const {
+  default: styled,
+  css,
+  ThemeProvider,
+  useTheme,
+} = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeStyledProps>;
 
-export const variant = defaultVariant;
+export { styled, css, ThemeProvider, useTheme, variant };
 
 export const baseStyled = (
   tag: NativeThemeStyledTagProps,
@@ -38,16 +43,27 @@ export const baseStyled = (
     return arrayIncludesValueHandler({ value, array: omitProps });
   };
 
-  return styled[tag].attrs(applyDefaultThemeHandler)<ThemeStyledProps>`
-    ${isStyledIgnored('color') ? undefined : color}
-    ${isStyledIgnored('space') ? undefined : space}
-    ${isStyledIgnored('typography') ? undefined : typography}
-    ${isStyledIgnored('layout') ? undefined : layout}
-    ${isStyledIgnored('flexbox') ? undefined : flexbox}
-    ${isStyledIgnored('grid') ? undefined : grid}
-    ${isStyledIgnored('background') ? undefined : background}
-    ${isStyledIgnored('border') ? undefined : border}
-    ${isStyledIgnored('position') ? undefined : position}
-    ${isStyledIgnored('shadow') ? undefined : shadow}
+  const _space = isStyledIgnored('space') ? '' : space;
+  const _color = isStyledIgnored('color') ? '' : color;
+  const _typography = isStyledIgnored('typography') ? '' : typography;
+  const _layout = isStyledIgnored('layout') ? '' : layout;
+  const _flexbox = isStyledIgnored('flexbox') ? '' : flexbox;
+  const _grid = isStyledIgnored('grid') ? '' : grid;
+  const _background = isStyledIgnored('background') ? '' : background;
+  const _border = isStyledIgnored('border') ? '' : border;
+  const _position = isStyledIgnored('position') ? '' : position;
+  const _shadow = isStyledIgnored('shadow') ? '' : shadow;
+
+  return styled[tag].attrs(applyDefaultThemeHandler)`
+    ${_space}
+    ${_color}
+    ${_typography}
+    ${_layout}
+    ${_flexbox}
+    ${_grid}
+    ${_background}
+    ${_border}
+    ${_position}
+    ${_shadow}
   `;
 };

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { StyleSheet, Text, TextInput } from 'react-native';
-import { Container, View, OreoProvider } from '@oreo-ui/native';
+import { StyleSheet, Text } from 'react-native';
+import { Container, View, OreoProvider, DefaultTheme } from '@oreo-ui/native';
 
-const customTheme = {
+const customTheme: DefaultTheme = {
   colors: {
     primary: '#0ff',
   },

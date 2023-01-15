@@ -1,6 +1,3 @@
-import type { ThemeProviderProps } from 'styled-components';
-
-import type { ObjectTypes } from '../constants/index.types';
-
+import type { ThemeProviderProps, DefaultTheme } from 'styled-components';
 export interface ProviderThemedStyledProps
-  extends Partial<ThemeProviderProps<ObjectTypes>> {}
+  extends Partial<ThemeProviderProps<DefaultTheme>> {}
