@@ -1,7 +1,7 @@
 // @imports
 import React from 'react';
 import { Text, TextProps } from '../text';
-import { width, minWidth, minHeight } from '@/core/styled/system';
+import { width, minWidth, minHeight, height } from '@/core/styled/system';
 import { styled, baseStyled } from '@/core/styled/native';
 import {
   buttonDefaultStyle,
@@ -11,6 +11,7 @@ import {
   buttonStateVariant,
   buttonIconSpacing,
   buttonTextsize,
+  buttonDefaults,
 } from '@/core/styled/themed/button';
 
 import type { ButtonProps } from './button.types';
@@ -28,9 +29,10 @@ export const StyledButton = styled(
 )<ButtonProps>`
   ${width}
   ${minWidth}
+  ${height}
   ${minHeight}
-  background-color: ${buttonBackgroundColor};
   align-self: flex-start;
+  background-color: ${buttonBackgroundColor};
   ${({ theme, disabled }) =>
     buttonDefaultStyle({ theme, disabled, type: 'native' })}
   ${({ theme }) => buttonSizeVariant(theme)}
@@ -51,7 +53,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     colorScheme = 'blue',
     children,
     size = 'md',
-    activeOpacity = 0.8,
+    activeOpacity = buttonDefaults.activeOpacity,
     ...otherProps
   } = props;
 

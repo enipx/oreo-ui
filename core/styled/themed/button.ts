@@ -7,14 +7,18 @@ import { flexCenterStyle } from '../css';
 import { SystemThemeParams } from '../index.types';
 
 import { isPackageNative } from '@/core/helpers/base';
+import { RadiiKeys } from '@/core/theme/utilities/radius';
 import { SpacingKeys } from '@/core/theme/utilities/spacing';
 import { FontSizeKeys } from '@/core/theme/utilities/typography';
 
 type StyledThemeProps = ObjectTypes;
 
 // @button themes
-const buttonDisabledOpacity = 0.5;
-const buttonDefaultColorScheme = 'blue';
+export const buttonDefaults = {
+  disabledOpacity: 0.5,
+  colorScheme: 'blue',
+  activeOpacity: 0.8,
+};
 
 export const buttonBackgroundColor = styledTheme.variants(
   'mode',
@@ -83,7 +87,7 @@ export const buttonColor = styledTheme.variants('mode', 'colorScheme', {
 });
 
 export const buttonStateVariant = (option: SystemThemeParams) => {
-  const { theme, colorScheme = buttonDefaultColorScheme } = option;
+  const { theme, colorScheme = buttonDefaults.colorScheme } = option;
   const { mode = 'light' } = theme;
 
   const modeBackgroundColor = {
@@ -133,7 +137,7 @@ export const buttonStateVariant = (option: SystemThemeParams) => {
         borderColor,
       },
       disabled: {
-        opacity: buttonDisabledOpacity,
+        opacity: buttonDefaults.disabledOpacity,
       },
     },
   });
@@ -172,7 +176,7 @@ export const buttonSizeVariant = (theme: ThemeType, type?: PackageTypes) => {
 export const buttonDefaultStyle = (option: SystemThemeParams) => {
   const { theme, type, disabled } = option;
 
-  const opacity = disabled ? buttonDisabledOpacity : 1;
+  const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
 
   if (isPackageNative(type)) {
     return `
@@ -200,6 +204,60 @@ export const buttonDefaultStyle = (option: SystemThemeParams) => {
     width: auto;
     opacity: ${opacity};
   `;
+};
+
+// @Icon Button
+export const iconButtonDefaultStyle = (option: SystemThemeParams) => {
+  const { theme, type, disabled } = option;
+
+  const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
+
+  if (isPackageNative(type)) {
+    return `
+    ${flexCenterStyle}
+    opacity: ${opacity};
+  `;
+  }
+
+  return `
+    ${flexCenterStyle}
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    line-height: ${theme.lineHeights[0]};
+    outline: 0;
+    white-space: nowrap;
+    opacity: ${opacity};
+  `;
+};
+export const iconButtonSizeVariant = (option: SystemThemeParams) => {
+  const { theme, rounded } = option;
+
+  const getBorderRadius = (key: RadiiKeys) => {
+    return rounded ? theme.radii.full : theme.radii[key];
+  };
+
+  return variant({
+    prop: 'size',
+    variants: {
+      xs: {
+        size: theme.space[6],
+        borderRadius: getBorderRadius('sm'),
+      },
+      sm: {
+        size: theme.space[8],
+        borderRadius: getBorderRadius('sm'),
+      },
+      lg: {
+        size: theme.space[12],
+        borderRadius: getBorderRadius('md'),
+      },
+      md: {
+        size: theme.space[10],
+        borderRadius: getBorderRadius('md'),
+      },
+    },
+  });
 };
 
 export const buttonIconSpacing: Record<string, SpacingKeys> = {

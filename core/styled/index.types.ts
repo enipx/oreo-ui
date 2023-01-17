@@ -82,4 +82,5 @@ export type SystemThemeParams = {
   disabled?: boolean;
   mode?: ThemeModeKeys;
   colorScheme?: string;
+  rounded?: boolean;
 };

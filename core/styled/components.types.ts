@@ -1,17 +1,18 @@
 import { CSSProperties } from 'styled-components';
-import type {
-  SpaceProps,
-  ColorProps,
-  TypographyProps,
-  LayoutProps,
-  FlexboxProps,
-} from 'styled-system';
 
 import type { BreakpointsKeys } from '../theme/utilities/breakpoints';
 import type {
   LayoutThemeStyledProps,
   TypographyThemeStyledProps,
 } from './index.types';
+import type {
+  SpaceProps,
+  ColorProps,
+  TypographyProps,
+  LayoutProps,
+  FlexboxProps,
+  BorderProps,
+} from './system';
 
 export interface ViewThemedStyledProps extends LayoutThemeStyledProps {
   /**
@@ -81,12 +82,18 @@ export interface ButtonThemedStyledProps
    */
   size?: ButtonSizeType;
 
+  /**
+   * button text
+   */
   text?: string;
 
+  /**
+   * set button state to disabled
+   */
   disabled?: boolean;
 }
 
-export interface IconButtonThemedStyledProps extends ViewThemedStyledProps {
+export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
   /**
    * set left icon
    */
@@ -104,5 +111,18 @@ export interface IconButtonThemedStyledProps extends ViewThemedStyledProps {
    */
   size?: ButtonSizeType;
 
+  /**
+   * button text
+   */
+  text?: string;
+
+  /**
+   * set button state to disabled
+   */
   disabled?: boolean;
+
+  /**
+   * convert icon to a round icon
+   */
+  rounded?: boolean;
 }

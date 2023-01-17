@@ -7,6 +7,7 @@ import {
   DefaultTheme,
   Text,
   Button,
+  IconButton,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -25,6 +26,12 @@ export default function App() {
           </Text>
         </View>
         <Button colorScheme="blue" text="Button" />
+        <IconButton
+          m="lg"
+          size="lg"
+          colorScheme="blue"
+          icon={<Text color="white">P</Text>}
+        />
       </Container>
     </OreoProvider>
   );
