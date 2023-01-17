@@ -1,6 +1,8 @@
-// @file declarations
-export const defaultStandardFontSize = 16;
+import { PackageTypes } from '@/core/constants/index.types';
+import { isPackageWeb } from '@/core/helpers/base';
+import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
 
+// @file declarations
 const fontWeights = {
   thin: 100,
   extraLight: 200,
@@ -17,7 +19,7 @@ const fontSizes = {
   '2xs': 8,
   'xs': 12,
   'sm': 14,
-  'base': 16,
+  'md': 16,
   'lg': 18,
   'xl': 20,
   '2xl': 24,
@@ -36,18 +38,42 @@ const fonts = {
   mono: `SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`,
 };
 
-const typography = {
-  fontWeights,
-  fontSizes,
-  fonts,
+const lineHeights = {
+  0: 0,
+  normal: 'normal',
+  none: 1,
+  shorter: 1.25,
+  short: 1.375,
+  base: 1.5,
+  tall: 1.625,
+  taller: 2,
+};
+
+const typography = (arg?: PackageTypes) => {
+  const isWeb = isPackageWeb(arg);
+
+  return {
+    fontWeights,
+    fontSizes: isWeb
+      ? (convertObjectDimensionsUnit(fontSizes) as FontSizeTypes)
+      : fontSizes,
+    fonts,
+    lineHeights,
+  };
 };
 
 // @types definitions
-export type FontWeightKeys = keyof typeof fontWeights;
+export type FontWeightTypes = typeof fontWeights;
 
-export type FontSizeKeys = keyof typeof fontSizes;
+export type FontWeightKeys = keyof FontWeightTypes;
 
-export type FontKeys = keyof typeof fonts;
+export type FontSizeTypes = typeof fontSizes;
+
+export type FontSizeKeys = keyof FontSizeTypes;
+
+export type FontTypes = typeof fonts;
+
+export type FontKeys = keyof FontTypes;
 
 // @exports
 export default typography;

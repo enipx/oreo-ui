@@ -1,3 +1,4 @@
+import { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
 import defaultTheme, { ThemeKeys } from '../theme';
 
 /**
@@ -6,15 +7,19 @@ import defaultTheme, { ThemeKeys } from '../theme';
  * method returns theme property specify
  */
 export const getThemeHandler = (arg: ThemeKeys) => {
-  return defaultTheme[arg];
+  return defaultTheme()[arg];
 };
 
-export const applyDefaultThemeHandler = ({ theme = {}, ...props }) => {
+export const applyDefaultThemeHandler = ({
+  theme = {},
+  packageType,
+  ...props
+}: ApplyDefaultThemeHandlerProps) => {
   // Since styled-components defaults the `theme` prop to an empty object
   // inside of the styled component if a ThemeProvider is not present,
   // we check against the number of keys.
   return {
     ...props,
-    theme: Object.keys(theme).length === 0 ? defaultTheme : theme,
+    theme: Object.keys(theme).length === 0 ? defaultTheme(packageType) : theme,
   };
 };

@@ -1,24 +1,12 @@
 // @imports
 import type { ViewProps } from './view.types';
 
+import {
+  flexCenterStyle,
+  flexCenterYStyle,
+  flexCenterXStyle,
+} from '@/core/styled/css';
 import { styled, baseStyled } from '@/core/styled/web';
-
-// @styles
-const flexCenterStyle = `
-  align-items: center;
-  display: flex;
-  justify-content: center;
-`;
-
-const flexCenterYStyle = `
-  align-items: center;
-  display: flex;
-`;
-
-const flexCenterXStyle = `
-  display: flex;
-  justify-content: center;
-`;
 
 // @exports
 export const View = styled(baseStyled('div'))<ViewProps>`

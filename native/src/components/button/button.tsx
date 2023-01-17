@@ -1,53 +1,78 @@
+// @imports
 import React from 'react';
+import { Text, TextProps } from '../text';
+import { width, minWidth, minHeight } from '@/core/styled/system';
+import { styled, baseStyled } from '@/core/styled/native';
 import {
-  StyleProp,
-  TouchableOpacity,
-  Text,
-  ViewStyle,
-  TextStyle,
-} from 'react-native';
+  buttonDefaultStyle,
+  buttonBackgroundColor,
+  buttonColor,
+  buttonSizeVariant,
+  buttonIconSpacing,
+} from '@/core/styled/themed/button';
 
-import type { ButtonProps, ButtonSizesType } from './button.types';
+import type { ButtonProps } from './button.types';
+import { View } from '../view';
 
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  color,
-  style,
-  ...props
-}: ButtonProps) => {
-  const sizes: { [key in ButtonSizesType]: StyleProp<TextStyle> } = {
-    small: {
-      fontSize: 12,
-    },
-    medium: {
-      fontSize: 14,
-    },
-    large: {
-      fontSize: 16,
-    },
-  };
+// @exports
+export const StyledButton = styled(
+  baseStyled('TouchableOpacity', [
+    'layout',
+    'shadow',
+    'grid',
+    'position',
+    'background',
+  ])
+)<ButtonProps>`
+  ${width}
+  ${minWidth}
+  ${minHeight}
+  background-color: ${buttonBackgroundColor};
+  align-self: flex-start;
+  ${({ theme }) => buttonDefaultStyle(theme, 'native')}
+  ${({ theme }) => buttonSizeVariant(theme)}
+`;
 
-  const styles: StyleProp<ViewStyle> = style || {
-    borderRadius: 32,
-    backgroundColor: backgroundColor || primary ? '#1ea7fd' : '#eeeeee',
-    borderWidth: 0,
-    height: 40,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 24,
-  };
+export const StyleButtonText = styled(Text)<TextProps>`
+  color: ${buttonColor};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+`;
 
-  const textStyle: StyleProp<TextStyle> = {
-    color: color || (primary ? '#fff' : '#000'),
-  };
+export const Button: React.FC<ButtonProps> = (props) => {
+  const {
+    icon,
+    rightIcon,
+    text,
+    textProps,
+    colorScheme = 'blue',
+    children,
+    activeOpacity = 0.8,
+    ...otherProps
+  } = props;
 
   return (
-    <TouchableOpacity style={styles} {...props}>
-      <Text style={[textStyle, sizes[size]]}>{label}</Text>
-    </TouchableOpacity>
+    <StyledButton
+      activeOpacity={activeOpacity}
+      colorScheme={colorScheme}
+      {...(otherProps as any)}>
+      {icon ? (
+        <View mr={buttonIconSpacing[otherProps?.size || 'md']}>{icon}</View>
+      ) : null}
+      {text ? (
+        <StyleButtonText
+          textAlign="center"
+          colorScheme={colorScheme}
+          {...(textProps as any)}>
+          {text}
+        </StyleButtonText>
+      ) : (
+        children
+      )}
+      {rightIcon ? (
+        <View ml={buttonIconSpacing[otherProps?.size || 'md']}>
+          {rightIcon}
+        </View>
+      ) : null}
+    </StyledButton>
   );
 };

@@ -1,7 +1,8 @@
 // @imports
+import type { PackageTypes } from '../../constants/index.types';
 
 // @file declarations
-const components = {};
+const components = (arg?: PackageTypes) => ({});
 
 // @exports
 export default components;

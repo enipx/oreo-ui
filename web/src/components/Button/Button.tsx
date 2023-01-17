@@ -1,46 +1,42 @@
-import React from 'react';
+// @imports
+import { View } from '../view';
+import type { ButtonProps } from './button.types';
 
-import type { ButtonProps, ButtonSizesType } from './button.types';
+import {
+  buttonDefaultStyle,
+  buttonBackgroundColor,
+  buttonColor,
+  buttonIconSpacing,
+  buttonSizeVariant,
+} from '@/core/styled/themed/button';
+import { styled, baseStyled } from '@/core/styled/web';
 
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  color,
-  ...props
-}: ButtonProps) => {
-  const sizes: { [key in ButtonSizesType]: React.CSSProperties } = {
-    small: {
-      fontSize: '0.675rem',
-      padding: '10px 16px',
-    },
-    medium: {
-      fontSize: '0.75rem',
-      padding: '12px 20px',
-    },
-    large: {
-      fontSize: '1rem',
-      padding: '14px 24px',
-    },
-  };
+// @exports
+export const StyledButton = styled(
+  baseStyled('button', ['shadow', 'grid', 'position', 'background'])
+)<ButtonProps>`
+  background-color: ${buttonBackgroundColor};
+  color: ${buttonColor};
+  ${({ theme }) => buttonDefaultStyle(theme)}
+  ${({ theme }) => buttonSizeVariant(theme)}
+`;
 
-  const styles: React.CSSProperties = {
-    fontFamily: "'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-    fontWeight: 700,
-    border: 0,
-    borderRadius: '3em',
-    cursor: 'pointer',
-    display: 'inline-block',
-    lineHeight: 1,
-    color: color || primary ? 'white' : '#000',
-    backgroundColor: backgroundColor || primary ? '#1ea7fd' : '#eeeeee',
-    ...sizes[size],
-  };
+export const Button: React.FC<ButtonProps> = (props) => {
+  const { text, icon, rightIcon, colorScheme = 'blue', ...otherProps } = props;
 
   return (
-    <button type="button" style={styles} {...props}>
-      {label}
-    </button>
+    <StyledButton colorScheme={colorScheme} {...(otherProps as any)}>
+      {icon ? (
+        <View as="span" mr={buttonIconSpacing[otherProps?.size || 'md']}>
+          {icon}
+        </View>
+      ) : null}
+      {text}
+      {rightIcon ? (
+        <View as="span" ml={buttonIconSpacing[otherProps?.size || 'md']}>
+          {rightIcon}
+        </View>
+      ) : null}
+    </StyledButton>
   );
 };

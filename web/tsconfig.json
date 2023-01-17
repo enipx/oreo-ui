@@ -23,6 +23,6 @@
       "@components/*": ["./src/components/*"],
     },
   },
-  "include": ["src/**/*", "./jest-setup.ts"],
+  "include": ["src/**/*", "./jest-setup.ts", "./styled.d.ts"],
   "exclude": ["node_modules", "dist"],
 }

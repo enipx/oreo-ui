@@ -11,7 +11,9 @@ const radii = {
 };
 
 // @types definitions
-export type RadiiKeys = keyof typeof radii;
+export type RadiiTypes = typeof radii;
+
+export type RadiiKeys = keyof RadiiTypes;
 
 // @exports
 export default radii;

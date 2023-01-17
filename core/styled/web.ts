@@ -1,5 +1,5 @@
 // @imports
-import defaultStyled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import {
   space,
   color,
@@ -11,8 +11,9 @@ import {
   border,
   position,
   shadow,
-  variant as defaultVariant,
+  variant,
 } from 'styled-system';
+import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
 import { applyDefaultThemeHandler } from '../helpers/theme';
@@ -24,9 +25,7 @@ import type {
 } from './index.types';
 
 // @file declarations
-export const styled = defaultStyled;
-
-export const variant = defaultVariant;
+export { styled, variant, themer };
 
 export const baseStyled = (
   tag: WebThemeStyledTagProps,
@@ -49,7 +48,9 @@ export const baseStyled = (
   const _position = isStyledIgnored('position') ? '' : position;
   const _shadow = isStyledIgnored('shadow') ? '' : shadow;
 
-  return styled(tag).attrs(applyDefaultThemeHandler)<ThemeStyledProps>`
+  return styled(tag).attrs((props) =>
+    applyDefaultThemeHandler({ packageType: 'web', ...props })
+  )<ThemeStyledProps>`
     ${_space}
     ${_color}
     ${_typography}

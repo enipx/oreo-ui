@@ -26,7 +26,7 @@ export const Container: React.FC<ContainerProps> = (props) => {
   const backgroundColor =
     (props!.backgroundColor as string) ||
     (props!.bg as string) ||
-    theme.colors.white;
+    theme().colors.white;
 
   const renderView = () => {
     return (

@@ -40,7 +40,9 @@ const spacing = {
 };
 
 // @types definitions
-export type SpacingKeys = keyof typeof spacing;
+export type SpacingTypes = typeof spacing;
+
+export type SpacingKeys = keyof SpacingTypes;
 
 // @exports
 export default spacing;

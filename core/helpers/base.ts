@@ -1,5 +1,5 @@
 // @imports
-import type { ObjectTypes } from '../constants/index.types';
+import type { ObjectTypes, PackageTypes } from '../constants/index.types';
 
 /**
  *
@@ -34,4 +34,16 @@ export const arrayIncludesValueHandler = (options: {
 }) => {
   const { array, value } = options;
   return array.includes(value);
+};
+
+/**
+ *
+ * returns package type
+ */
+export const isPackageWeb = (arg?: PackageTypes) => {
+  return arg === 'web';
+};
+
+export const isPackageNative = (arg?: PackageTypes) => {
+  return arg === 'native';
 };

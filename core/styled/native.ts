@@ -13,6 +13,7 @@ import {
   shadow,
   variant,
 } from 'styled-system';
+import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
 import { applyDefaultThemeHandler } from '../helpers/theme';
@@ -31,7 +32,7 @@ const {
   useTheme,
 } = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeStyledProps>;
 
-export { styled, css, ThemeProvider, useTheme, variant };
+export { styled, css, ThemeProvider, useTheme, variant, themer };
 
 export const baseStyled = (
   tag: NativeThemeStyledTagProps,

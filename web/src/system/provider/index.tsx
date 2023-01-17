@@ -10,7 +10,7 @@ import defaultTheme from '@/core/theme';
 export type { DefaultTheme };
 
 export const OreoProvider = (props: OreoProviderProps) => {
-  const { theme = defaultTheme, children } = props;
+  const { theme = defaultTheme(), children } = props;
 
   return (
     <ThemeProvider theme={theme}>

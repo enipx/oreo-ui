@@ -1,7 +1,7 @@
 // @imports
 import { createGlobalStyle } from 'styled-components';
 
-import defaultTheme, { ThemeType } from '@/core/theme';
+import defaultTheme from '@/core/theme';
 
 // @file declarations
 export const GlobalStyle = createGlobalStyle`
@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   *::after {
     box-sizing: border-box;
     font-family: ${({ theme }) => {
-      return (theme as ThemeType)?.fonts?.body || defaultTheme.fonts.body;
+      return theme?.fonts?.body || defaultTheme().fonts.body;
     }};
     margin: 0;
     padding: 0;

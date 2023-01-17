@@ -2,32 +2,20 @@
 import React from 'react';
 import type { ViewProps } from './view.types';
 import { styled, baseStyled } from '@/core/styled/native';
+import {
+  flexCenterStyle,
+  flexCenterYStyle,
+  flexCenterXStyle,
+} from '@/core/styled/css';
 import { KeyboardAvoidingView } from 'react-native';
 import { isIOS } from '../../helpers/base';
-
-// @styles
-const flexCenterStyle = `
-  align-items: center;
-  display: flex;
-  justify-content: center;
-`;
-
-const flexCenterYStyle = `
-  display: flex;
-  justify-content: center;
-`;
-
-const flexCenterXStyle = `
-  align-items: center;
-  display: flex;
-`;
 
 // @exports
 
 export const StyledView = styled(baseStyled('View'))<ViewProps>`
   ${({ flexCenter }) => flexCenter && flexCenterStyle}
-  ${({ flexCenterY }) => flexCenterY && flexCenterYStyle}
-  ${({ flexCenterX }) => flexCenterX && flexCenterXStyle}
+  ${({ flexCenterY }) => flexCenterY && flexCenterXStyle}
+  ${({ flexCenterX }) => flexCenterX && flexCenterYStyle}
 `;
 
 export const View: React.FC<ViewProps> = (props) => {

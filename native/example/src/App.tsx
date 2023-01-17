@@ -6,6 +6,7 @@ import {
   OreoProvider,
   DefaultTheme,
   Text,
+  Button,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -18,11 +19,12 @@ export default function App() {
   return (
     <OreoProvider theme={customTheme}>
       <Container scrollable>
-        <View backgroundColor="primary" p="2" size={200}>
+        <View flex={1} flexCenterX backgroundColor="blue.100" p="2" size={200}>
           <Text fontSize="3xl" color="red.500" textTransform="uppercase">
             Xello
           </Text>
         </View>
+        <Button minWidth="100%" size="xs" colorScheme="blue" text="Button" />
       </Container>
     </OreoProvider>
   );
