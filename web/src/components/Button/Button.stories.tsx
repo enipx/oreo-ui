@@ -63,4 +63,5 @@ Blue.args = {
 
   text: 'Button',
   size: 'md',
+  state: 'disabled',
 };

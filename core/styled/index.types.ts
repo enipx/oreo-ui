@@ -17,6 +17,8 @@ import type {
   ShadowProps,
 } from 'styled-system';
 
+import { PackageTypes, ThemeModeKeys } from '../constants/index.types';
+
 // @file declarations
 export type ThemeTypeProps = {
   theme?: DefaultTheme;
@@ -73,3 +75,11 @@ export type ThemeStyledCategoriesProps =
   | 'shadow';
 
 export type ThemeStyledCategoriesArrayProps = ThemeStyledCategoriesProps[];
+
+export type SystemThemeParams = {
+  theme: DefaultTheme;
+  type?: PackageTypes;
+  disabled?: boolean;
+  mode?: ThemeModeKeys;
+  colorScheme?: string;
+};

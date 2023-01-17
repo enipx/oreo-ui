@@ -50,7 +50,7 @@ export type ButtonColorSchemeType =
   | 'yellow'
   | 'transparent';
 
-export type ButtonStateType = 'hover' | 'disabled' | 'focused' | 'default';
+export type ButtonStateType = 'hovered' | 'disabled' | 'focused' | 'default';
 
 export type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -82,6 +82,8 @@ export interface ButtonThemedStyledProps
   size?: ButtonSizeType;
 
   text?: string;
+
+  disabled?: boolean;
 }
 
 export interface IconButtonThemedStyledProps extends ViewThemedStyledProps {
@@ -101,4 +103,6 @@ export interface IconButtonThemedStyledProps extends ViewThemedStyledProps {
    * button size
    */
   size?: ButtonSizeType;
+
+  disabled?: boolean;
 }

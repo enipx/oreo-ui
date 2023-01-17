@@ -24,7 +24,7 @@ export default function App() {
             Xello
           </Text>
         </View>
-        <Button minWidth="100%" size="xs" colorScheme="blue" text="Button" />
+        <Button colorScheme="blue" text="Button" />
       </Container>
     </OreoProvider>
   );

@@ -8,7 +8,9 @@ import {
   buttonBackgroundColor,
   buttonColor,
   buttonSizeVariant,
+  buttonStateVariant,
   buttonIconSpacing,
+  buttonTextsize,
 } from '@/core/styled/themed/button';
 
 import type { ButtonProps } from './button.types';
@@ -29,8 +31,10 @@ export const StyledButton = styled(
   ${minHeight}
   background-color: ${buttonBackgroundColor};
   align-self: flex-start;
-  ${({ theme }) => buttonDefaultStyle(theme, 'native')}
+  ${({ theme, disabled }) =>
+    buttonDefaultStyle({ theme, disabled, type: 'native' })}
   ${({ theme }) => buttonSizeVariant(theme)}
+  ${({ theme }) => buttonStateVariant({ theme })}
 `;
 
 export const StyleButtonText = styled(Text)<TextProps>`
@@ -46,6 +50,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     textProps,
     colorScheme = 'blue',
     children,
+    size = 'md',
     activeOpacity = 0.8,
     ...otherProps
   } = props;
@@ -54,25 +59,21 @@ export const Button: React.FC<ButtonProps> = (props) => {
     <StyledButton
       activeOpacity={activeOpacity}
       colorScheme={colorScheme}
+      size={size}
       {...(otherProps as any)}>
-      {icon ? (
-        <View mr={buttonIconSpacing[otherProps?.size || 'md']}>{icon}</View>
-      ) : null}
+      {icon ? <View mr={buttonIconSpacing[size]}>{icon}</View> : null}
       {text ? (
         <StyleButtonText
           textAlign="center"
           colorScheme={colorScheme}
+          fontSize={buttonTextsize[size]}
           {...(textProps as any)}>
           {text}
         </StyleButtonText>
       ) : (
         children
       )}
-      {rightIcon ? (
-        <View ml={buttonIconSpacing[otherProps?.size || 'md']}>
-          {rightIcon}
-        </View>
-      ) : null}
+      {rightIcon ? <View ml={buttonIconSpacing[size]}>{rightIcon}</View> : null}
     </StyledButton>
   );
 };
