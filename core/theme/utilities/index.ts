@@ -5,6 +5,7 @@ import colors from './colors';
 import _radii, { RadiiTypes } from './radius';
 import _space, { SpacingTypes } from './spacing';
 import typography from './typography';
+import zIndices from './z-index';
 
 import { isPackageWeb } from '@/core/helpers/base';
 import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
@@ -30,6 +31,7 @@ const utilities = (arg?: PackageTypes) => {
     colors,
     space,
     radii,
+    zIndices,
     ...typography(arg),
   };
 };

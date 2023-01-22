@@ -9,6 +9,7 @@ import {
   Button,
   IconButton,
   Input,
+  Textarea,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -39,6 +40,10 @@ export default function App() {
           label="Email"
           hint="Please enter a valid email"
         />
+
+        <View mt="lg">
+          <Textarea label="Email" hint="Please enter a valid email" />
+        </View>
       </Container>
     </OreoProvider>
   );

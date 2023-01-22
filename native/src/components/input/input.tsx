@@ -122,16 +122,17 @@ export const Input: React.FC<InputProps> = (props) => {
         state={inputState}
         rightIcon={renderRightIcon()}
         icon={icon}
-        keyboardType={type}>
+        keyboardType={type}
+        {...(otherProps as any)}>
         {icon ? <IconButton size={size} icon={icon} /> : null}
         <StyledInput
           editable={!disabled}
           selectionColor={inputDefaults.selectionColor}
+          selectTextOnFocus={false}
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           secureTextEntry={toggledPassword}
           keyboardType={keyboardType}
-          selectTextOnFocus={false}
           {...(otherProps as any)}
         />
         {renderRightIcon()}

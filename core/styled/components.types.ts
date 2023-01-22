@@ -169,3 +169,36 @@ export interface InputThemedStyledProps
     SpaceProps,
     BorderProps,
     Omit<LayoutProps, 'size'> {}
+
+export type TextareaThemedDefaultProps = {
+  /**
+   * set left icon
+   */
+  icon?: React.ReactNode;
+  /**
+   * button state
+   */
+  state?: InputStateType;
+
+  /**
+   * set button state to disabled
+   */
+  disabled?: boolean;
+  /**
+   * set input label
+   */
+  label?: string;
+
+  /**
+   * set input hint
+   */
+  hint?: string;
+};
+
+export type TextareaResizeType = 'none' | 'both' | 'horizontal' | 'vertical';
+
+export interface TextareaThemedStyledProps
+  extends TextareaThemedDefaultProps,
+    SpaceProps,
+    BorderProps,
+    Omit<LayoutProps, 'size'> {}
