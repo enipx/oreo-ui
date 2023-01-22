@@ -3,10 +3,10 @@ const radii = {
   none: 0,
   xs: 2,
   sm: 4,
-  md: 8,
-  base: 16,
-  lg: 20,
-  xl: 24,
+  md: 6,
+  base: 8,
+  lg: 16,
+  xl: 18,
   full: 99999,
 };
 

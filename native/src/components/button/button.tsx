@@ -50,9 +50,9 @@ export const Button: React.FC<ButtonProps> = (props) => {
     rightIcon,
     text,
     textProps,
-    colorScheme = 'blue',
+    colorScheme = buttonDefaults.colorScheme,
     children,
-    size = 'md',
+    size = buttonDefaults.size,
     activeOpacity = buttonDefaults.activeOpacity,
     ...otherProps
   } = props;

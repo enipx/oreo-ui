@@ -1,4 +1,4 @@
-import { CSSProperties } from 'styled-components';
+import type { CSSProperties } from 'styled-components';
 
 import type { BreakpointsKeys } from '../theme/utilities/breakpoints';
 import type {
@@ -126,3 +126,46 @@ export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
    */
   rounded?: boolean;
 }
+
+export type InputStateType = 'default' | 'focused' | 'invalid' | 'disabled';
+
+export type InputSizeType = 'xs' | 'sm' | 'md' | 'lg';
+
+export type InputThemedDefaultProps = {
+  /**
+   * set left icon
+   */
+  icon?: React.ReactNode;
+  /**
+   * set right icon
+   */
+  rightIcon?: React.ReactNode;
+  /**
+   * button state
+   */
+  state?: InputStateType;
+  /**
+   * button size
+   */
+  size?: InputSizeType;
+
+  /**
+   * set button state to disabled
+   */
+  disabled?: boolean;
+  /**
+   * set input label
+   */
+  label?: string;
+
+  /**
+   * set input hint
+   */
+  hint?: string;
+};
+
+export interface InputThemedStyledProps
+  extends InputThemedDefaultProps,
+    SpaceProps,
+    BorderProps,
+    Omit<LayoutProps, 'size'> {}

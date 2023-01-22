@@ -15,7 +15,7 @@ import {
   buttonColor,
   iconButtonSizeVariant,
   buttonStateVariant,
-  buttonDefaults,
+  iconButtonDefaults,
 } from '@/core/styled/themed/button';
 
 import type { IconButtonProps } from './icon-button.types';
@@ -51,9 +51,9 @@ export const StyleButtonText = styled(Text)<TextProps>`
 export const IconButton: React.FC<IconButtonProps> = (props) => {
   const {
     icon,
-    colorScheme = 'transparent',
-    size = 'md',
-    activeOpacity = buttonDefaults.activeOpacity,
+    colorScheme = iconButtonDefaults.colorScheme,
+    size = iconButtonDefaults.size,
+    activeOpacity = iconButtonDefaults.activeOpacity,
     ...otherProps
   } = props;
 

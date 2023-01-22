@@ -8,6 +8,7 @@ import {
   Text,
   Button,
   IconButton,
+  Input,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -19,7 +20,7 @@ const customTheme: DefaultTheme = {
 export default function App() {
   return (
     <OreoProvider theme={customTheme}>
-      <Container scrollable>
+      <Container px="lg" scrollable>
         <View flex={1} flexCenterX backgroundColor="blue.100" p="2" size={200}>
           <Text fontSize="3xl" color="red.500" textTransform="uppercase">
             Xello
@@ -31,6 +32,12 @@ export default function App() {
           size="lg"
           colorScheme="blue"
           icon={<Text color="white">P</Text>}
+        />
+        <Input
+          type="password"
+          size="md"
+          label="Email"
+          hint="Please enter a valid email"
         />
       </Container>
     </OreoProvider>

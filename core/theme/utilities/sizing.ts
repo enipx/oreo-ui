@@ -1,4 +1,15 @@
 // @file declarations
+const iconSizing = {
+  'xs': 16,
+  'sm': 18,
+  'md': 24,
+  'lg': 32,
+  'xl': 40,
+  '2xl': 48,
+  '3xl': 56,
+  '4xl': 64,
+};
+
 const sizing = {
   'none': 0,
   'xs': 2,
@@ -12,7 +23,14 @@ const sizing = {
 };
 
 // @types definitions
-export type SizingKEys = keyof typeof sizing;
+export type SizingType = typeof sizing;
+
+export type SizingKeys = keyof SizingType;
+
+export type IconSizingType = typeof iconSizing;
+
+export type IconSizingKeys = keyof IconSizingType;
 
 // @exports
+export { iconSizing };
 export default sizing;

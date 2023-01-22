@@ -9,6 +9,7 @@ import {
   buttonHoverBackgroundColor,
   buttonHoverBorderColor,
   buttonStateVariant,
+  iconButtonDefaults,
 } from '@/core/styled/themed/button';
 import { styled, baseStyled } from '@/core/styled/web';
 
@@ -34,8 +35,8 @@ export const StyledIconButton = styled(
 export const IconButton: React.FC<IconButtonProps> = (props) => {
   const {
     icon,
-    size = 'md',
-    colorScheme = 'transparent',
+    size = iconButtonDefaults.size,
+    colorScheme = iconButtonDefaults.colorScheme,
     ...otherProps
   } = props;
 

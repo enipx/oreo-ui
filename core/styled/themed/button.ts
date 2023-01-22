@@ -1,23 +1,33 @@
 import { variant } from 'styled-system';
 import styledTheme from 'styled-theming';
 
-import { ObjectTypes, PackageTypes } from '../../constants/index.types';
-import { ThemeType } from '../../theme';
-import { flexCenterStyle } from '../css';
-import { SystemThemeParams } from '../index.types';
+import type { ObjectTypes, PackageTypes } from '../../constants/index.types';
+import type { ThemeType } from '../../theme';
+import { flexCenterStyle, transitionStyle } from '../css';
+import type {
+  SystemThemeParams,
+  StyledThemeProps,
+  SystemThemeReturnType,
+} from '../index.types';
 
 import { isPackageNative } from '@/core/helpers/base';
-import { RadiiKeys } from '@/core/theme/utilities/radius';
-import { SpacingKeys } from '@/core/theme/utilities/spacing';
-import { FontSizeKeys } from '@/core/theme/utilities/typography';
-
-type StyledThemeProps = ObjectTypes;
+import type { RadiiKeys } from '@/core/theme/utilities/radius';
+import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+import type { FontSizeKeys } from '@/core/theme/utilities/typography';
 
 // @button themes
 export const buttonDefaults = {
   disabledOpacity: 0.5,
-  colorScheme: 'blue',
   activeOpacity: 0.8,
+  colorScheme: 'blue',
+  size: 'md',
+};
+
+export const iconButtonDefaults = {
+  disabledOpacity: 0.5,
+  activeOpacity: 0.8,
+  colorScheme: 'transparent',
+  size: 'md',
 };
 
 export const buttonBackgroundColor = styledTheme.variants(
@@ -53,7 +63,7 @@ export const buttonHoverBackgroundColor = styledTheme.variants(
     },
     gray: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
     transparent: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
+      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
     },
   }
 );
@@ -72,7 +82,7 @@ export const buttonHoverBorderColor = styledTheme.variants(
     },
     gray: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[100] },
     transparent: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
+      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
     },
   }
 );
@@ -165,70 +175,82 @@ export const buttonSizeVariant = (theme: ThemeType, type?: PackageTypes) => {
         ...(isNative ? {} : { fontSize: theme.fontSizes.md }),
         height: theme.space[12],
         px: 6,
+        borderRadius: theme.radii.md,
       },
       md: {
+        ...(isNative ? {} : { fontSize: theme.fontSizes.sm }),
+        height: theme.space[10],
         px: 4,
+        borderRadius: theme.radii.md,
       },
     },
   });
 };
 
 export const buttonDefaultStyle = (option: SystemThemeParams) => {
-  const { theme, type, disabled } = option;
+  const { theme, type = 'web', disabled } = option;
 
   const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
 
-  if (isPackageNative(type)) {
-    return `
+  const baseStyle = `
     ${flexCenterStyle}
-    border-radius: ${theme.radii.md};
-    height: ${theme.space[10]};
+    ${transitionStyle()}
     opacity: ${opacity};
   `;
-  }
 
-  return `
-    ${flexCenterStyle}
+  const native = baseStyle;
+
+  const web = `
+    ${baseStyle}
     appearance: none;
     border: 0;
-    border-radius: ${theme.radii.md};
     cursor: pointer;
-    font-size: ${theme.fontSizes.sm};
     font-weight: ${theme.fontWeights.medium};
-    height: ${theme.space[10]};
     line-height: ${theme.lineHeights[0]};
     outline: 0;
-    padding-left: ${theme.space[4]};
-    padding-right: ${theme.space[4]};
     white-space: nowrap;
     width: auto;
-    opacity: ${opacity};
   `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
 };
 
 // @Icon Button
 export const iconButtonDefaultStyle = (option: SystemThemeParams) => {
-  const { theme, type, disabled } = option;
+  const { theme, type = 'web', disabled } = option;
 
-  const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
+  const opacity = disabled ? iconButtonDefaults.disabledOpacity : 1;
 
-  if (isPackageNative(type)) {
-    return `
+  const baseStyle = `
     ${flexCenterStyle}
+    ${transitionStyle()}
     opacity: ${opacity};
+    flex-shrink: 0;
   `;
-  }
 
-  return `
-    ${flexCenterStyle}
+  const native = baseStyle;
+
+  const web = `
+    ${baseStyle}
     appearance: none;
     border: 0;
     cursor: pointer;
     line-height: ${theme.lineHeights[0]};
     outline: 0;
     white-space: nowrap;
-    opacity: ${opacity};
   `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
 };
 export const iconButtonSizeVariant = (option: SystemThemeParams) => {
   const { theme, rounded } = option;

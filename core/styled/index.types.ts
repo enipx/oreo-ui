@@ -1,5 +1,5 @@
 // @imports
-import type { ReactHTML } from 'react';
+import type { ReactHTML, SVGProps } from 'react';
 import type {
   ReactNativeStyledInterface,
   DefaultTheme,
@@ -17,7 +17,8 @@ import type {
   ShadowProps,
 } from 'styled-system';
 
-import { PackageTypes, ThemeModeKeys } from '../constants/index.types';
+import type { PackageTypes, ThemeModeKeys } from '../constants/index.types';
+import type { IconSizingKeys } from '../theme/utilities/sizing';
 
 // @file declarations
 export type ThemeTypeProps = {
@@ -83,4 +84,20 @@ export type SystemThemeParams = {
   mode?: ThemeModeKeys;
   colorScheme?: string;
   rounded?: boolean;
+  icon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 };
+
+export type SystemThemeReturnType = { [key in PackageTypes]: string };
+
+export type StyledThemeProps = Record<string, any>;
+
+export type WebSvgProps = SVGProps<SVGElement> &
+  ThemeTypeProps & {
+    size?: IconSizingKeys;
+  };
+
+export type NativeSvgProps = SVGProps<SVGElement> &
+  ThemeTypeProps & {
+    size?: IconSizingKeys;
+  };

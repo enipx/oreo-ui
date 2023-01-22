@@ -11,6 +11,7 @@ import {
   buttonIconSpacing,
   buttonSizeVariant,
   buttonStateVariant,
+  buttonDefaults,
 } from '@/core/styled/themed/button';
 import { styled, baseStyled } from '@/core/styled/web';
 
@@ -39,8 +40,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
     text,
     icon,
     rightIcon,
-    size = 'md',
-    colorScheme = 'blue',
+    size = buttonDefaults.size,
+    colorScheme = buttonDefaults.colorScheme,
     ...otherProps
   } = props;
 
