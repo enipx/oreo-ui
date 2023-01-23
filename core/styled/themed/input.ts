@@ -42,6 +42,13 @@ export const hoverBorderColor = styledTheme.variants('mode', 'state', {
   disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
 });
 
+export const focusBorderColor = styledTheme.variants('mode', 'state', {
+  default: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
+  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
+  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
+  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
+});
+
 export const hintColor = styledTheme.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
@@ -137,6 +144,7 @@ export const inputContainerDefaultStyle = (option: SystemThemeParams) => {
 
   const baseStyle = `
     ${transitionStyle()}
+    outline: 0;
     opacity: ${opacity};
     border-width: 1px;
     border-style: solid;
@@ -163,6 +171,52 @@ export const inputContainerDefaultStyle = (option: SystemThemeParams) => {
   return res[type];
 };
 
+export const inputFieldDefaultStyle = (option: SystemThemeParams) => {
+  const { theme, type = 'web', disabled, resize } = option;
+
+  const opacity = disabled ? inputDefaults.disabledOpacity : 1;
+
+  const baseStyle = `
+    ${transitionStyle()}
+    opacity: ${opacity};
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    position: relative;
+    overflow: hidden;
+    outline: 0;
+    border-radius: ${theme.radii.md};
+    padding-left: ${theme.space.md};
+    padding-right: ${theme.space.md};
+    padding-top: ${theme.space.sm};
+    padding-bottom: ${theme.space.sm};
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+    appearance: none;
+    white-space: nowrap;
+    font-size: ${theme.fontSizes.sm};
+    resize: ${resize || 'auto'};
+
+    ::placeholder {
+      font-size: ${theme.fontSizes.sm};
+    }
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+// @utilities
 export const isDisabled = (state?: string) => {
   return state === 'disabled';
 };

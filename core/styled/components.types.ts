@@ -148,7 +148,6 @@ export type InputThemedDefaultProps = {
    * button size
    */
   size?: InputSizeType;
-
   /**
    * set button state to disabled
    */
@@ -157,11 +156,56 @@ export type InputThemedDefaultProps = {
    * set input label
    */
   label?: string;
-
   /**
    * set input hint
    */
   hint?: string;
+};
+
+export type PinInputThemedDefaultProps = {
+  /**
+   * button state
+   */
+  state?: InputStateType;
+  /**
+   * button size
+   */
+  size?: InputSizeType;
+  /**
+   * set button state to disabled
+   */
+  disabled?: boolean;
+  /**
+   * set input label
+   */
+  label?: string;
+  /**
+   * set input hint
+   */
+  hint?: string;
+  /**
+   * set input hint
+   */
+  value?: string;
+  /**
+   * number of inputs
+   */
+  length?: number;
+
+  /**
+   * return function when value changes
+   */
+  onChange?: (arg: string) => void;
+
+  /**
+   * return function when all input fields are filled
+   */
+  onFilled?: (arg: string) => void;
+
+  /**
+   * focus input on mount
+   */
+  focusOnMounted?: boolean;
 };
 
 export interface InputThemedStyledProps
@@ -179,7 +223,6 @@ export type TextareaThemedDefaultProps = {
    * button state
    */
   state?: InputStateType;
-
   /**
    * set button state to disabled
    */
@@ -188,7 +231,6 @@ export type TextareaThemedDefaultProps = {
    * set input label
    */
   label?: string;
-
   /**
    * set input hint
    */

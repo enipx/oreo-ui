@@ -4,6 +4,7 @@ import { IconButton } from '../icon-button';
 import { Text } from '../text';
 import { View } from '../view/view';
 import { StyledHintText } from '../input/input';
+import { InputField } from '../input/input-field';
 import type { TextareaProps } from './textarea.types';
 
 import { textareaDefaults } from '@/core/styled/themed/textarea';
@@ -13,7 +14,7 @@ import {
   borderColor,
   backgroundColor,
 } from '@/core/styled/themed/textarea';
-import { styled, baseStyled } from '@/core/styled/native';
+import { styled, baseStyled, defaultTheme } from '@/core/styled/native';
 
 // @exports
 export const StyledInput = styled(
@@ -47,13 +48,12 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
             <IconButton size="xs" icon={icon} />
           </View>
         ) : null}
-        <StyledInput
+        <InputField
           multiline
           editable={!disabled}
           state={state}
-          selectionColor={textareaDefaults.selectionColor}
-          selectTextOnFocus={false}
           textAlignVertical="top"
+          minHeight={defaultTheme.space[20]}
           {...(otherProps as any)}
         />
       </View>

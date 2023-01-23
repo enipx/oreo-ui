@@ -10,6 +10,7 @@ import {
   IconButton,
   Input,
   Textarea,
+  PinInput,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -22,18 +23,8 @@ export default function App() {
   return (
     <OreoProvider theme={customTheme}>
       <Container px="lg" scrollable>
-        <View flex={1} flexCenterX backgroundColor="blue.100" p="2" size={200}>
-          <Text fontSize="3xl" color="red.500" textTransform="uppercase">
-            Xello
-          </Text>
-        </View>
-        <Button colorScheme="blue" text="Button" />
-        <IconButton
-          m="lg"
-          size="lg"
-          colorScheme="blue"
-          icon={<Text color="white">P</Text>}
-        />
+        <Button colorScheme="blue" text="Button" my="lg" />
+
         <Input
           type="password"
           size="md"
@@ -41,9 +32,16 @@ export default function App() {
           hint="Please enter a valid email"
         />
 
-        <View mt="lg">
+        <View my="lg">
           <Textarea label="Email" hint="Please enter a valid email" />
         </View>
+
+        <PinInput
+          label="OTP"
+          hint="Please enter a valid one time password"
+          onFilled={(code) => console.log(code)}
+          type="password"
+        />
       </Container>
     </OreoProvider>
   );

@@ -87,6 +87,7 @@ export type SystemThemeParams = {
   icon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   resize?: string;
+  index?: number;
 };
 
 export type SystemThemeReturnType = { [key in PackageTypes]: string };

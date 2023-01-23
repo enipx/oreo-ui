@@ -1,4 +1,4 @@
-import { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
+import type { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
 import defaultTheme, { ThemeKeys } from '../theme';
 
 /**
