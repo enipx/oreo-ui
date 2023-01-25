@@ -5,12 +5,11 @@ import {
   View,
   OreoProvider,
   DefaultTheme,
-  Text,
   Button,
-  IconButton,
   Input,
   Textarea,
   PinInput,
+  Checkbox,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -42,6 +41,18 @@ export default function App() {
           onFilled={(code) => console.log(code)}
           type="password"
         />
+
+        <View my="lg">
+          <Checkbox
+            label="Remember me"
+            description="Save my login details for next time."
+            onChange={(checked) => {
+              console.log({ checked });
+            }}
+            checked
+            disabled
+          />
+        </View>
       </Container>
     </OreoProvider>
   );

@@ -28,3 +28,14 @@ export const flexCenterXStyle = `
   display: flex;
   justify-content: center;
 `;
+
+export const positionCenterStyle = (option?: { transfrom: string }) => {
+  const additionalTransformProperty = option?.transfrom || '';
+
+  return `
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) ${additionalTransformProperty};
+  `;
+};

@@ -244,3 +244,29 @@ export interface TextareaThemedStyledProps
     SpaceProps,
     BorderProps,
     Omit<LayoutProps, 'size'> {}
+
+export type CheckboxSizeType = 'sm' | 'md' | 'lg';
+
+export type CheckboxThemedDefaultProps = {
+  /**
+   * checkbox size
+   */
+  size?: CheckboxSizeType;
+  /**
+   *  marked checkbox as indeterminate
+   */
+  indeterminate?: boolean;
+  /**
+   * label
+   */
+  label?: string;
+  /**
+   * label
+   */
+  description?: string;
+};
+export interface CheckboxThemedStyledProps
+  extends CheckboxThemedDefaultProps,
+    SpaceProps,
+    BorderProps,
+    Omit<LayoutProps, 'size'> {}

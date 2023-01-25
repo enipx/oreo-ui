@@ -77,7 +77,7 @@ export type ThemeStyledCategoriesProps =
 
 export type ThemeStyledCategoriesArrayProps = ThemeStyledCategoriesProps[];
 
-export type SystemThemeParams = {
+export type SystemThemeParams = Record<string, any> & {
   theme: DefaultTheme;
   type?: PackageTypes;
   disabled?: boolean;
