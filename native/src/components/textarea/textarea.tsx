@@ -29,11 +29,15 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
   const {
     label,
     state = textareaDefaults.state as TextareaProps['state'],
-    disabled,
+    disabled: defaultDisabled,
     icon,
     hint,
     ...otherProps
   } = props;
+
+  const disabled = defaultDisabled || state === 'disabled';
+
+  const textareaState: TextareaProps['state'] = disabled ? 'disabled' : state;
 
   return (
     <View>
@@ -51,14 +55,14 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
         <InputField
           multiline
           editable={!disabled}
-          state={state}
+          state={textareaState}
           textAlignVertical="top"
           minHeight={defaultTheme.space[20]}
           {...(otherProps as any)}
         />
       </View>
       {hint ? (
-        <StyledHintText state={state} fontSize="xs" mt="sm">
+        <StyledHintText state={textareaState} fontSize="xs" mt="sm">
           {hint}
         </StyledHintText>
       ) : null}

@@ -217,6 +217,6 @@ export const inputFieldDefaultStyle = (option: SystemThemeParams) => {
 };
 
 // @utilities
-export const isDisabled = (state?: string) => {
+export const isInputDisabled = (state?: string) => {
   return state === 'disabled';
 };

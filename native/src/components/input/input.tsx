@@ -1,5 +1,5 @@
 // @imports
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IconButton } from '../icon-button';
 import { Text } from '../text';
 import { View } from '../view/view';
@@ -18,7 +18,7 @@ import {
   borderColor,
   backgroundColor,
   hintColor,
-  isDisabled,
+  isInputDisabled,
   inputDefaults,
 } from '@/core/styled/themed/input';
 import { styled, baseStyled } from '@/core/styled/native';
@@ -44,7 +44,7 @@ export const StyledInput = styled(
 export const StyledHintText = styled(Text)<InputTextProps>`
   color: ${hintColor};
   opacity: ${({ state }) =>
-    isDisabled(state) ? inputDefaults.disabledOpacity : 1};
+    isInputDisabled(state) ? inputDefaults.disabledOpacity : 1};
 `;
 
 export const Input: React.FC<InputProps> = (props) => {
@@ -71,6 +71,10 @@ export const Input: React.FC<InputProps> = (props) => {
 
   const [toggledPassword, setToggledPassword] = useState(isPassword);
 
+  const isDisabled = disabled || state === 'disabled';
+
+  const defaultState: InputProps['state'] = isDisabled ? 'disabled' : state;
+
   const [inputState, setInputState] = useState<InputProps['state']>(
     disabled ? 'disabled' : state
   );
@@ -90,6 +94,10 @@ export const Input: React.FC<InputProps> = (props) => {
   const toggledPasswordHandler = () => {
     setToggledPassword(!toggledPassword);
   };
+
+  useEffect(() => {
+    setInputState(defaultState);
+  }, [state, disabled, defaultState]);
 
   const renderRightIcon = () => {
     if (isPassword) {
@@ -118,7 +126,7 @@ export const Input: React.FC<InputProps> = (props) => {
       ) : null}
       <StyledInputContainer
         size={size}
-        disabled={disabled}
+        disabled={isDisabled}
         state={inputState}
         rightIcon={renderRightIcon()}
         icon={icon}
@@ -126,7 +134,7 @@ export const Input: React.FC<InputProps> = (props) => {
         {...(otherProps as any)}>
         {icon ? <IconButton size={size} icon={icon} /> : null}
         <StyledInput
-          editable={!disabled}
+          editable={!isDisabled}
           selectionColor={inputDefaults.selectionColor}
           selectTextOnFocus={false}
           onFocus={onFocusHandler}

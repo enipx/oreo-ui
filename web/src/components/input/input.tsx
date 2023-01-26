@@ -20,7 +20,7 @@ import {
   backgroundColor,
   hoverBorderColor,
   hintColor,
-  isDisabled,
+  isInputDisabled,
   inputDefaults,
 } from '@/core/styled/themed/input';
 import { styled, baseStyled } from '@/core/styled/web';
@@ -51,7 +51,7 @@ export const StyledInput = styled(
 export const StyledHintText = styled(Text)<InputTextProps>`
   color: ${hintColor};
   opacity: ${({ state }) =>
-    isDisabled(state) ? inputDefaults.disabledOpacity : 1};
+    isInputDisabled(state) ? inputDefaults.disabledOpacity : 1};
 `;
 
 export const Input: React.FC<InputProps> = (props) => {
@@ -99,6 +99,10 @@ export const Input: React.FC<InputProps> = (props) => {
     setInputType(toggledPassword ? type : 'text');
   };
 
+  useEffect(() => {
+    setInputState(defaultState);
+  }, [state, disabled]);
+
   const renderRightIcon = () => {
     if (type === 'password') {
       return (
@@ -116,10 +120,6 @@ export const Input: React.FC<InputProps> = (props) => {
 
     return null;
   };
-
-  useEffect(() => {
-    setInputState(defaultState);
-  }, [state, disabled]);
 
   return (
     <View>

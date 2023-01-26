@@ -84,6 +84,7 @@ export const PinInputField: React.FC<
       state={inputState}
       size={size}
       disabled={disabled}
+      editable={!disabled}
       onFocus={onFocusHandler}
       onBlur={onBlurHandler}
       {...(otherProps as any)}
@@ -98,6 +99,7 @@ export const PinInputField: React.FC<
 export const PinInput: React.FC<PinInputProps> = (props) => {
   const {
     state = pinInputDefaults.state as PinInputProps['state'],
+    disabled,
     hint,
     label,
     length = pinInputDefaults.length,
@@ -106,6 +108,10 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
     onFilled,
     ...otherProps
   } = props;
+
+  const isDisabled = disabled || state === 'disabled';
+
+  const pinInputState: PinInputProps['state'] = isDisabled ? 'disabled' : state;
 
   const inputsLengthArray = [...Array(length)];
 
@@ -168,7 +174,7 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
 
           return (
             <PinInputField
-              state={state}
+              state={pinInputState}
               ref={(_inputEv: PinInputFieldElementType) => {
                 inputsRefHandler(_inputEv, _index);
               }}
@@ -183,12 +189,13 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
               }}
               value={inputValue}
               maxLength={length}
+              disabled={isDisabled}
             />
           );
         })}
       </View>
       {hint ? (
-        <StyledHintText state={state} fontSize="xs" mt="sm">
+        <StyledHintText state={pinInputState} fontSize="xs" mt="sm">
           {hint}
         </StyledHintText>
       ) : null}

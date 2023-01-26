@@ -31,10 +31,17 @@ export default function App() {
           size="md"
           label="Email"
           hint="Please enter a valid email"
+          // state="disabled"
+          // disabled
         />
 
         <View my="lg">
-          <Textarea label="Email" hint="Please enter a valid email" />
+          <Textarea
+            label="Email"
+            hint="Please enter a valid email"
+            // state="disabled"
+            // disabled
+          />
         </View>
 
         <PinInput
@@ -42,6 +49,8 @@ export default function App() {
           hint="Please enter a valid one time password"
           onFilled={(code) => console.log(code)}
           type="password"
+          // state="disabled"
+          // disabled
         />
 
         <View my="lg">
