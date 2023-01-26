@@ -1,5 +1,5 @@
 // @imports
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IconButton } from '../icon-button';
 import { Text } from '../text';
@@ -75,9 +75,12 @@ export const Input: React.FC<InputProps> = (props) => {
     type
   );
 
-  const [inputState, setInputState] = useState<InputProps['state']>(
-    disabled ? 'disabled' : state
-  );
+  const isDisabled = disabled || state === 'disabled';
+
+  const defaultState: InputProps['state'] = isDisabled ? 'disabled' : state;
+
+  const [inputState, setInputState] =
+    useState<InputProps['state']>(defaultState);
 
   const onFocusHandler = (event: InputFocusEventType) => {
     if (inputState !== 'focused') setInputState('focused');
@@ -114,6 +117,10 @@ export const Input: React.FC<InputProps> = (props) => {
     return null;
   };
 
+  useEffect(() => {
+    setInputState(defaultState);
+  }, [state, disabled]);
+
   return (
     <View>
       {label ? (
@@ -123,7 +130,7 @@ export const Input: React.FC<InputProps> = (props) => {
       ) : null}
       <StyledInputContainer
         size={size}
-        disabled={disabled}
+        disabled={isDisabled}
         state={inputState}
         rightIcon={renderRightIcon()}
         icon={icon}
@@ -133,6 +140,7 @@ export const Input: React.FC<InputProps> = (props) => {
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           type={inputType}
+          disabled={isDisabled}
           {...(otherProps as any)}
         />
         {renderRightIcon()}

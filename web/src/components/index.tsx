@@ -5,6 +5,7 @@ export * from './pin-input';
 export * from './checkbox';
 export * from './radio';
 export * from './switch';
+export * from './select';
 export * from './textarea';
 export * from './view';
 export * from './container';

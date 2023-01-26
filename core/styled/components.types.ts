@@ -316,3 +316,44 @@ export type SwitchThemedDefaultProps = {
   description?: string;
 };
 export interface SwitchThemedStyledProps extends SwitchThemedDefaultProps {}
+
+export type SelectStateType = InputStateType;
+
+export type SelectSizeType = InputSizeType;
+
+export type SelectThemedDefaultProps = {
+  /**
+   * replace dropdown icon
+   */
+  icon?: React.ReactNode;
+  /**
+   * button state
+   */
+  state?: SelectStateType;
+  /**
+   * button size
+   */
+  size?: SelectSizeType;
+  /**
+   * set button state to disabled
+   */
+  disabled?: boolean;
+  /**
+   * set input label
+   */
+  label?: string;
+  /**
+   * set input hint
+   */
+  hint?: string;
+  /**
+   * set default place
+   */
+  placeholder?: string;
+};
+
+export interface SelectThemedStyledProps
+  extends SelectThemedDefaultProps,
+    SpaceProps,
+    BorderProps,
+    Omit<LayoutProps, 'size'> {}
