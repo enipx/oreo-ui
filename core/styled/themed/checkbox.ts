@@ -185,12 +185,12 @@ export const checkboxSizing = (options: SystemThemeParams) => {
       width: theme.space[3],
     },
     md: {
-      height: theme.space[3],
-      width: theme.space[3],
+      height: theme.space[4],
+      width: theme.space[4],
     },
     lg: {
-      height: theme.space[3],
-      width: theme.space[3],
+      height: theme.space[5],
+      width: theme.space[5],
     },
   };
 
