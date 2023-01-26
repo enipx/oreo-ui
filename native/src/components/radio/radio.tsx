@@ -120,10 +120,13 @@ export const Radio: React.FC<RadioProps> = (props) => {
         {data?.map((radioItem, index) => {
           const isLast = isArrayLastItem({ array: data, index });
 
+          const key = `${radioItem.value || radioItem.id}-${index}`;
+
           const checked = isItemChecked(radioItem);
 
           return (
             <View
+              key={key}
               mb={isLast || horizontal ? 'none' : 'base'}
               mr={isLast || !horizontal ? 'none' : 'base'}>
               <RadioControl
