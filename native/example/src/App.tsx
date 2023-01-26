@@ -10,6 +10,7 @@ import {
   Textarea,
   PinInput,
   Checkbox,
+  Radio,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -49,10 +50,20 @@ export default function App() {
             onChange={(checked) => {
               console.log({ checked });
             }}
-            checked
-            disabled
           />
         </View>
+
+        <Radio
+          data={[
+            { label: 'Male', value: 'male' },
+            { label: 'Female', value: 'female' },
+          ]}
+          onChange={(value) => {
+            console.log({ value });
+          }}
+          size="sm"
+          horizontal
+        />
       </Container>
     </OreoProvider>
   );

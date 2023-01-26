@@ -47,3 +47,13 @@ export const isPackageWeb = (arg?: PackageTypes) => {
 export const isPackageNative = (arg?: PackageTypes) => {
   return arg === 'native';
 };
+
+/**
+ *
+ * method checks if index is array last item
+ */
+export const isArrayLastItem = (options: { array: any[]; index: number }) => {
+  const { array, index } = options;
+
+  return array.length - 1 === index;
+};

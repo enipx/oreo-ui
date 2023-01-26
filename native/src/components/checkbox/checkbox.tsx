@@ -1,5 +1,6 @@
 // @imports
 import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 import { StyledHintText } from '../input/input';
 import { Text } from '../text';
@@ -37,11 +38,17 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     ...otherProps
   } = props;
 
+  const activeOpacity = otherProps.disabled
+    ? 1
+    : checkboxDefaults.activeOpacity;
+
   const [checked, setChecked] = useState(defaultChecked || false);
 
   const onPressHandler = () => {
-    onChange?.(!checked);
-    setChecked(!checked);
+    if (!otherProps.disabled) {
+      onChange?.(!checked);
+      setChecked(!checked);
+    }
   };
 
   const renderLabel = () => {
@@ -82,18 +89,20 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
   };
 
   return (
-    <View flexDirection="row">
-      <View flexCenter>
-        <StyledCheckbox
-          size={size}
-          {...(otherProps as any)}
-          onPress={onPressHandler}
-          checked={checked}
-          activeOpacity={checkboxDefaults.activeOpacity}>
-          {renderIcon()}
-        </StyledCheckbox>
+    <TouchableOpacity onPress={onPressHandler} activeOpacity={activeOpacity}>
+      <View flexDirection="row">
+        <View flexCenter>
+          <StyledCheckbox
+            size={size}
+            {...(otherProps as any)}
+            checked={checked}
+            onPress={onPressHandler}
+            activeOpacity={activeOpacity}>
+            {renderIcon()}
+          </StyledCheckbox>
+        </View>
+        {renderLabel()}
       </View>
-      {renderLabel()}
-    </View>
+    </TouchableOpacity>
   );
 };

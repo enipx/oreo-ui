@@ -2,6 +2,8 @@ import { flexCenterStyle, positionCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { variant } from '../system';
 
+import { RadiiKeys } from '@/core/theme/utilities/radius';
+
 // @checkbox themes
 export const checkboxDefaults = {
   disabledOpacity: 0.5,
@@ -172,7 +174,15 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
 };
 
 export const checkboxSizeVariant = (options: SystemThemeParams) => {
-  const { theme } = options;
+  const { theme, isRadio } = options;
+
+  const getBorderRadius = (key?: RadiiKeys) => {
+    if (isRadio) {
+      return theme.radii.full;
+    }
+
+    return theme.radii[key || 'sm'];
+  };
 
   return variant({
     prop: 'size',
@@ -180,17 +190,17 @@ export const checkboxSizeVariant = (options: SystemThemeParams) => {
       sm: {
         height: theme.space[3],
         width: theme.space[3],
-        borderRadius: theme.radii.sm,
+        borderRadius: getBorderRadius(),
       },
       md: {
         height: theme.space[4],
         width: theme.space[4],
-        borderRadius: theme.radii.sm,
+        borderRadius: getBorderRadius(),
       },
       lg: {
         height: theme.space[5],
         width: theme.space[5],
-        borderRadius: theme.radii.sm,
+        borderRadius: getBorderRadius(),
       },
     },
   });

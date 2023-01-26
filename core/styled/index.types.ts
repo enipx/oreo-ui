@@ -47,6 +47,7 @@ export interface LayoutThemeStyledProps
     BackgroundProps,
     PositionProps,
     ShadowProps,
+    BorderProps,
     ThemeTypeProps {}
 
 export interface TypographyThemeStyledProps

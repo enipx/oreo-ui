@@ -3,6 +3,7 @@ export * from './icon-button';
 export * from './input';
 export * from './pin-input';
 export * from './checkbox';
+export * from './radio';
 export * from './textarea';
 export * from './view';
 export * from './scroll-view';

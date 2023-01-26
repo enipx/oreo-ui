@@ -261,12 +261,48 @@ export type CheckboxThemedDefaultProps = {
    */
   label?: string;
   /**
-   * label
+   * description
    */
   description?: string;
 };
 export interface CheckboxThemedStyledProps
   extends CheckboxThemedDefaultProps,
+    SpaceProps,
+    BorderProps,
+    Omit<LayoutProps, 'size'> {}
+
+export type RadioSizeType = CheckboxSizeType;
+
+export type RadioThemedDefaultProps = {
+  /**
+   * radio id
+   */
+  id?: string;
+  /**
+   * radio value
+   */
+  value?: string;
+  /**
+   * radio size
+   */
+  size?: RadioSizeType;
+  /**
+   * label
+   */
+  label?: string;
+  /**
+   * description
+   */
+  description?: string;
+
+  /**
+   * set item to be horizontal
+   */
+  horizontal?: boolean;
+};
+
+export interface RadioThemedStyledProps
+  extends RadioThemedDefaultProps,
     SpaceProps,
     BorderProps,
     Omit<LayoutProps, 'size'> {}
