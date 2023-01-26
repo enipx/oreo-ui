@@ -265,11 +265,7 @@ export type CheckboxThemedDefaultProps = {
    */
   description?: string;
 };
-export interface CheckboxThemedStyledProps
-  extends CheckboxThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
-    Omit<LayoutProps, 'size'> {}
+export interface CheckboxThemedStyledProps extends CheckboxThemedDefaultProps {}
 
 export type RadioSizeType = CheckboxSizeType;
 
@@ -301,8 +297,22 @@ export type RadioThemedDefaultProps = {
   horizontal?: boolean;
 };
 
-export interface RadioThemedStyledProps
-  extends RadioThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
-    Omit<LayoutProps, 'size'> {}
+export interface RadioThemedStyledProps extends RadioThemedDefaultProps {}
+
+export type SwitchSizeType = CheckboxSizeType;
+
+export type SwitchThemedDefaultProps = {
+  /**
+   * switch size
+   */
+  size?: SwitchSizeType;
+  /**
+   * label
+   */
+  label?: string;
+  /**
+   * description
+   */
+  description?: string;
+};
+export interface SwitchThemedStyledProps extends SwitchThemedDefaultProps {}

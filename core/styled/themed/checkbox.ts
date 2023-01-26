@@ -2,7 +2,8 @@ import { flexCenterStyle, positionCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { variant } from '../system';
 
-import { RadiiKeys } from '@/core/theme/utilities/radius';
+import type { ObjectTypes } from '@/core/constants/index.types';
+import type { RadiiKeys } from '@/core/theme/utilities/radius';
 
 // @checkbox themes
 export const checkboxDefaults = {
@@ -173,33 +174,76 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
+export const checkboxSizing = (options: SystemThemeParams) => {
+  const { theme, isSwitch } = options;
+
+  const size = options?.size || checkboxDefaults.size;
+
+  const defaultSize: ObjectTypes = {
+    sm: {
+      height: theme.space[3],
+      width: theme.space[3],
+    },
+    md: {
+      height: theme.space[3],
+      width: theme.space[3],
+    },
+    lg: {
+      height: theme.space[3],
+      width: theme.space[3],
+    },
+  };
+
+  const switchSize: ObjectTypes = {
+    sm: {
+      height: theme.space[4],
+      width: theme.space[7],
+    },
+    md: {
+      height: theme.space[5],
+      width: theme.space[9],
+    },
+    lg: {
+      height: theme.space[7],
+      width: theme.space[12],
+    },
+  };
+
+  if (isSwitch) {
+    return switchSize[size];
+  }
+
+  return defaultSize[size];
+};
+
 export const checkboxSizeVariant = (options: SystemThemeParams) => {
-  const { theme, isRadio } = options;
+  const { theme, isRadio, isSwitch } = options;
 
   const getBorderRadius = (key?: RadiiKeys) => {
-    if (isRadio) {
+    if (isRadio || isSwitch) {
       return theme.radii.full;
     }
 
     return theme.radii[key || 'sm'];
   };
 
+  const getSize = (size?: string) => {
+    return checkboxSizing({ ...options, size });
+  };
+
   return variant({
     prop: 'size',
     variants: {
       sm: {
-        height: theme.space[3],
-        width: theme.space[3],
+        ...getSize('sm'),
         borderRadius: getBorderRadius(),
       },
       md: {
-        height: theme.space[4],
-        width: theme.space[4],
+        ...getSize('md'),
         borderRadius: getBorderRadius(),
       },
       lg: {
-        height: theme.space[5],
-        width: theme.space[5],
+        ...getSize('lg'),
         borderRadius: getBorderRadius(),
       },
     },

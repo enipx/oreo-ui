@@ -11,6 +11,7 @@ import {
   PinInput,
   Checkbox,
   Radio,
+  Switch,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -64,6 +65,16 @@ export default function App() {
           size="sm"
           horizontal
         />
+
+        <View my="lg">
+          <Switch
+            label="Remember me"
+            description="Save my login details for next time."
+            onChange={(checked) => {
+              console.log({ checked });
+            }}
+          />
+        </View>
       </Container>
     </OreoProvider>
   );

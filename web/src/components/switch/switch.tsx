@@ -4,30 +4,31 @@ import { useId } from 'react';
 import { StyledHintText } from '../input/input';
 import { Text } from '../text';
 import { View } from '../view';
-import type { CheckboxProps } from './checkbox.types';
+import type { SwitchProps } from './switch.types';
 
 import {
-  checkboxDefaults,
-  checkboxDefaultStyle,
-  checkboxSizeVariant,
-  checkboxCheckedStyle,
-} from '@/core/styled/themed/checkbox';
+  switchDefaults,
+  switchDefaultStyle,
+  switchSizeVariant,
+  switchCheckedStyle,
+  switchBaseStyle,
+} from '@/core/styled/themed/switch';
 import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
-export const StyledCheckbox = styled(
+export const StyledSwitch = styled(
   baseStyled('input', ['shadow', 'grid', 'position', 'background'])
-)<CheckboxProps>`
-  ${({ theme, disabled }) => checkboxDefaultStyle({ theme, disabled })};
+)<SwitchProps>`
+  ${({ theme, disabled }) => switchDefaultStyle({ theme, disabled })};
+  ${({ theme, disabled, size }) => switchBaseStyle({ theme, disabled, size })};
+  ${({ theme, disabled }) => switchSizeVariant({ theme, disabled })};
   ${({ theme, disabled, size }) =>
-    checkboxSizeVariant({ theme, disabled, size })};
-  ${({ theme, disabled, size, indeterminate }) =>
-    checkboxCheckedStyle({ theme, disabled, size, indeterminate })};
+    switchCheckedStyle({ theme, disabled, size })};
 `;
 
-export const Checkbox: React.FC<CheckboxProps> = (props) => {
+export const Switch: React.FC<SwitchProps> = (props) => {
   const {
-    size = checkboxDefaults.size as CheckboxProps['size'],
+    size = switchDefaults.size as unknown as SwitchProps['size'],
     disabled,
     description,
     label,
@@ -60,17 +61,15 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
   };
 
   return (
-    <View>
-      <View display="flex" flexCenterY>
-        <StyledCheckbox
-          size={size}
-          disabled={disabled}
-          {...(otherProps as any)}
-          type="checkbox"
-          id={checkboxId}
-        />
-        {renderLabel()}
-      </View>
+    <View display="flex" flexCenterY>
+      <StyledSwitch
+        size={size}
+        disabled={disabled}
+        {...(otherProps as any)}
+        type="checkbox"
+        id={checkboxId}
+      />
+      {renderLabel()}
     </View>
   );
 };
