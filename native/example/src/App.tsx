@@ -12,6 +12,7 @@ import {
   Checkbox,
   Radio,
   Switch,
+  Select,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -52,6 +53,14 @@ export default function App() {
           // state="disabled"
           // disabled
         />
+
+        <View mt="lg">
+          <Select
+            label="Email"
+            hint="Please enter a valid email"
+            placeholder="Select an option"
+          />
+        </View>
 
         <View my="lg">
           <Checkbox

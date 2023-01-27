@@ -13,6 +13,21 @@ export const selectDefaults = {
   selectionColor: 'rgba(34, 109, 204, 0.5)',
 };
 
+export const selectDefaultFontSize = (option: SystemThemeParams) => {
+  const { theme } = option;
+
+  const size = option?.size || selectDefaults.size;
+
+  const defaultPadding: ObjectTypes = {
+    xs: theme.fontSizes.xs,
+    sm: theme.fontSizes.sm,
+    md: theme.fontSizes.md,
+    lg: theme.fontSizes.lg,
+  };
+
+  return defaultPadding[size];
+};
+
 export const selectDefaultPadding = (option: SystemThemeParams) => {
   const { theme } = option;
 
@@ -52,6 +67,60 @@ export const selectBaseStyle = (option: SystemThemeParams) => {
   const baseStyle = `
     padding-left: ${pl};
     padding-right: ${pr};
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const selectContainerBaseStyle = (option: SystemThemeParams) => {
+  const { type = 'web' } = option;
+
+  const { pl } = selectDefaultPadding(option);
+
+  const baseStyle = `
+    padding: 0;
+    padding-left: ${pl};
+  `;
+
+  const native = `
+    ${baseStyle}
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  `;
+
+  const web = `
+    ${baseStyle}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const selectPlaceholderBaseStyle = (option: SystemThemeParams) => {
+  const { type = 'web' } = option;
+
+  const fontSize = selectDefaultFontSize(option);
+
+  const baseStyle = `
+    font-size: ${fontSize};
   `;
 
   const native = `

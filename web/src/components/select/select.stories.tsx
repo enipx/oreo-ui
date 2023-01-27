@@ -25,4 +25,9 @@ Default.args = {
   hint: 'Please enter a valid email',
   type: 'password',
   placeholder: 'Select an option',
+  data: [
+    { value: 'female', title: 'Female' },
+    { value: 'male', title: 'Male' },
+    { value: 'others', title: 'Others' },
+  ],
 };

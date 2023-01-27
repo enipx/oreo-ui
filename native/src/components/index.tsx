@@ -6,6 +6,7 @@ export * from './checkbox';
 export * from './radio';
 export * from './switch';
 export * from './textarea';
+export * from './select';
 export * from './view';
 export * from './scroll-view';
 export * from './container';

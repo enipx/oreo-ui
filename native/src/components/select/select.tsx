@@ -1,43 +1,55 @@
 // @imports
+import React from 'react';
 import { IconButton } from '../icon-button';
-import { StyledHintText, StyledInputContainer } from '../input/input';
 import { Text } from '../text';
-import { View } from '../view';
+import { View } from '../view/view';
+import { StyledHintText, StyledInputContainer } from '../input/input';
 import { ArrowDownIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
 
-import { inputDefaultStyle } from '@/core/styled/themed/input';
-import { selectDefaults, selectBaseStyle } from '@/core/styled/themed/select';
-import { styled, baseStyled } from '@/core/styled/web';
+import {
+  selectDefaults,
+  selectContainerBaseStyle,
+  selectPlaceholderBaseStyle,
+} from '@/core/styled/themed/select';
+import { styled, baseStyled } from '@/core/styled/native';
 
 // @exports
 export const StyledSelectContainer = styled(
   StyledInputContainer
 )<SelectContainerProps>`
-  padding: 0;
+  ${({ theme, size }) =>
+    selectContainerBaseStyle({ theme, size, type: 'native' })}
 `;
 
 export const StyledSelect = styled(
-  baseStyled('select', ['shadow', 'grid', 'position', 'background'])
+  baseStyled('TouchableOpacity', ['shadow', 'grid', 'position', 'background'])
+)<SelectProps>``;
+
+export const StyledSelectPlaceholder = styled(
+  baseStyled('Text', [
+    'background',
+    'border',
+    'flexbox',
+    'grid',
+    'position',
+    'shadow',
+    'layout',
+  ])
 )<SelectProps>`
-  ${({ theme, disabled }) => inputDefaultStyle({ theme, disabled })}
-  ${({ theme, size }) => selectBaseStyle({ theme, size })}
+  ${({ theme, size }) =>
+    selectPlaceholderBaseStyle({ theme, size, type: 'native' })}
 `;
 
 export const Select: React.FC<SelectProps> = (props) => {
   const {
     icon,
     state = selectDefaults.state as SelectProps['state'],
-    disabled,
     size = selectDefaults.size as SelectProps['size'],
+    disabled,
     hint,
     label,
-    onFocus,
-    onBlur,
-    type,
     placeholder,
-    children,
-    data,
     ...otherProps
   } = props;
 
@@ -45,42 +57,37 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   const selectState: SelectProps['state'] = isDisabled ? 'disabled' : state;
 
+  const activeOpacity = isDisabled ? 1 : selectDefaults.activeOpacity;
+
+  const onPressHandler = () => {
+    if (!isDisabled) {
+      // ..
+    }
+  };
+
   const renderDropdownIcon = () => {
     return (
       <IconButton
+        onPress={onPressHandler}
         size={size}
         icon={icon || <ArrowDownIcon size="xs" />}
-        style={{ position: 'absolute', right: 0, pointerEvents: 'none' }}
       />
     );
-  };
-
-  const renderOptions = () => {
-    if (data) {
-      return data.map((option, _index) => {
-        const { value, title } = option;
-        return (
-          <option key={`${value}-${_index}`} value={value}>
-            {title}
-          </option>
-        );
-      });
-    }
-
-    return children;
   };
 
   const renderChildren = () => {
     if (placeholder) {
       return (
         <>
-          <option>{placeholder}</option>
-          {renderOptions()}
+          <StyledSelectPlaceholder size={size}>
+            {placeholder}
+          </StyledSelectPlaceholder>
+          {renderDropdownIcon()}
         </>
       );
     }
 
-    return renderOptions();
+    return renderDropdownIcon();
   };
 
   return (
@@ -90,19 +97,15 @@ export const Select: React.FC<SelectProps> = (props) => {
           {label}
         </Text>
       ) : null}
-      <StyledSelectContainer
-        size={size}
-        disabled={isDisabled}
-        state={selectState}
-        {...(otherProps as any)}>
-        <StyledSelect
+      <StyledSelect onPress={onPressHandler} activeOpacity={activeOpacity}>
+        <StyledSelectContainer
           size={size}
-          {...(otherProps as any)}
-          disabled={isDisabled}>
+          disabled={isDisabled}
+          state={selectState}
+          {...(otherProps as any)}>
           {renderChildren()}
-        </StyledSelect>
-        {renderDropdownIcon()}
-      </StyledSelectContainer>
+        </StyledSelectContainer>
+      </StyledSelect>
       {hint ? (
         <StyledHintText state={selectState} fontSize="xs" mt="sm">
           {hint}

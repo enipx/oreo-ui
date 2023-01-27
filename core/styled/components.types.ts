@@ -321,6 +321,11 @@ export type SelectStateType = InputStateType;
 
 export type SelectSizeType = InputSizeType;
 
+export type SelectDataType = {
+  value: string;
+  title: string;
+};
+
 export type SelectThemedDefaultProps = {
   /**
    * replace dropdown icon
@@ -350,6 +355,11 @@ export type SelectThemedDefaultProps = {
    * set default place
    */
   placeholder?: string;
+
+  /**
+   * set data
+   */
+  data?: SelectDataType[];
 };
 
 export interface SelectThemedStyledProps
