@@ -367,3 +367,12 @@ export interface SelectThemedStyledProps
     SpaceProps,
     BorderProps,
     Omit<LayoutProps, 'size'> {}
+
+export interface PortalThemedDefaultProps {
+  /**
+   * set container max width
+   */
+  domNode?: HTMLElement;
+
+  children?: React.ReactNode;
+}

@@ -10,3 +10,5 @@ export * from './select';
 export * from './view';
 export * from './container';
 export * from './text';
+export * from './portal';
+export * from './modal';
