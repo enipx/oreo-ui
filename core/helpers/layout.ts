@@ -11,7 +11,7 @@ import { divide } from './number';
  * method returns argument unit in absolute & relative unit
  * px, em, rem
  */
-export const getDimensionsUnitHandler = (arg: number) => {
+export const getDimensionsUnitHandler = (arg: number | string) => {
   const relativeValue = divide(arg, defaultStandardFontSize);
 
   const px = `${arg}px`;

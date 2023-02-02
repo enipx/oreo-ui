@@ -49,6 +49,7 @@ export type ButtonColorSchemeType =
   | 'green'
   | 'red'
   | 'yellow'
+  | 'ghost'
   | 'transparent';
 
 export type ButtonStateType = 'hovered' | 'disabled' | 'focused' | 'default';
@@ -375,4 +376,75 @@ export interface PortalThemedDefaultProps {
   domNode?: HTMLElement;
 
   children?: React.ReactNode;
+}
+
+export type ModalSizesType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full' | string;
+
+export type ModalPositionTypes = 'top' | 'center' | 'end';
+
+export interface ModalThemedDefaultProps {
+  /**
+   * set container max width
+   */
+  isOpen?: boolean;
+  /**
+   * call function when modal is opened
+   */
+  onOpen?: () => void;
+  /**
+   * call function when modal is closed
+   */
+  onClose?: () => void;
+  /**
+   * set modal size
+   */
+  size?: ModalSizesType;
+  /**
+   * add custom style to modal
+   */
+  style?: React.CSSProperties;
+  /**
+   * close modal on overlat click
+   */
+  closeOnOverlayClick?: boolean;
+
+  overlayBg?: string;
+
+  overlayFilter?: string;
+
+  overlayBlur?: string;
+
+  overlayOpacity?: number;
+  /**
+   * modal content
+   */
+  children?: React.ReactNode;
+  /**
+   * set modal title
+   */
+  title?: string;
+  /**
+   * set if to show modal header close icon or not
+   */
+  hideCloseButton?: boolean;
+  /**
+   * set footer modal
+   */
+  withFooter?: boolean;
+  /**
+   * set footer display alternative
+   */
+  footerAlt?: boolean;
+  /**
+   * set modal content position
+   */
+  pos?: ModalPositionTypes;
+  /**
+   * prevent page scrolling when modal is opened
+   */
+  preventScrolling?: boolean;
+  /**
+   * set modal overflow
+   */
+  overflow?: 'inside' | 'outside';
 }

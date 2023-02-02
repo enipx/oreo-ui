@@ -57,3 +57,7 @@ export const isArrayLastItem = (options: { array: any[]; index: number }) => {
 
   return array.length - 1 === index;
 };
+
+export const isUndefined = (value: any) => {
+  return typeof value === 'undefined';
+};

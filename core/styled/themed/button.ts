@@ -46,6 +46,9 @@ export const buttonBackgroundColor = styledTheme.variants(
     transparent: {
       light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
     },
+    ghost: {
+      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
+    },
   }
 );
 
@@ -64,6 +67,9 @@ export const buttonHoverBackgroundColor = styledTheme.variants(
     gray: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
     transparent: {
       light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
+    },
+    ghost: {
+      light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
     },
   }
 );
@@ -84,6 +90,9 @@ export const buttonHoverBorderColor = styledTheme.variants(
     transparent: {
       light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
     },
+    ghost: {
+      light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
+    },
   }
 );
 
@@ -94,6 +103,7 @@ export const buttonColor = styledTheme.variants('mode', 'colorScheme', {
   yellow: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
   gray: { light: ({ theme }: StyledThemeProps) => theme.colors.black },
   transparent: { light: ({ theme }: StyledThemeProps) => theme.colors.black },
+  ghost: { light: ({ theme }: StyledThemeProps) => theme.colors.black },
 });
 
 export const buttonStateVariant = (option: SystemThemeParams) => {
@@ -111,6 +121,9 @@ export const buttonStateVariant = (option: SystemThemeParams) => {
     },
     gray: { light: theme.colors.gray[50] },
     transparent: {
+      light: theme.colors.transparent,
+    },
+    ghost: {
       light: theme.colors.gray[50],
     },
   };
@@ -126,6 +139,9 @@ export const buttonStateVariant = (option: SystemThemeParams) => {
     },
     gray: { light: theme.colors.gray[100] },
     transparent: {
+      light: theme.colors.transparent,
+    },
+    ghost: {
       light: theme.colors.gray[50],
     },
   };

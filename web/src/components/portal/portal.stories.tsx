@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { Text } from '../text';
 import { Portal } from './portal';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -14,5 +15,5 @@ const Template: ComponentStory<typeof Portal> = (args) => <Portal {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  children: <p>Portal: need to test portal</p>,
+  children: <Text>Portal: This should be render in the portal dom</Text>,
 };

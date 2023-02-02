@@ -5,20 +5,19 @@ import { createPortal } from 'react-dom';
 import type { PortalProps } from './portal.types';
 
 import { domExistsHandler } from '@/core/helpers/dom';
-import { portalDefaults } from '@/core/styled/themed/portal';
+import { createPortalNode, getPortalNode } from '@/core/styled/themed/portal';
 
 // @exports
 export const Portal: React.FC<PortalProps> = (props) => {
   const { children, domNode: specifiedDomNode } = props;
 
-  const portalNode = document.createElement('div');
-  portalNode.className = portalDefaults.className;
+  const portalNode = getPortalNode();
 
-  const domNode = specifiedDomNode || portalNode;
+  const domNode = specifiedDomNode || portalNode || document.body;
 
   useEffect(() => {
     if (domExistsHandler()) {
-      document.body.append(portalNode);
+      createPortalNode();
     }
   }, []);
 
