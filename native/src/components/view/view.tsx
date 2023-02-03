@@ -6,7 +6,7 @@ import {
   flexCenterStyle,
   flexCenterYStyle,
   flexCenterXStyle,
-} from '@/core/styled/css';
+} from '@/core/styled/css/';
 import { KeyboardAvoidingView } from 'react-native';
 import { isIOS } from '../../helpers/base';
 

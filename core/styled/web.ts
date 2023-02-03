@@ -1,5 +1,5 @@
 // @imports
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import {
   space,
   color,
@@ -25,9 +25,7 @@ import type {
 } from './index.types';
 
 // @file declarations
-export { styled, variant, themer };
-
-export const baseStyled = (
+const baseStyled = (
   tag: WebThemeStyledTagProps,
   omitProps?: ThemeStyledCategoriesArrayProps
 ) => {
@@ -63,3 +61,5 @@ export const baseStyled = (
     ${_shadow}
   `;
 };
+
+export { styled, variant, themer, keyframes, baseStyled, css };

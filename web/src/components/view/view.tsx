@@ -5,7 +5,7 @@ import {
   flexCenterStyle,
   flexCenterYStyle,
   flexCenterXStyle,
-} from '@/core/styled/css';
+} from '@/core/styled/css/';
 import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports

@@ -447,4 +447,15 @@ export interface ModalThemedDefaultProps {
    * set modal overflow
    */
   overflow?: 'inside' | 'outside';
+
+  closeOnEscape?: boolean;
+}
+
+export interface CSSAnimationThemedDefaultProps {
+  duration?: string;
+  delay?: string;
+  iterationCount?: string;
+  direction?: string;
+  timingFunction?: string;
+  fillMode?: string;
 }

@@ -8,7 +8,10 @@ import { useEffect } from 'react';
 import { CloseIcon } from './modal-icon';
 import type { ModalProps } from './modal.types';
 
-import { preventPageScrollingHandler } from '@/core/helpers/dom';
+import {
+  domExistsHandler,
+  preventPageScrollingHandler,
+} from '@/core/helpers/dom';
 import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
 import {
   modalOverlayDefaultStyle,
@@ -104,11 +107,18 @@ export const Modal: React.FC<ModalProps> = (props) => {
     style,
     closeOnOverlayClick,
     preventScrolling,
+    closeOnEscape,
     ...otherProps
   } = props;
 
   const overlayOnClickHandler = () => {
     if (closeOnOverlayClick) {
+      props.onClose?.();
+    }
+  };
+
+  const closeOnEscapeHandler = (event: KeyboardEvent) => {
+    if (domExistsHandler() && event.key === 'Escape' && closeOnEscape) {
       props.onClose?.();
     }
   };
@@ -141,6 +151,12 @@ export const Modal: React.FC<ModalProps> = (props) => {
     }
   }, [props.isOpen]);
 
+  useEffect(() => {
+    window.addEventListener('keydown', closeOnEscapeHandler);
+
+    return () => window.removeEventListener('keydown', closeOnEscapeHandler);
+  }, []);
+
   if (!props.isOpen) {
     return null;
   }
@@ -164,4 +180,5 @@ Modal.defaultProps = {
   pos: 'top',
   preventScrolling: true,
   overflow: 'outside',
+  closeOnEscape: true,
 };

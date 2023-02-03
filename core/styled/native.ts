@@ -35,9 +35,7 @@ const {
 
 const defaultTheme = defaultThemeHandler('native');
 
-export { styled, css, ThemeProvider, useTheme, variant, themer, defaultTheme };
-
-export const baseStyled = (
+const baseStyled = (
   tag: NativeThemeStyledTagProps,
   omitProps?: ThemeStyledCategoriesArrayProps
 ) => {
@@ -70,4 +68,15 @@ export const baseStyled = (
     ${_position}
     ${_shadow}
   `;
+};
+
+export {
+  styled,
+  css,
+  ThemeProvider,
+  useTheme,
+  variant,
+  themer,
+  defaultTheme,
+  baseStyled,
 };
