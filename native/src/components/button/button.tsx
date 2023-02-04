@@ -44,16 +44,26 @@ export const StyleButtonText = styled(Text)<TextProps>`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
+export const BaseButton = styled(
+  baseStyled('TouchableOpacity', [
+    'layout',
+    'shadow',
+    'grid',
+    'position',
+    'background',
+  ])
+)<ButtonProps>``;
+
 export const Button: React.FC<ButtonProps> = (props) => {
   const {
     icon,
     rightIcon,
     text,
     textProps,
-    colorScheme = buttonDefaults.colorScheme,
+    colorScheme,
     children,
     size = buttonDefaults.size,
-    activeOpacity = buttonDefaults.activeOpacity,
+    activeOpacity,
     ...otherProps
   } = props;
 
@@ -78,4 +88,14 @@ export const Button: React.FC<ButtonProps> = (props) => {
       {rightIcon ? <View ml={buttonIconSpacing[size]}>{rightIcon}</View> : null}
     </StyledButton>
   );
+};
+
+BaseButton.defaultProps = {
+  activeOpacity: 1,
+};
+
+Button.defaultProps = {
+  activeOpacity: buttonDefaults.activeOpacity,
+  size: 'md',
+  colorScheme: 'blue',
 };

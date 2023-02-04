@@ -61,3 +61,7 @@ export const isArrayLastItem = (options: { array: any[]; index: number }) => {
 export const isUndefined = (value: any) => {
   return typeof value === 'undefined';
 };
+
+export const isString = (value: any) => {
+  return typeof value === 'string';
+};

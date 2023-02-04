@@ -380,7 +380,7 @@ export interface PortalThemedDefaultProps {
 
 export type ModalSizesType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full' | string;
 
-export type ModalPositionTypes = 'top' | 'center' | 'end';
+export type ModalPositionTypes = 'top' | 'center' | 'bottom';
 
 export interface ModalThemedDefaultProps {
   /**
@@ -399,6 +399,7 @@ export interface ModalThemedDefaultProps {
    * set modal size
    */
   size?: ModalSizesType;
+  modalSize?: ModalSizesType;
   /**
    * add custom style to modal
    */
@@ -422,7 +423,7 @@ export interface ModalThemedDefaultProps {
   /**
    * set modal title
    */
-  title?: string;
+  title?: string | React.ReactNode;
   /**
    * set if to show modal header close icon or not
    */
@@ -449,6 +450,11 @@ export interface ModalThemedDefaultProps {
   overflow?: 'inside' | 'outside';
 
   closeOnEscape?: boolean;
+
+  /**
+   * set default content margin on native
+   */
+  removeContentMargin?: boolean;
 }
 
 export interface CSSAnimationThemedDefaultProps {

@@ -9,6 +9,7 @@ import type {
 } from '../index.types';
 import { mediaQueryStyle } from '../mixins';
 
+import { isPackageNative } from '@/core/helpers/base';
 import { ModalSizesKeys } from '@/core/theme/components/modal';
 
 // @defaults
@@ -52,16 +53,18 @@ export const modalDisplayStyle = (options: SystemThemeParams) => {
 };
 
 export const modalPositionStyle = (options: SystemThemeParams) => {
-  const { pos } = options;
+  const { pos, type = 'web' } = options;
 
   const positions = {
     top: 'flex-start',
     center: 'center',
-    end: 'flex-end',
+    bottom: 'flex-end',
   };
 
   return `
-    align-items: ${positions[pos as keyof typeof positions]};
+    ${isPackageNative(type) ? 'justify-content' : 'align-items'}: ${
+    positions[pos as keyof typeof positions]
+  };
   `;
 };
 
@@ -91,6 +94,18 @@ const modalOverflowStyle = (options: SystemThemeParams) => {
 
   if (isOverflowInside(overflow)) {
     style += 'max-height: 100%;';
+  }
+
+  return style;
+};
+
+const modalFlexwStyle = (options: SystemThemeParams) => {
+  const { modalSize } = options;
+
+  let style = '';
+
+  if (isModalFull(modalSize)) {
+    style += 'flex: 1;';
   }
 
   return style;
@@ -140,15 +155,32 @@ export const modalDefaultStyle = (options: SystemThemeParams) => {
 };
 
 export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web', overlayOpacity } = options;
+  const {
+    theme,
+    type = 'web',
+    overlayBg,
+    overlayOpacity,
+    modalSize,
+    removeContentMargin,
+  } = options;
 
   const opacity = overlayOpacity || 1;
+
+  const padding =
+    isModalFull(modalSize) || removeContentMargin ? 0 : theme.space[4];
 
   const baseStyle = `
   `;
 
   const native = `
     ${baseStyle}
+    position: relative;
+    width: 100%;
+    flex: 1;
+    background-color: ${overlayBg || theme.colors.blackAlpha[400]};
+    padding-horizontal: ${padding};
+    padding-vertical: ${padding};
+    ${modalPositionStyle(options)}
   `;
 
   const web = `
@@ -174,11 +206,18 @@ export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
 export const modalContentDefaultStyle = (options: SystemThemeParams) => {
   const { theme, type = 'web' } = options;
 
+  const padding = theme.space[4];
+
   const baseStyle = `
   `;
 
   const native = `
     ${baseStyle}
+    border-radius: ${theme.radii.md};
+    width: 100%;
+    padding-horizontal: ${padding};
+    padding-vertical: ${padding};
+    ${modalFlexwStyle(options)}
   `;
 
   const web = `
@@ -211,6 +250,10 @@ export const modalHeaderDefaultStyle = (options: SystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: ${theme.space[2]};
   `;
 
   const web = `
@@ -231,10 +274,17 @@ export const modalHeaderDefaultStyle = (options: SystemThemeParams) => {
 };
 
 export const modalBodyDefaultStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web', size, withFooter, overflow } = options;
+  const {
+    theme,
+    type = 'web',
+    size,
+    withFooter,
+    overflow,
+    modalSize,
+  } = options;
 
   const flex =
-    (isModalFull(size) && withFooter) || isOverflowInside(overflow)
+    (isModalFull(modalSize || size) && withFooter) || isOverflowInside(overflow)
       ? '1'
       : 'unset';
 
@@ -247,6 +297,7 @@ export const modalBodyDefaultStyle = (options: SystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    ${modalFlexwStyle(options)}
   `;
 
   const web = `
@@ -291,17 +342,20 @@ export const modalFooterDefaultStyle = (options: SystemThemeParams) => {
   };
 
   const baseStyle = `
+    padding-top: ${theme.space[2]};
   `;
 
   const native = `
     ${baseStyle}
+    flex-direction: ${!footerAlt ? 'column' : 'row'};
+    justify-content: flex-end;
+    padding-top: ${theme.space[4]};
   `;
 
   const web = `
     ${baseStyle}
     ${flexCenterYStyle}
     justify-content: flex-end;
-    padding-top: ${theme.space[2]};
     ${footerStyle()}
   `;
 
@@ -314,7 +368,7 @@ export const modalFooterDefaultStyle = (options: SystemThemeParams) => {
 };
 
 // @utilities
-const isModalFull = (size: ModalSizesType) => {
+export const isModalFull = (size: ModalSizesType) => {
   return size === 'full';
 };
 

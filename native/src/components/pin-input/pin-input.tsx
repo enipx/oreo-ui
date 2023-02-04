@@ -117,7 +117,8 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
 
   const defaultInputsValues = inputsLengthArray.map(() => '');
 
-  const [inputsValues, setInputsValues] = useState<any[]>(defaultInputsValues);
+  const [inputsValues, setInputsValues] =
+    useState<string[]>(defaultInputsValues);
 
   const inputsRef = useRef<PinInputFieldElementType[]>([]);
 
@@ -141,7 +142,7 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
       Keyboard,
     });
 
-    setInputsValues(newInputsValues);
+    setInputsValues([...newInputsValues]);
   };
 
   const onKeyPressHandler = (key: string, _index: number) => {
@@ -190,6 +191,7 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
               value={inputValue}
               maxLength={length}
               disabled={isDisabled}
+              selectTextOnFocus
             />
           );
         })}

@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { CloseIcon } from './modal-icon';
 import type { ModalProps } from './modal.types';
 
+import { isString } from '@/core/helpers/base';
 import {
   domExistsHandler,
   preventPageScrollingHandler,
@@ -71,7 +72,7 @@ export const ModalHeader: React.FC<ModalProps> = (props) => {
 
   const renderTitle = () => {
     if (title) {
-      return <Text>{title}</Text>;
+      return isString(title) ? <Text>{title}</Text> : title;
     }
 
     return children;

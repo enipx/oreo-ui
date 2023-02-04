@@ -13,6 +13,9 @@ import {
   Radio,
   Switch,
   Select,
+  Modal,
+  useDisclosure,
+  Text,
 } from '@oreo-ui/native';
 
 const customTheme: DefaultTheme = {
@@ -22,9 +25,10 @@ const customTheme: DefaultTheme = {
 };
 
 export default function App() {
+  const [isOpen, modalHandler] = useDisclosure(false);
   return (
     <OreoProvider theme={customTheme}>
-      <Container px="lg" scrollable>
+      <Container px="lg" scrollable pb="xl">
         <Button colorScheme="blue" text="Button" my="lg" />
 
         <Input
@@ -93,6 +97,24 @@ export default function App() {
             }}
           />
         </View>
+
+        <Button onPress={modalHandler.open} text="Open Modal" />
+
+        <Modal
+          title="Discard changes"
+          isOpen={isOpen}
+          onClose={modalHandler.close}
+          withFooter
+          style={{ borderRadius: 0 }}
+          removeContentMargin
+          pos="bottom">
+          {[...Array(1)].map((_item, _index) => (
+            <Text my={_index === 0 ? '0' : 'lg'}>
+              Are you sure you want to continue? You’ll lose all your saved
+              items, we can’t recover once this changes is made.
+            </Text>
+          ))}
+        </Modal>
       </Container>
     </OreoProvider>
   );
