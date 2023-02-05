@@ -3,7 +3,7 @@ import { Button } from '@components/button';
 import { IconButton } from '@components/icon-button';
 import { Portal } from '@components/portal';
 import { Text } from '@components/text';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CloseIcon } from './modal-icon';
 import type { ModalProps } from './modal.types';
@@ -13,6 +13,7 @@ import {
   domExistsHandler,
   preventPageScrollingHandler,
 } from '@/core/helpers/dom';
+import { getTransitionClassName } from '@/core/styled/css/transitions';
 import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
 import {
   modalOverlayDefaultStyle,
@@ -22,6 +23,7 @@ import {
   modalBodyDefaultStyle,
   modalFooterDefaultStyle,
   modalDefaultStyle,
+  modalDefaultTransitions,
 } from '@/core/styled/themed/modal';
 import { styled, baseStyled } from '@/core/styled/web';
 
@@ -110,21 +112,42 @@ export const Modal: React.FC<ModalProps> = (props) => {
     preventScrolling,
     closeOnEscape,
     modalSize,
+    onClose,
     size: specifiedSize,
     ...otherProps
   } = props;
 
   const size = modalSize || specifiedSize;
 
+  const transitionType = modalDefaultTransitions({
+    pos: props?.pos || '',
+    isDrawer: props.isDrawer,
+  });
+
+  const { active: activeCls, inactive: inactiveCls } = getTransitionClassName(
+    transitionType as any
+  );
+
+  const [transition, setTransition] = useState(activeCls);
+
+  const onCloseHandler = () => {
+    setTransition(inactiveCls);
+
+    setTimeout(() => {
+      setTransition(activeCls);
+      onClose?.();
+    }, 400);
+  };
+
   const overlayOnClickHandler = () => {
     if (closeOnOverlayClick) {
-      props.onClose?.();
+      onCloseHandler?.();
     }
   };
 
   const closeOnEscapeHandler = (event: KeyboardEvent) => {
     if (domExistsHandler() && event.key === 'Escape' && closeOnEscape) {
-      props.onClose?.();
+      onCloseHandler?.();
     }
   };
 
@@ -137,7 +160,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
               <Button
                 text="Close"
                 colorScheme="ghost"
-                onClick={props.onClose}
+                onClick={onCloseHandler}
                 {...props.footerCloseButtonProps}
               />
               <Button
@@ -161,6 +184,10 @@ export const Modal: React.FC<ModalProps> = (props) => {
   }, [props.isOpen]);
 
   useEffect(() => {
+    setTransition(activeCls);
+  }, [props.pos]);
+
+  useEffect(() => {
     window.addEventListener('keydown', closeOnEscapeHandler);
 
     return () => window.removeEventListener('keydown', closeOnEscapeHandler);
@@ -174,7 +201,11 @@ export const Modal: React.FC<ModalProps> = (props) => {
     <Portal>
       <StyledModal {...otherProps}>
         <ModalOverlay onClick={overlayOnClickHandler} {...otherProps} />
-        <ModalContent modalSize={size} style={style} {...otherProps}>
+        <ModalContent
+          className={transition}
+          modalSize={size}
+          style={style}
+          {...otherProps}>
           <ModalHeader title={title} {...otherProps} />
           <ModalBody {...otherProps}>{children}</ModalBody>
           {renderModalFooter()}

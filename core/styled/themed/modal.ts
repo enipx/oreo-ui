@@ -2,12 +2,17 @@ import styledTheme from 'styled-theming';
 
 import { ModalSizesType } from '../components.types';
 import { flexCenterXStyle, flexCenterYStyle, transitionStyle } from '../css';
+import {
+  addTransitionsHandler,
+  TransitionsTypeObject,
+} from '../css/transitions';
 import type {
   StyledThemeProps,
   SystemThemeParams,
   SystemThemeReturnType,
 } from '../index.types';
 import { mediaQueryStyle } from '../mixins';
+import { drawerContentDefaultStyle, drawerDefaultTransitions } from './drawer';
 
 import { isPackageNative } from '@/core/helpers/base';
 import { ModalSizesKeys } from '@/core/theme/components/modal';
@@ -18,6 +23,22 @@ export const modalDefaults = {
 };
 
 // @themes
+export const modalDefaultTransitions = (
+  options: Partial<SystemThemeParams>
+) => {
+  const { pos, isDrawer } = options;
+
+  if (isDrawer) return drawerDefaultTransitions(options);
+
+  const positions: TransitionsTypeObject = {
+    top: 'fadeTop',
+    center: 'fade',
+    bottom: 'fadeBottom',
+  };
+
+  return positions[pos];
+};
+
 export const modalOverlayBackgroundColor = styledTheme('mode', {
   light: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[400],
   dark: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[400],
@@ -221,42 +242,6 @@ export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const drawerContentDefaultStyle = (options: SystemThemeParams) => {
-  const { isDrawer, pos } = options;
-
-  const baseStyle = `
-    border-radius: 0;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-  `;
-
-  const top = `
-    ${baseStyle}
-    top: 0;
-    max-width: 100%;
-    height: auto;
-  `;
-
-  const positions = {
-    left: baseStyle,
-    right: `
-      ${baseStyle}
-      left: auto;
-      right: 0;
-    `,
-    top,
-    bottom: `
-      ${top}
-      top: auto;
-      bottom: 0;
-    `,
-  };
-
-  return isDrawer ? positions[pos as keyof typeof positions] : '';
-};
-
 export const modalContentDefaultStyle = (options: SystemThemeParams) => {
   const { theme, type = 'web' } = options;
 
@@ -289,6 +274,16 @@ export const modalContentDefaultStyle = (options: SystemThemeParams) => {
     ${modalSizeVariant(options)}
     ${modalOverflowStyle(options)}
     ${drawerContentDefaultStyle(options)}
+
+    ${addTransitionsHandler([
+      { name: 'fade' },
+      { name: 'fadeTop' },
+      { name: 'fadeBottom' },
+      { name: 'slideLeft' },
+      { name: 'slideRight' },
+      { name: 'slideTop' },
+      { name: 'slideBottom' },
+    ])}
   `;
 
   const res: SystemThemeReturnType = {

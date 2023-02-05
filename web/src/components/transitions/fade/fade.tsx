@@ -2,7 +2,7 @@
 import type { FadeProps } from './fade.types';
 
 import {
-  animationDefaults,
+  transitionDefaults,
   fade,
   fadeLeft,
   fadeRight,
@@ -13,7 +13,7 @@ import { styled, baseStyled, keyframes, css } from '@/core/styled/web';
 // @exports
 export const animationOptionsStyle = (props: FadeProps) => {
   const {
-    duration = animationDefaults.duration,
+    duration = transitionDefaults.duration,
     delay = '',
     iterationCount = '',
     direction = '',
