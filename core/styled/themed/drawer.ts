@@ -25,15 +25,11 @@ export const modalOverlayBackgroundColor = styledTheme('mode', {
 
 // @variants
 export const modalSizeVariant = (options: SystemThemeParams) => {
-  const { theme, size: specifiedSize, modalSize, isDrawer } = options;
+  const { theme, size = modalDefaults.size } = options;
 
-  const size = specifiedSize || modalSize;
+  const modalSizes = theme.components.modal.sizes;
 
-  const modalSizes = isDrawer
-    ? theme.components.drawer.sizes
-    : theme.components.modal.sizes;
-
-  if (isModalFull(size || modalSize)) {
+  if (isModalFull(size)) {
     return `
       max-width: 100%;
       min-height: 100vh;
@@ -116,25 +112,11 @@ const modalFlexwStyle = (options: SystemThemeParams) => {
 };
 
 export const modalDefaultStyle = (options: SystemThemeParams) => {
-  const {
-    theme,
-    type = 'web',
-    size: specifiedSize,
-    modalSize,
-    isDrawer,
-  } = options;
-
-  const size = specifiedSize || modalSize;
+  const { theme, type = 'web', size } = options;
 
   let paddingMd = `padding: ${theme.space[12]};`;
-  let padding = `${theme.space[12]} ${theme.space[4]}`;
 
   if (isModalFull(size)) {
-    paddingMd = `padding: 0;`;
-  }
-
-  if (isDrawer) {
-    padding = '0';
     paddingMd = `padding: 0;`;
   }
 
@@ -159,7 +141,7 @@ export const modalDefaultStyle = (options: SystemThemeParams) => {
     ${modalPositionStyle(options)}
     ${modalfilterStyle(options)}
     ${modalOverflowStyle(options)}
-    padding: ${padding};
+    padding: ${theme.space[12]} ${theme.space[4]};
 
     ${mediaQueryStyle('md', paddingMd)}
   `;
@@ -221,50 +203,10 @@ export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const drawerContentDefaultStyle = (options: SystemThemeParams) => {
-  const { isDrawer, pos } = options;
-
-  console.log({ isDrawer, pos });
-
-  const baseStyle = `
-    border-radius: 0;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-  `;
-
-  const top = `
-    ${baseStyle}
-    top: 0;
-    max-width: 100%;
-    height: auto;
-  `;
-
-  const positions = {
-    left: baseStyle,
-    right: `
-      ${baseStyle}
-      left: auto;
-      right: 0;
-    `,
-    top,
-    bottom: `
-      ${top}
-      top: auto;
-      bottom: 0;
-    `,
-  };
-
-  return isDrawer ? positions[pos as keyof typeof positions] : '';
-};
-
 export const modalContentDefaultStyle = (options: SystemThemeParams) => {
   const { theme, type = 'web' } = options;
 
   const padding = theme.space[4];
-
-  const borderRadius = theme.radii.md;
 
   const baseStyle = `
   `;
@@ -281,7 +223,7 @@ export const modalContentDefaultStyle = (options: SystemThemeParams) => {
   const web = `
     ${baseStyle}
     width: 100%;
-    border-radius: ${borderRadius};
+    border-radius: ${theme.radii.base};
     display: flex;
     flex-direction: column;
     padding: ${theme.space[4]} ${theme.space[5]};
@@ -290,7 +232,6 @@ export const modalContentDefaultStyle = (options: SystemThemeParams) => {
     word-break: break-word;
     ${modalSizeVariant(options)}
     ${modalOverflowStyle(options)}
-    ${drawerContentDefaultStyle(options)}
   `;
 
   const res: SystemThemeReturnType = {
@@ -340,13 +281,10 @@ export const modalBodyDefaultStyle = (options: SystemThemeParams) => {
     withFooter,
     overflow,
     modalSize,
-    isDrawer,
   } = options;
 
   const flex =
-    (isModalFull(modalSize || size) && withFooter) ||
-    isOverflowInside(overflow) ||
-    isDrawer
+    (isModalFull(modalSize || size) && withFooter) || isOverflowInside(overflow)
       ? '1'
       : 'unset';
 

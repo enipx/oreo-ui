@@ -109,8 +109,12 @@ export const Modal: React.FC<ModalProps> = (props) => {
     closeOnOverlayClick,
     preventScrolling,
     closeOnEscape,
+    modalSize,
+    size: specifiedSize,
     ...otherProps
   } = props;
+
+  const size = modalSize || specifiedSize;
 
   const overlayOnClickHandler = () => {
     if (closeOnOverlayClick) {
@@ -128,17 +132,21 @@ export const Modal: React.FC<ModalProps> = (props) => {
     if (props.withFooter) {
       return (
         <ModalFooter {...otherProps}>
-          <Button
-            text="Close"
-            colorScheme="ghost"
-            onClick={props.onClose}
-            {...props.footerCloseButtonProps}
-          />
-          <Button
-            text="Confirm"
-            colorScheme="blue"
-            {...props.footerConfirmButtonProps}
-          />
+          {props.footerContent || (
+            <>
+              <Button
+                text="Close"
+                colorScheme="ghost"
+                onClick={props.onClose}
+                {...props.footerCloseButtonProps}
+              />
+              <Button
+                text="Confirm"
+                colorScheme="blue"
+                {...props.footerConfirmButtonProps}
+              />
+            </>
+          )}
         </ModalFooter>
       );
     }
@@ -166,7 +174,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
     <Portal>
       <StyledModal {...otherProps}>
         <ModalOverlay onClick={overlayOnClickHandler} {...otherProps} />
-        <ModalContent style={style} {...otherProps}>
+        <ModalContent modalSize={size} style={style} {...otherProps}>
           <ModalHeader title={title} {...otherProps} />
           <ModalBody {...otherProps}>{children}</ModalBody>
           {renderModalFooter()}
@@ -182,4 +190,5 @@ Modal.defaultProps = {
   preventScrolling: true,
   overflow: 'outside',
   closeOnEscape: true,
+  size: 'md',
 };

@@ -1,4 +1,4 @@
-export * from './animations';
+export * from './transitions';
 export * from './button';
 export * from './icon-button';
 export * from './input';

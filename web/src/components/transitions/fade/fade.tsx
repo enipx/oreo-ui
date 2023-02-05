@@ -7,7 +7,7 @@ import {
   fadeLeft,
   fadeRight,
   fadeTop,
-} from '@/core/styled/css/animations';
+} from '@/core/styled/css/transitions';
 import { styled, baseStyled, keyframes, css } from '@/core/styled/web';
 
 // @exports

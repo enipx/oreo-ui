@@ -101,7 +101,11 @@ export const Modal: React.FC<ModalProps> = (props) => {
   };
 
   const renderModalFooter = () => {
-    const renderModalButton = () => {
+    const renderModalFooterContent = () => {
+      if (props.footerContent) {
+        return props.footerContent;
+      }
+
       if (props.footerAlt) {
         return (
           <>
@@ -141,7 +145,9 @@ export const Modal: React.FC<ModalProps> = (props) => {
     };
 
     if (props.withFooter) {
-      return <ModalFooter {...otherProps}>{renderModalButton()}</ModalFooter>;
+      return (
+        <ModalFooter {...otherProps}>{renderModalFooterContent()}</ModalFooter>
+      );
     }
 
     return null;

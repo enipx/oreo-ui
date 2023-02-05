@@ -437,6 +437,10 @@ export interface ModalThemedDefaultProps {
    */
   footerAlt?: boolean;
   /**
+   * set footer display alternative
+   */
+  footerContent?: React.ReactNode;
+  /**
    * set modal content position
    */
   pos?: ModalPositionTypes;
@@ -455,6 +459,16 @@ export interface ModalThemedDefaultProps {
    * set default content margin on native
    */
   removeContentMargin?: boolean;
+
+  isDrawer?: boolean;
+}
+
+export type DrawerPositionTypes = 'top' | 'right' | 'bottom' | 'left';
+export interface DrawerThemedDefaultProps {
+  /**
+   * set drawer content position
+   */
+  pos?: DrawerPositionTypes;
 }
 
 export interface CSSAnimationThemedDefaultProps {
