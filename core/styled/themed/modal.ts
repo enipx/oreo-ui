@@ -224,8 +224,6 @@ export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
 export const drawerContentDefaultStyle = (options: SystemThemeParams) => {
   const { isDrawer, pos } = options;
 
-  console.log({ isDrawer, pos });
-
   const baseStyle = `
     border-radius: 0;
     height: 100%;
