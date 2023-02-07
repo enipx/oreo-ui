@@ -1,7 +1,8 @@
 // @imports
 import React from 'react';
 
-import { ThemeProvider, DefaultTheme } from 'styled-components/native';
+import { mergedObjectsHandler } from '@/core/helpers/base';
+import { ThemeProvider, DefaultTheme } from '@/core/styled/native';
 
 import type { OreoProviderProps } from './provider.types';
 
@@ -11,7 +12,9 @@ import defaultTheme from '@/core/theme';
 export type { DefaultTheme };
 
 export const OreoProvider = (props: OreoProviderProps) => {
-  const { theme = defaultTheme(), children } = props;
+  const { theme: specifiedTheme, children } = props;
+
+  const theme = mergedObjectsHandler(defaultTheme(), specifiedTheme);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

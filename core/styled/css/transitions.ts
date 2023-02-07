@@ -164,7 +164,7 @@ export const slideRight = (yAxis = '100%') => {
 
 /**
  *
- * @param transition accept transitions config
+ * @param transition: TransitionsOption
  * @returns setup styles base on config
  */
 export const addTransitionsHandler = (transition: TransitionsOption[]) => {

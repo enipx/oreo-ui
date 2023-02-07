@@ -17,7 +17,7 @@ import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
 import { applyDefaultThemeHandler } from '../helpers/theme';
-import defaultThemeHandler from '../theme';
+import defaultThemeHandler, { ThemeType } from '../theme';
 import type {
   NativeThemeStyledTagProps,
   ThemeStyledCategoriesArrayProps,
@@ -29,7 +29,9 @@ import type {
 const {
   default: styled,
   css,
+  ThemeContext,
   ThemeProvider,
+  ThemeConsumer,
   useTheme,
 } = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeStyledProps>;
 
@@ -70,10 +72,14 @@ const baseStyled = (
   `;
 };
 
+export type DefaultTheme = ThemeType;
+
 export {
   styled,
   css,
+  ThemeContext,
   ThemeProvider,
+  ThemeConsumer,
   useTheme,
   variant,
   themer,

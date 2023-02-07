@@ -1,16 +1,18 @@
 // @imports
-import { ThemeProvider, DefaultTheme } from 'styled-components';
-
 import { GlobalStyle } from './global';
 import { OreoProviderProps } from './provider.types';
 
+import { mergedObjectsHandler } from '@/core/helpers/base';
+import { ThemeProvider, DefaultTheme } from '@/core/styled/web';
 import defaultTheme from '@/core/theme';
 
 // @file declarations
 export type { DefaultTheme };
 
 export const OreoProvider = (props: OreoProviderProps) => {
-  const { theme = defaultTheme(), children } = props;
+  const { theme: specifiedTheme, children } = props;
+
+  const theme = mergedObjectsHandler(defaultTheme('web'), specifiedTheme);
 
   return (
     <ThemeProvider theme={theme}>

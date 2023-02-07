@@ -4,7 +4,6 @@ import {
   Container,
   View,
   OreoProvider,
-  DefaultTheme,
   Button,
   Input,
   Textarea,
@@ -18,17 +17,19 @@ import {
   Text,
 } from '@oreo-ui/native';
 
-const customTheme: DefaultTheme = {
+const customTheme = {
   colors: {
-    primary: '#0ff',
+    primary: '#0f0',
   },
 };
 
 export default function App() {
   const [isOpen, modalHandler] = useDisclosure(false);
+
   return (
     <OreoProvider theme={customTheme}>
       <Container px="lg" scrollable pb="xl">
+        <Text>Text</Text>
         <Button colorScheme="blue" text="Button" my="lg" />
 
         <Input
@@ -105,7 +106,6 @@ export default function App() {
           isOpen={isOpen}
           onClose={modalHandler.close}
           withFooter
-          style={{ borderRadius: 0 }}
           removeContentMargin
           pos="bottom">
           {[...Array(1)].map((_item, _index) => (

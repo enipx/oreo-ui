@@ -58,10 +58,44 @@ export const isArrayLastItem = (options: { array: any[]; index: number }) => {
   return array.length - 1 === index;
 };
 
-export const isUndefined = (value: any) => {
-  return typeof value === 'undefined';
+/**
+ * undefined check.
+ * @param item
+ * @returns {boolean}
+ */
+export const isUndefined = (item: any) => {
+  return typeof item === 'undefined';
 };
 
-export const isString = (value: any) => {
-  return typeof value === 'string';
+/**
+ * string check.
+ * @param item
+ * @returns {boolean}
+ */
+export const isString = (item: any) => {
+  return typeof item === 'string';
+};
+
+/**
+ * object check.
+ * @param item
+ * @returns {boolean}
+ */
+export function isObject(item: any) {
+  return item && typeof item === 'object' && !Array.isArray(item);
+}
+
+export const mergedObjectsHandler = (target: any, source: any) => {
+  const output = Object.assign({}, target);
+  if (isObject(target) && isObject(source)) {
+    Object.keys(source).forEach((key) => {
+      if (isObject(source[key])) {
+        if (!(key in target)) Object.assign(output, { [key]: source[key] });
+        else output[key] = mergedObjectsHandler(target[key], source[key]);
+      } else {
+        Object.assign(output, { [key]: source[key] });
+      }
+    });
+  }
+  return output;
 };

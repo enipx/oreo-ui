@@ -1,5 +1,12 @@
 // @imports
-import styled, { keyframes, css } from 'styled-components';
+import styled, {
+  keyframes,
+  css,
+  ThemeContext,
+  ThemeConsumer,
+  ThemeProvider,
+  DefaultTheme,
+} from 'styled-components';
 import {
   space,
   color,
@@ -62,4 +69,16 @@ const baseStyled = (
   `;
 };
 
-export { styled, variant, themer, keyframes, baseStyled, css };
+export type { DefaultTheme };
+
+export {
+  styled,
+  variant,
+  themer,
+  keyframes,
+  baseStyled,
+  css,
+  ThemeContext,
+  ThemeConsumer,
+  ThemeProvider,
+};
