@@ -1,0 +1,101 @@
+// @imports
+import styledTheme from 'styled-theming';
+
+import { AccordionIconPositionTypes } from '../components.types';
+import { flexCenterYStyle, transitionStyle } from '../css';
+import type {
+  SystemThemeParams,
+  SystemThemeReturnType,
+  StyledThemeProps,
+} from '../index.types';
+
+// @defaults
+export const accordionDefaults = {
+  transitionDuration: '200ms',
+  iconOpacity: '0.5',
+};
+
+// @theme
+export const borderBottomColor = styledTheme('mode', {
+  light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
+  dark: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
+});
+
+export const hoverBackgroundColor = styledTheme('mode', {
+  light: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[50],
+  dark: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
+});
+
+// @styles
+export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
+  const { theme, type = 'web' } = option;
+
+  const baseStyle = `
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+    ${flexCenterYStyle}
+    ${transitionStyle()}
+    appearance: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    font-size: ${theme.fontSizes.md};
+    text-align: left;
+    padding: ${theme.space[3]} ${theme.space[4]};
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const accordionPanelDefaultStyle = (option: SystemThemeParams) => {
+  const {
+    type = 'web',
+    transitionDuration = accordionDefaults.transitionDuration,
+  } = option;
+
+  const baseStyle = `
+    height: 0;
+    overflow: hidden;
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+    transition: height ${transitionDuration} ease;
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const accordionIconOrderHandler = (
+  position?: AccordionIconPositionTypes
+) => {
+  const order: { [key in AccordionIconPositionTypes]: number } = {
+    left: -1,
+    right: 1,
+  };
+
+  return order[position || 'right'];
+};

@@ -85,6 +85,15 @@ export function isObject(item: any) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
 
+/**
+ * array check.
+ * @param item
+ * @returns {boolean}
+ */
+export function isArray(item: any) {
+  return item && Array.isArray(item);
+}
+
 export const mergedObjectsHandler = (target: any, source: any) => {
   const output = Object.assign({}, target);
   if (isObject(target) && isObject(source)) {

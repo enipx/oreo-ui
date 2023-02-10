@@ -11,7 +11,7 @@ import { variant } from '../system';
 import { isPackageNative } from '@/core/helpers/base';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 
-// @button themes
+// @defaults
 export const inputDefaults = {
   disabledOpacity: 0.5,
   colorScheme: 'blue',
@@ -21,6 +21,7 @@ export const inputDefaults = {
   selectionColor: 'rgba(34, 109, 204, 0.5)',
 };
 
+// @variants
 export const backgroundColor = styledTheme.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
@@ -106,6 +107,7 @@ export const inputSizeVariant = (options: SystemThemeParams) => {
   });
 };
 
+// @styles
 export const inputDefaultStyle = (option: SystemThemeParams) => {
   const { type = 'web' } = option;
 

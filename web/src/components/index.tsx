@@ -1,4 +1,4 @@
-export * from './transitions';
+export * from './accordion';
 export * from './button';
 export * from './icon-button';
 export * from './input';
@@ -13,3 +13,4 @@ export * from './container';
 export * from './text';
 export * from './portal';
 export * from './modal';
+export * from './transitions';

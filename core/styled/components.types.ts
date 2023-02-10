@@ -126,6 +126,8 @@ export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
    * convert icon to a round icon
    */
   rounded?: boolean;
+
+  as?: any;
 }
 
 export type InputStateType = 'default' | 'focused' | 'invalid' | 'disabled';
@@ -478,4 +480,75 @@ export interface CSSAnimationThemedDefaultProps {
   direction?: string;
   timingFunction?: string;
   fillMode?: string;
+}
+
+export type AccordionIconPositionTypes = 'left' | 'right';
+
+export type AccordionVariantTypes = 'default' | 'separated';
+
+export interface AccordionThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * Allow multiple items to be opened at a time
+   */
+  allowMultiple?: boolean;
+
+  /**
+   * replace item icon
+   */
+  icon?: React.ReactNode;
+
+  /**
+   * replace item icon when active
+   */
+  activeIcon?: React.ReactNode;
+
+  /**
+   * change icon position
+   */
+  iconPosition?: AccordionIconPositionTypes;
+
+  /**
+   * change accordion type
+   */
+  variant?: AccordionVariantTypes;
+
+  /**
+   * item value
+   */
+  value?: string | string[];
+
+  transitionDuration?: number;
+}
+
+export interface AccordionItemThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * item value
+   */
+  value: string;
+}
+
+export interface AccordionButtonThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+
+  text?: string;
+}
+
+export interface AccordionPanelThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
 }
