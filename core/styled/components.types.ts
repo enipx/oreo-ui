@@ -551,4 +551,6 @@ export interface AccordionPanelThemedDefaultProps {
    * item content
    */
   children?: React.ReactNode;
+
+  content?: string;
 }

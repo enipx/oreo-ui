@@ -18,7 +18,7 @@ export const StyledAccordionPanel = styled(View)<AccordionPanelProps>`
 `;
 
 export const AccordionPanel: React.FC<AccordionPanelProps> = (props) => {
-  const { children } = props;
+  const { children, content } = props;
 
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +39,7 @@ export const AccordionPanel: React.FC<AccordionPanelProps> = (props) => {
   return (
     <StyledAccordionPanel ref={panelRef} {...accordionValue}>
       <View px="4" pt="2" pb="4">
-        {children}
+        {children || content}
       </View>
     </StyledAccordionPanel>
   );

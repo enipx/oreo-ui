@@ -15,6 +15,7 @@ import {
   Modal,
   useDisclosure,
   Text,
+  Accordion,
 } from '@oreo-ui/native';
 
 const customTheme = {
@@ -115,6 +116,32 @@ export default function App() {
             </Text>
           ))}
         </Modal>
+
+        <View marginY="lg">
+          <Accordion>
+            <Accordion.Item value="item-1">
+              <Accordion.Button text="Section 1 title" />
+
+              <Accordion.Panel
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat."
+              />
+            </Accordion.Item>
+
+            <Accordion.Item value="item-2">
+              <Accordion.Button text="Section 2 title" />
+
+              <Accordion.Panel
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat."
+              />
+            </Accordion.Item>
+          </Accordion>
+        </View>
       </Container>
     </OreoProvider>
   );

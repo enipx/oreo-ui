@@ -31,14 +31,20 @@ export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
   const { theme, type = 'web' } = option;
 
   const baseStyle = `
-    border: 0;
-    outline: 0;
     background-color: transparent;
     width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid transparent;
   `;
 
   const native = `
     ${baseStyle}
+    ${flexCenterYStyle}
+    flex-direction: row;
+    padding-horizontal: ${theme.space[2]};
+    padding-vertical: ${theme.space[3]};
+    border-bottom-width: 1px;
   `;
 
   const web = `
@@ -46,7 +52,6 @@ export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
     ${flexCenterYStyle}
     ${transitionStyle()}
     appearance: none;
-    border-bottom: 1px solid transparent;
     cursor: pointer;
     font-size: ${theme.fontSizes.md};
     text-align: left;
