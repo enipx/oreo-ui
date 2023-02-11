@@ -3,7 +3,7 @@ import { Button } from '@components/button';
 import { IconButton } from '@components/icon-button';
 import { Portal } from '@components/portal';
 import { Text } from '@components/text';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { CloseIcon } from './modal-icon';
 import type { ModalProps } from './modal.types';
@@ -117,6 +117,8 @@ export const Modal: React.FC<ModalProps> = (props) => {
     ...otherProps
   } = props;
 
+  const modalContentRef = useRef<HTMLDivElement>(null);
+
   const size = modalSize || specifiedSize;
 
   const transitionType = modalDefaultTransitions({
@@ -128,13 +130,21 @@ export const Modal: React.FC<ModalProps> = (props) => {
     transitionType as any
   );
 
-  const [transition, setTransition] = useState(activeCls);
+  const updateTransitionClassNameHandler = (alt = false) => {
+    if (alt) {
+      modalContentRef.current?.classList.remove(activeCls);
+      modalContentRef.current?.classList.add(inactiveCls);
+    } else {
+      modalContentRef.current?.classList.remove(inactiveCls);
+      modalContentRef.current?.classList.add(activeCls);
+    }
+  };
 
   const onCloseHandler = () => {
-    setTransition(inactiveCls);
+    updateTransitionClassNameHandler(true);
 
     setTimeout(() => {
-      setTransition(activeCls);
+      updateTransitionClassNameHandler();
       onClose?.();
     }, 400);
   };
@@ -184,7 +194,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
   }, [props.isOpen]);
 
   useEffect(() => {
-    setTransition(activeCls);
+    updateTransitionClassNameHandler();
   }, [props.pos]);
 
   useEffect(() => {
@@ -202,7 +212,8 @@ export const Modal: React.FC<ModalProps> = (props) => {
       <StyledModal {...otherProps}>
         <ModalOverlay onClick={overlayOnClickHandler} {...otherProps} />
         <ModalContent
-          className={transition}
+          ref={modalContentRef}
+          className={activeCls}
           modalSize={size}
           style={style}
           {...otherProps}>
