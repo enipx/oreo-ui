@@ -16,6 +16,7 @@ import {
   useDisclosure,
   Text,
   Accordion,
+  Alert,
 } from '@oreo-ui/native';
 
 const customTheme = {
@@ -142,6 +143,15 @@ export default function App() {
             </Accordion.Item>
           </Accordion>
         </View>
+
+        <Alert
+          title="There are 5 different variants available"
+          content="The description are avaliable in for different variants: gray, blue, red, green, orange"
+          colorScheme="blue"
+          variant="subtle"
+          withCloseButton
+          withIcon
+        />
       </Container>
     </OreoProvider>
   );

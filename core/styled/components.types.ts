@@ -554,3 +554,45 @@ export interface AccordionPanelThemedDefaultProps {
 
   content?: string;
 }
+
+export type AlertVariantTypes = 'subtle' | 'filled';
+
+export type AlertColorSchemeTypes =
+  | 'gray'
+  | 'blue'
+  | 'green'
+  | 'red'
+  | 'orange';
+
+export type AlertIconTypeTypes = 'info' | 'success' | 'warning' | 'danger';
+
+export interface AlertThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+
+  content?: string;
+
+  colorScheme?: AlertColorSchemeTypes;
+
+  variant?: AlertVariantTypes;
+
+  title?: string | React.ReactNode;
+
+  withCloseButton?: boolean;
+
+  onClose?: () => void;
+
+  icon?: React.ReactNode;
+
+  withIcon?: boolean;
+
+  iconType?: AlertIconTypeTypes;
+
+  hideBorder?: boolean;
+}
+
+export interface AlertThemedStyledProps
+  extends LayoutThemeStyledProps,
+    AlertThemedDefaultProps {}
