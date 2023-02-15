@@ -21,30 +21,26 @@ const StoryWrapper = (args: any) => {
 
   return (
     <>
-      <Button text="Open modal" onClick={handler.open} />
+      <Button text="Open modal" colorScheme="gray" onClick={handler.open} />
       <StoryModal {...args} isOpen={isOpen} onClose={handler.close} />
       <div style={{ height: '2000px' }} />
     </>
   );
 };
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Components/Modal',
   component: Modal,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof Modal>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Modal> = (args) => (
   <StoryWrapper {...args} />
 );
 
 export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   title: 'Discard changes',
   size: 'xs',

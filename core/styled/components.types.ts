@@ -596,3 +596,45 @@ export interface AlertThemedDefaultProps {
 export interface AlertThemedStyledProps
   extends LayoutThemeStyledProps,
     AlertThemedDefaultProps {}
+
+export type ToastWebPositionTypes =
+  | 'top'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom'
+  | 'bottom-left'
+  | 'bottom-right';
+
+export type ToastNativePositionTypes = 'top' | 'bottom';
+
+export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
+  /**
+   * call method when toast is showned
+   */
+  onShow?: () => void;
+
+  /**
+   * call method when toast is hide
+   */
+  onHide?: () => void;
+
+  /**
+   * toast position
+   */
+  position?: ToastWebPositionTypes;
+
+  /**
+   * toast visibility duration
+   */
+  duration?: number;
+
+  /**
+   * used to display custom components
+   */
+  render?: React.ReactNode;
+
+  /**
+   * used to disabled auto hiding of toast after the duration
+   */
+  disabledAutoHide?: boolean;
+}

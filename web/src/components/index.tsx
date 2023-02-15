@@ -14,4 +14,5 @@ export * from './container';
 export * from './text';
 export * from './portal';
 export * from './modal';
+export * from './toast';
 export * from './transitions';

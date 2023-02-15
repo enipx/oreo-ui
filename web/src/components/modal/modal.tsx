@@ -151,13 +151,13 @@ export const Modal: React.FC<ModalProps> = (props) => {
 
   const overlayOnClickHandler = () => {
     if (closeOnOverlayClick) {
-      onCloseHandler?.();
+      onCloseHandler();
     }
   };
 
   const closeOnEscapeHandler = (event: KeyboardEvent) => {
     if (domExistsHandler() && event.key === 'Escape' && closeOnEscape) {
-      onCloseHandler?.();
+      onCloseHandler();
     }
   };
 
@@ -217,7 +217,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
           modalSize={size}
           style={style}
           {...otherProps}>
-          <ModalHeader title={title} {...otherProps} />
+          <ModalHeader title={title} onClose={onCloseHandler} {...otherProps} />
           <ModalBody {...otherProps}>{children}</ModalBody>
           {renderModalFooter()}
         </ModalContent>
