@@ -35,7 +35,6 @@ export const useToast = (defaultOptions: useToastProps | void) => {
   };
 
   const show = (defaultOptions: useToastProps | void) => {
-    console.log('show');
     // .. show current visible toast
     const newOptions = mergedObjectsHandler(
       options,
