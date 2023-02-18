@@ -714,3 +714,54 @@ export interface BadgeThemedDefaultProps extends TypographyProps, ColorProps {
 
   variant?: DefaultColorsVariantsType;
 }
+
+export type TabsVariantThemedDefaultProps = 'fenced';
+
+export interface TabsThemedDefaultProps {
+  children?: React.ReactNode;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  colorSchemeVariant?: DefaultColorsVariantsType;
+
+  variant?: TabsVariantThemedDefaultProps;
+
+  /**
+   * item value
+   */
+  value?: string;
+
+  itemWidth?: 'equal';
+
+  onTabChange?: (arg: string) => void;
+}
+
+export interface TabsListThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+}
+
+export interface TabsItemThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * item value
+   */
+  value: string;
+
+  disabled?: boolean;
+}
+
+export interface TabsPanelThemedDefaultProps {
+  /**
+   * item content
+   */
+  children?: React.ReactNode;
+
+  value?: string;
+}
