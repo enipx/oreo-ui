@@ -142,6 +142,7 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
   });
 
   const baseStyle = `
+    ${flexCenterStyle}
     background-color: ${backgroundColor};
     width: ${width};
     height: ${height};
@@ -149,6 +150,9 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
     border-width: ${borderWidth};
     border-style: solid;
     border-color: ${borderColor};
+    position: relative;
+    border-radius: ${theme.radii.full};
+    overflow: hidden;
   `;
 
   const native = `
@@ -158,14 +162,10 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
   const web = `
     ${baseStyle}
     ${transitionStyle()}
-    ${flexCenterStyle}
     display: inline-flex;
     text-transform: uppercase;
     flex-shrink:0;
     vertical-align: top;
-    position: relative;
-    border-radius: ${theme.radii.full};
-    overflow: hidden;
     color: ${color};
     font-weight: ${theme.fontWeights.medium};
     font-size: ${baseFontSize};
@@ -200,6 +200,40 @@ export const avatarGroupDefaultStyle = (options: AvatarSystemThemeParams) => {
 
   const baseStyle = `
     display: flex;
+  `;
+
+  const native = `
+    ${baseStyle}
+    flex-direction: row;
+  `;
+
+  const web = `
+    ${baseStyle}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const avatarTextDefaultStyle = (options: AvatarSystemThemeParams) => {
+  const { theme, type = 'web', colorScheme, variant } = options;
+
+  const { fontSize } = getAvatarSizeStyle(options);
+
+  const { color } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'gray',
+    variant: variant || 'subtle',
+  });
+
+  const baseStyle = `
+    font-size: ${fontSize};
+    color: ${color};
+    font-weight: ${theme.fontWeights.semiBold};
   `;
 
   const native = `

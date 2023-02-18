@@ -141,7 +141,6 @@ export const indicatorDefaultStyle = (options: IndicatorSystemThemeParams) => {
     border-style: solid;
     border-color: ${borderColor};
     ${getIndicatorPositionStyle(options)}
-    padding: ${theme.space[1]};
   `;
 
   const native = `
@@ -153,6 +152,42 @@ export const indicatorDefaultStyle = (options: IndicatorSystemThemeParams) => {
     ${transitionStyle()}
     font-size: ${fontSize};
     color: ${color};
+    padding: ${theme.space[1]};
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const indicatorTextDefaultStyle = (
+  options: IndicatorSystemThemeParams
+) => {
+  const { theme, type = 'web', colorScheme, variant } = options;
+
+  const { fontSize } = getIndicatorSizeStyle(options);
+
+  const { color } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'blue',
+    variant: variant || 'solid',
+  });
+
+  const baseStyle = `
+    font-size: ${fontSize};
+    color: ${color};
+    font-weight: ${theme.fontWeights.semiBold};
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
   `;
 
   const res: SystemThemeReturnType = {

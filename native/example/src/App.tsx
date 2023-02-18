@@ -17,6 +17,8 @@ import {
   Text,
   Accordion,
   Alert,
+  Avatar,
+  Indicator,
 } from '@oreo-ui/native';
 
 const customTheme = {
@@ -152,6 +154,28 @@ export default function App() {
           withCloseButton
           withIcon
         />
+
+        <View my="lg">
+          <Avatar
+            name="Lawal Hashir"
+            src="https://bit.ly/ryan-florence"
+            colorScheme="purple"
+          />
+        </View>
+
+        <Avatar.Group max={3}>
+          <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+          <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+          <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
+          <Avatar name="Prosper Otemuyiwa" src="https://bit.ly/prosper-baba" />
+          <Avatar name="Christian Nwamba" src="https://bit.ly/code-beast" />
+        </Avatar.Group>
+
+        <View my="lg">
+          <Indicator>
+            <Avatar name="Lawal Hashir" />
+          </Indicator>
+        </View>
       </Container>
     </OreoProvider>
   );
