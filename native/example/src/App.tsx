@@ -19,6 +19,7 @@ import {
   Alert,
   Avatar,
   Indicator,
+  Badge,
 } from '@oreo-ui/native';
 
 const customTheme = {
@@ -176,6 +177,10 @@ export default function App() {
             <Avatar name="Lawal Hashir" />
           </Indicator>
         </View>
+
+        <Badge colorScheme="blue" fontSize="sm">
+          Default
+        </Badge>
       </Container>
     </OreoProvider>
   );

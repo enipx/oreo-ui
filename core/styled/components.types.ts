@@ -706,3 +706,11 @@ export interface IndicatorThemedDefaultProps {
 
   offset?: string;
 }
+
+export interface BadgeThemedDefaultProps extends TypographyProps, ColorProps {
+  children?: React.ReactNode;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  variant?: DefaultColorsVariantsType;
+}
