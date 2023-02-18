@@ -3,10 +3,6 @@ import {
   ToastWebPositionTypes,
 } from '../components.types';
 import { flexCenterXStyle, transitionStyle } from '../css';
-import {
-  addTransitionsHandler,
-  TransitionsTypeObject,
-} from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
 // @defaults

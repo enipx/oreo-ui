@@ -142,6 +142,18 @@ const colors = {
 // @types definitions
 export type ColorsSchemeKeys = keyof typeof colorsScheme;
 
+export type DefaultColorsSchemeKeys = Exclude<
+  ColorsSchemeKeys,
+  'blackAlpha' | 'whiteAlpha'
+>;
+
+export type DefaultColorsVariantsType =
+  | 'solid'
+  | 'subtle'
+  | 'outline'
+  | 'ghost'
+  | 'link';
+
 export type ColorsKeys = typeof colors;
 
 // @exports

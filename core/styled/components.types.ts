@@ -1,6 +1,11 @@
 import type { CSSProperties } from 'styled-components';
 
+import { ObjectTypes } from '../constants/index.types';
 import type { BreakpointsKeys } from '../theme/utilities/breakpoints';
+import {
+  DefaultColorsSchemeKeys,
+  DefaultColorsVariantsType,
+} from '../theme/utilities/colors';
 import type {
   LayoutThemeStyledProps,
   TypographyThemeStyledProps,
@@ -637,4 +642,67 @@ export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
    * used to disabled auto hiding of toast after the duration
    */
   disabledAutoHide?: boolean;
+}
+
+export type AvatarSizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
+
+export interface AvatarThemedDefaultProps {
+  /**
+   * image alt text
+   */
+  alt?: string;
+
+  children?: React.ReactNode;
+
+  size?: AvatarSizeTypes;
+
+  src?: string;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  variant?: DefaultColorsVariantsType;
+
+  imgProps?: ObjectTypes;
+
+  name?: string;
+
+  isGrouped?: boolean;
+
+  isLastItem?: boolean;
+}
+
+export interface AvatarGroupThemedDefaultProps {
+  size?: AvatarSizeTypes;
+
+  children?: React.ReactNode;
+
+  max?: number;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  variant?: DefaultColorsVariantsType;
+}
+
+export type IndicatorSizeTypes = AvatarSizeTypes;
+
+export type IndicatorPostionTypes =
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right';
+
+export interface IndicatorThemedDefaultProps {
+  value?: string;
+
+  children?: React.ReactNode;
+
+  max?: number;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  size?: IndicatorSizeTypes;
+
+  pos?: IndicatorPostionTypes;
+
+  offset?: string;
 }
