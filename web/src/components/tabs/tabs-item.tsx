@@ -8,6 +8,7 @@ import { useTabs } from './use-tabs';
 import {
   tabsItemDefaultStyle,
   tabsItemVariantStyle,
+  tabsItemCustomStyle,
 } from '@/core/styled/themed/tabs';
 import { baseStyled, styled } from '@/core/styled/web';
 
@@ -15,12 +16,13 @@ import { baseStyled, styled } from '@/core/styled/web';
 export const StyledTabsItem = styled(baseStyled('button'))<TabsProps>`
   ${(props) => tabsItemDefaultStyle({ ...props } as any)}
   ${(props) => tabsItemVariantStyle({ ...props } as any)}
+  ${(props) => tabsItemCustomStyle({ ...props } as any)}
 `;
 
 export const TabsItem: React.FC<TabsItemProps> = (props) => {
   const tabsContextValue = useTabsContext();
 
-  const { children, value = '', disabled } = props;
+  const { children, value = '', disabled, ...otherProps } = props;
 
   const { isActive } = useTabs({
     item: value,
@@ -43,7 +45,9 @@ export const TabsItem: React.FC<TabsItemProps> = (props) => {
       tabsContextValue?.allValues?.length > 0 &&
       !tabsContextValue?.value
     ) {
-      tabsContextValue?.updateValue?.(tabsContextValue?.allValues[0]);
+      tabsContextValue?.updateValue?.(tabsContextValue?.allValues[0], {
+        onMounted: true,
+      });
     }
   }, [tabsContextValue?.allValues]);
 
@@ -54,7 +58,8 @@ export const TabsItem: React.FC<TabsItemProps> = (props) => {
       onClick={onClickHandler}
       {...tabsContextValue}
       isActive={isActive}
-      disabled={disabled}>
+      disabled={disabled}
+      {...otherProps}>
       {children}
     </StyledTabsItem>
   );

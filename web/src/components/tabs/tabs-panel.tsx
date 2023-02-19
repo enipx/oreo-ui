@@ -8,7 +8,7 @@ import { useTabs } from './use-tabs';
 
 // @exports
 export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
-  const { children, value } = props;
+  const { children, value, color, ...otherProps } = props;
 
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +23,7 @@ export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
   if (!isActive) return null;
 
   return (
-    <View ref={panelRef} padding="4">
+    <View ref={panelRef} padding="4" {...otherProps}>
       {children}
     </View>
   );

@@ -715,7 +715,7 @@ export interface BadgeThemedDefaultProps extends TypographyProps, ColorProps {
   variant?: DefaultColorsVariantsType;
 }
 
-export type TabsVariantThemedDefaultProps = 'fenced';
+export type TabsVariantThemedDefaultProps = 'fenced' | 'unstyled';
 
 export interface TabsThemedDefaultProps {
   children?: React.ReactNode;
@@ -731,12 +731,18 @@ export interface TabsThemedDefaultProps {
    */
   value?: string;
 
-  itemWidth?: 'equal';
+  withEqualWidth?: boolean;
 
   onTabChange?: (arg: string) => void;
+
+  _selected?: React.CSSProperties;
+
+  _hover?: React.CSSProperties;
+
+  _active?: React.CSSProperties;
 }
 
-export interface TabsListThemedDefaultProps {
+export interface TabsListThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * item content
    */
@@ -755,9 +761,15 @@ export interface TabsItemThemedDefaultProps {
   value: string;
 
   disabled?: boolean;
+
+  _selected?: React.CSSProperties;
+
+  _hover?: React.CSSProperties;
+
+  _active?: React.CSSProperties;
 }
 
-export interface TabsPanelThemedDefaultProps {
+export interface TabsPanelThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * item content
    */

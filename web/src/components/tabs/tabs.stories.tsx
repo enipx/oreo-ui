@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Tabs>;
 
 const Template: ComponentStory<typeof Tabs> = (args) => (
-  <Tabs {...args}>
+  <Tabs {...args} onTabChange={(val) => console.log(val)}>
     <Tabs.List>
       <Tabs.Item value="1">Item 1</Tabs.Item>
       <Tabs.Item value="2">Item 2</Tabs.Item>
@@ -26,5 +26,5 @@ const Template: ComponentStory<typeof Tabs> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  variant: 'fenced',
+  withEqualWidth: true,
 };

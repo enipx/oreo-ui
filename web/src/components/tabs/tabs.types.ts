@@ -23,7 +23,7 @@ export interface UseTabsProps extends TabsProps {
 }
 
 export interface TabsContextProps extends TabsProps {
-  updateValue?: (arg: string) => void;
+  updateValue?: (arg: string, options?: { onMounted?: boolean }) => void;
   storeValues?: (arg: string) => void;
   allValues?: string[];
   togglePanel?: () => void;

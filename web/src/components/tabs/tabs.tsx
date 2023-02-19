@@ -5,7 +5,7 @@ import { TabsContextProvider } from './tabs-context';
 import { TabsItem } from './tabs-item';
 import { TabsList } from './tabs-list';
 import { TabsPanel } from './tabs-panel';
-import type { TabsProps } from './tabs.types';
+import type { TabsContextProps, TabsProps } from './tabs.types';
 import { useTabs } from './use-tabs';
 
 // @exports
@@ -18,9 +18,12 @@ export const Tabs = (props: TabsProps) => {
 
   const { updateValue: _updateValue } = useTabs({ value, ...otherProps });
 
-  const updateValue = (item: string) => {
+  const updateValue: TabsContextProps['updateValue'] = (item, options) => {
     setValue(_updateValue(item));
-    onTabChange?.(item);
+
+    if (!options?.onMounted) {
+      onTabChange?.(item);
+    }
   };
 
   const storeValues = (item: string) => {

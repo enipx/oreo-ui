@@ -12,9 +12,13 @@ export const StyledTabsList = styled(View)<TabsListProps>`
 `;
 
 export const TabsList: React.FC<TabsListProps> = (props) => {
-  const { children } = props;
+  const { children, color, ...otherProps } = props;
 
   const tabsContextValue = useTabsContext();
 
-  return <StyledTabsList {...tabsContextValue}>{children}</StyledTabsList>;
+  return (
+    <StyledTabsList {...tabsContextValue} {...otherProps}>
+      {children}
+    </StyledTabsList>
+  );
 };
