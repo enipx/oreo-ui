@@ -40,7 +40,6 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
 
   const baseStyle = `
     ${flexCenterYStyle}
-    flex-wrap: nowrap;
     border-bottom: ${
       isVariant
         ? borderBottomWidth[
@@ -57,6 +56,7 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    flex-wrap: nowrap;
   `;
 
   const res: SystemThemeReturnType = {
@@ -82,7 +82,6 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
     const baseStyle = `
       border: 0;
-      outline: 0;
       background-color: ${theme.colors.transparent};
     `;
 
@@ -92,6 +91,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
     const web = `
       ${baseStyle}
+      outline: 0;
       color: ${baseColor};
     `;
 
@@ -196,7 +196,6 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
   const baseStyle = `
     ${flexCenterStyle}
     border: 0;
-    outline: 0;
     background-color: ${theme.colors.transparent};
     border-bottom: 2px solid ${isActive ? color : theme.colors.transparent};
     margin-bottom: -2px;
@@ -212,6 +211,7 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
     ${baseStyle}
     ${transitionStyle()}
     appearance: none;
+    outline: 0;
     cursor: ${disabled ? 'not-allowed' : 'pointer'};
     opacity: ${disabled ? '0.5' : '1'};
     white-space: nowrap;
@@ -251,6 +251,46 @@ export const tabsItemCustomStyle = (options: TabsItemSystemThemeParams) => {
     &.active {
       ${convertReactCSSToCSSHandler(_active)}
     }
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const tabsItemTextDefaultStyle = (
+  options: TabsItemSystemThemeParams
+) => {
+  const {
+    theme,
+    type = 'web',
+    colorScheme,
+    colorSchemeVariant,
+    isActive,
+  } = options;
+
+  const { color } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'blue',
+    variant: colorSchemeVariant || 'subtle',
+  });
+
+  const { color: baseColor } = getBaseStyle(options);
+
+  const baseStyle = `
+    color: ${isActive ? color : baseColor};
+    font-weight: ${theme.fontWeights.semiBold};
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
   `;
 
   const res: SystemThemeReturnType = {

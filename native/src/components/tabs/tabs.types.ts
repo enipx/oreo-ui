@@ -3,19 +3,24 @@ import type { RefObject } from 'react';
 import type {
   TabsThemedDefaultProps,
   TabsItemThemedDefaultProps,
-  TabsListThemedStyledProps,
-  TabsPanelThemedStyledProps,
+  TabsListThemedDefaultProps,
+  TabsPanelThemedDefaultProps,
 } from '@/core/styled/components.types';
+import type { ViewProps } from '../view';
 
 export interface TabsProps extends TabsThemedDefaultProps {
   isActive?: boolean;
 }
 
-export interface TabsListProps extends TabsListThemedStyledProps {}
+export interface TabsListProps extends TabsListThemedDefaultProps, ViewProps {}
 
-export interface TabsItemProps extends TabsItemThemedDefaultProps {}
+export interface TabsItemProps extends TabsItemThemedDefaultProps {
+  title?: string;
+}
 
-export interface TabsPanelProps extends TabsPanelThemedStyledProps {}
+export interface TabsPanelProps
+  extends TabsPanelThemedDefaultProps,
+    ViewProps {}
 
 export interface UseTabsProps extends TabsProps {
   item?: string;

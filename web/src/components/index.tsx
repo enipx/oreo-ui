@@ -15,6 +15,7 @@ export * from './select';
 export * from './view';
 export * from './container';
 export * from './text';
+export * from './tabs';
 export * from './portal';
 export * from './modal';
 export * from './toast';

@@ -742,12 +742,16 @@ export interface TabsThemedDefaultProps {
   _active?: React.CSSProperties;
 }
 
-export interface TabsListThemedDefaultProps extends ViewThemedStyledProps {
+export interface TabsListThemedDefaultProps {
   /**
    * item content
    */
   children?: React.ReactNode;
 }
+
+export interface TabsListThemedStyledProps
+  extends TabsListThemedDefaultProps,
+    ViewThemedStyledProps {}
 
 export interface TabsItemThemedDefaultProps {
   /**
@@ -769,7 +773,7 @@ export interface TabsItemThemedDefaultProps {
   _active?: React.CSSProperties;
 }
 
-export interface TabsPanelThemedDefaultProps extends ViewThemedStyledProps {
+export interface TabsPanelThemedDefaultProps {
   /**
    * item content
    */
@@ -777,3 +781,7 @@ export interface TabsPanelThemedDefaultProps extends ViewThemedStyledProps {
 
   value?: string;
 }
+
+export interface TabsPanelThemedStyledProps
+  extends TabsPanelThemedDefaultProps,
+    ViewThemedStyledProps {}

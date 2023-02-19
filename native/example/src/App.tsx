@@ -20,6 +20,7 @@ import {
   Avatar,
   Indicator,
   Badge,
+  Tabs,
 } from '@oreo-ui/native';
 
 const customTheme = {
@@ -181,6 +182,26 @@ export default function App() {
         <Badge colorScheme="blue" fontSize="sm">
           Default
         </Badge>
+
+        <View my="lg">
+          <Tabs onTabChange={(val) => console.log(val)}>
+            <Tabs.List>
+              <Tabs.Item value="1" title="Item 1" />
+              <Tabs.Item value="2" title="Item 2" />
+              <Tabs.Item value="3" title="Item 3" />
+            </Tabs.List>
+
+            <Tabs.Panel value="1">
+              <Text>Tab 1</Text>
+            </Tabs.Panel>
+            <Tabs.Panel value="2">
+              <Text>Tab 2</Text>
+            </Tabs.Panel>
+            <Tabs.Panel value="3">
+              <Text>Tab 3</Text>
+            </Tabs.Panel>
+          </Tabs>
+        </View>
       </Container>
     </OreoProvider>
   );

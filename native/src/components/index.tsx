@@ -16,4 +16,5 @@ export * from './view';
 export * from './scroll-view';
 export * from './container';
 export * from './text';
+export * from './tabs';
 export * from './modal';

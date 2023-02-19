@@ -38,7 +38,6 @@ export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
   const { children, text } = props;
 
   const onPressHandler = () => {
-    console.log('click');
     accordionValue?.updateValue?.(item || '');
   };
 
