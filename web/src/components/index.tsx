@@ -18,5 +18,6 @@ export * from './text';
 export * from './tabs';
 export * from './portal';
 export * from './modal';
+export * from './table';
 export * from './toast';
 export * from './transitions';

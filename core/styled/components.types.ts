@@ -685,7 +685,7 @@ export interface AvatarGroupThemedDefaultProps {
 
 export type IndicatorSizeTypes = AvatarSizeTypes;
 
-export type IndicatorPostionTypes =
+export type IndicatorPositionTypes =
   | 'top-left'
   | 'top-right'
   | 'bottom-left'
@@ -702,7 +702,7 @@ export interface IndicatorThemedDefaultProps {
 
   size?: IndicatorSizeTypes;
 
-  pos?: IndicatorPostionTypes;
+  pos?: IndicatorPositionTypes;
 
   offset?: string;
 }
@@ -785,3 +785,70 @@ export interface TabsPanelThemedDefaultProps {
 export interface TabsPanelThemedStyledProps
   extends TabsPanelThemedDefaultProps,
     ViewThemedStyledProps {}
+
+export type TableThemedSizeTypes = 'sm' | 'md' | 'lg';
+export interface TableThemedDefaultProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+
+  striped?: 'odd' | 'even';
+
+  size?: TableThemedSizeTypes;
+
+  captionPlacement?: 'top' | 'bottom';
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  hovered?: boolean;
+}
+
+export interface TableHeadThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface TableBodyThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface TableFootThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface ThThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface TrThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface TdThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface TableCaptionThemedDefaultProps extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}

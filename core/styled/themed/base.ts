@@ -2,8 +2,8 @@ import styledTheme from 'styled-theming';
 
 import type { StyledThemeProps, SystemThemeParams } from '../index.types';
 
-import { ThemeModeKeys } from '@/core/constants/index.types';
-import {
+import type { ThemeModeKeys } from '@/core/constants/index.types';
+import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
 } from '@/core/theme/utilities/colors';
@@ -40,9 +40,15 @@ export const getBaseStyle = (options: SystemThemeParams) => {
     dark: theme.colors.gray[900],
   };
 
+  const linkColor: BaseStyleObjectType = {
+    light: theme.colors.blue[500],
+    dark: theme.colors.blue[200],
+  };
+
   return {
     color: color[mode],
     backgroundColor: backgroundColor[mode],
+    linkColor: linkColor[mode],
   };
 };
 
