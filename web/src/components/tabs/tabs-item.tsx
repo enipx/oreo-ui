@@ -1,5 +1,5 @@
 // @imports
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 
 import { useTabsContext } from './tabs-context';
 import type { TabsItemProps, TabsProps } from './tabs.types';
@@ -19,7 +19,7 @@ export const StyledTabsItem = styled(baseStyled('button'))<TabsProps>`
   ${(props) => tabsItemCustomStyle({ ...props } as any)}
 `;
 
-export const TabsItem: React.FC<TabsItemProps> = (props) => {
+export const TabsItem: React.FC<TabsItemProps> = memo((props) => {
   const tabsContextValue = useTabsContext();
 
   const { children, value = '', disabled, ...otherProps } = props;
@@ -63,4 +63,4 @@ export const TabsItem: React.FC<TabsItemProps> = (props) => {
       {children}
     </StyledTabsItem>
   );
-};
+});

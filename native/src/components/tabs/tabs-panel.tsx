@@ -7,12 +7,12 @@ import type { TabsPanelProps } from './tabs.types';
 import { useTabs } from './use-tabs';
 
 // @exports
-export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
+export const TabsPanel = (props: TabsPanelProps) => {
   const { children, value, ...otherProps } = props;
 
-  // const tabsContextValue = useTabsContext();
+  const tabsContextValue = useTabsContext();
 
-  const tabsValue = '';
+  const tabsValue = tabsContextValue?.value || '';
 
   const { isActive } = useTabs({
     item: value,
@@ -25,10 +25,10 @@ export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
     }
 
     return (
-      <View padding="4" {...otherProps}>
+      <View p="4" {...otherProps}>
         {children}
       </View>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tabsValue]);
+  }, [isActive]);
 };

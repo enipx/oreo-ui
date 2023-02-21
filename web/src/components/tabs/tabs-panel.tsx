@@ -1,6 +1,6 @@
 // @imports
 import { View } from '@components/view';
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 
 import { useTabsContext } from './tabs-context';
 import type { TabsPanelProps } from './tabs.types';
@@ -20,11 +20,15 @@ export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
     ...TabsValue,
   });
 
-  if (!isActive) return null;
+  return useMemo(() => {
+    if (!isActive) {
+      return null;
+    }
 
-  return (
-    <View ref={panelRef} padding="4" {...otherProps}>
-      {children}
-    </View>
-  );
+    return (
+      <View ref={panelRef} padding="4" {...otherProps}>
+        {children}
+      </View>
+    );
+  }, [isActive]);
 };
