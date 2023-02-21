@@ -14,17 +14,17 @@ import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
 const utilities = (arg?: PackageTypes) => {
   const isWeb = isPackageWeb(arg);
 
-  const space = isWeb
-    ? (convertObjectDimensionsUnit(_space) as SpacingTypes)
-    : _space;
+  const space = convertObjectDimensionsUnit(_space, {
+    dimension: isWeb ? 'rem' : 'px',
+  }) as SpacingTypes;
 
-  const breakpoints = isWeb
-    ? (convertObjectDimensionsUnit(_breakpoints) as BreakpointsTypes)
-    : _breakpoints;
+  const breakpoints = convertObjectDimensionsUnit(_breakpoints, {
+    dimension: isWeb ? 'rem' : 'px',
+  }) as BreakpointsTypes;
 
-  const radii = isWeb
-    ? (convertObjectDimensionsUnit(_radii) as RadiiTypes)
-    : _radii;
+  const radii = convertObjectDimensionsUnit(_radii, {
+    dimension: isWeb ? 'rem' : 'px',
+  }) as RadiiTypes;
 
   return {
     breakpoints,

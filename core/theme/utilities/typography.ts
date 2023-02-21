@@ -54,9 +54,9 @@ const typography = (arg?: PackageTypes) => {
 
   return {
     fontWeights,
-    fontSizes: isWeb
-      ? (convertObjectDimensionsUnit(fontSizes) as FontSizeTypes)
-      : fontSizes,
+    fontSizes: convertObjectDimensionsUnit(fontSizes, {
+      dimension: isWeb ? 'rem' : 'px',
+    }) as FontSizeTypes,
     fonts,
     lineHeights,
   };
