@@ -2,7 +2,7 @@
 import { View } from '@components/view';
 import { Children, cloneElement } from 'react';
 
-import { Avatar } from './avatar';
+import { AvatarBase } from './avatar-base';
 import type { AvatarGroupProps, AvatarProps } from './avatar.types';
 
 import { avatarGroupDefaultStyle } from '@/core/styled/themed/avatar';
@@ -44,10 +44,10 @@ export const AvatarGroup = (props: AvatarGroupProps) => {
         });
       })}
       {maxExists ? (
-        <Avatar
+        <AvatarBase
           isGrouped
           isLastItem
-          size={size}>{`+${numberOfUnrenderedAvatar}`}</Avatar>
+          size={size}>{`+${numberOfUnrenderedAvatar}`}</AvatarBase>
       ) : null}
     </StyledAvatarGroup>
   );
