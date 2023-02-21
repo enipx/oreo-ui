@@ -7,11 +7,5 @@ export const useTabs = (options: UseTabsProps) => {
 
   const isActive = value === item;
 
-  const updateValue = (_item: string) => {
-    const res = _item;
-
-    return res;
-  };
-
-  return { isActive, value, updateValue };
+  return { isActive };
 };

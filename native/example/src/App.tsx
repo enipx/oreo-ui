@@ -115,7 +115,7 @@ export default function App() {
           removeContentMargin
           pos="bottom">
           {[...Array(1)].map((_item, _index) => (
-            <Text my={_index === 0 ? '0' : 'lg'}>
+            <Text my={_index === 0 ? '0' : 'lg'} key={_index}>
               Are you sure you want to continue? You’ll lose all your saved
               items, we can’t recover once this changes is made.
             </Text>
@@ -184,7 +184,7 @@ export default function App() {
         </Badge>
 
         <View my="lg">
-          <Tabs onTabChange={(val) => console.log(val)}>
+          <Tabs withEqualWidth onTabChange={(val) => console.log(val)}>
             <Tabs.List>
               <Tabs.Item value="1" title="Item 1" />
               <Tabs.Item value="2" title="Item 2" />

@@ -1,5 +1,5 @@
 // @imports
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View } from '../view';
 
 import { useTabsContext } from './tabs-context';
@@ -10,18 +10,25 @@ import { useTabs } from './use-tabs';
 export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
   const { children, value, ...otherProps } = props;
 
-  const tabsValue = useTabsContext();
+  // const tabsContextValue = useTabsContext();
+
+  const tabsValue = '';
 
   const { isActive } = useTabs({
     item: value,
-    value: tabsValue?.value || '',
+    value: tabsValue,
   });
 
-  if (!isActive) return null;
+  return useMemo(() => {
+    if (!isActive) {
+      return null;
+    }
 
-  return (
-    <View padding="4" {...otherProps}>
-      {children}
-    </View>
-  );
+    return (
+      <View padding="4" {...otherProps}>
+        {children}
+      </View>
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabsValue]);
 };

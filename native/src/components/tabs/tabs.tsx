@@ -1,5 +1,5 @@
 // @imports
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import { TabsContextProvider } from './tabs-context';
 import { TabsItem } from './tabs-item';
@@ -27,12 +27,15 @@ export const Tabs = (props: TabsProps) => {
     setAllValues((prev) => [...prev, item]);
   };
 
-  return (
-    <TabsContextProvider
-      value={{ ...otherProps, updateValue, value, storeValues, allValues }}>
-      {children}
-    </TabsContextProvider>
-  );
+  return useMemo(() => {
+    return (
+      <TabsContextProvider
+        value={{ ...otherProps, updateValue, value, storeValues, allValues }}>
+        {children}
+      </TabsContextProvider>
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, allValues]);
 };
 
 Tabs.List = TabsList;

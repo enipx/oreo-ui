@@ -1,8 +1,8 @@
 import type { CSSProperties } from 'styled-components';
 
-import { ObjectTypes } from '../constants/index.types';
+import type { ObjectTypes } from '../constants/index.types';
 import type { BreakpointsKeys } from '../theme/utilities/breakpoints';
-import {
+import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
 } from '../theme/utilities/colors';

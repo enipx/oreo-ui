@@ -32,6 +32,8 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
 
   const isVariant = !!colorScheme || !!variant;
 
+  const borderBottomColor = theme.colors.gray[100];
+
   const borderBottomWidth = {
     default: '2px',
     fenced: '1px',
@@ -46,12 +48,20 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
             (variant as keyof typeof borderBottomWidth) || 'none'
           ]
         : borderBottomWidth.default
-    } solid ${theme.colors.gray[100]};
+    } solid ${borderBottomColor};
   `;
 
   const native = `
     ${baseStyle}
     flex-direction: row;
+    border-bottom-width: ${
+      isVariant
+        ? borderBottomWidth[
+            (variant as keyof typeof borderBottomWidth) || 'none'
+          ]
+        : borderBottomWidth.default
+    };
+    border-bottom-color: ${borderBottomColor};
   `;
 
   const web = `
@@ -74,10 +84,9 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     isActive,
     colorScheme,
     colorSchemeVariant,
-    variant,
   } = options;
 
-  if (variant === 'unstyled') {
+  if (getTabsStyleHandler(options).isUnstyled) {
     const { color: baseColor } = getBaseStyle(options);
 
     const baseStyle = `
@@ -87,6 +96,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
     const native = `
       ${baseStyle}
+      border-bottom-width: 0;
     `;
 
     const web = `
@@ -103,7 +113,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     return res[type];
   }
 
-  if (variant === 'fenced') {
+  if (getTabsStyleHandler(options).isFenced) {
     const { backgroundColor } = getBaseStyle(options);
 
     const baseStyle = `
@@ -121,6 +131,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
     const native = `
       ${baseStyle}
+      margin-bottom: -1px;
     `;
 
     const web = `
@@ -141,7 +152,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
   if (colorScheme) {
     const { backgroundColor } = getColorSchemeStyle({
       theme,
-      colorScheme: colorScheme || 'blue',
+      colorScheme,
       variant: colorSchemeVariant || 'subtle',
     });
 
@@ -193,18 +204,24 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
 
   const { color: baseColor } = getBaseStyle(options);
 
+  const borderBottomColor = isActive ? color : theme.colors.transparent;
+
   const baseStyle = `
     ${flexCenterStyle}
     border: 0;
     background-color: ${theme.colors.transparent};
-    border-bottom: 2px solid ${isActive ? color : theme.colors.transparent};
+    border-bottom: 2px solid ${borderBottomColor};
     margin-bottom: -2px;
-    flex: ${withEqualWidth ? 1 : 0};
   `;
 
   const native = `
     ${baseStyle}
-    flex-direction: row;
+    padding-vertical: ${theme.space[3]};
+    padding-horizontal: ${theme.space[4]};
+    align-self: flex-start;
+    border-bottom-width: 2px;
+    border-bottom-color: ${borderBottomColor};
+    ${withEqualWidth ? 'flex: 1' : ''}
   `;
 
   const web = `
@@ -219,6 +236,7 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
     font-size: ${theme.fontSizes.md};
     padding: ${theme.space[2]} ${theme.space[4]};
     color: ${isActive ? color : baseColor};
+    flex: ${withEqualWidth ? 1 : 0};
   `;
 
   const res: SystemThemeReturnType = {
@@ -281,8 +299,12 @@ export const tabsItemTextDefaultStyle = (
   const { color: baseColor } = getBaseStyle(options);
 
   const baseStyle = `
-    color: ${isActive ? color : baseColor};
-    font-weight: ${theme.fontWeights.semiBold};
+    color: ${
+      isActive && !getTabsStyleHandler(options).isUnstyled ? color : baseColor
+    };
+    font-weight: ${
+      isActive ? theme.fontWeights.semiBold : theme.fontWeights.medium
+    };
   `;
 
   const native = `
@@ -299,4 +321,17 @@ export const tabsItemTextDefaultStyle = (
   };
 
   return res[type];
+};
+
+// @utilities
+export const getTabsStyleHandler = (options: TabsItemSystemThemeParams) => {
+  const { variant } = options;
+
+  const isUnstyled = variant === 'unstyled';
+  const isFenced = variant === 'fenced';
+
+  return {
+    isUnstyled,
+    isFenced,
+  };
 };
