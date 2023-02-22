@@ -25,6 +25,8 @@ const Template: ComponentStory<typeof Tabs> = (args) => (
 );
 
 export const Default = Template.bind({});
+
 Default.args = {
   withEqualWidth: true,
+  colorSchemeVariant: 'subtle',
 };

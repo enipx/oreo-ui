@@ -2,6 +2,7 @@ import type {
   TabsListThemedDefaultProps,
   TabsItemThemedDefaultProps,
   TabsThemedDefaultProps,
+  TabsVariantThemedDefaultProps,
 } from '../components.types';
 import { flexCenterYStyle, flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
@@ -27,8 +28,47 @@ type TabsItemSystemThemeParams = SystemThemeParams &
   TabsItemThemedDefaultProps &
   TabsThemedDefaultProps;
 
+export const tabListVariantStyle = (options: TabsListSystemThemeParams) => {
+  const { theme, type = 'web', variant } = options;
+
+  const variantBackgroundColor: {
+    [key in TabsVariantThemedDefaultProps]: string;
+  } = {
+    pills: theme.colors.gray[50],
+    fenced: theme.colors.transparent,
+    unstyled: theme.colors.transparent,
+  };
+
+  const backgroundColor = variantBackgroundColor[variant || 'unstyled'];
+
+  if (getTabsStyleHandler(options as any).isPills) {
+    const baseStyle = `
+      background-color: ${backgroundColor};
+      border-radius: ${theme.radii.md};
+      padding: ${theme.space[1]};
+    `;
+
+    const native = `
+      ${baseStyle}
+    `;
+
+    const web = `
+      ${baseStyle}
+    `;
+
+    const res: SystemThemeReturnType = {
+      native,
+      web,
+    };
+
+    return res[type];
+  }
+
+  return '';
+};
+
 export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
-  const { theme, type = 'web', colorScheme, variant } = options;
+  const { theme, type = 'web', colorScheme, variant, withEqualWidth } = options;
 
   const isVariant = !!colorScheme || !!variant;
 
@@ -37,8 +77,11 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
   const borderBottomWidth = {
     default: '2px',
     fenced: '1px',
+    isPills: '0',
     none: '0',
   };
+
+  const display = withEqualWidth ? 'flex' : 'inline-flex';
 
   const baseStyle = `
     ${flexCenterYStyle}
@@ -49,6 +92,7 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
           ]
         : borderBottomWidth.default
     } solid ${borderBottomColor};
+    ${tabListVariantStyle(options)}
   `;
 
   const native = `
@@ -67,6 +111,7 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
   const web = `
     ${baseStyle}
     flex-wrap: nowrap;
+    display: ${display};
   `;
 
   const res: SystemThemeReturnType = {
@@ -139,6 +184,39 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
       font-weight: ${
         isActive ? theme.fontWeights.medium : theme.fontWeights.regular
       };
+    `;
+
+    const res: SystemThemeReturnType = {
+      native,
+      web,
+    };
+
+    return res[type];
+  }
+
+  if (getTabsStyleHandler(options).isPills) {
+    const { color, backgroundColor } = getBaseStyle(options);
+
+    const baseStyle = `
+      border-width: 0;
+      border-bottom-width: 0;
+      margin-bottom: 0px;
+      background-color: ${
+        isActive ? backgroundColor : theme.colors.transparent
+      };
+      border-radius: ${theme.radii.sm};
+    `;
+
+    const native = `
+      ${baseStyle}
+    `;
+
+    const web = `
+      ${baseStyle}
+      font-weight: ${
+        isActive ? theme.fontWeights.medium : theme.fontWeights.regular
+      };
+      color: ${color};
     `;
 
     const res: SystemThemeReturnType = {
@@ -298,9 +376,13 @@ export const tabsItemTextDefaultStyle = (
 
   const { color: baseColor } = getBaseStyle(options);
 
+  const variantType = getTabsStyleHandler(options);
+
   const baseStyle = `
     color: ${
-      isActive && !getTabsStyleHandler(options).isUnstyled ? color : baseColor
+      isActive && !variantType.isUnstyled && !variantType.isPills
+        ? color
+        : baseColor
     };
     font-weight: ${
       isActive ? theme.fontWeights.semiBold : theme.fontWeights.medium
@@ -329,9 +411,11 @@ export const getTabsStyleHandler = (options: TabsItemSystemThemeParams) => {
 
   const isUnstyled = variant === 'unstyled';
   const isFenced = variant === 'fenced';
+  const isPills = variant === 'pills';
 
   return {
     isUnstyled,
     isFenced,
+    isPills,
   };
 };

@@ -728,7 +728,7 @@ export interface BadgeThemedDefaultProps extends TypographyProps, ColorProps {
   variant?: DefaultColorsVariantsType;
 }
 
-export type TabsVariantThemedDefaultProps = 'fenced' | 'unstyled';
+export type TabsVariantThemedDefaultProps = 'fenced' | 'unstyled' | 'pills';
 
 export interface TabsThemedDefaultProps {
   children?: React.ReactNode;
