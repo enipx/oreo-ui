@@ -5,13 +5,12 @@ import { width, minWidth, minHeight, height } from '@/core/styled/system';
 import { styled, baseStyled } from '@/core/styled/native';
 import {
   buttonDefaultStyle,
-  buttonBackgroundColor,
-  buttonColor,
   buttonSizeVariant,
   buttonStateVariant,
   buttonIconSpacing,
   buttonTextsize,
   buttonDefaults,
+  buttonTextDefaultStyle,
 } from '@/core/styled/themed/button';
 
 import type { ButtonProps } from './button.types';
@@ -27,21 +26,17 @@ export const StyledButton = styled(
     'background',
   ])
 )<ButtonProps>`
+  ${(props) => buttonDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => buttonSizeVariant({ ...props, type: 'native' } as any)}
+  ${(props) => buttonStateVariant({ ...props, type: 'native' } as any)}
   ${width}
   ${minWidth}
   ${height}
   ${minHeight}
-  align-self: flex-start;
-  background-color: ${buttonBackgroundColor};
-  ${({ theme, disabled }) =>
-    buttonDefaultStyle({ theme, disabled, type: 'native' })}
-  ${({ theme }) => buttonSizeVariant(theme)}
-  ${({ theme }) => buttonStateVariant({ theme })}
 `;
 
 export const StyleButtonText = styled(Text)<TextProps>`
-  color: ${buttonColor};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  ${(props) => buttonTextDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 export const BaseButton = styled(

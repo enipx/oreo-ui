@@ -1,21 +1,24 @@
 import { variant } from 'styled-system';
-import styledTheme from 'styled-theming';
 
-import type { ObjectTypes, PackageTypes } from '../../constants/index.types';
-import type { ThemeType } from '../../theme';
-import { flexCenterStyle, transitionStyle } from '../css';
 import type {
-  SystemThemeParams,
-  StyledThemeProps,
-  SystemThemeReturnType,
-} from '../index.types';
+  ButtonThemedStyledProps,
+  IconButtonThemedStyledProps,
+} from '../components.types';
+import { flexCenterStyle, transitionStyle } from '../css';
+import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { getColorSchemeStyle } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
 import type { RadiiKeys } from '@/core/theme/utilities/radius';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 import type { FontSizeKeys } from '@/core/theme/utilities/typography';
 
-// @button themes
+// @types
+type ButtonSystemThemeParams = SystemThemeParams & ButtonThemedStyledProps;
+type IconButtonSystemThemeParams = SystemThemeParams &
+  IconButtonThemedStyledProps;
+
+// @themes
 export const buttonDefaults = {
   disabledOpacity: 0.5,
   activeOpacity: 0.8,
@@ -30,136 +33,26 @@ export const iconButtonDefaults = {
   size: 'md',
 };
 
-export const buttonBackgroundColor = styledTheme.variants(
-  'mode',
-  'colorScheme',
-  {
-    blue: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.blue[500],
-    },
-    green: { light: ({ theme }: StyledThemeProps) => theme.colors.green[500] },
-    red: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-    yellow: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.yellow[500],
-    },
-    gray: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
-    transparent: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
-    },
-    ghost: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
-    },
-  }
-);
+// @styles
+export const buttonStateVariant = (options: ButtonSystemThemeParams) => {
+  const { theme, colorScheme, variant: buttonVariant, mode } = options;
 
-export const buttonHoverBackgroundColor = styledTheme.variants(
-  'mode',
-  'colorScheme',
-  {
-    blue: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.blue[600],
-    },
-    green: { light: ({ theme }: StyledThemeProps) => theme.colors.green[600] },
-    red: { light: ({ theme }: StyledThemeProps) => theme.colors.red[600] },
-    yellow: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.yellow[600],
-    },
-    gray: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
-    transparent: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
-    },
-    ghost: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
-    },
-  }
-);
-
-export const buttonHoverBorderColor = styledTheme.variants(
-  'mode',
-  'colorScheme',
-  {
-    blue: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.blue[600],
-    },
-    green: { light: ({ theme }: StyledThemeProps) => theme.colors.green[600] },
-    red: { light: ({ theme }: StyledThemeProps) => theme.colors.red[600] },
-    yellow: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.yellow[600],
-    },
-    gray: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[100] },
-    transparent: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.transparent,
-    },
-    ghost: {
-      light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
-    },
-  }
-);
-
-export const buttonColor = styledTheme.variants('mode', 'colorScheme', {
-  blue: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  green: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  red: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  yellow: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  gray: { light: ({ theme }: StyledThemeProps) => theme.colors.black },
-  transparent: { light: ({ theme }: StyledThemeProps) => theme.colors.black },
-  ghost: { light: ({ theme }: StyledThemeProps) => theme.colors.black },
-});
-
-export const buttonStateVariant = (option: SystemThemeParams) => {
-  const { theme, colorScheme = buttonDefaults.colorScheme } = option;
-  const { mode = 'light' } = theme;
-
-  const modeBackgroundColor = {
-    blue: {
-      light: theme.colors.blue[600],
-    },
-    green: { light: theme.colors.green[600] },
-    red: { light: theme.colors.red[600] },
-    yellow: {
-      light: theme.colors.yellow[600],
-    },
-    gray: { light: theme.colors.gray[50] },
-    transparent: {
-      light: theme.colors.transparent,
-    },
-    ghost: {
-      light: theme.colors.gray[50],
-    },
-  };
-
-  const modeBorderColor = {
-    blue: {
-      light: theme.colors.blue[600],
-    },
-    green: { light: theme.colors.green[600] },
-    red: { light: theme.colors.red[600] },
-    yellow: {
-      light: theme.colors.yellow[600],
-    },
-    gray: { light: theme.colors.gray[100] },
-    transparent: {
-      light: theme.colors.transparent,
-    },
-    ghost: {
-      light: theme.colors.gray[50],
-    },
-  };
-
-  const backgroundColor = (modeBackgroundColor as ObjectTypes)[colorScheme][
-    mode
-  ];
-  const borderColor = (modeBorderColor as ObjectTypes)[colorScheme][mode];
+  const { borderColor, hoverBackgroundColor } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'blue',
+    variant: buttonVariant || 'solid',
+    mode,
+  });
 
   return variant({
     prop: 'state',
     variants: {
       focused: {
-        backgroundColor,
+        backgroundColor: hoverBackgroundColor,
         borderColor,
       },
       hovered: {
-        backgroundColor,
+        backgroundColor: hoverBackgroundColor,
         borderColor,
       },
       disabled: {
@@ -169,8 +62,14 @@ export const buttonStateVariant = (option: SystemThemeParams) => {
   });
 };
 
-export const buttonSizeVariant = (theme: ThemeType, type?: PackageTypes) => {
+export const buttonSizeVariant = (options: ButtonSystemThemeParams) => {
+  const { theme, type = 'web', rounded } = options;
+
   const isNative = isPackageNative(type);
+
+  const getBorderRadius = (size: RadiiKeys) => {
+    return rounded ? theme.radii.full : theme.radii[size];
+  };
 
   return variant({
     prop: 'size',
@@ -179,53 +78,112 @@ export const buttonSizeVariant = (theme: ThemeType, type?: PackageTypes) => {
         ...(isNative ? {} : { fontSize: theme.fontSizes.xs }),
         height: theme.space[6],
         px: 2,
-        borderRadius: theme.radii.sm,
+        borderRadius: getBorderRadius('sm'),
       },
       sm: {
         ...(isNative ? {} : { fontSize: theme.fontSizes.xs }),
         height: theme.space[8],
         px: 3,
-        borderRadius: theme.radii.sm,
+        borderRadius: getBorderRadius('sm'),
       },
       lg: {
         ...(isNative ? {} : { fontSize: theme.fontSizes.md }),
         height: theme.space[12],
         px: 6,
-        borderRadius: theme.radii.md,
+        borderRadius: getBorderRadius('md'),
       },
       md: {
         ...(isNative ? {} : { fontSize: theme.fontSizes.sm }),
         height: theme.space[10],
         px: 4,
-        borderRadius: theme.radii.md,
+        borderRadius: getBorderRadius('md'),
       },
     },
   });
 };
 
-export const buttonDefaultStyle = (option: SystemThemeParams) => {
-  const { theme, type = 'web', disabled } = option;
+export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
+  const {
+    theme,
+    type = 'web',
+    disabled,
+    colorScheme,
+    variant,
+    fullWidth,
+  } = options;
+
+  const { backgroundColor, color, borderColor, hoverBackgroundColor } =
+    getColorSchemeStyle({
+      theme,
+      colorScheme: colorScheme || 'blue',
+      variant: variant || 'solid',
+    });
 
   const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
+  const width = fullWidth ? '100%' : 'auto';
 
   const baseStyle = `
     ${flexCenterStyle}
     ${transitionStyle()}
     opacity: ${opacity};
+    background-color: ${backgroundColor};
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${borderColor};
   `;
 
-  const native = baseStyle;
+  const native = `
+    ${baseStyle}
+    ${!fullWidth ? 'align-self: flex-start;' : ''}
+  `;
 
   const web = `
     ${baseStyle}
     appearance: none;
-    border: 0;
     cursor: pointer;
     font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.lineHeights[0]};
     outline: 0;
     white-space: nowrap;
-    width: auto;
+    width: ${width};
+    color: ${color};
+
+    :hover,
+    :active,
+    :focus {
+      background-color: ${hoverBackgroundColor};
+      text-decoration: ${variant === 'link' ? 'underline' : 'auto'}
+    }
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
+  const { theme, type = 'web', colorScheme, variant } = options;
+
+  const { color } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'blue',
+    variant: variant || 'solid',
+  });
+
+  const baseStyle = `
+    font-weight: ${theme.fontWeights.medium};
+    color: ${color};
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
   `;
 
   const res: SystemThemeReturnType = {
@@ -237,8 +195,10 @@ export const buttonDefaultStyle = (option: SystemThemeParams) => {
 };
 
 // @Icon Button
-export const iconButtonDefaultStyle = (option: SystemThemeParams) => {
-  const { theme, type = 'web', disabled } = option;
+export const iconButtonDefaultStyle = (
+  options: IconButtonSystemThemeParams
+) => {
+  const { theme, type = 'web', disabled } = options;
 
   const opacity = disabled ? iconButtonDefaults.disabledOpacity : 1;
 
@@ -268,8 +228,9 @@ export const iconButtonDefaultStyle = (option: SystemThemeParams) => {
 
   return res[type];
 };
-export const iconButtonSizeVariant = (option: SystemThemeParams) => {
-  const { theme, rounded } = option;
+
+export const iconButtonSizeVariant = (options: IconButtonSystemThemeParams) => {
+  const { theme, rounded } = options;
 
   const getBorderRadius = (key: RadiiKeys) => {
     return rounded ? theme.radii.full : theme.radii[key];

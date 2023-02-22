@@ -48,14 +48,7 @@ export interface TextThemedStyledProps extends TypographyThemeStyledProps {
   textTransform?: CSSProperties['textTransform'];
 }
 
-export type ButtonColorSchemeType =
-  | 'blue'
-  | 'gray'
-  | 'green'
-  | 'red'
-  | 'yellow'
-  | 'ghost'
-  | 'transparent';
+export type ButtonColorSchemeType = DefaultColorsSchemeKeys;
 
 export type ButtonStateType = 'hovered' | 'disabled' | 'focused' | 'default';
 
@@ -78,7 +71,12 @@ export interface ButtonThemedStyledProps
   /**
    * button color scheme
    */
-  colorScheme?: ButtonColorSchemeType;
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  /**
+   * button color variant
+   */
+  variant?: DefaultColorsVariantsType;
   /**
    * button state
    */
@@ -97,6 +95,16 @@ export interface ButtonThemedStyledProps
    * set button state to disabled
    */
   disabled?: boolean;
+
+  /**
+   * set button width to 100%
+   */
+  fullWidth?: boolean;
+
+  /**
+   * set button border radius to round
+   */
+  rounded?: boolean;
 }
 
 export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {

@@ -4,10 +4,6 @@ import type { ButtonProps } from './button.types';
 
 import {
   buttonDefaultStyle,
-  buttonBackgroundColor,
-  buttonHoverBackgroundColor,
-  buttonHoverBorderColor,
-  buttonColor,
   buttonIconSpacing,
   buttonSizeVariant,
   buttonStateVariant,
@@ -19,23 +15,12 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledButton = styled(
   baseStyled('button', ['shadow', 'grid', 'position', 'background'])
 )<ButtonProps>`
-  ${({ theme, disabled }) => buttonDefaultStyle({ theme, disabled })}
-  ${({ theme }) => buttonSizeVariant(theme)}
-  background-color: ${buttonBackgroundColor};
-  color: ${buttonColor};
-  border: 1px solid ${buttonBackgroundColor};
-
-  :hover,
-  :active,
-  :focus {
-    background-color: ${buttonHoverBackgroundColor};
-    border-color: ${buttonHoverBorderColor};
-  }
-
-  ${({ theme, colorScheme }) => buttonStateVariant({ theme, colorScheme })}
+  ${(props) => buttonDefaultStyle({ ...props } as any)}
+  ${(props) => buttonSizeVariant({ ...props } as any)}
+  ${(props) => buttonStateVariant({ ...props } as any)}
 `;
 
-export const Button: React.FC<ButtonProps> = (props) => {
+export const Button = (props: ButtonProps) => {
   const {
     text,
     icon,

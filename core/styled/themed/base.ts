@@ -64,42 +64,41 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
     [key in DefaultColorsVariantsType]: {
       color: string;
       backgroundColor: string;
+      borderColor: string;
       hoverBackgroundColor: string;
     };
   } = {
     subtle: {
       backgroundColor: theme.colors[colorScheme][50],
+      borderColor: theme.colors[colorScheme][50],
       hoverBackgroundColor: theme.colors[colorScheme][500],
       color: theme.colors[colorScheme][700],
     },
     solid: {
       backgroundColor: theme.colors[colorScheme][500],
-      hoverBackgroundColor: theme.colors[colorScheme][700],
+      borderColor: theme.colors[colorScheme][500],
+      hoverBackgroundColor: theme.colors[colorScheme][600],
       color: theme.colors.white,
     },
     outline: {
       backgroundColor: theme.colors.transparent,
+      borderColor: theme.colors[colorScheme][500],
       hoverBackgroundColor: theme.colors[colorScheme][50],
       color: theme.colors[colorScheme][500],
     },
     ghost: {
       backgroundColor: theme.colors.transparent,
+      borderColor: theme.colors.transparent,
       hoverBackgroundColor: theme.colors[colorScheme][50],
       color: theme.colors[colorScheme][500],
     },
     link: {
       backgroundColor: theme.colors.transparent,
+      borderColor: theme.colors.transparent,
       hoverBackgroundColor: theme.colors.transparent,
       color: theme.colors[colorScheme][500],
     },
   };
 
-  const backgroundColor = variants[variant].backgroundColor;
-
-  const color = variants[variant].color;
-
-  return {
-    backgroundColor,
-    color,
-  };
+  return variants[variant];
 };

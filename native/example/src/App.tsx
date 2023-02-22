@@ -36,7 +36,8 @@ export default function App() {
     <OreoProvider theme={customTheme}>
       <Container px="lg" scrollable pb="xl">
         <Text>Text</Text>
-        <Button colorScheme="blue" text="Button" my="lg" />
+
+        <Button colorScheme="gray" text="Button" my="lg" fullWidth rounded />
 
         <Input
           type="password"
