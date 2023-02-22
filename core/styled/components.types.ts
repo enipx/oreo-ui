@@ -71,7 +71,7 @@ export interface ButtonThemedStyledProps
   /**
    * button color scheme
    */
-  colorScheme?: DefaultColorsSchemeKeys;
+  colorScheme?: ButtonColorSchemeType;
 
   /**
    * button color variant
@@ -113,20 +113,25 @@ export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
    */
   icon?: React.ReactNode;
   /**
-   * button color scheme
+   * icon button color scheme
    */
   colorScheme?: ButtonColorSchemeType;
+
   /**
-   * button state
+   * icon button color variant
+   */
+  variant?: DefaultColorsVariantsType;
+  /**
+   * icon button state
    */
   state?: ButtonStateType;
   /**
-   * button size
+   * icon button size
    */
   size?: ButtonSizeType;
 
   /**
-   * button text
+   * icon button text
    */
   text?: string;
 

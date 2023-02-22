@@ -29,7 +29,7 @@ export const buttonDefaults = {
 export const iconButtonDefaults = {
   disabledOpacity: 0.5,
   activeOpacity: 0.8,
-  colorScheme: 'transparent',
+  colorScheme: 'gray',
   size: 'md',
 };
 
@@ -198,7 +198,14 @@ export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
 export const iconButtonDefaultStyle = (
   options: IconButtonSystemThemeParams
 ) => {
-  const { theme, type = 'web', disabled } = options;
+  const { theme, type = 'web', disabled, colorScheme, variant } = options;
+
+  const { backgroundColor, color, iconBorderColor, hoverBackgroundColor } =
+    getColorSchemeStyle({
+      theme,
+      colorScheme: colorScheme || 'gray',
+      variant: variant || 'ghost',
+    });
 
   const opacity = disabled ? iconButtonDefaults.disabledOpacity : 1;
 
@@ -207,18 +214,31 @@ export const iconButtonDefaultStyle = (
     ${transitionStyle()}
     opacity: ${opacity};
     flex-shrink: 0;
+    background-color: ${backgroundColor};
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${iconBorderColor};
   `;
 
-  const native = baseStyle;
+  const native = `
+    ${baseStyle}
+    align-self: flex-start;
+  `;
 
   const web = `
     ${baseStyle}
     appearance: none;
-    border: 0;
     cursor: pointer;
     line-height: ${theme.lineHeights[0]};
     outline: 0;
     white-space: nowrap;
+    color: ${color};
+
+    :hover,
+    :active,
+    :focus {
+      background-color: ${hoverBackgroundColor};
+    }
   `;
 
   const res: SystemThemeReturnType = {

@@ -1,6 +1,5 @@
 // @imports
 import React from 'react';
-import { Text, TextProps } from '../text';
 import {
   width,
   minWidth,
@@ -11,8 +10,6 @@ import {
 import { styled, baseStyled } from '@/core/styled/native';
 import {
   iconButtonDefaultStyle,
-  buttonBackgroundColor,
-  buttonColor,
   iconButtonSizeVariant,
   buttonStateVariant,
   iconButtonDefaults,
@@ -30,22 +27,14 @@ export const StyledIconButton = styled(
     'background',
   ])
 )<IconButtonProps>`
+  ${(props) => iconButtonDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => iconButtonSizeVariant({ ...props, type: 'native' } as any)}
+  ${(props) => buttonStateVariant({ ...props, type: 'native' } as any)}
+  ${border}
   ${width}
   ${minWidth}
   ${height}
   ${minHeight}
-  align-self: flex-start;
-  background-color: ${buttonBackgroundColor};
-  ${({ theme, disabled }) =>
-    iconButtonDefaultStyle({ theme, disabled, type: 'native' })}
-  ${({ theme, rounded }) => iconButtonSizeVariant({ theme, rounded })}
-  ${({ theme, colorScheme }) => buttonStateVariant({ theme, colorScheme })}
-  ${border}
-`;
-
-export const StyleButtonText = styled(Text)<TextProps>`
-  color: ${buttonColor};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
 export const IconButton: React.FC<IconButtonProps> = (props) => {
