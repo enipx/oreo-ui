@@ -1,6 +1,7 @@
 // @file declarations
 const iconSizing = {
-  '4xs': 8,
+  '5xs': 8,
+  '4xs': 10,
   '3xs': 12,
   '2xs': 14,
   'xs': 16,

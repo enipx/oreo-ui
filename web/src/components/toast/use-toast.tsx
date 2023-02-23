@@ -1,67 +1,46 @@
 // @imports
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import type { useToastProps } from './toast.types';
+import { useToastContext } from './toast-context';
+import type {
+  ToastStateProps,
+  ToastContextProps,
+  useToastProps,
+} from './toast.types';
 
-import { mergedObjectsHandler } from '@/core/helpers/base';
-import { useTimeout } from '@/core/hooks/use-timeout';
-
-const globalOptions: useToastProps = {
-  position: 'bottom',
-  duration: 2000,
-};
+import { generateUIDHandler } from '@/core/helpers/base';
+import { toastDefaults } from '@/core/styled/themed/toast';
 
 // @exports
-export const useToast = (defaultOptions: useToastProps | void) => {
-  const [isShowned, setIsShowned] = useState(false);
+export const useToastConfig = () => {
+  const [toasts, setToasts] = useState<ToastStateProps[]>([]);
 
-  const [options, setOptions] = useState<useToastProps>(
-    mergedObjectsHandler(globalOptions, defaultOptions) as useToastProps
-  );
+  const show: ToastContextProps['show'] = (content) => {
+    setToasts((prevToasts) => {
+      const id = `toast-${prevToasts.length + 1}-${generateUIDHandler()}`;
 
-  const hide = () => {
-    // .. hide current visible toast
-    setIsShowned(false);
-    options.onHide?.();
+      return [
+        ...prevToasts,
+        {
+          ...content,
+          id,
+          pos: content.pos || (toastDefaults.position as any),
+        },
+      ];
+    });
   };
 
-  // NOTE: Had to move this here because of HOISTING
-  const { startTimer, clearTimer } = useTimeout(hide, {
-    delay: options.duration,
-  });
-
-  const hideAll = () => {
-    // .. hide all current visible toast
+  const hide: ToastContextProps['hide'] = (id) => {
+    setToasts((currentToasts) =>
+      currentToasts.filter((toast) => toast.id !== id)
+    );
   };
 
-  const show = (defaultOptions: useToastProps | void) => {
-    // .. show current visible toast
-    const newOptions = mergedObjectsHandler(
-      options,
-      defaultOptions
-    ) as useToastProps;
-
-    setOptions(newOptions);
-
-    setIsShowned(true);
-
-    newOptions.onShow?.();
+  const hideAll: ToastContextProps['hideAll'] = () => {
+    setToasts([]);
   };
 
-  const timeoutHandler = () => {
-    if (isShowned) {
-      if (options.disabledAutoHide) {
-        clearTimer();
-        return;
-      }
-
-      startTimer();
-    }
-  };
-
-  useEffect(() => {
-    timeoutHandler();
-  }, [isShowned, options]);
-
-  return { hide, hideAll, show, isShowned, options };
+  return { hide, hideAll, show, toasts };
 };
+
+export const useToast = useToastContext as useToastProps;

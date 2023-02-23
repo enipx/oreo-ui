@@ -21,7 +21,7 @@ export type TransitionsOption = {
 // @defaults
 export const transitionDefaults = {
   duration: '500ms',
-  durationTimeout: 500,
+  durationTimeout: 400,
 };
 
 // @fade

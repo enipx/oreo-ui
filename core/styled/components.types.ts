@@ -627,11 +627,6 @@ export type ToastNativePositionTypes = 'top' | 'bottom';
 
 export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
   /**
-   * call method when toast is showned
-   */
-  onShow?: () => void;
-
-  /**
    * call method when toast is hide
    */
   onHide?: () => void;
@@ -639,7 +634,7 @@ export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
   /**
    * toast position
    */
-  position?: ToastWebPositionTypes;
+  pos?: ToastWebPositionTypes;
 
   /**
    * toast visibility duration

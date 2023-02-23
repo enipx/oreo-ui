@@ -62,7 +62,7 @@ export const AlertCloseButton = (
       onClick={onClick}
       size="xs"
       className={alertDefaults.closeClassName}
-      icon={<CloseIcon size="3xs" />}
+      icon={<CloseIcon size="4xs" />}
     />
   );
 };
@@ -78,15 +78,18 @@ export const Alert = (props: AlertProps) => {
     icon,
     withIcon,
     iconType,
+    content,
     ...otherProps
   } = props;
+
+  const transition = getTransitionClassName('fade');
 
   const [show, setShow] = useState(true);
 
   const alertRef = useRef<HTMLDivElement>(null);
 
   const onCloseHandler = () => {
-    alertRef.current?.classList.add(getTransitionClassName('fade').inactive);
+    alertRef.current?.classList.add(transition.inactive);
 
     setTimeout(() => {
       setShow(false);
@@ -101,6 +104,7 @@ export const Alert = (props: AlertProps) => {
       ref={alertRef}
       colorScheme={colorScheme}
       variant={variant}
+      className={transition.active}
       {...(otherProps as any)}>
       <AlertIcon
         icon={icon}
@@ -110,7 +114,9 @@ export const Alert = (props: AlertProps) => {
       />
       <View className={alertDefaults.contentClassName}>
         <Text>{title}</Text>
-        <View className={alertDefaults.contentDescrClassName}>{children}</View>
+        <View className={alertDefaults.contentDescrClassName}>
+          {content || children}
+        </View>
       </View>
       <AlertCloseButton
         withCloseButton={withCloseButton}

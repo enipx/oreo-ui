@@ -1,36 +1,67 @@
 import {
   ToastThemedDefaultProps,
   ToastWebPositionTypes,
+  ToastNativePositionTypes,
 } from '../components.types';
-import { flexCenterXStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
+import { PackageTypes } from '@/core/constants/index.types';
+
 // @defaults
-export const toastDefaults = {};
+export const toastDefaults = {
+  duration: 4000,
+  position: 'bottom',
+};
 
 // @themes
 type ToastSystemThemeParams = SystemThemeParams & ToastThemedDefaultProps;
 
 export const getToastPositionStyle = (options: ToastSystemThemeParams) => {
-  const { position } = options;
+  const { flex } = options;
 
-  const positions: {
+  const position =
+    options.pos || (toastDefaults.position as ToastWebPositionTypes);
+
+  type PositionsObjectType = {
     [key in ToastWebPositionTypes]: string;
-  } = {
+  };
+
+  const flexPositions: PositionsObjectType = {
     'bottom': `
-    bottom: 0;
-    justify-content: center;
-    top: auto;
+      justify-content: center;
     `,
     'bottom-left': `
-    bottom: 0;
-    justify-content: flex-start;
-    top: auto;
+      justify-content: flex-start;
     `,
     'bottom-right': `
-    bottom: 0;
-    justify-content: flex-end;
-    top: auto;
+      justify-content: flex-end;
+    `,
+    'top': `
+      justify-content: center;
+    `,
+    'top-left': `
+      justify-content: flex-start;
+    `,
+    'top-right': `
+      justify-content: flex-end;
+    `,
+  };
+
+  const positions: PositionsObjectType = {
+    'bottom': `
+      bottom: 0;
+      justify-content: center;
+      top: auto;
+    `,
+    'bottom-left': `
+      bottom: 0;
+      justify-content: flex-start;
+      top: auto;
+    `,
+    'bottom-right': `
+      bottom: 0;
+      justify-content: flex-end;
+      top: auto;
     `,
     'top': `
       bottom: auto;
@@ -38,18 +69,18 @@ export const getToastPositionStyle = (options: ToastSystemThemeParams) => {
       top: 0;
     `,
     'top-left': `
-    bottom: auto;
-    justify-content: flex-start;
-    top: 0;
+      bottom: auto;
+      justify-content: flex-start;
+      top: 0;
     `,
     'top-right': `
-    bottom: auto;
-    justify-content: flex-end;
-    top: 0;
+      bottom: auto;
+      justify-content: flex-end;
+      top: 0;
     `,
   };
 
-  return positions[position || 'bottom'];
+  return flex ? flexPositions[position] : positions[position];
 };
 
 export const toastContainerDefaultStyle = (options: ToastSystemThemeParams) => {
@@ -67,14 +98,12 @@ export const toastContainerDefaultStyle = (options: ToastSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
-    ${transitionStyle()}
-    ${flexCenterXStyle}
-    left: 0;
-    padding: ${theme.space[4]};
+    flex-direction: column;
     position: fixed;
-    top: 0;
     z-index: ${theme.zIndices.modal};
+    left: 0;
     ${getToastPositionStyle(options)}
+    padding: ${theme.space[2]};
   `;
 
   const res: SystemThemeReturnType = {
@@ -83,4 +112,51 @@ export const toastContainerDefaultStyle = (options: ToastSystemThemeParams) => {
   };
 
   return res[type];
+};
+
+export const toastBaseContainerDefaultStyle = (
+  options: ToastSystemThemeParams
+) => {
+  const { theme, type = 'web' } = options;
+
+  const baseStyle = `
+    display: flex;
+    margin: ${theme.space[1.5]};
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+    ${getToastPositionStyle({ ...options, flex: true })}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+// @utilities
+export const getToastPositions = (type?: PackageTypes) => {
+  const res: {
+    native: ToastNativePositionTypes[];
+    web: ToastWebPositionTypes[];
+  } = {
+    native: ['top', 'bottom'],
+    web: [
+      'bottom',
+      'bottom-left',
+      'bottom-right',
+      'top',
+      'top-left',
+      'top-right',
+    ],
+  };
+
+  return res[type || 'web'];
 };

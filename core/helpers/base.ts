@@ -94,6 +94,12 @@ export function isArray(item: any) {
   return item && Array.isArray(item);
 }
 
+/**
+ *
+ * @param target : any
+ * @param source : any
+ * @returns {Object} new object merged together
+ */
 export const mergedObjectsHandler = (target: any, source: any) => {
   const output = Object.assign({}, target);
   if (isObject(target) && isObject(source)) {
@@ -107,4 +113,24 @@ export const mergedObjectsHandler = (target: any, source: any) => {
     });
   }
   return output;
+};
+
+/**
+ *
+ * @param options : { length: number }
+ * @returns {string}
+ */
+export const generateUIDHandler = (options?: { length: number }) => {
+  const length = options?.length || 8;
+  const halfLength = length / 2;
+
+  const uId1 = (Math.random() * 46656) | 0;
+  const uId2 = (Math.random() * 46656) | 0;
+
+  const defaultUid = [...Array(halfLength)].map((i) => '0').join('');
+
+  const uId1Length = (defaultUid + uId1.toString(36)).slice(-halfLength);
+  const uId2Length = (defaultUid + uId2.toString(36)).slice(-halfLength);
+
+  return uId1Length + uId2Length;
 };

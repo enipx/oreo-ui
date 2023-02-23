@@ -72,7 +72,7 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
 
   const renderIcon = () => {
     const iconSize: CheckboxCheckedIconSizeType = {
-      sm: '4xs',
+      sm: '5xs',
       md: '3xs',
       lg: '2xs',
     };

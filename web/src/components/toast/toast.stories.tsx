@@ -1,25 +1,53 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { View } from '..';
 import { Button } from '../button';
-import { Toast } from './toast';
+import { useToast } from './';
 
 const StoryWrapper = (args: any) => {
+  const toast = useToast();
+
   return (
-    <>
+    <View flexCenterY>
       <Button
-        text="Open toast"
+        text="Show bottom toast"
         colorScheme="gray"
+        mr="md"
         onClick={() => {
-          // Toast.show({
-          //   title: 'There are 5 different variants available',
-          //   children:
-          //     'The description are avaliable in for different variants: gray, blue, red, green, orange',
-          // });
+          toast.show({
+            title: 'There are 5 different variants available',
+            content:
+              'The description are avaliable in for different variants: gray, blue, red, green, orange',
+
+            withCloseButton: true,
+          });
         }}
       />
-      <Toast />
-      <div style={{ height: '2000px' }} />
-    </>
+
+      <Button
+        text="Show top toast"
+        colorScheme="gray"
+        mr="md"
+        onClick={() => {
+          toast.show({
+            title: 'There are 5 different variants available',
+            content:
+              'The description are avaliable in for different variants: gray, blue, red, green, orange',
+            pos: 'top',
+            withCloseButton: true,
+          });
+        }}
+      />
+
+      <Button
+        text="Hide"
+        colorScheme="gray"
+        mr="md"
+        onClick={() => {
+          toast.hideAll();
+        }}
+      />
+    </View>
   );
 };
 

@@ -1,4 +1,5 @@
 // @imports
+import { ToastProvider } from '../..';
 import { GlobalStyle } from './global';
 import { OreoProviderProps } from './provider.types';
 
@@ -17,7 +18,7 @@ export const OreoProvider = (props: OreoProviderProps) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      {children}
+      <ToastProvider>{children}</ToastProvider>
     </ThemeProvider>
   );
 };
