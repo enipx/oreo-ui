@@ -1,5 +1,6 @@
 // @imports
-import { ToastProvider } from '../..';
+import { ToastProvider } from '@components/toast';
+
 import { GlobalStyle } from './global';
 import { OreoProviderProps } from './provider.types';
 

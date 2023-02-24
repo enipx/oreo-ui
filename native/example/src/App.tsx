@@ -22,6 +22,7 @@ import {
   Badge,
   Tabs,
 } from '@oreo-ui/native';
+import { Toast } from './Toast';
 
 const customTheme = {
   colors: {
@@ -203,6 +204,8 @@ export default function App() {
             </Tabs.Panel>
           </Tabs>
         </View>
+
+        <Toast />
       </Container>
     </OreoProvider>
   );

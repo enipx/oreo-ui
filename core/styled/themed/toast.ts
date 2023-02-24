@@ -6,21 +6,26 @@ import {
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
 import { PackageTypes } from '@/core/constants/index.types';
+import { isPackageNative } from '@/core/helpers/base';
 
 // @defaults
 export const toastDefaults = {
   duration: 4000,
   position: 'bottom',
+  nativePosition: 'top',
 };
 
 // @themes
 type ToastSystemThemeParams = SystemThemeParams & ToastThemedDefaultProps;
 
 export const getToastPositionStyle = (options: ToastSystemThemeParams) => {
-  const { flex } = options;
+  const { flex, type } = options;
 
   const position =
-    options.pos || (toastDefaults.position as ToastWebPositionTypes);
+    options.pos ||
+    ((isPackageNative(type)
+      ? toastDefaults.nativePosition
+      : toastDefaults.position) as ToastWebPositionTypes);
 
   type PositionsObjectType = {
     [key in ToastWebPositionTypes]: string;
@@ -50,32 +55,26 @@ export const getToastPositionStyle = (options: ToastSystemThemeParams) => {
   const positions: PositionsObjectType = {
     'bottom': `
       bottom: 0;
-      justify-content: center;
       top: auto;
     `,
     'bottom-left': `
       bottom: 0;
-      justify-content: flex-start;
       top: auto;
     `,
     'bottom-right': `
       bottom: 0;
-      justify-content: flex-end;
       top: auto;
     `,
     'top': `
       bottom: auto;
-      justify-content: center;
       top: 0;
     `,
     'top-left': `
       bottom: auto;
-      justify-content: flex-start;
       top: 0;
     `,
     'top-right': `
       bottom: auto;
-      justify-content: flex-end;
       top: 0;
     `,
   };
@@ -87,23 +86,28 @@ export const toastContainerDefaultStyle = (options: ToastSystemThemeParams) => {
   const { theme, type = 'web' } = options;
 
   const baseStyle = `
+    background-color: ${theme.colors.transparent};
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: ${theme.zIndices.modal};
+    padding: ${theme.space[1.5]};
+    margin: 0;
+    left: 0;
+    ${getToastPositionStyle(options)}
   `;
 
   const native = `
     ${baseStyle}
+    position: absolute;
+    flex: 1;
+    justify-content: flex-start;
   `;
 
   const web = `
     ${baseStyle}
     flex-direction: column;
     position: fixed;
-    z-index: ${theme.zIndices.modal};
-    left: 0;
-    ${getToastPositionStyle(options)}
-    padding: ${theme.space[2]};
   `;
 
   const res: SystemThemeReturnType = {
@@ -120,12 +124,16 @@ export const toastBaseContainerDefaultStyle = (
   const { theme, type = 'web' } = options;
 
   const baseStyle = `
+    background-color: ${theme.colors.transparent};
     display: flex;
-    margin: ${theme.space[1.5]};
+    padding: ${theme.space[1.5]};
+    margin: 0;
+    overflow: hidden;
   `;
 
   const native = `
     ${baseStyle}
+    width: 100%;
   `;
 
   const web = `

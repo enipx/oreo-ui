@@ -20,6 +20,7 @@ const StoryWrapper = (args: any) => {
               'The description are avaliable in for different variants: gray, blue, red, green, orange',
 
             withCloseButton: true,
+            disabledAutoHide: true,
           });
         }}
       />
