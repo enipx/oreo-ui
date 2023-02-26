@@ -1,6 +1,5 @@
 // @imports
 import React, { useEffect, useMemo } from 'react';
-
 import { Alert } from '../alert';
 import { ToastContextProvider } from './toast-context';
 import type { ToastProviderProps, ToastProps } from './toast.types';
@@ -12,9 +11,11 @@ import {
   toastContainerDefaultStyle,
   toastBaseContainerDefaultStyle,
   toastDefaults,
+  getToastTransition,
 } from '@/core/styled/themed/toast';
 import { styled } from '@/core/styled/web';
 import { View } from '../view';
+import { Animated, useAnimation } from '../animated';
 
 // @exports
 export const ToastContainer = styled(View)<ToastProviderProps>`
@@ -36,8 +37,16 @@ export const Toast = (props: ToastProps) => {
     ...otherProps
   } = props;
 
+  const toastTransition = getToastTransition(pos);
+
+  const { animatedStyles, animated } = useAnimation({
+    name: toastTransition,
+  });
+
   const hideHandler = () => {
-    onHide?.();
+    animated(0).start(() => {
+      onHide?.();
+    });
   };
 
   const { startTimer, clearTimer } = useTimeout(hideHandler, {
@@ -54,13 +63,16 @@ export const Toast = (props: ToastProps) => {
 
   useEffect(() => {
     timeoutHandler();
+    animated(1).start();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <ToastBase pos={pos}>
-      {render || <Alert onClose={hideHandler} {...otherProps} />}
-    </ToastBase>
+    <Animated.Container.View style={animatedStyles}>
+      <ToastBase pos={pos} render={render}>
+        {render || <Alert onClose={hideHandler} {...otherProps} />}
+      </ToastBase>
+    </Animated.Container.View>
   );
 };
 

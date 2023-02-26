@@ -1,4 +1,4 @@
-import { CSSAnimationThemedDefaultProps } from '../components.types';
+import type { CSSAnimationThemedDefaultProps } from '../components.types';
 
 // @types
 export type TransitionsType =
@@ -10,13 +10,20 @@ export type TransitionsType =
   | 'slideTop'
   | 'slideBottom'
   | 'slideLeft'
-  | 'slideRight';
+  | 'slideRight'
+  | 'none';
 
 export type TransitionsTypeObject = Record<string, TransitionsType>;
 
-export type TransitionsOption = {
+export type TransitionsKeyframeOptions = {
+  yAxis?: string;
+  xAxis?: string;
+};
+
+export interface TransitionsOption extends CSSAnimationThemedDefaultProps {
   name: TransitionsType;
-} & CSSAnimationThemedDefaultProps;
+  keyframeOptions?: TransitionsKeyframeOptions;
+}
 
 // @defaults
 export const transitionDefaults = {
@@ -40,7 +47,9 @@ export const fade = () => {
 };
 
 // @fade top
-export const fadeTop = (yAxis = '-3rem') => {
+export const fadeTop = (options: TransitionsKeyframeOptions) => {
+  const { yAxis = '-3rem' } = options;
+
   const ins = `
     from {
       opacity: 0;
@@ -67,12 +76,16 @@ export const fadeTop = (yAxis = '-3rem') => {
 };
 
 // @fade bottom
-export const fadeBottom = (yAxis = '3rem') => {
-  return fadeTop(yAxis);
+export const fadeBottom = (options: TransitionsKeyframeOptions) => {
+  const { yAxis = '3rem', ...rest } = options;
+
+  return fadeTop({ ...rest, yAxis });
 };
 
 // @fade left
-export const fadeLeft = (xAxis = '-3rem') => {
+export const fadeLeft = (options: TransitionsKeyframeOptions) => {
+  const { xAxis = '-3rem' } = options;
+
   const ins = `
     from {
       opacity: 0;
@@ -99,12 +112,16 @@ export const fadeLeft = (xAxis = '-3rem') => {
 };
 
 // @fade right
-export const fadeRight = (xAxis = '3rem') => {
-  return fadeLeft(xAxis);
+export const fadeRight = (options: TransitionsKeyframeOptions) => {
+  const { xAxis = '3rem', ...rest } = options;
+
+  return fadeLeft({ ...rest, xAxis });
 };
 
 // @slide top
-export const slideTop = (yAxis = '-100%') => {
+export const slideTop = (options: TransitionsKeyframeOptions) => {
+  const { yAxis = '-100%' } = options;
+
   const ins = `
     from {
       transform: translateY(${yAxis});
@@ -129,15 +146,19 @@ export const slideTop = (yAxis = '-100%') => {
 };
 
 // @slide bottom
-export const slideBottom = (yAxis = '100%') => {
-  return slideTop(yAxis);
+export const slideBottom = (options: TransitionsKeyframeOptions) => {
+  const { yAxis = '100%', ...rest } = options;
+
+  return slideTop({ ...rest, yAxis });
 };
 
 // @slide left
-export const slideLeft = (yAxis = '-100%') => {
+export const slideLeft = (options: TransitionsKeyframeOptions) => {
+  const { xAxis = '-100%' } = options;
+
   const ins = `
     from {
-      transform: translateX(${yAxis});
+      transform: translateX(${xAxis});
     }
     to {
       transform: translateX(0);
@@ -151,7 +172,7 @@ export const slideLeft = (yAxis = '-100%') => {
     }
     to {
       opacity: 0;
-      transform: translateX(${yAxis});
+      transform: translateX(${xAxis});
     }
   `;
 
@@ -159,8 +180,9 @@ export const slideLeft = (yAxis = '-100%') => {
 };
 
 // @slide right
-export const slideRight = (yAxis = '100%') => {
-  return slideLeft(yAxis);
+export const slideRight = (options: TransitionsKeyframeOptions) => {
+  const { xAxis = '100%', ...rest } = options;
+  return slideLeft({ ...rest, xAxis });
 };
 
 /**
@@ -170,7 +192,7 @@ export const slideRight = (yAxis = '100%') => {
  */
 export const addTransitionsHandler = (transition: TransitionsOption[]) => {
   const transitions: {
-    [key in TransitionsType]: () => {
+    [key in TransitionsType]: (options: TransitionsKeyframeOptions) => {
       in: string;
       out: string;
     };
@@ -184,6 +206,7 @@ export const addTransitionsHandler = (transition: TransitionsOption[]) => {
     slideBottom,
     slideRight,
     slideLeft,
+    none: () => ({ in: '', out: '' }),
   };
 
   const styles = transition.reduce(
@@ -196,6 +219,7 @@ export const addTransitionsHandler = (transition: TransitionsOption[]) => {
         direction = '',
         timingFunction = '',
         fillMode = '',
+        keyframeOptions,
       } = currrentTransition;
 
       const nameIn = `${name}In`;
@@ -207,15 +231,24 @@ export const addTransitionsHandler = (transition: TransitionsOption[]) => {
       const defaultSettings =
         `${duration} ${delay} ${iterationCount} ${direction} ${timingFunction} ${fillMode}`.trimEnd();
 
+      const skipTransition = getIfTransitionIsDisabled(name);
+
+      // skip transition
+      if (skipTransition) {
+        return `
+        ${preferredTransitions}
+      `.trim();
+      }
+
       return `
         ${preferredTransitions}
 
         @keyframes ${keyframeNameIn} {
-          ${transitions[name]().in}
+          ${transitions[name]({ ...keyframeOptions }).in}
         }
 
         @keyframes ${keyframeNameOut} {
-          ${transitions[name]().out}
+          ${transitions[name]({ ...keyframeOptions }).out}
         }
 
         &.${nameIn} {
@@ -234,11 +267,17 @@ export const addTransitionsHandler = (transition: TransitionsOption[]) => {
 };
 
 export const getTransitionClassName = (name: TransitionsType) => {
-  const active = `${name}In`;
-  const inactive = `${name}Out`;
+  const skipTransition = getIfTransitionIsDisabled(name);
+
+  const active = skipTransition ? '' : `${name}In`;
+  const inactive = skipTransition ? '' : `${name}Out`;
 
   return {
     active,
     inactive,
   };
+};
+
+export const getIfTransitionIsDisabled = (name: TransitionsType) => {
+  return name === 'none';
 };

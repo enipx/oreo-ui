@@ -1,6 +1,8 @@
 import type { ToastThemedDefaultProps } from '@/core/styled/components.types';
 
-export interface ToastProps extends ToastThemedDefaultProps {}
+export interface ToastProps extends ToastThemedDefaultProps {
+  newest?: ToastStateProps;
+}
 
 export interface ToastProviderProps extends ToastProps {}
 

@@ -6,6 +6,7 @@ import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
 } from '../theme/utilities/colors';
+import { TransitionsType } from './css/transitions';
 import type {
   LayoutThemeStyledProps,
   TypographyThemeStyledProps,
@@ -609,6 +610,8 @@ export interface AlertThemedDefaultProps {
   iconType?: AlertIconTypeTypes;
 
   hideBorder?: boolean;
+
+  transition?: TransitionsType;
 }
 
 export interface AlertThemedStyledProps
@@ -857,6 +860,13 @@ export interface TdThemedDefaultProps extends ViewThemedStyledProps {
 export interface TableCaptionThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
+   */
+  children?: React.ReactNode;
+}
+
+export interface AnimatedThemedDefaultProps {
+  /**
+   * animated content
    */
   children?: React.ReactNode;
 }

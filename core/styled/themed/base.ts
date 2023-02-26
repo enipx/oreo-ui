@@ -95,7 +95,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
       borderColor: theme.colors.transparent,
       iconBorderColor: theme.colors.transparent,
       hoverBackgroundColor: theme.colors[colorScheme][50],
-      color: theme.colors[colorScheme][500],
+      color: theme.colors[colorScheme][700],
     },
     link: {
       backgroundColor: theme.colors.transparent,

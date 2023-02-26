@@ -15,18 +15,24 @@ import { toastDefaults } from '@/core/styled/themed/toast';
 export const useToastConfig = () => {
   const [toasts, setToasts] = useState<ToastStateProps[]>([]);
 
+  // used to monitor which the newly add toast
+  const [newestToast, setNewestToast] = useState<ToastStateProps | undefined>(
+    undefined
+  );
+
   const show: ToastContextProps['show'] = (content) => {
     setToasts((prevToasts) => {
       const id = `toast-${prevToasts.length + 1}-${generateUIDHandler()}`;
 
-      return [
-        ...prevToasts,
-        {
-          ...content,
-          id,
-          pos: content.pos || (toastDefaults.position as any),
-        },
-      ];
+      const toast: ToastStateProps = {
+        ...content,
+        id,
+        pos: content.pos || (toastDefaults.position as any),
+      };
+
+      setNewestToast(toast);
+
+      return [...prevToasts, toast];
     });
   };
 
@@ -40,7 +46,7 @@ export const useToastConfig = () => {
     setToasts([]);
   };
 
-  return { hide, hideAll, show, toasts };
+  return { hide, hideAll, show, toasts, newestToast };
 };
 
 export const useToast = useToastContext as useToastProps;

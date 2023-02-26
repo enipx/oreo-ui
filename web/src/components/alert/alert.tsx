@@ -79,22 +79,30 @@ export const Alert = (props: AlertProps) => {
     withIcon,
     iconType,
     content,
+    transition = 'fade',
     ...otherProps
   } = props;
 
-  const transition = getTransitionClassName('fade');
+  const transitionClassName = getTransitionClassName(transition);
 
   const [show, setShow] = useState(true);
 
   const alertRef = useRef<HTMLDivElement>(null);
 
   const onCloseHandler = () => {
-    alertRef.current?.classList.add(transition.inactive);
+    if (transitionClassName.inactive) {
+      alertRef.current?.classList.remove(transitionClassName.active);
+      alertRef.current?.classList.add(transitionClassName.inactive);
 
-    setTimeout(() => {
-      setShow(false);
-      onClose?.();
-    }, transitionDefaults.durationTimeout);
+      setTimeout(() => {
+        setShow(false);
+        onClose?.();
+      }, transitionDefaults.durationTimeout);
+
+      return;
+    }
+
+    onClose?.();
   };
 
   if (!show) return null;
@@ -104,7 +112,7 @@ export const Alert = (props: AlertProps) => {
       ref={alertRef}
       colorScheme={colorScheme}
       variant={variant}
-      className={transition.active}
+      className={transitionClassName.active}
       {...(otherProps as any)}>
       <AlertIcon
         icon={icon}

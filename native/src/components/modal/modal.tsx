@@ -111,7 +111,8 @@ export const Modal: React.FC<ModalProps> = (props) => {
           <>
             <Button
               text="Close"
-              colorScheme="ghost"
+              colorScheme="gray"
+              variant="ghost"
               onPress={props.onClose}
               mr="md"
               {...props.footerCloseButtonProps}
@@ -135,7 +136,8 @@ export const Modal: React.FC<ModalProps> = (props) => {
           />
           <Button
             text="Close"
-            colorScheme="ghost"
+            colorScheme="gray"
+            variant="ghost"
             width="100%"
             onPress={props.onClose}
             {...props.footerCloseButtonProps}

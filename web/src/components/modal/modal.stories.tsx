@@ -21,7 +21,7 @@ const StoryWrapper = (args: any) => {
 
   return (
     <>
-      <Button text="Open modal" colorScheme="gray" onClick={handler.open} />
+      <Button text="Open modal" onClick={handler.open} />
       <StoryModal {...args} isOpen={isOpen} onClose={handler.close} />
       <div style={{ height: '2000px' }} />
     </>

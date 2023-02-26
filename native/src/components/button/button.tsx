@@ -59,6 +59,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     children,
     size = buttonDefaults.size,
     activeOpacity,
+    variant,
     ...otherProps
   } = props;
 
@@ -66,6 +67,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     <StyledButton
       activeOpacity={activeOpacity}
       colorScheme={colorScheme}
+      variant={variant}
       size={size}
       {...(otherProps as any)}>
       {icon ? <View mr={buttonIconSpacing[size]}>{icon}</View> : null}
@@ -74,6 +76,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
           textAlign="center"
           colorScheme={colorScheme}
           fontSize={buttonTextsize[size]}
+          variant={variant}
           {...(textProps as any)}>
           {text}
         </StyleButtonText>

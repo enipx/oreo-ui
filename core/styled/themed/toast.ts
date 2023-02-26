@@ -1,11 +1,12 @@
-import {
+import type {
   ToastThemedDefaultProps,
   ToastWebPositionTypes,
   ToastNativePositionTypes,
 } from '../components.types';
+import { addTransitionsHandler, TransitionsType } from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import { PackageTypes } from '@/core/constants/index.types';
+import type { PackageTypes } from '@/core/constants/index.types';
 import { isPackageNative } from '@/core/helpers/base';
 
 // @defaults
@@ -91,7 +92,7 @@ export const toastContainerDefaultStyle = (options: ToastSystemThemeParams) => {
     display: flex;
     justify-content: center;
     z-index: ${theme.zIndices.modal};
-    padding: ${theme.space[1.5]};
+    padding: 0;
     margin: 0;
     left: 0;
     ${getToastPositionStyle(options)}
@@ -121,12 +122,14 @@ export const toastContainerDefaultStyle = (options: ToastSystemThemeParams) => {
 export const toastBaseContainerDefaultStyle = (
   options: ToastSystemThemeParams
 ) => {
-  const { theme, type = 'web' } = options;
+  const { theme, type = 'web', render } = options;
+
+  const padding = render ? 0 : `${theme.space[1.5]} ${theme.space[3]}`;
 
   const baseStyle = `
     background-color: ${theme.colors.transparent};
     display: flex;
-    padding: ${theme.space[1.5]};
+    padding: ${padding};
     margin: 0;
     overflow: hidden;
   `;
@@ -139,6 +142,11 @@ export const toastBaseContainerDefaultStyle = (
   const web = `
     ${baseStyle}
     ${getToastPositionStyle({ ...options, flex: true })}
+    ${addTransitionsHandler([
+      { name: 'fade' },
+      { name: 'fadeTop', keyframeOptions: { yAxis: '-1rem' } },
+      { name: 'fadeBottom', keyframeOptions: { yAxis: '1rem' } },
+    ])}
   `;
 
   const res: SystemThemeReturnType = {
@@ -167,4 +175,17 @@ export const getToastPositions = (type?: PackageTypes) => {
   };
 
   return res[type || 'web'];
+};
+
+export const getToastTransition = (pos?: ToastWebPositionTypes) => {
+  const res: { [key in ToastWebPositionTypes]: TransitionsType } = {
+    'bottom': 'fadeBottom',
+    'bottom-left': 'fadeBottom',
+    'bottom-right': 'fadeBottom',
+    'top': 'fadeTop',
+    'top-left': 'fadeTop',
+    'top-right': 'fadeTop',
+  };
+
+  return res[pos || (toastDefaults.position as ToastWebPositionTypes)];
 };
