@@ -870,3 +870,56 @@ export interface AnimatedThemedDefaultProps {
    */
   children?: React.ReactNode;
 }
+
+export type TooltipThemedPlacementTypes =
+  | 'auto'
+  | 'auto-start'
+  | 'auto-end'
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+
+export interface TooltipThemedDefaultProps {
+  /**
+   * tooltip content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * label
+   */
+  label?: string;
+
+  /**
+   * tooltip placement
+   */
+  placement?: TooltipThemedPlacementTypes;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  variant?: DefaultColorsVariantsType;
+
+  /**
+   * show tooltip arrow
+   */
+  withArrow?: boolean;
+
+  /**
+   * delay before tooltip is open
+   */
+  openDelay?: number;
+
+  /**
+   * delay before tooltip is close
+   */
+  closeDelay?: number;
+}
