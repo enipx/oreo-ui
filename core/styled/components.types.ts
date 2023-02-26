@@ -609,7 +609,7 @@ export interface AlertThemedDefaultProps {
 
   iconType?: AlertIconTypeTypes;
 
-  hideBorder?: boolean;
+  showBorder?: boolean;
 
   transition?: TransitionsType;
 }

@@ -58,14 +58,16 @@ export const getAlertColors = (option: AlertSystemThemeParams) => {
 
 // @styles
 export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
-  const { theme, type = 'web', hideBorder } = option;
+  const { theme, type = 'web', showBorder } = option;
 
   const { backgroundColor, color, contentColor } = getAlertColors(option);
+
+  const borderColor = showBorder ? color : theme.colors.transparent;
 
   const baseStyle = `
     background-color: ${backgroundColor};
     border-radius: ${theme.radii.base};
-    border-left: 4px solid ${hideBorder ? 'transparent' : color};
+    border-left: 4px solid ${borderColor};
   `;
 
   const native = `
@@ -74,7 +76,7 @@ export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
     padding-horizontal: ${theme.space[4]};
     padding-vertical: ${theme.space[3]};
     border-left-width: 4px;
-    border-left-color: ${hideBorder ? 'transparent' : color};
+    border-left-color: ${borderColor};
   `;
 
   const web = `
