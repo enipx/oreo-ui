@@ -1,6 +1,9 @@
 import type { usePopper } from 'react-popper';
 
-import type { PopoverThemedDefaultProps } from '@/core/styled/components.types';
+import type {
+  PopoverThemedDefaultProps,
+  PopoverContentThemedStyledProps,
+} from '@/core/styled/components.types';
 
 export interface PopoverProps extends PopoverThemedDefaultProps {}
 
@@ -17,7 +20,7 @@ export interface PopoverTargetProps {
   trigger?: 'hover' | 'click';
 }
 
-export interface PopoverContentProps {
+export interface PopoverContentProps extends PopoverContentThemedStyledProps {
   children?: React.ReactNode;
 }
 

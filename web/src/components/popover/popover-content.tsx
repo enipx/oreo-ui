@@ -13,7 +13,7 @@ export const StyledPopover = styled(View)<PopoverContentProps>`
 `;
 
 export const PopoverContent = (props: PopoverContentProps) => {
-  const { children } = props;
+  const { children, ...otherProps } = props;
 
   const contextValue = usePopoverContext();
 
@@ -25,7 +25,8 @@ export const PopoverContent = (props: PopoverContentProps) => {
       data-show={contextValue?.opened}
       ref={contextValue?.setPopperElement as any}
       role="tooltip"
-      {...contextValue?.attributes?.popper}>
+      {...contextValue?.attributes?.popper}
+      {...(otherProps as any)}>
       {children}
 
       {withArrow ? (

@@ -990,3 +990,6 @@ export interface PopoverThemedDefaultProps {
    */
   onOpen?: () => void;
 }
+
+export interface PopoverContentThemedStyledProps
+  extends ViewThemedStyledProps {}
