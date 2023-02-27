@@ -1,4 +1,6 @@
 // @imports
+import { forwardRef } from 'react';
+
 import { View } from '../view';
 import type { ButtonProps } from './button.types';
 
@@ -20,13 +22,14 @@ export const StyledButton = styled(
   ${(props) => buttonStateVariant({ ...props } as any)}
 `;
 
-export const Button = (props: ButtonProps) => {
+export const Button = forwardRef((props: ButtonProps, ref) => {
   const {
     text,
     icon,
     rightIcon,
     size = buttonDefaults.size,
     colorScheme = buttonDefaults.colorScheme,
+    children,
     ...otherProps
   } = props;
 
@@ -34,13 +37,14 @@ export const Button = (props: ButtonProps) => {
     <StyledButton
       colorScheme={colorScheme}
       size={size}
+      ref={ref}
       {...(otherProps as any)}>
       {icon ? (
         <View as="span" mr={buttonIconSpacing[size]}>
           {icon}
         </View>
       ) : null}
-      {text}
+      {children || text}
       {rightIcon ? (
         <View as="span" ml={buttonIconSpacing[size]}>
           {rightIcon}
@@ -48,4 +52,4 @@ export const Button = (props: ButtonProps) => {
       ) : null}
     </StyledButton>
   );
-};
+});

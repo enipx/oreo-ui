@@ -32,7 +32,7 @@ export const defaultStyle = () => {
 
 // @fade
 const fadeInKeyframes = keyframes`
-  ${fade().in}
+  ${fade({}).in}
 `;
 
 export const FadeIn = styled(defaultStyle())<FadeProps>`
@@ -43,7 +43,7 @@ export const FadeIn = styled(defaultStyle())<FadeProps>`
 `;
 
 const fadeOutKeyframes = keyframes`
-  ${fade().out}
+  ${fade({}).out}
 `;
 
 export const FadeOut = styled(defaultStyle())<FadeProps>`
@@ -55,7 +55,7 @@ export const FadeOut = styled(defaultStyle())<FadeProps>`
 
 // @fade-top
 const fadeInTopKeyframes = keyframes`
-  ${fadeTop().in}
+  ${fadeTop({}).in}
 `;
 
 export const FadeInTop = styled(defaultStyle())<FadeProps>`
@@ -66,7 +66,7 @@ export const FadeInTop = styled(defaultStyle())<FadeProps>`
 `;
 
 const fadeOutTopKeyframes = keyframes`
-  ${fadeTop().out}
+  ${fadeTop({}).out}
 `;
 
 export const FadeOutTop = styled(defaultStyle())<FadeProps>`
@@ -78,7 +78,7 @@ export const FadeOutTop = styled(defaultStyle())<FadeProps>`
 
 // @fade-left
 const fadeInLeftKeyframes = keyframes`
-  ${fadeLeft().in}
+  ${fadeLeft({}).in}
 `;
 
 export const FadeInLeft = styled(defaultStyle())<FadeProps>`
@@ -89,7 +89,7 @@ export const FadeInLeft = styled(defaultStyle())<FadeProps>`
 `;
 
 const fadeOutLeftKeyframes = keyframes`
-  ${fadeLeft().out}
+  ${fadeLeft({}).out}
 `;
 
 export const FadeOutLeft = styled(defaultStyle())<FadeProps>`
@@ -101,7 +101,7 @@ export const FadeOutLeft = styled(defaultStyle())<FadeProps>`
 
 // @fade-right
 const fadeInRightKeyframes = keyframes`
-  ${fadeRight().in}
+  ${fadeRight({}).in}
 `;
 
 export const FadeInRight = styled(defaultStyle())<FadeProps>`
@@ -112,7 +112,7 @@ export const FadeInRight = styled(defaultStyle())<FadeProps>`
 `;
 
 const fadeOutRightKeyframes = keyframes`
-  ${fadeRight().out}
+  ${fadeRight({}).out}
 `;
 
 export const FadeOutRight = styled(defaultStyle())<FadeProps>`

@@ -3,6 +3,7 @@ import type { PackageTypes } from '../../constants/index.types';
 import _breakpoints, { BreakpointsTypes } from './breakpoints';
 import colors from './colors';
 import _radii, { RadiiTypes } from './radius';
+import shadows from './shadows';
 import _space, { SpacingTypes } from './spacing';
 import typography from './typography';
 import zIndices from './z-index';
@@ -32,6 +33,7 @@ const utilities = (arg?: PackageTypes) => {
     space,
     radii,
     zIndices,
+    shadows,
     ...typography(arg),
   };
 };

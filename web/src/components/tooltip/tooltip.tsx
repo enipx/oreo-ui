@@ -1,10 +1,10 @@
 // @imports
+import { usePopover } from '@components/popover/use-popover';
 import { View } from '@components/view';
 import { useState, Children, cloneElement, SetStateAction } from 'react';
 
 import { Portal } from '../portal';
 import type { TooltipProps } from './tooltip.types';
-import { useTooltip } from './use-tooltip';
 
 import { isString } from '@/core/helpers/base';
 import { tooltipDefaultStyle } from '@/core/styled/themed/tooltip';
@@ -22,7 +22,7 @@ export const Tooltip = (props: TooltipProps) => {
   const [popperElement, setPopperEl] = useState<HTMLElement | null>(null);
   const [arrowElement, setArrowEl] = useState<HTMLElement | null>(null);
 
-  const { styles, attributes, opened, openHandler, closeHandler } = useTooltip({
+  const { styles, attributes, opened, openHandler, closeHandler } = usePopover({
     referenceElement,
     popperElement,
     arrowElement,
@@ -30,11 +30,15 @@ export const Tooltip = (props: TooltipProps) => {
     ...otherProps,
   });
 
-  const reactChildren = isString(children) ? <span>{children}</span> : children;
+  const renderChildren = isString(children) ? (
+    <span>{children}</span>
+  ) : (
+    children
+  );
 
   return (
     <div>
-      {Children.map(reactChildren, (child, _index) => {
+      {Children.map(renderChildren, (child, _index) => {
         if (!child) return null;
 
         return cloneElement(child as any, {

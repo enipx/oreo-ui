@@ -40,6 +40,11 @@ export const getBaseStyle = (options: SystemThemeParams) => {
     dark: theme.colors.gray[900],
   };
 
+  const borderColor: BaseStyleObjectType = {
+    light: theme.colors.gray[50],
+    dark: theme.colors.gray[800],
+  };
+
   const linkColor: BaseStyleObjectType = {
     light: theme.colors.blue[500],
     dark: theme.colors.blue[200],
@@ -48,6 +53,7 @@ export const getBaseStyle = (options: SystemThemeParams) => {
   return {
     color: color[mode],
     backgroundColor: backgroundColor[mode],
+    borderColor: borderColor[mode],
     linkColor: linkColor[mode],
   };
 };

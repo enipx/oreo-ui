@@ -2,13 +2,15 @@
 import { useCallback, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import type { UseTooltipOptions } from './tooltip.types';
+import type { UsePopverOptions } from './popover.types';
 
+import { useKeydown } from '@/core/hooks/use-keydown';
+import { useOutsideElementClick } from '@/core/hooks/use-outside-element-click';
 import { getTransitionClassName } from '@/core/styled/css/transitions';
 import spacing from '@/core/theme/utilities/spacing';
 
 // @exports
-export const useTooltip = (options: UseTooltipOptions) => {
+export const usePopover = (options: UsePopverOptions) => {
   const {
     referenceElement,
     popperElement,
@@ -17,7 +19,13 @@ export const useTooltip = (options: UseTooltipOptions) => {
     opened: defaultOpened,
     openDelay,
     closeDelay,
+    closeOnClickOutside = true,
+    closeOnEscape,
+    onClose,
+    onOpen,
   } = options;
+
+  const isControlled = defaultOpened !== undefined;
 
   const transitionClassName = getTransitionClassName('fade');
 
@@ -33,10 +41,16 @@ export const useTooltip = (options: UseTooltipOptions) => {
 
   const closeHandler = useCallback(() => {
     const init = () => {
+      if (isControlled) {
+        onClose?.();
+        return;
+      }
+
       popperElement?.classList.remove(transitionClassName.active);
       popperElement?.classList.add(transitionClassName.inactive);
       setTimeout(() => {
         setOpened(false);
+        onClose?.();
       }, 200);
     };
 
@@ -53,7 +67,13 @@ export const useTooltip = (options: UseTooltipOptions) => {
 
   const openHandler = useCallback(() => {
     const init = () => {
+      if (isControlled) {
+        onOpen?.();
+        return;
+      }
+
       setOpened(true);
+      onOpen?.();
       popperElement?.classList.remove(transitionClassName.inactive);
       popperElement?.classList.add(transitionClassName.active);
     };
@@ -69,10 +89,31 @@ export const useTooltip = (options: UseTooltipOptions) => {
     init();
   }, [popperElement]);
 
+  const toggleHandler = useCallback(() => {
+    if (opened) {
+      closeHandler();
+    } else {
+      openHandler();
+    }
+  }, [opened]);
+
+  useOutsideElementClick({
+    element: referenceElement,
+    callback: closeHandler,
+    enabled: closeOnClickOutside,
+  });
+
+  useKeydown({
+    key: 'Escape',
+    callback: closeHandler,
+    enabled: closeOnEscape,
+  });
+
   return {
     ...popper,
     opened,
     closeHandler,
     openHandler,
+    toggleHandler,
   };
 };

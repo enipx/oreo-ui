@@ -106,6 +106,8 @@ export interface ButtonThemedStyledProps
    * set button border radius to round
    */
   rounded?: boolean;
+
+  children?: React.ReactNode;
 }
 
 export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
@@ -871,7 +873,7 @@ export interface AnimatedThemedDefaultProps {
   children?: React.ReactNode;
 }
 
-export type TooltipThemedPlacementTypes =
+export type PopperThemedPlacementTypes =
   | 'auto'
   | 'auto-start'
   | 'auto-end'
@@ -902,7 +904,7 @@ export interface TooltipThemedDefaultProps {
   /**
    * tooltip placement
    */
-  placement?: TooltipThemedPlacementTypes;
+  placement?: PopperThemedPlacementTypes;
 
   colorScheme?: DefaultColorsSchemeKeys;
 
@@ -922,4 +924,69 @@ export interface TooltipThemedDefaultProps {
    * delay before tooltip is close
    */
   closeDelay?: number;
+
+  /**
+   * set controlled value
+   */
+  opened?: boolean;
+
+  /**
+   * called after content is opened
+   */
+  onClose?: () => void;
+
+  /**
+   * called after content is closed
+   */
+  onOpen?: () => void;
+}
+
+export interface PopoverThemedDefaultProps {
+  /**
+   * tooltip content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * tooltip placement
+   */
+  placement?: PopperThemedPlacementTypes;
+
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  variant?: DefaultColorsVariantsType;
+
+  /**
+   * show tooltip arrow
+   */
+  withArrow?: boolean;
+
+  /**
+   * delay before tooltip is open
+   */
+  openDelay?: number;
+
+  /**
+   * delay before tooltip is close
+   */
+  closeDelay?: number;
+
+  closeOnClickOutside?: boolean;
+
+  closeOnEscape?: boolean;
+
+  /**
+   * set controlled value
+   */
+  opened?: boolean;
+
+  /**
+   * called after content is opened
+   */
+  onClose?: () => void;
+
+  /**
+   * called after content is closed
+   */
+  onOpen?: () => void;
 }

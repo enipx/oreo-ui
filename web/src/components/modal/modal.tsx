@@ -13,6 +13,7 @@ import {
   domExistsHandler,
   preventPageScrollingHandler,
 } from '@/core/helpers/dom';
+import { useKeydown } from '@/core/hooks/use-keydown';
 import { getTransitionClassName } from '@/core/styled/css/transitions';
 import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
 import {
@@ -155,12 +156,6 @@ export const Modal: React.FC<ModalProps> = (props) => {
     }
   };
 
-  const closeOnEscapeHandler = (event: KeyboardEvent) => {
-    if (domExistsHandler() && event.key === 'Escape' && closeOnEscape) {
-      onCloseHandler();
-    }
-  };
-
   const renderModalFooter = () => {
     if (props.withFooter) {
       return (
@@ -198,11 +193,11 @@ export const Modal: React.FC<ModalProps> = (props) => {
     updateTransitionClassNameHandler();
   }, [props.pos]);
 
-  useEffect(() => {
-    window.addEventListener('keydown', closeOnEscapeHandler);
-
-    return () => window.removeEventListener('keydown', closeOnEscapeHandler);
-  }, []);
+  useKeydown({
+    key: 'Escape',
+    callback: onCloseHandler,
+    enabled: domExistsHandler() && closeOnEscape,
+  });
 
   if (!props.isOpen) {
     return null;
