@@ -993,3 +993,35 @@ export interface PopoverThemedDefaultProps {
 
 export interface PopoverContentThemedStyledProps
   extends ViewThemedStyledProps {}
+
+export interface SkeletonThemedDefaultProps extends LayoutProps, BorderProps {
+  /**
+   * tooltip content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * check if content is loading
+   */
+  loaded?: string;
+
+  /**
+   * set placeholder start color
+   */
+  startColor?: string;
+
+  /**
+   * set placeholder end color
+   */
+  endColor?: string;
+
+  /**
+   * number of time to
+   */
+  count?: number;
+
+  /**
+   * set border radius to 50%
+   */
+  rounded?: boolean;
+}

@@ -79,7 +79,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
       backgroundColor: theme.colors[colorScheme][50],
       borderColor: theme.colors[colorScheme][50],
       iconBorderColor: theme.colors[colorScheme][50],
-      hoverBackgroundColor: theme.colors[colorScheme][100],
+      hoverBackgroundColor: theme.colors[colorScheme][50],
       color: theme.colors[colorScheme][700],
     },
     solid: {

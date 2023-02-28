@@ -4,7 +4,7 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getColorSchemeStyle } from './base';
 
 // @defaults
-export const badgeDefaults = {};
+export const tooltipDefaults = {};
 
 // @themes
 type TooltipSystemThemeParams = SystemThemeParams & TooltipThemedDefaultProps;

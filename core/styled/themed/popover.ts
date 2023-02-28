@@ -4,7 +4,7 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle } from './base';
 
 // @defaults
-export const badgeDefaults = {};
+export const popoverDefaults = {};
 
 // @themes
 type PopoverSystemThemeParams = SystemThemeParams & PopoverThemedDefaultProps;
