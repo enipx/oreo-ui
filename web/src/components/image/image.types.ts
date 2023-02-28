@@ -1,8 +1,10 @@
 import type { ImageThemedDefaultProps } from '@/core/styled/components.types';
 
-export interface ImageProps extends ImageThemedDefaultProps {
-  imgProps?: React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  >;
-}
+type DefaultImageProps = React.DetailedHTMLProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>;
+
+export interface ImageProps
+  extends ImageThemedDefaultProps,
+    Omit<DefaultImageProps, 'width' | 'height'> {}

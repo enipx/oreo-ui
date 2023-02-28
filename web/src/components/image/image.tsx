@@ -12,9 +12,9 @@ export const StyledImage = styled(baseStyled('img'))<ImageProps>`
 `;
 
 export const Image = forwardRef((props: ImageProps, ref) => {
-  const { alt, src, imgProps, fallback, fallbackSrc, ...otherProps } = props;
+  const { alt, src, fallback, fallbackSrc, ...otherProps } = props;
 
-  const [isSrcBroken, setIsSrcBroken] = useState(false);
+  const [isSrcBroken, setIsSrcBroken] = useState(!src);
 
   const onImgError = () => {
     setIsSrcBroken(true);
@@ -28,13 +28,12 @@ export const Image = forwardRef((props: ImageProps, ref) => {
         alt={alt}
         ref={ref as any}
         {...otherProps}
-        {...imgProps}
       />
     );
   };
 
   useEffect(() => {
-    setIsSrcBroken(false);
+    setIsSrcBroken(!src);
   }, [src]);
 
   if (isSrcBroken && fallbackSrc) {

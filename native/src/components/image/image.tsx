@@ -19,10 +19,9 @@ export const StyledImage = styled(baseStyled('Image'))<ImageProps>`
 `;
 
 export const Image = forwardRef((props: ImageProps, ref) => {
-  const { alt, src, imgProps, fallback, fit, fallbackSrc, ...otherProps } =
-    props;
+  const { alt, src, fallback, fit, fallbackSrc, ...otherProps } = props;
 
-  const [isSrcBroken, setIsSrcBroken] = useState(false);
+  const [isSrcBroken, setIsSrcBroken] = useState(!src);
 
   const size = otherProps?.size || imageDefaults.size;
 
@@ -55,13 +54,12 @@ export const Image = forwardRef((props: ImageProps, ref) => {
         resizeMode={fit || 'cover'}
         ref={ref as any}
         {...otherProps}
-        {...imgProps}
       />
     );
   };
 
   useEffect(() => {
-    setIsSrcBroken(false);
+    setIsSrcBroken(!src);
   }, [src]);
 
   if (isSrcBroken && fallbackSrc) {
