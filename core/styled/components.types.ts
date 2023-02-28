@@ -994,7 +994,10 @@ export interface PopoverThemedDefaultProps {
 export interface PopoverContentThemedStyledProps
   extends ViewThemedStyledProps {}
 
-export interface SkeletonThemedDefaultProps extends LayoutProps, BorderProps {
+export interface SkeletonThemedDefaultProps
+  extends LayoutProps,
+    BorderProps,
+    SpaceProps {
   /**
    * tooltip content
    */

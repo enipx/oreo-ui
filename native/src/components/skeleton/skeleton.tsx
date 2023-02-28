@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { Animated } from 'react-native';
 import type { SkeletonProps } from './skeleton.types';
 
-import { layout, border } from '@/core/styled/system';
+import { layout, border, space } from '@/core/styled/system';
 import {
   skeletonDefaultStyle,
   skeletonBaseDefaultStyle,
@@ -28,6 +28,7 @@ export const StyledSkeleton = styled(
   ${(props) => skeletonDefaultStyle({ ...props, type: 'native' } as any)}
   ${layout};
   ${border};
+  ${space}
 `;
 
 export const StyledSkeletonBase = styled(baseStyled('View'))<SkeletonProps>`

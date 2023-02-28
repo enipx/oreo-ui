@@ -2,7 +2,7 @@
 import { FadeIn } from '../transitions';
 import type { SkeletonProps } from './skeleton.types';
 
-import { layout, border } from '@/core/styled/system';
+import { layout, border, space } from '@/core/styled/system';
 import { skeletonDefaultStyle } from '@/core/styled/themed/skeleton';
 import { styled, baseStyled } from '@/core/styled/web';
 
@@ -22,6 +22,7 @@ export const StyledSkeleton = styled(
   ${(props) => skeletonDefaultStyle({ ...props } as any)}
   ${layout};
   ${border};
+  ${space}
 `;
 
 export const Skeleton = (props: SkeletonProps) => {
