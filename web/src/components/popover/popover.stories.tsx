@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Popover> = (args) => (
         <Button text="Click me" />
       </Popover.Target>
 
-      <Popover.Content>My name is Hashir</Popover.Content>
+      <Popover.Content p="base">My name is Hashir</Popover.Content>
     </Popover>
     <div style={{ height: '100px' }} />
   </>

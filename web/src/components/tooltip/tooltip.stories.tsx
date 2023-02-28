@@ -20,5 +20,4 @@ Default.args = {
   label: 'Hi, My name Hashir',
   openDelay: 0,
   closeDelay: 0,
-  opened: true,
 };

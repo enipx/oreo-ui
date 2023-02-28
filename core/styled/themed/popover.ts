@@ -14,8 +14,6 @@ export const popoverContentDefaultStyle = (
 ) => {
   const { theme, type = 'web' } = options;
 
-  const padding = theme.space[4];
-
   const arrowSize = theme.space[2];
 
   const arrowHalfSize = theme.space[1];
@@ -28,7 +26,6 @@ export const popoverContentDefaultStyle = (
     border-radius: ${theme.radii.md};
     max-width: ${theme.breakpoints[0]};
     z-index: ${theme.zIndices.popover};
-    padding: ${padding};
     visibility: hidden;
     box-shadow: ${theme.shadows.sm};
     
