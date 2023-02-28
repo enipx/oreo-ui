@@ -14,27 +14,27 @@ const Template: ComponentStory<typeof Image> = (args) => <Image {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  src: 'https://bit.ly/dan-abramov',
+  src: 'https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=320',
   fallbackSrc: 'https://via.placeholder.com/150',
   fallback: 'Hi, I`m the fallback',
 };
 
 export const Size = Template.bind({});
 Size.args = {
-  src: 'https://bit.ly/dan-abramov',
+  src: 'https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=320',
   fallbackSrc: 'https://via.placeholder.com/100',
   size: '100px',
 };
 
 export const Fallback = Template.bind({});
 Fallback.args = {
-  src: 'https://bit.ly/dan-abramv',
+  src: 'https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=320',
   fallbackSrc: 'https://via.placeholder.com/320',
 };
 
 export const Radius = Template.bind({});
 Radius.args = {
-  src: 'https://bit.ly/dan-abramov',
+  src: 'https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=320',
   fallbackSrc: 'https://via.placeholder.com/100',
   size: '100px',
   borderRadius: 'full',

@@ -215,7 +215,8 @@ export default function App() {
         </View>
 
         <Image
-          src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg"
+          src="https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=320"
+          size="200px"
           fallbackSrc="https://via.placeholder.com/320"
         />
       </Container>

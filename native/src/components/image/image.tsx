@@ -9,11 +9,13 @@ import {
   isSvgHandler,
 } from '@/core/styled/themed/image';
 import { styled, baseStyled } from '@/core/styled/native';
+import { layout } from '@/core/styled/system';
 import { SvgUri } from 'react-native-svg';
 
 // @exports
 export const StyledImage = styled(baseStyled('Image'))<ImageProps>`
-  ${(props) => imageDefaultStyle({ ...props } as any)}
+  ${(props) => imageDefaultStyle({ ...props, type: 'native' } as any)}
+  ${layout}
 `;
 
 export const Image = forwardRef((props: ImageProps, ref) => {
