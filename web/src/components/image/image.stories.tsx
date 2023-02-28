@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { size } from 'styled-system';
 
 import { Image } from './image';
 

@@ -8,6 +8,7 @@ export * from './checkbox';
 export * from './icon-button';
 export * from './indicator';
 export * from './input';
+export * from './image';
 export * from './modal';
 export * from './pin-input';
 export * from './radio';

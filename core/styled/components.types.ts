@@ -1048,8 +1048,6 @@ export interface ImageThemedDefaultProps
    */
   fit?: React.CSSProperties['objectFit'];
 
-  imgProps?: ObjectTypes;
-
   fallbackSrc?: string;
 
   fallback?: React.ReactNode;

@@ -28,6 +28,7 @@ export const Image = forwardRef((props: ImageProps, ref) => {
         alt={alt}
         ref={ref as any}
         {...otherProps}
+        {...imgProps}
       />
     );
   };

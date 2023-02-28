@@ -22,6 +22,7 @@ import {
   Badge,
   Tabs,
   Skeleton,
+  Image,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 
@@ -209,9 +210,14 @@ export default function App() {
         <Toast />
 
         <View my="lg">
-          <Skeleton width="40px" height="40px" rounded />
+          <Skeleton width="40px" height="40px" rounded mb="md" />
           <Skeleton height="20px" borderRadius={12} count={3} />
         </View>
+
+        <Image
+          src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg"
+          fallbackSrc="https://via.placeholder.com/320"
+        />
       </Container>
     </OreoProvider>
   );
