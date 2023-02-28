@@ -21,6 +21,7 @@ import {
   Indicator,
   Badge,
   Tabs,
+  Skeleton,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 
@@ -206,6 +207,11 @@ export default function App() {
         </View>
 
         <Toast />
+
+        <View my="lg">
+          <Skeleton width="40px" height="40px" rounded />
+          <Skeleton height="20px" borderRadius={12} count={3} />
+        </View>
       </Container>
     </OreoProvider>
   );

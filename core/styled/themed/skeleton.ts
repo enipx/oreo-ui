@@ -20,17 +20,19 @@ export const skeletonDefaultStyle = (options: SkeletonSystemThemeParams) => {
     width: 100%;
     background-color: ${startColor};
     overflow: hidden;
-    border-radius: ${rounded ? '50%' : theme.radii.sm};
     z-index: 1;
     margin-bottom: ${mb};
   `;
 
   const native = `
     ${baseStyle}
+    opacity: 0.6;
+    border-radius: ${rounded ? theme.radii.full : theme.radii.sm};
   `;
 
   const web = `
     ${baseStyle}
+    border-radius: ${rounded ? '50%' : theme.radii.sm};
     line-height: 1;
 
     @keyframes skeletonKeyframes {
@@ -52,6 +54,35 @@ export const skeletonDefaultStyle = (options: SkeletonSystemThemeParams) => {
       transform: translateX(-100%);
       animation: skeletonKeyframes 1.5s ease-in-out normal infinite;
     }
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const skeletonBaseDefaultStyle = (
+  options: SkeletonSystemThemeParams
+) => {
+  const { theme, type = 'web' } = options;
+
+  const endColor = options.endColor || theme.colors.whiteAlpha[900];
+
+  const baseStyle = `
+    width: ${theme.space[8]};
+    background-color: ${endColor};
+    height: 100%;
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
   `;
 
   const res: SystemThemeReturnType = {
