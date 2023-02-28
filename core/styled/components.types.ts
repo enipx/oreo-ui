@@ -1028,3 +1028,29 @@ export interface SkeletonThemedDefaultProps
    */
   rounded?: boolean;
 }
+
+export interface ImageThemedDefaultProps
+  extends LayoutProps,
+    BorderProps,
+    SpaceProps {
+  /**
+   * image source
+   */
+  src?: string;
+
+  /**
+   * image alt
+   */
+  alt?: string;
+
+  /**
+   * Object-fit property
+   */
+  fit?: React.CSSProperties['objectFit'];
+
+  imgProps?: ObjectTypes;
+
+  fallbackSrc?: string;
+
+  fallback?: React.ReactNode;
+}

@@ -8,6 +8,7 @@ export * from './container';
 export * from './icon-button';
 export * from './indicator';
 export * from './input';
+export * from './image';
 export * from './pin-input';
 export * from './radio';
 export * from './select';

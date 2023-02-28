@@ -118,6 +118,15 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
   }
 
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
   ol,
   ul {
     list-style: none;
