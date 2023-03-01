@@ -42,6 +42,38 @@ export interface ContainerThemedStyledProps extends ViewThemedStyledProps {
   type?: BreakpointsKeys;
 }
 
+export interface FlexThemedStyledProps extends ViewThemedStyledProps {
+  /**
+   * flex content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * set flex-direction to row
+   */
+  row?: boolean;
+
+  /**
+   * set flex-direction to column
+   */
+  column?: boolean;
+
+  /**
+   * set flex-direction to either row-reverse or column-reverse
+   */
+  reverse?: boolean;
+
+  /**
+   * set display to inline-flex
+   */
+  inline?: boolean;
+
+  /**
+   * give all children specified spacing
+   */
+  spacing?: string | number;
+}
+
 export interface TextThemedStyledProps extends TypographyThemeStyledProps {
   /**
    * set text transform
