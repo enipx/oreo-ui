@@ -23,6 +23,7 @@ import {
   Tabs,
   Skeleton,
   Image,
+  Flex,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 
@@ -219,6 +220,32 @@ export default function App() {
           size="200px"
           fallbackSrc="https://via.placeholder.com/320"
         />
+
+        <View my="lg">
+          <Flex>
+            <View bg="blue.500" size="40px" borderRadius="full" />
+            <View bg="red.500" size="40px" borderRadius="full" />
+            <View bg="green.500" size="40px" borderRadius="full" />
+          </Flex>
+        </View>
+
+        <View my="lg">
+          <Flex spacing={20}>
+            <View bg="blue.500" size="40px" borderRadius="full" />
+            <View bg="red.500" size="40px" borderRadius="full" />
+            <View bg="green.500" size="40px" borderRadius="full" />
+          </Flex>
+        </View>
+
+        <View my="lg">
+          <Flex>
+            <View bg="blue.500" size="40px" borderRadius="full" />
+            <Flex.Fill />
+            <View bg="red.500" size="40px" borderRadius="full" />
+            <Flex.Fill />
+            <View bg="green.500" size="40px" borderRadius="full" />
+          </Flex>
+        </View>
       </Container>
     </OreoProvider>
   );

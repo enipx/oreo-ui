@@ -31,6 +31,7 @@ export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    display: flex;
   `;
 
   const web = `

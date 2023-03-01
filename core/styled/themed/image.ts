@@ -17,8 +17,6 @@ export const imageDefaultStyle = (options: SkeletonSystemThemeParams) => {
 
   const size = getDimensionsUnitHandler(imageDefaults.size).px;
 
-  console.log({ size, width });
-
   const baseStyle = `
   `;
 
