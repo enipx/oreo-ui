@@ -24,6 +24,7 @@ import {
   Skeleton,
   Image,
   Flex,
+  Grid,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 
@@ -245,6 +246,19 @@ export default function App() {
             <Flex.Fill />
             <View bg="green.500" size="40px" borderRadius="full" />
           </Flex>
+        </View>
+
+        <View my="lg">
+          <Grid columns={3} spacing={2}>
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+            <View bg="blue.500" height="80px" />
+          </Grid>
         </View>
       </Container>
     </OreoProvider>

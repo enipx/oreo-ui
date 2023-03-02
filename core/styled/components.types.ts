@@ -74,6 +74,39 @@ export interface FlexThemedStyledProps extends ViewThemedStyledProps {
   spacing?: string | number;
 }
 
+export interface GridThemedStyledProps extends LayoutThemeStyledProps {
+  /**
+   * grid content
+   */
+  children?: React.ReactNode;
+
+  /**
+   * set grid columns
+   */
+  columns?: number;
+
+  /**
+   * set display to inline-flex
+   */
+  inline?: boolean;
+
+  /**
+   * set grid gap
+   */
+  spacing?: string | number;
+
+  spacingX?: string | number;
+
+  spacingY?: string | number;
+}
+
+export interface GridItemThemedStyledProps extends LayoutThemeStyledProps {
+  /**
+   * grid content
+   */
+  children?: React.ReactNode;
+}
+
 export interface TextThemedStyledProps extends TypographyThemeStyledProps {
   /**
    * set text transform
