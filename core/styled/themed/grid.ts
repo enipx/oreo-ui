@@ -75,8 +75,6 @@ export const gridItemDefaultStyle = (options: GridSystemThemeParams) => {
 
   const gapY = theme.space?.[spacingY as SpacingKeys] || spacingY || gap;
 
-  console.log({ gapX, gap, gapY });
-
   const baseStyle = `
     flex: 1;
     margin-horizontal: ${gapX};
