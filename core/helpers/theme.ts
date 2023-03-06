@@ -1,5 +1,7 @@
 import type { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
 import defaultTheme, { ThemeKeys } from '../theme';
+import { getBreakpoints } from '../theme/utilities/breakpoints';
+import { convertNestObjectToNonNestedObject } from './base';
 import { convertToKebabCaseHandler } from './string';
 
 /**
@@ -46,4 +48,25 @@ export const convertReactCSSToCSSHandler = (reactCSS?: React.CSSProperties) => {
   }, '');
 
   return css;
+};
+
+/**
+ *
+ * @param options : any
+ * @returns: string
+ * method convert theme to css variable
+ *
+ */
+export const convertThemeToCSSVariable = (options: any) => {
+  const { prefix = true } = options;
+
+  const theme = {
+    ...options.theme,
+    breakpoints: getBreakpoints('web'),
+  };
+
+  // convert deep nested object to all single object
+  const res = convertNestObjectToNonNestedObject({ obj: theme, prefix });
+
+  return res;
 };

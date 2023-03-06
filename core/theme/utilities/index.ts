@@ -1,6 +1,6 @@
 // @imports
 import type { PackageTypes } from '../../constants/index.types';
-import _breakpoints, { BreakpointsTypes } from './breakpoints';
+import _breakpoints, { updateBreakpointsAlias } from './breakpoints';
 import colors from './colors';
 import _radii, { RadiiTypes } from './radius';
 import shadows from './shadows';
@@ -19,9 +19,13 @@ const utilities = (arg?: PackageTypes) => {
     dimension: isWeb ? 'rem' : 'px',
   }) as SpacingTypes;
 
-  const breakpoints = convertObjectDimensionsUnit(_breakpoints, {
-    dimension: isWeb ? 'rem' : 'px',
-  }) as BreakpointsTypes;
+  const breakpoints = updateBreakpointsAlias(
+    convertObjectDimensionsUnit(_breakpoints, {
+      dimension: isWeb ? 'rem' : 'px',
+    })
+  );
+
+  console.log({ breakpoints });
 
   const radii = convertObjectDimensionsUnit(_radii, {
     dimension: isWeb ? 'rem' : 'px',

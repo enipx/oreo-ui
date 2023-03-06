@@ -1,12 +1,11 @@
-// @file declarations
-const breakpoints = ['375', '576', '768', '992', '1280', '1440'];
+// @imports
+import type { PackageTypes } from '../../constants/index.types';
 
-breakpoints.xs = breakpoints[0];
-breakpoints.sm = breakpoints[1];
-breakpoints.md = breakpoints[2];
-breakpoints.lg = breakpoints[3];
-breakpoints.xl = breakpoints[4];
-breakpoints['2xl'] = breakpoints[5];
+import { isPackageWeb } from '@/core/helpers/base';
+import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
+
+// @file declarations
+const breakpoints: any = ['375', '576', '768', '992', '1280', '1440'];
 
 const breakpointsObject = {
   'xs': breakpoints[0],
@@ -17,6 +16,27 @@ const breakpointsObject = {
   '2xl': breakpoints[5],
 };
 
+const getBreakpoints = (arg?: PackageTypes) => {
+  const isWeb = isPackageWeb(arg);
+
+  return convertObjectDimensionsUnit(breakpointsObject, {
+    dimension: isWeb ? 'rem' : 'px',
+  }) as BreakpointsTypes;
+};
+
+const updateBreakpointsAlias = (bp: any) => {
+  const newBreakpoints = bp;
+
+  newBreakpoints.xs = bp[0];
+  newBreakpoints.sm = bp[1];
+  newBreakpoints.md = bp[2];
+  newBreakpoints.lg = bp[3];
+  newBreakpoints.xl = bp[4];
+  newBreakpoints['2xl'] = bp[5];
+
+  return newBreakpoints as BreakpointsTypes;
+};
+
 // @types definitions
 export type BreakpointsTypes = typeof breakpoints;
 
@@ -25,5 +45,5 @@ export type BreakpointsKeys = keyof BreakpointsTypes;
 export type BreakpointsObjectKeys = keyof typeof breakpointsObject;
 
 // @exports
-export { breakpointsObject };
+export { breakpointsObject, updateBreakpointsAlias, getBreakpoints };
 export default breakpoints;

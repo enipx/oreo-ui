@@ -1,4 +1,5 @@
 // @imports
+import { cssVariablePrefix } from '../constants';
 import type { ObjectTypes, PackageTypes } from '../constants/index.types';
 
 /**
@@ -113,6 +114,66 @@ export const mergedObjectsHandler = (target: any, source: any) => {
     });
   }
   return output;
+};
+
+export const iterateObjectHandler: (options: {
+  obj: ObjectTypes;
+  defaultKey?: string;
+  defaultObj?: ObjectTypes;
+  prefix?: boolean;
+  prefixValue?: string;
+}) => ObjectTypes = (options) => {
+  const { obj, defaultKey, defaultObj, prefix, prefixValue } = options;
+
+  return Object.entries(obj).reduce((allObj, [key, value]) => {
+    let objKey = defaultKey ? `${defaultKey}-${key}` : key;
+
+    objKey = prefix ? `${prefixValue || cssVariablePrefix}-${objKey}` : objKey;
+
+    const allValueObj = {
+      ...defaultObj,
+      ...allObj,
+    };
+
+    if (isObject(value)) {
+      return iterateObjectHandler({
+        obj: value,
+        defaultKey: objKey,
+        defaultObj: allValueObj,
+      }) as ObjectTypes;
+    }
+
+    return {
+      ...allValueObj,
+      [objKey]: value,
+    };
+  }, {});
+};
+
+/**
+ *
+ * @param options : ConvertNestObjectToNonNestedObjectOptions
+ * @returns : Record<string, any>
+ * @NOTE This method convert multi-nested object into a single object
+ * with prefix support.
+ * This is particular useful while generation css variable for a theme
+ */
+type ConvertNestObjectToNonNestedObjectOptions = {
+  obj: ObjectTypes;
+  prefix?: boolean;
+  prefixValue?: string;
+};
+
+export const convertNestObjectToNonNestedObject = (
+  options: ConvertNestObjectToNonNestedObjectOptions
+) => {
+  const { obj, prefix, prefixValue } = options;
+
+  return iterateObjectHandler({
+    obj,
+    prefix,
+    prefixValue,
+  });
 };
 
 /**

@@ -1,10 +1,16 @@
 // @imports
 import { createGlobalStyle } from 'styled-components';
 
+import { convertThemeToCSSVariable } from '@/core/helpers/theme';
 import defaultTheme from '@/core/theme';
 
 // @file declarations
 export const GlobalStyle = createGlobalStyle`
+  
+  :root {
+    ${(props) => convertThemeToCSSVariable({ ...props } as any)}
+  }
+
   *,
   *::before,
   *::after {

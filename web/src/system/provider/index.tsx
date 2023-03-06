@@ -18,7 +18,7 @@ export const OreoProvider = (props: OreoProviderProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
+      <GlobalStyle theme={theme} />
       <ToastProvider>{children}</ToastProvider>
     </ThemeProvider>
   );
