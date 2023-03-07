@@ -6,7 +6,7 @@ import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
 } from '../theme/utilities/colors';
-import { TransitionsType } from './css/transitions';
+import type { TransitionsType } from './css/transitions';
 import type {
   LayoutThemeStyledProps,
   TypographyThemeStyledProps,

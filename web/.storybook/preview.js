@@ -7,7 +7,9 @@ export const decorators = [
     <OreoProvider theme={{
         colors: {
         primary: '#0ff',
+        
       },
+      mode: 'dark'
     }}>
       <Story />
     </OreoProvider>

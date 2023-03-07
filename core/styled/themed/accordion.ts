@@ -1,13 +1,13 @@
 // @imports
-import styledTheme from 'styled-theming';
 
-import { AccordionIconPositionTypes } from '../components.types';
+import type { AccordionIconPositionTypes } from '../components.types';
 import { flexCenterYStyle, transitionStyle } from '../css';
 import type {
   SystemThemeParams,
   SystemThemeReturnType,
   StyledThemeProps,
 } from '../index.types';
+import { themer } from '../web';
 
 // @defaults
 export const accordionDefaults = {
@@ -16,12 +16,12 @@ export const accordionDefaults = {
 };
 
 // @theme
-export const borderBottomColor = styledTheme('mode', {
+export const borderBottomColor = themer('mode', {
   light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
   dark: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
 });
 
-export const hoverBackgroundColor = styledTheme('mode', {
+export const hoverBackgroundColor = themer('mode', {
   light: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[50],
   dark: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
 });

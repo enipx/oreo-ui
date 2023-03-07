@@ -1,7 +1,7 @@
 import type { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
-import defaultTheme, { ThemeKeys } from '../theme';
+import defaultTheme, { ThemeKeys, ThemeType } from '../theme';
 import { getBreakpoints } from '../theme/utilities/breakpoints';
-import { convertNestObjectToNonNestedObject } from './base';
+import { convertNestObjectToNonNestedObject, isObject } from './base';
 import { convertToKebabCaseHandler } from './string';
 
 /**
@@ -57,7 +57,7 @@ export const convertReactCSSToCSSHandler = (reactCSS?: React.CSSProperties) => {
  * method convert theme to css variable
  *
  */
-export const convertThemeToCSSVariable = (options: any) => {
+export const convertThemeToCSSVariableHandler = (options: any) => {
   const { prefix = true } = options;
 
   const theme = {
@@ -67,6 +67,24 @@ export const convertThemeToCSSVariable = (options: any) => {
 
   // convert deep nested object to all single object
   const res = convertNestObjectToNonNestedObject({ obj: theme, prefix });
+
+  return res;
+};
+
+export const getThemeValueHandler = (options: {
+  theme: ThemeType;
+  key?: ThemeKeys;
+  value: string;
+}) => {
+  const { theme, key, value } = options;
+
+  const splitValue = value.split('.');
+
+  let res = theme[key || 'colors'][splitValue[0]];
+
+  if (isObject(res) && splitValue?.[1]) {
+    res = res[splitValue[1]];
+  }
 
   return res;
 };

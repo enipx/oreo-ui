@@ -1,15 +1,16 @@
 // @imports
 import { createGlobalStyle } from 'styled-components';
 
-import { convertThemeToCSSVariable } from '@/core/helpers/theme';
+import { convertThemeToCSSVariableHandler } from '@/core/helpers/theme';
+import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
 import defaultTheme from '@/core/theme';
 
 // @file declarations
 export const GlobalStyle = createGlobalStyle`
   
-  :root {
-    ${(props) => convertThemeToCSSVariable({ ...props } as any)}
-  }
+  /* :root {
+    ${(props) => convertThemeToCSSVariableHandler({ ...props } as any)}
+  } */
 
   *,
   *::before,
@@ -20,6 +21,23 @@ export const GlobalStyle = createGlobalStyle`
     }};
     margin: 0;
     padding: 0;
+  }
+
+  // ----- HTML
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+  
+  // ---- Body
+  body {
+    background-color: ${baseBackgroundColor};
+    color: ${baseColor};
+    font-size: md;
+    line-height: base;
   }
 
   // ----- Elements
@@ -161,11 +179,6 @@ export const GlobalStyle = createGlobalStyle`
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-
-  /* Firefox */
-  input[type=number] {
-    -moz-appearance: textfield;
   }
 
 `;

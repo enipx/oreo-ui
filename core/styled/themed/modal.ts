@@ -1,6 +1,4 @@
-import styledTheme from 'styled-theming';
-
-import { ModalSizesType } from '../components.types';
+import type { ModalSizesType } from '../components.types';
 import { flexCenterXStyle, flexCenterYStyle, transitionStyle } from '../css';
 import {
   addTransitionsHandler,
@@ -12,10 +10,11 @@ import type {
   SystemThemeReturnType,
 } from '../index.types';
 import { mediaQueryStyle } from '../mixins';
+import { themer } from '../web';
 import { drawerContentDefaultStyle, drawerDefaultTransitions } from './drawer';
 
 import { isPackageNative } from '@/core/helpers/base';
-import { ModalSizesKeys } from '@/core/theme/components/modal';
+import type { ModalSizesKeys } from '@/core/theme/components/modal';
 
 // @defaults
 export const modalDefaults = {
@@ -39,7 +38,7 @@ export const modalDefaultTransitions = (
   return positions[pos];
 };
 
-export const modalOverlayBackgroundColor = styledTheme('mode', {
+export const modalOverlayBackgroundColor = themer('mode', {
   light: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[400],
   dark: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[400],
 });

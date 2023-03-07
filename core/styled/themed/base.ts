@@ -1,8 +1,8 @@
-import styledTheme from 'styled-theming';
-
 import type { StyledThemeProps, SystemThemeParams } from '../index.types';
+import { themer } from '../web';
 
 import type { ThemeModeKeys } from '@/core/constants/index.types';
+import { getThemeValueHandler } from '@/core/helpers/theme';
 import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
@@ -13,16 +13,20 @@ export const baseDefaults = {
   size: 'md',
 };
 
-// @themes
-export const baseBackgroundColor = styledTheme('mode', {
-  light: ({ theme }: StyledThemeProps) => theme.colors.white,
-  dark: ({ theme }: StyledThemeProps) => theme.colors.gray[900],
-});
+// @utilities
+export const modeHandler = (light: string, dark: string) => {
+  return themer('mode', {
+    light: ({ theme }: StyledThemeProps) =>
+      getThemeValueHandler({ theme, value: light }),
+    dark: ({ theme }: StyledThemeProps) =>
+      getThemeValueHandler({ theme, value: dark }),
+  });
+};
 
-export const baseColor = styledTheme('mode', {
-  light: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
-  dark: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
-});
+// @themes
+export const baseBackgroundColor = modeHandler('white', 'gray.900');
+
+export const baseColor = modeHandler('gray.900', 'gray.50');
 
 // @styles
 type BaseStyleObjectType = { [key in ThemeModeKeys]: any };

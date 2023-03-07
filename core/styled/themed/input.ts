@@ -1,5 +1,3 @@
-import styledTheme from 'styled-theming';
-
 import { flexCenterXStyle, transitionStyle } from '../css';
 import type {
   StyledThemeProps,
@@ -7,6 +5,7 @@ import type {
   SystemThemeReturnType,
 } from '../index.types';
 import { variant } from '../system';
+import { themer } from '../web';
 
 import { isPackageNative } from '@/core/helpers/base';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
@@ -22,35 +21,35 @@ export const inputDefaults = {
 };
 
 // @variants
-export const backgroundColor = styledTheme.variants('mode', 'state', {
+export const backgroundColor = themer.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
   invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
   disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
 });
 
-export const borderColor = styledTheme.variants('mode', 'state', {
+export const borderColor = themer.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[100] },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
   invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
   disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
 });
 
-export const hoverBorderColor = styledTheme.variants('mode', 'state', {
+export const hoverBorderColor = themer.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
   invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
   disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
 });
 
-export const focusBorderColor = styledTheme.variants('mode', 'state', {
+export const focusBorderColor = themer.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
   invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
   disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
 });
 
-export const hintColor = styledTheme.variants('mode', 'state', {
+export const hintColor = themer.variants('mode', 'state', {
   default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
   focused: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
   invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },

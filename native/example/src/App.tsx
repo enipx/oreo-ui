@@ -25,6 +25,7 @@ import {
   Image,
   Flex,
   Grid,
+  useMode,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 
@@ -37,12 +38,21 @@ const customTheme = {
 export default function App() {
   const [isOpen, modalHandler] = useDisclosure(false);
 
+  const { mode, toggle: toggleMode } = useMode({ mode: 'light' });
+
   return (
-    <OreoProvider theme={customTheme}>
+    <OreoProvider theme={{ ...customTheme, mode }}>
       <Container px="lg" scrollable pb="xl">
         <Text>Text</Text>
 
-        <Button colorScheme="gray" text="Button" my="lg" fullWidth rounded />
+        <Button
+          colorScheme="gray"
+          text="Button"
+          my="lg"
+          fullWidth
+          rounded
+          onPress={toggleMode}
+        />
 
         <Input
           type="password"

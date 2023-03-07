@@ -9,6 +9,7 @@ import {
 } from '@/core/styled/css/';
 import { KeyboardAvoidingView } from 'react-native';
 import { isIOS } from '../../helpers/base';
+import { baseBackgroundColor } from '@/core/styled/themed/base';
 
 // @exports
 
@@ -16,6 +17,7 @@ export const StyledView = styled(baseStyled('View'))<ViewProps>`
   ${({ flexCenter }) => flexCenter && flexCenterStyle}
   ${({ flexCenterY }) => flexCenterY && flexCenterXStyle}
   ${({ flexCenterX }) => flexCenterX && flexCenterYStyle}
+  background-color: ${baseBackgroundColor};
 `;
 
 export const View: React.FC<ViewProps> = (props) => {

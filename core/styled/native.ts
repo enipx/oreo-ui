@@ -1,5 +1,16 @@
 // @imports
 import * as styledComponents from 'styled-components/native';
+import themer from 'styled-theming';
+
+import { arrayIncludesValueHandler } from '../helpers/base';
+import { applyDefaultThemeHandler } from '../helpers/theme';
+import defaultThemeHandler, { ThemeType } from '../theme';
+import type {
+  NativeThemeStyledTagProps,
+  ThemeStyledCategoriesArrayProps,
+  ThemeStyledProps,
+  ThemeStyledCategoriesProps,
+} from './index.types';
 import {
   space,
   color,
@@ -12,18 +23,7 @@ import {
   position,
   shadow,
   variant,
-} from 'styled-system';
-import themer from 'styled-theming';
-
-import { arrayIncludesValueHandler } from '../helpers/base';
-import { applyDefaultThemeHandler } from '../helpers/theme';
-import defaultThemeHandler, { ThemeType } from '../theme';
-import type {
-  NativeThemeStyledTagProps,
-  ThemeStyledCategoriesArrayProps,
-  ThemeStyledProps,
-  ThemeStyledCategoriesProps,
-} from './index.types';
+} from './system';
 
 // @file declarations
 const {

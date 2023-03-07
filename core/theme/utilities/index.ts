@@ -25,8 +25,6 @@ const utilities = (arg?: PackageTypes) => {
     })
   );
 
-  console.log({ breakpoints });
-
   const radii = convertObjectDimensionsUnit(_radii, {
     dimension: isWeb ? 'rem' : 'px',
   }) as RadiiTypes;

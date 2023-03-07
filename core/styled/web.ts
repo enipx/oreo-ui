@@ -7,6 +7,16 @@ import styled, {
   ThemeProvider,
   DefaultTheme,
 } from 'styled-components';
+import themer from 'styled-theming';
+
+import { arrayIncludesValueHandler } from '../helpers/base';
+import { applyDefaultThemeHandler } from '../helpers/theme';
+import type {
+  WebThemeStyledTagProps,
+  ThemeStyledCategoriesArrayProps,
+  ThemeStyledProps,
+  ThemeStyledCategoriesProps,
+} from './index.types';
 import {
   space,
   color,
@@ -19,17 +29,7 @@ import {
   position,
   shadow,
   variant,
-} from 'styled-system';
-import themer from 'styled-theming';
-
-import { arrayIncludesValueHandler } from '../helpers/base';
-import { applyDefaultThemeHandler } from '../helpers/theme';
-import type {
-  WebThemeStyledTagProps,
-  ThemeStyledCategoriesArrayProps,
-  ThemeStyledProps,
-  ThemeStyledCategoriesProps,
-} from './index.types';
+} from './system';
 
 // @file declarations
 const baseStyled = (

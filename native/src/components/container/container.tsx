@@ -31,7 +31,7 @@ export const Container: React.FC<ContainerProps> = (props) => {
   const renderView = () => {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View flex={1} {...otherProps} />
+        <View flex={1} {...(otherProps as any)} />
       </TouchableWithoutFeedback>
     );
   };
