@@ -21,6 +21,7 @@ import {
 import { styled } from '@/core/styled/native';
 import { isArrayLastItem } from '@/core/helpers/base';
 import { divide } from '@/core/helpers/number';
+import { useModeTheme } from '../../hooks';
 
 // @exports
 export const StyledRadio = styled(StyledButton)<RadioProps>`
@@ -39,6 +40,8 @@ export const RadioControl: React.FC<RadioProps> = (props) => {
     onPress,
     ...otherProps
   } = props;
+
+  const { bg } = useModeTheme();
 
   const activeOpacity = otherProps.disabled ? 1 : radioDefaults.activeOpacity;
 
@@ -73,7 +76,7 @@ export const RadioControl: React.FC<RadioProps> = (props) => {
     const borderRadius = divide(iconSize, 2);
 
     if (checked) {
-      return <View bg="white" size={iconSize} borderRadius={borderRadius} />;
+      return <View bg={bg} size={iconSize} borderRadius={borderRadius} />;
     }
 
     return null;

@@ -1,5 +1,6 @@
 import type { SkeletonThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { styleModeHandler } from './base';
 
 // @defaults
 export const skeletonDefaults = {};
@@ -10,8 +11,12 @@ type SkeletonSystemThemeParams = SystemThemeParams & SkeletonThemedDefaultProps;
 export const skeletonDefaultStyle = (options: SkeletonSystemThemeParams) => {
   const { theme, type = 'web', rounded, count, isLastItem } = options;
 
-  const startColor = options.startColor || theme.colors.gray[50];
-  const endColor = options.endColor || theme.colors.gray[100];
+  const startColor =
+    options.startColor ||
+    styleModeHandler({ light: 'gray.50', dark: 'gray.800', theme });
+  const endColor =
+    options.endColor ||
+    styleModeHandler({ light: 'gray.100', dark: 'gray.700', theme });
 
   const mb = count && count > 1 && !isLastItem ? theme.space[2] : 0;
 
@@ -69,7 +74,13 @@ export const skeletonBaseDefaultStyle = (
 ) => {
   const { theme, type = 'web' } = options;
 
-  const endColor = options.endColor || theme.colors.whiteAlpha[900];
+  const endColor =
+    options.endColor ||
+    styleModeHandler({
+      light: 'whiteAlpha.900',
+      dark: 'gray.800',
+      theme,
+    });
 
   const baseStyle = `
     width: ${theme.space[8]};

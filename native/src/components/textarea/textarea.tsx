@@ -49,7 +49,7 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
       <View position="relative">
         {icon ? (
           <View zIndex="docked" position="absolute" right="md" bottom="md">
-            <IconButton size="xs" icon={icon} />
+            <IconButton variant="link" size="xs" icon={icon} />
           </View>
         ) : null}
         <InputField

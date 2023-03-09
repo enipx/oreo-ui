@@ -61,6 +61,7 @@ export const InputField: React.FC<InputProps> = (props) => {
       onBlur={onBlurHandler}
       keyboardType={keyboardType}
       state={inputState}
+      underlineColorAndroid="transparent"
       {...(otherProps as any)}
     />
   );

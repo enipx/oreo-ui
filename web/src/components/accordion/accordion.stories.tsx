@@ -2,17 +2,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Accordion } from './accordion';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Components/Accordion',
   component: Accordion,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Accordion>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Accordion> = (args) => (
   <Accordion {...args}>
     <Accordion.Item value="item-1">
@@ -39,8 +33,10 @@ const Template: ComponentStory<typeof Accordion> = (args) => (
   </Accordion>
 );
 
-export const Small = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Small.args = {
+export const Default = Template.bind({});
+Default.args = {};
+
+export const Left = Template.bind({});
+Left.args = {
   iconPosition: 'left',
 };

@@ -83,8 +83,8 @@ export default function App() {
 
         <View mt="lg">
           <Select
-            label="Email"
-            hint="Please enter a valid email"
+            label="Select"
+            hint="You can only select a single item at a time"
             placeholder="Select an option"
           />
         </View>

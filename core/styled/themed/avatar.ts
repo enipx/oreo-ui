@@ -4,7 +4,7 @@ import type {
 } from '../components.types';
 import { flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getBaseStyle, getColorSchemeStyle } from './base';
+import { getBaseStyle, getColorSchemeStyle, styleModeHandler } from './base';
 
 import { SpacingKeys } from '@/core/theme/utilities/spacing';
 
@@ -135,11 +135,23 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
 
   const { borderColor, borderWidth, spacing } = getBorderStyle(options);
 
-  const { backgroundColor, color } = getColorSchemeStyle({
+  const { backgroundColor: schemeBackgroundColor, color } = getColorSchemeStyle(
+    {
+      theme,
+      colorScheme: colorScheme || 'gray',
+      variant: variant || 'subtle',
+    }
+  );
+
+  const defaultBackground = styleModeHandler({
+    light: 'gray.100',
+    dark: 'gray.700',
     theme,
-    colorScheme: colorScheme || 'gray',
-    variant: variant || 'subtle',
   });
+
+  const backgroundColor = colorScheme
+    ? schemeBackgroundColor
+    : defaultBackground;
 
   const baseStyle = `
     ${flexCenterStyle}

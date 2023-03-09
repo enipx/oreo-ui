@@ -6,6 +6,7 @@ import styled, {
   ThemeConsumer,
   ThemeProvider,
   DefaultTheme,
+  useTheme,
 } from 'styled-components';
 import themer from 'styled-theming';
 
@@ -81,4 +82,5 @@ export {
   ThemeContext,
   ThemeConsumer,
   ThemeProvider,
+  useTheme,
 };

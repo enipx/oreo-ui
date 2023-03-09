@@ -2,7 +2,11 @@ import type { StyledThemeProps, SystemThemeParams } from '../index.types';
 import { themer } from '../web';
 
 import type { ThemeModeKeys } from '@/core/constants/index.types';
-import { getThemeValueHandler } from '@/core/helpers/theme';
+import {
+  convertHexToRgbaHandler,
+  getThemeValueHandler,
+} from '@/core/helpers/theme';
+import type { ThemeType } from '@/core/theme';
 import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
@@ -19,8 +23,50 @@ export const modeHandler = (light: string, dark: string) => {
     light: ({ theme }: StyledThemeProps) =>
       getThemeValueHandler({ theme, value: light }),
     dark: ({ theme }: StyledThemeProps) =>
-      getThemeValueHandler({ theme, value: dark }),
+      getThemeValueHandler({ theme, value: dark || light }),
   });
+};
+
+type VariantModeValuesType = Record<string, { [key in ThemeModeKeys]?: any }>;
+
+export const variantModeHandler = (
+  prop: string,
+  values: VariantModeValuesType
+) => {
+  const newValues: VariantModeValuesType = {};
+
+  Object.entries(values).forEach(([key, value]) => {
+    newValues[key] = {
+      light: ({ theme }: StyledThemeProps) =>
+        getThemeValueHandler({ theme, value: value?.light || '' }),
+      dark: ({ theme }: StyledThemeProps) =>
+        getThemeValueHandler({
+          theme,
+          value: value?.dark || value?.light || '',
+        }),
+    };
+  });
+
+  return themer.variants('mode', prop, newValues);
+};
+
+export const styleModeHandler = (options: {
+  light: string;
+  dark?: string;
+  theme: ThemeType;
+}) => {
+  const { light, theme } = options;
+
+  const dark = options?.dark || light;
+
+  const mode = theme.mode as ThemeModeKeys;
+
+  const res: BaseStyleObjectType = {
+    light: getThemeValueHandler({ theme, value: light }),
+    dark: getThemeValueHandler({ theme, value: dark }),
+  };
+
+  return res[mode];
 };
 
 // @themes
@@ -28,14 +74,18 @@ export const baseBackgroundColor = modeHandler('white', 'gray.900');
 
 export const baseColor = modeHandler('gray.900', 'gray.50');
 
+export const baseBorderColor = modeHandler('gray.50', 'gray.800');
+
 // @styles
 type BaseStyleObjectType = { [key in ThemeModeKeys]: any };
 
 export const getBaseStyle = (options: SystemThemeParams) => {
-  const { mode = 'light', theme } = options;
+  const { theme } = options;
+
+  const mode = theme.mode as ThemeModeKeys;
 
   const color: BaseStyleObjectType = {
-    light: theme.colors.gray[800],
+    light: theme.colors.gray[900],
     dark: theme.colors.gray[50],
   };
 
@@ -70,6 +120,112 @@ type ColorSchemeStyleOptionsType = SystemThemeParams & {
 export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
   const { theme, colorScheme, variant } = options;
 
+  const subtleModeStyle = {
+    base: styleModeHandler({
+      light: `${colorScheme}.50`,
+      dark: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.2),
+      theme,
+    }),
+    border: styleModeHandler({
+      light: `${colorScheme}.50`,
+      dark: 'transparent',
+      theme,
+    }),
+    hoverBg: styleModeHandler({
+      light: `${colorScheme}.100`,
+      dark: convertHexToRgbaHandler(theme.colors[colorScheme][100], 0.3),
+      theme,
+    }),
+    hoverBorder: styleModeHandler({
+      light: `${colorScheme}.100`,
+      dark: 'transparent',
+      theme,
+    }),
+    color: styleModeHandler({
+      light: `${colorScheme}.700`,
+      dark: `${colorScheme}.50`,
+      theme,
+    }),
+  };
+
+  const solidModeStyle = {
+    base: styleModeHandler({
+      light: `${colorScheme}.500`,
+      dark: `${colorScheme}.600`,
+      theme,
+    }),
+    hoverBg: styleModeHandler({
+      light: `${colorScheme}.600`,
+      dark: `${colorScheme}.500`,
+      theme,
+    }),
+    color: styleModeHandler({
+      light: `white`,
+      theme,
+    }),
+  };
+
+  const outlineModeStyle = {
+    base: styleModeHandler({
+      light: `transparent`,
+      theme,
+    }),
+    border: styleModeHandler({
+      light: `${colorScheme}.500`,
+      dark: `${colorScheme}.300`,
+      theme,
+    }),
+    iconBorder: styleModeHandler({
+      light: `${colorScheme}.100`,
+      dark: `${colorScheme}.700`,
+      theme,
+    }),
+    hoverBg: styleModeHandler({
+      light: `${colorScheme}.50`,
+      dark: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.1),
+      theme,
+    }),
+    color: styleModeHandler({
+      light: `${colorScheme}.500`,
+      dark: `${colorScheme}.400`,
+      theme,
+    }),
+  };
+
+  const ghostModeStyle = {
+    base: styleModeHandler({
+      light: `transparent`,
+      theme,
+    }),
+    hoverBg: styleModeHandler({
+      light: `${colorScheme}.50`,
+      dark: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.1),
+      theme,
+    }),
+    hoverBorder: styleModeHandler({
+      light: `${colorScheme}.50`,
+      dark: 'transparent',
+      theme,
+    }),
+    color: styleModeHandler({
+      light: `${colorScheme}.700`,
+      dark: `${colorScheme}.200`,
+      theme,
+    }),
+  };
+
+  const linkModeStyle = {
+    base: styleModeHandler({
+      light: `transparent`,
+      theme,
+    }),
+    color: styleModeHandler({
+      light: `${colorScheme}.500`,
+      dark: `${colorScheme}.200`,
+      theme,
+    }),
+  };
+
   const variants: {
     [key in DefaultColorsVariantsType]: {
       color: string;
@@ -77,42 +233,48 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
       borderColor: string;
       iconBorderColor: string;
       hoverBackgroundColor: string;
+      hoverBorderColor: string;
     };
   } = {
     subtle: {
-      backgroundColor: theme.colors[colorScheme][50],
-      borderColor: theme.colors[colorScheme][50],
-      iconBorderColor: theme.colors[colorScheme][50],
-      hoverBackgroundColor: theme.colors[colorScheme][50],
-      color: theme.colors[colorScheme][700],
+      backgroundColor: subtleModeStyle.base,
+      borderColor: subtleModeStyle.border,
+      iconBorderColor: subtleModeStyle.base,
+      hoverBackgroundColor: subtleModeStyle.hoverBg,
+      hoverBorderColor: subtleModeStyle.hoverBorder,
+      color: subtleModeStyle.color,
     },
     solid: {
-      backgroundColor: theme.colors[colorScheme][500],
-      borderColor: theme.colors[colorScheme][500],
-      iconBorderColor: theme.colors[colorScheme][500],
-      hoverBackgroundColor: theme.colors[colorScheme][600],
-      color: theme.colors.white,
+      backgroundColor: solidModeStyle.base,
+      borderColor: solidModeStyle.base,
+      iconBorderColor: solidModeStyle.base,
+      hoverBackgroundColor: solidModeStyle.hoverBg,
+      hoverBorderColor: solidModeStyle.hoverBg,
+      color: solidModeStyle.color,
     },
     outline: {
-      backgroundColor: theme.colors.transparent,
-      borderColor: theme.colors[colorScheme][500],
-      iconBorderColor: theme.colors[colorScheme][100],
-      hoverBackgroundColor: theme.colors[colorScheme][50],
-      color: theme.colors[colorScheme][500],
+      backgroundColor: outlineModeStyle.base,
+      borderColor: outlineModeStyle.border,
+      iconBorderColor: outlineModeStyle.iconBorder,
+      hoverBackgroundColor: outlineModeStyle.hoverBg,
+      hoverBorderColor: outlineModeStyle.border,
+      color: outlineModeStyle.border,
     },
     ghost: {
-      backgroundColor: theme.colors.transparent,
-      borderColor: theme.colors.transparent,
-      iconBorderColor: theme.colors.transparent,
-      hoverBackgroundColor: theme.colors[colorScheme][50],
-      color: theme.colors[colorScheme][700],
+      backgroundColor: ghostModeStyle.base,
+      borderColor: ghostModeStyle.base,
+      iconBorderColor: ghostModeStyle.base,
+      hoverBackgroundColor: ghostModeStyle.hoverBg,
+      hoverBorderColor: ghostModeStyle.hoverBorder,
+      color: ghostModeStyle.color,
     },
     link: {
-      backgroundColor: theme.colors.transparent,
-      borderColor: theme.colors.transparent,
-      iconBorderColor: theme.colors.transparent,
-      hoverBackgroundColor: theme.colors.transparent,
-      color: theme.colors[colorScheme][500],
+      backgroundColor: linkModeStyle.base,
+      borderColor: linkModeStyle.base,
+      iconBorderColor: linkModeStyle.base,
+      hoverBackgroundColor: linkModeStyle.base,
+      hoverBorderColor: linkModeStyle.base,
+      color: linkModeStyle.color,
     },
   };
 

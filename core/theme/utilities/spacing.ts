@@ -5,6 +5,7 @@ import sizing from './sizing';
 const spacing = {
   0: 0,
   0.5: 2,
+  0.75: 3,
   1: 4,
   1.5: 6,
   2: 8,

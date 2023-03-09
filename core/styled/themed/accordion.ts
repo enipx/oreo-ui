@@ -2,12 +2,8 @@
 
 import type { AccordionIconPositionTypes } from '../components.types';
 import { flexCenterYStyle, transitionStyle } from '../css';
-import type {
-  SystemThemeParams,
-  SystemThemeReturnType,
-  StyledThemeProps,
-} from '../index.types';
-import { themer } from '../web';
+import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { baseBorderColor, baseColor, modeHandler } from './base';
 
 // @defaults
 export const accordionDefaults = {
@@ -16,15 +12,11 @@ export const accordionDefaults = {
 };
 
 // @theme
-export const borderBottomColor = themer('mode', {
-  light: ({ theme }: StyledThemeProps) => theme.colors.gray[50],
-  dark: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
-});
+export const buttonColor = baseColor;
 
-export const hoverBackgroundColor = themer('mode', {
-  light: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[50],
-  dark: ({ theme }: StyledThemeProps) => theme.colors.gray[800],
-});
+export const borderBottomColor = baseBorderColor;
+
+export const hoverBackgroundColor = modeHandler('gray.50', 'gray.800');
 
 // @styles
 export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {

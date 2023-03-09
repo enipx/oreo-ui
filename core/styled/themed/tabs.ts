@@ -6,7 +6,7 @@ import type {
 } from '../components.types';
 import { flexCenterYStyle, flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getBaseStyle, getColorSchemeStyle } from './base';
+import { getBaseStyle, getColorSchemeStyle, styleModeHandler } from './base';
 
 import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 
@@ -34,7 +34,7 @@ export const tabListVariantStyle = (options: TabsListSystemThemeParams) => {
   const variantBackgroundColor: {
     [key in TabsVariantThemedDefaultProps]: string;
   } = {
-    pills: theme.colors.gray[50],
+    pills: styleModeHandler({ theme, light: 'gray.50', dark: 'gray.800' }),
     fenced: theme.colors.transparent,
     unstyled: theme.colors.transparent,
   };
@@ -45,7 +45,7 @@ export const tabListVariantStyle = (options: TabsListSystemThemeParams) => {
     const baseStyle = `
       background-color: ${backgroundColor};
       border-radius: ${theme.radii.md};
-      padding: ${theme.space[1]};
+      padding: ${theme.space[0.75]};
     `;
 
     const native = `
@@ -72,7 +72,11 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
 
   const isVariant = !!colorScheme || !!variant;
 
-  const borderBottomColor = theme.colors.gray[100];
+  const borderBottomColor = styleModeHandler({
+    theme,
+    light: 'gray.100',
+    dark: 'gray.700',
+  });
 
   const borderBottomWidth = {
     default: '2px',
@@ -163,7 +167,9 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
     const baseStyle = `
       border: 1px solid ${
-        isActive ? theme.colors.gray[100] : theme.colors.transparent
+        isActive
+          ? styleModeHandler({ theme, light: 'gray.100', dark: 'gray.700' })
+          : theme.colors.transparent
       };
       border-bottom-width: 0;
       background-color: ${
@@ -231,7 +237,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     const { backgroundColor } = getColorSchemeStyle({
       theme,
       colorScheme,
-      variant: colorSchemeVariant || 'subtle',
+      variant: colorSchemeVariant || 'link',
     });
 
     const baseStyle = `
@@ -277,7 +283,7 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
   const { color } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
-    variant: colorSchemeVariant || 'subtle',
+    variant: colorSchemeVariant || 'outline',
   });
 
   const { color: baseColor } = getBaseStyle(options);
@@ -371,7 +377,7 @@ export const tabsItemTextDefaultStyle = (
   const { color } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
-    variant: colorSchemeVariant || 'subtle',
+    variant: colorSchemeVariant || 'outline',
   });
 
   const { color: baseColor } = getBaseStyle(options);

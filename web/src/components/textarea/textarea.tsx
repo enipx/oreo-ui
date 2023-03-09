@@ -5,12 +5,12 @@ import { Text } from '../text';
 import { View } from '../view';
 import type { TextareaProps } from './textarea.types';
 
+import { baseColor } from '@/core/styled/themed/base';
 import {
   textareaDefaultStyle,
   textareaDefaults,
   borderColor,
   backgroundColor,
-  hoverBorderColor,
   focusBorderColor,
 } from '@/core/styled/themed/textarea';
 import { styled, baseStyled } from '@/core/styled/web';
@@ -19,21 +19,13 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledTextarea = styled(
   baseStyled('textarea', ['shadow', 'grid', 'position', 'background'])
 )<TextareaProps>`
-  ${({ theme, disabled, resize }) =>
-    textareaDefaultStyle({ theme, disabled, resize })}
+  ${(props) => textareaDefaultStyle({ ...props } as any)}
+  color: ${baseColor};
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 
-  :hover {
-    border-color: ${hoverBorderColor};
-  }
-
   :focus {
     border-color: ${focusBorderColor};
-  }
-
-  :disabled {
-    background-color: ${({ theme }) => theme.colors.gray[50]};
   }
 `;
 
@@ -64,7 +56,7 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
       <View position="relative" {...(otherProps as any)}>
         {icon ? (
           <View zIndex="docked" position="absolute" right="md" bottom="md">
-            <IconButton size="xs" icon={icon} />
+            <IconButton variant="link" size="xs" icon={icon} />
           </View>
         ) : null}
         <StyledTextarea

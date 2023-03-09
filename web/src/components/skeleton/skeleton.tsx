@@ -36,8 +36,11 @@ export const Skeleton = (props: SkeletonProps) => {
         {countArray.map((_item, _index) => {
           const isLastItem = count - 1 === _index;
 
+          const key = `skeleton-item-${_index}`;
+
           return (
             <StyledSkeleton
+              key={key}
               {...otherProps}
               {...({ isLastItem } as any)}
               count={count}

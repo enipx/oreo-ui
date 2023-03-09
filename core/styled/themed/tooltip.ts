@@ -1,6 +1,6 @@
 import type { TooltipThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getColorSchemeStyle } from './base';
+import { getColorSchemeStyle, styleModeHandler } from './base';
 import { popoverContentDefaultStyle } from './popover';
 
 // @defaults
@@ -12,11 +12,28 @@ type TooltipSystemThemeParams = SystemThemeParams & TooltipThemedDefaultProps;
 export const tooltipDefaultStyle = (options: TooltipSystemThemeParams) => {
   const { theme, type = 'web', colorScheme, variant } = options;
 
-  const { backgroundColor, color } = getColorSchemeStyle({
+  const { backgroundColor: schemeBackgroundColor, color: schemeColor } =
+    getColorSchemeStyle({
+      theme,
+      colorScheme: colorScheme || 'gray',
+      variant: variant || 'solid',
+    });
+
+  const defaultBackgroundColor = styleModeHandler({
     theme,
-    colorScheme: colorScheme || 'gray',
-    variant: variant || 'solid',
+    light: 'gray.500',
+    dark: 'gray.200',
   });
+  const defaultColor = styleModeHandler({
+    theme,
+    light: 'white',
+    dark: 'gray.900',
+  });
+
+  const backgroundColor = colorScheme
+    ? schemeBackgroundColor
+    : defaultBackgroundColor;
+  const color = colorScheme ? schemeColor : defaultColor;
 
   const padding = `${theme.space[1]} ${theme.space[2]}`;
 
@@ -26,7 +43,7 @@ export const tooltipDefaultStyle = (options: TooltipSystemThemeParams) => {
     color: ${color};
     font-weight: ${theme.fontWeights.medium};
     font-size: ${theme.fontSizes.xs};
-    border-radius: ${theme.radii.sm};
+    border-radius: ${theme.radii.xs};
     z-index: ${theme.zIndices.tooltip};
     padding: ${padding};
     ${popoverContentDefaultStyle(options)}

@@ -8,6 +8,9 @@ import type {
 import { flexCenterStyle } from '../css';
 import { addTransitionsHandler } from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { styleModeHandler } from './base';
+
+import { convertHexToRgbaHandler } from '@/core/helpers/theme';
 
 // @defaults
 export const alertDefaults = {
@@ -22,7 +25,7 @@ type AlertSystemThemeParams = SystemThemeParams & AlertThemedDefaultProps;
 
 // @theme
 export const getAlertColors = (option: AlertSystemThemeParams) => {
-  const { variant = 'subtle', colorScheme = 'gray', theme } = option;
+  const { variant = 'subtle', colorScheme = 'gray', theme, toast } = option;
 
   const variants: {
     [key in AlertVariantTypes]: {
@@ -32,12 +35,33 @@ export const getAlertColors = (option: AlertSystemThemeParams) => {
     };
   } = {
     subtle: {
-      backgroundColor: theme.colors[colorScheme][50],
-      color: theme.colors[colorScheme][700],
-      contentColor: theme.colors.gray[500],
+      backgroundColor: styleModeHandler({
+        light: `${colorScheme}.50`,
+        dark: convertHexToRgbaHandler(
+          toast
+            ? theme.colors[colorScheme][700]
+            : theme.colors[colorScheme][100],
+          toast ? 1 : 0.1
+        ),
+        theme,
+      }),
+      color: styleModeHandler({
+        light: `${colorScheme}.700`,
+        dark: `${colorScheme}.200`,
+        theme,
+      }),
+      contentColor: styleModeHandler({
+        light: `gray.500`,
+        dark: `gray.50`,
+        theme,
+      }),
     },
     filled: {
-      backgroundColor: theme.colors[colorScheme][500],
+      backgroundColor: styleModeHandler({
+        light: `${colorScheme}.500`,
+        dark: `${colorScheme}.600`,
+        theme,
+      }),
       color: theme.colors.white,
       contentColor: theme.colors.whiteAlpha[800],
     },
@@ -137,6 +161,7 @@ export const alertTitleDefaultStyle = (option: AlertSystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    background-color: ${theme.colors.transparent};
   `;
 
   const web = `

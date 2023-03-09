@@ -105,13 +105,14 @@ export const Input: React.FC<InputProps> = (props) => {
         <IconButton
           onPress={toggledPasswordHandler}
           size={size}
+          variant="link"
           icon={toggledPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}
         />
       );
     }
 
     if (rightIcon) {
-      return <IconButton size={size} icon={rightIcon} />;
+      return <IconButton variant="link" size={size} icon={rightIcon} />;
     }
 
     return null;
@@ -132,7 +133,7 @@ export const Input: React.FC<InputProps> = (props) => {
         icon={icon}
         keyboardType={type}
         {...(otherProps as any)}>
-        {icon ? <IconButton size={size} icon={icon} /> : null}
+        {icon ? <IconButton variant="link" size={size} icon={icon} /> : null}
         <StyledInput
           editable={!isDisabled}
           selectionColor={inputDefaults.selectionColor}
@@ -141,6 +142,7 @@ export const Input: React.FC<InputProps> = (props) => {
           onBlur={onBlurHandler}
           secureTextEntry={toggledPassword}
           keyboardType={keyboardType}
+          underlineColorAndroid="transparent"
           {...(otherProps as any)}
         />
         {renderRightIcon()}

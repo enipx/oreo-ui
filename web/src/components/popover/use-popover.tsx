@@ -98,9 +98,9 @@ export const usePopover = (options: UsePopverOptions) => {
   }, [opened]);
 
   useOutsideElementClick({
-    element: referenceElement,
+    element: [popperElement, referenceElement],
     callback: closeHandler,
-    enabled: closeOnClickOutside,
+    enabled: opened && closeOnClickOutside,
   });
 
   useKeydown({

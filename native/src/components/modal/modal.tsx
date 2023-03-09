@@ -9,7 +9,6 @@ import { IconButton } from '../icon-button';
 import type { ModalProps } from './modal.types';
 
 import { styled } from '@/core/styled/native';
-import { baseBackgroundColor } from '@/core/styled/themed/base';
 import {
   modalBodyDefaultStyle,
   modalOverlayDefaultStyle,
@@ -29,7 +28,6 @@ export const ModalOverlay = styled(StyledView)<ModalProps>`
 
 export const ModalContent = styled(StyledView)<ModalProps>`
   ${(props) => modalContentDefaultStyle({ ...props, type: 'native' })}
-  background-color: ${baseBackgroundColor};
 `;
 
 export const ModalBody = styled(StyledView)<ModalProps>`
@@ -175,7 +173,11 @@ export const Modal: React.FC<ModalProps> = (props) => {
           <ModalBody modalSize={size} {...otherProps}>
             <ScrollView
               style={[isModalFull(size || '') && { flex: 1 }]}
-              viewProps={isModalFull(size || '') ? { flex: 1 } : {}}>
+              viewProps={
+                isModalFull(size || '')
+                  ? { flex: 1, bg: 'transparent' }
+                  : { bg: 'transparent' }
+              }>
               {children}
             </ScrollView>
           </ModalBody>
@@ -189,4 +191,5 @@ export const Modal: React.FC<ModalProps> = (props) => {
 Modal.defaultProps = {
   closeOnOverlayClick: true,
   transparent: true,
+  statusBarTranslucent: true,
 };

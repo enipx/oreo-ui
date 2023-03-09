@@ -15,6 +15,7 @@ import {
   hoverBackgroundColor,
   accordionDefaults,
   accordionIconOrderHandler,
+  buttonColor,
 } from '@/core/styled/themed/accordion';
 import { baseStyled, styled } from '@/core/styled/web';
 
@@ -25,6 +26,7 @@ export const StyledAccordionButton = styled(
   ${(props) => accordionButtonDefaultStyle({ ...props } as any)}
   border-bottom-color: ${({ isActive }) =>
     isActive ? 'transparent' : borderBottomColor};
+  color: ${buttonColor};
 
   :hover {
     background-color: ${hoverBackgroundColor};
@@ -57,6 +59,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
       <IconButton
         as="span"
         size="xs"
+        variant="link"
         mr={accordionValue?.iconPosition === 'left' ? 'sm' : undefined}
         ml={accordionValue?.iconPosition === 'right' ? 'sm' : undefined}
         style={{

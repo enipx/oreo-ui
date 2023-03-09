@@ -11,6 +11,7 @@ import type {
 } from '../index.types';
 import { mediaQueryStyle } from '../mixins';
 import { themer } from '../web';
+import { styleModeHandler } from './base';
 import { drawerContentDefaultStyle, drawerDefaultTransitions } from './drawer';
 
 import { isPackageNative } from '@/core/helpers/base';
@@ -257,6 +258,11 @@ export const modalContentDefaultStyle = (options: SystemThemeParams) => {
     width: 100%;
     padding-horizontal: ${padding};
     padding-vertical: ${padding};
+    background-color: ${styleModeHandler({
+      theme,
+      light: 'white',
+      dark: 'gray.800',
+    })};
     ${modalFlexwStyle(options)}
   `;
 
@@ -305,6 +311,7 @@ export const modalHeaderDefaultStyle = (options: SystemThemeParams) => {
     justify-content: space-between;
     align-items: center;
     padding-bottom: ${theme.space[2]};
+    background-color: ${theme.colors.transparent};
   `;
 
   const web = `
@@ -347,6 +354,7 @@ export const modalBodyDefaultStyle = (options: SystemThemeParams) => {
   const baseStyle = `
     padding-top: ${theme.space[2]};
     padding-bottom: ${theme.space[2]};
+    background-color: ${theme.colors.transparent};
   `;
 
   const native = `
@@ -397,6 +405,7 @@ export const modalFooterDefaultStyle = (options: SystemThemeParams) => {
 
   const baseStyle = `
     padding-top: ${theme.space[2]};
+    background-color: ${theme.colors.transparent};
   `;
 
   const native = `

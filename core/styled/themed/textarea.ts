@@ -1,10 +1,11 @@
 import { transitionStyle } from '../css';
-import type {
-  StyledThemeProps,
-  SystemThemeParams,
-  SystemThemeReturnType,
-} from '../index.types';
-import { themer } from '../web';
+import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import {
+  backgroundColor,
+  borderColor,
+  hoverBorderColor,
+  focusBorderColor,
+} from './input';
 
 // @button themes
 export const textareaDefaults = {
@@ -13,33 +14,7 @@ export const textareaDefaults = {
   selectionColor: 'rgba(34, 109, 204, 0.5)',
 };
 
-export const backgroundColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
-});
-
-export const borderColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[100] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
-});
-
-export const hoverBorderColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
-});
-
-export const focusBorderColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
-});
+export { backgroundColor, borderColor, hoverBorderColor, focusBorderColor };
 
 export const textareaDefaultStyle = (option: SystemThemeParams) => {
   const { theme, type = 'web', disabled, resize } = option;
@@ -76,6 +51,10 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
 
     ::placeholder {
       font-size: ${theme.fontSizes.sm};
+    }
+
+    :disabled {
+      cursor: not-allowed;
     }
   `;
 

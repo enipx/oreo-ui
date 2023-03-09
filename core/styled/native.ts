@@ -8,7 +8,6 @@ import defaultThemeHandler, { ThemeType } from '../theme';
 import type {
   NativeThemeStyledTagProps,
   ThemeStyledCategoriesArrayProps,
-  ThemeStyledProps,
   ThemeStyledCategoriesProps,
 } from './index.types';
 import {
@@ -33,7 +32,7 @@ const {
   ThemeProvider,
   ThemeConsumer,
   useTheme,
-} = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeStyledProps>;
+} = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeType>;
 
 const defaultTheme = defaultThemeHandler('native');
 

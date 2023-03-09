@@ -1,11 +1,7 @@
 import { flexCenterXStyle, transitionStyle } from '../css';
-import type {
-  StyledThemeProps,
-  SystemThemeParams,
-  SystemThemeReturnType,
-} from '../index.types';
+import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { variant } from '../system';
-import { themer } from '../web';
+import { styleModeHandler, variantModeHandler } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
@@ -21,39 +17,38 @@ export const inputDefaults = {
 };
 
 // @variants
-export const backgroundColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.white },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[50] },
+export const backgroundColor: any = variantModeHandler('state', {
+  default: { light: 'white', dark: 'gray.900' },
+  focused: { light: 'white', dark: 'gray.900' },
+  invalid: { light: 'white', dark: 'gray.900' },
+  disabled: { light: 'gray.50', dark: 'gray.800' },
 });
 
-export const borderColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[100] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
+export const borderColor: any = variantModeHandler('state', {
+  default: { light: 'gray.100', dark: 'gray.700' },
+  focused: { light: 'blue.500', dark: 'blue.600' },
+  invalid: { light: 'red.500', dark: 'red.600' },
+  disabled: { light: 'gray.200', dark: 'gray.600' },
 });
 
-export const hoverBorderColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
+export const hoverBorderColor: any = variantModeHandler('state', {
+  default: { light: 'gray.200', dark: 'gray.600' },
+  focused: { light: 'gray.500', dark: 'gray.300' },
+  invalid: { light: 'gray.500', dark: 'gray.300' },
+  disabled: { light: 'gray.200', dark: 'gray.600' },
 });
 
-export const focusBorderColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.blue[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[200] },
+export const focusBorderColor: any = variantModeHandler('state', {
+  default: { light: 'blue.500', dark: 'blue.600' },
+  focused: { light: 'blue.500', dark: 'blue.600' },
+  invalid: { light: 'blue.500', dark: 'blue.600' },
 });
 
-export const hintColor = themer.variants('mode', 'state', {
-  default: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
-  focused: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
-  invalid: { light: ({ theme }: StyledThemeProps) => theme.colors.red[500] },
-  disabled: { light: ({ theme }: StyledThemeProps) => theme.colors.gray[500] },
+export const hintColor: any = variantModeHandler('state', {
+  default: { light: 'gray.500', dark: 'gray.300' },
+  focused: { light: 'gray.500', dark: 'gray.300' },
+  invalid: { light: 'red.500', dark: 'red.300' },
+  disabled: { light: 'gray.500', dark: 'gray.300' },
 });
 
 export const inputSizeVariant = (options: SystemThemeParams) => {
@@ -108,12 +103,13 @@ export const inputSizeVariant = (options: SystemThemeParams) => {
 
 // @styles
 export const inputDefaultStyle = (option: SystemThemeParams) => {
-  const { type = 'web' } = option;
+  const { theme, type = 'web' } = option;
 
   const baseStyle = `
     border: 0;
     outline: 0;
     background-color: transparent;
+    color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
   `;
 
   const native = `
@@ -128,6 +124,10 @@ export const inputDefaultStyle = (option: SystemThemeParams) => {
     appearance: none;
     white-space: nowrap;
     font-size: inherit;
+
+    :disabled {
+      cursor: not-allowed;
+    }
   `;
 
   const res: SystemThemeReturnType = {
@@ -139,7 +139,7 @@ export const inputDefaultStyle = (option: SystemThemeParams) => {
 };
 
 export const inputContainerDefaultStyle = (option: SystemThemeParams) => {
-  const { type = 'web', disabled } = option;
+  const { theme, type = 'web', disabled } = option;
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
 
@@ -151,6 +151,7 @@ export const inputContainerDefaultStyle = (option: SystemThemeParams) => {
     border-style: solid;
     position: relative;
     overflow: hidden;
+    color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
   `;
 
   const native = `
@@ -187,10 +188,8 @@ export const inputFieldDefaultStyle = (option: SystemThemeParams) => {
     overflow: hidden;
     outline: 0;
     border-radius: ${theme.radii.md};
-    padding-left: ${theme.space.md};
-    padding-right: ${theme.space.md};
-    padding-top: ${theme.space.sm};
-    padding-bottom: ${theme.space.sm};
+    padding: ${theme.space.md};
+    color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
   `;
 
   const native = `

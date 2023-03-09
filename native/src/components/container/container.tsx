@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View } from '../view';
 import { ScrollView } from '../scroll-view';
-import theme from '@/core/theme';
+import { useModeTheme } from '../../hooks';
 
 // @exports
 export const Container: React.FC<ContainerProps> = (props) => {
@@ -23,10 +23,10 @@ export const Container: React.FC<ContainerProps> = (props) => {
     ...otherProps
   } = props;
 
+  const { bg } = useModeTheme();
+
   const backgroundColor =
-    (props!.backgroundColor as string) ||
-    (props!.bg as string) ||
-    theme().colors.white;
+    (props!.backgroundColor as string) || (props!.bg as string) || bg;
 
   const renderView = () => {
     return (

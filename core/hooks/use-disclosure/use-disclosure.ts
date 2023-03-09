@@ -1,5 +1,5 @@
 // @imports
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import type {
   UseDisclosureCallbackType,
@@ -40,6 +40,12 @@ export const useDisclosure = (
       setIsOpen(param);
     }
   };
+
+  useEffect(() => {
+    if (initialState && initialState !== isOpen) {
+      setIsOpen(initialState);
+    }
+  }, [initialState]);
 
   return [
     isOpen,

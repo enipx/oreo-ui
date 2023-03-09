@@ -1,6 +1,7 @@
 import { flexCenterStyle, positionCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { variant } from '../system';
+import { styleModeHandler } from './base';
 
 import type { ObjectTypes } from '@/core/constants/index.types';
 import type { RadiiKeys } from '@/core/theme/utilities/radius';
@@ -93,26 +94,46 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
 
   const borderColor = () => {
     if (disabled) {
-      return theme.colors.gray[200];
+      return styleModeHandler({
+        light: 'gray.200',
+        dark: 'gray.600',
+        theme,
+      });
     }
 
     if (checked) {
-      return theme.colors.blue[500];
+      return styleModeHandler({
+        light: 'blue.500',
+        dark: 'blue.600',
+        theme,
+      });
     }
 
-    return theme.colors.gray[100];
+    return styleModeHandler({
+      light: 'gray.100',
+      dark: 'gray.700',
+      theme,
+    });
   };
 
   const backgroundColor = () => {
     if (disabled) {
-      return theme.colors.gray[200];
+      return styleModeHandler({
+        light: 'gray.200',
+        dark: 'gray.600',
+        theme,
+      });
     }
 
     if (checked) {
-      return theme.colors.blue[500];
+      return styleModeHandler({
+        light: 'blue.500',
+        dark: 'blue.600',
+        theme,
+      });
     }
 
-    return theme.colors.white;
+    return theme.colors.transparent;
   };
 
   const checkedBackgroundColor = disabled
@@ -120,6 +141,12 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
     : theme.colors.blue[500];
 
   const checkedBorderColor = checkedBackgroundColor;
+
+  const hoverBorderColor = styleModeHandler({
+    theme,
+    light: 'gray.200',
+    dark: 'gray.600',
+  });
 
   const baseStyle = `
     ${flexCenterStyle}
@@ -163,6 +190,10 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
       + label {
         cursor: not-allowed;
       }
+    }
+
+    :hover {
+      border-color: ${hoverBorderColor};
     }
   `;
 

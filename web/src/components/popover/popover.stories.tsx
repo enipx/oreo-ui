@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from '../button';
+import { View } from '../view';
 import { Popover } from './popover';
 
 export default {
@@ -9,17 +10,17 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 const Template: ComponentStory<typeof Popover> = (args) => (
-  <>
-    <div style={{ height: '100px' }} />
+  <View padding="lg" flexCenterX>
+    <View height="100px" />
     <Popover {...args}>
       <Popover.Target>
-        <Button text="Click me" />
+        <Button colorScheme="gray" text="Click me" />
       </Popover.Target>
 
       <Popover.Content p="base">My name is Hashir</Popover.Content>
     </Popover>
-    <div style={{ height: '100px' }} />
-  </>
+    <View height="100px" />
+  </View>
 );
 
 export const Default = Template.bind({});

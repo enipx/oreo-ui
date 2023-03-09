@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 type UseOutsideElementClickOptionsType = {
-  element?: HTMLElement | null;
+  element?: (HTMLElement | null | undefined)[];
   callback?: () => void;
   enabled?: boolean;
 };
@@ -14,8 +14,10 @@ export const useOutsideElementClick = (
   const { element, callback, enabled = false } = options;
 
   const mousedownHandler = (event: any) => {
-    if (element && !element.contains(event.target)) {
-      callback?.();
+    if (element && element.length > 0 && enabled) {
+      if (element.every((item) => item && !item.contains(event.target))) {
+        callback?.();
+      }
     }
   };
 

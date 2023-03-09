@@ -1,4 +1,5 @@
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { styleModeHandler } from './base';
 import { checkboxDefaultStyle, checkboxSizeVariant } from './checkbox';
 
 // @checkbox themes
@@ -40,7 +41,11 @@ export const radioCheckedStyle = (options: SystemThemeParams) => {
       width: ${sizes[size as SizeKey].width};
       height: ${sizes[size as SizeKey].height};
       border-radius: 50%;
-      background-color: ${theme.colors.white};
+      background-color: ${styleModeHandler({
+        light: 'white',
+        dark: 'gray.900',
+        theme,
+      })};
     }
   `;
 

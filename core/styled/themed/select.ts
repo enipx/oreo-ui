@@ -1,4 +1,5 @@
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { styleModeHandler } from './base';
 
 import { ObjectTypes } from '@/core/constants/index.types';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
@@ -115,12 +116,13 @@ export const selectContainerBaseStyle = (option: SystemThemeParams) => {
 };
 
 export const selectPlaceholderBaseStyle = (option: SystemThemeParams) => {
-  const { type = 'web' } = option;
+  const { theme, type = 'web' } = option;
 
   const fontSize = selectDefaultFontSize(option);
 
   const baseStyle = `
     font-size: ${fontSize};
+    color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.300', theme })};
   `;
 
   const native = `

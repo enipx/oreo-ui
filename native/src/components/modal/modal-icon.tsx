@@ -4,10 +4,13 @@ import React from 'react';
 
 import type { NativeSvgProps } from '@/core/styled/index.types';
 import { iconSizing } from '@/core/theme/utilities/sizing';
+import { useModeTheme } from '../../hooks';
 
 export const CloseIcon: React.FC<NativeSvgProps> = (props) => {
+  const { iconColor } = useModeTheme();
+
   const iconSize = iconSizing[props.size || 'sm'];
-  const fill = props.theme?.colors.gray[500];
+  const fill = iconColor;
 
   return (
     <Svg width={iconSize} height={iconSize} fill="none" viewBox="0 0 24 24">

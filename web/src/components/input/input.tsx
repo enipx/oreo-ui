@@ -18,7 +18,6 @@ import {
   inputDefaultStyle,
   borderColor,
   backgroundColor,
-  hoverBorderColor,
   hintColor,
   isInputDisabled,
   inputDefaults,
@@ -32,14 +31,6 @@ export const StyledInputContainer = styled(View)<InputContainerProps>`
     inputSizeVariant({ theme, icon, rightIcon })};
   border-color: ${borderColor};
   background-color: ${backgroundColor};
-
-  :hover {
-    border-color: ${hoverBorderColor};
-  }
-
-  :disabled {
-    background-color: ${({ theme }) => theme.colors.gray[50]};
-  }
 `;
 
 export const StyledInput = styled(
@@ -77,19 +68,21 @@ export const Input: React.FC<InputProps> = (props) => {
 
   const isDisabled = disabled || state === 'disabled';
 
+  const isStateDefault = state === inputDefaults.state || !state;
+
   const defaultState: InputProps['state'] = isDisabled ? 'disabled' : state;
 
   const [inputState, setInputState] =
     useState<InputProps['state']>(defaultState);
 
   const onFocusHandler = (event: InputFocusEventType) => {
-    if (inputState !== 'focused') setInputState('focused');
+    if (inputState !== 'focused' && isStateDefault) setInputState('focused');
 
     onFocus?.(event);
   };
 
   const onBlurHandler = (event: InputFocusEventType) => {
-    if (inputState !== 'default') setInputState('default');
+    if (inputState !== 'default' && isStateDefault) setInputState('default');
 
     onBlur?.(event);
   };
@@ -108,6 +101,7 @@ export const Input: React.FC<InputProps> = (props) => {
       return (
         <IconButton
           onClick={toggledPasswordHandler}
+          variant="link"
           size={size}
           icon={toggledPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}
         />
@@ -115,7 +109,7 @@ export const Input: React.FC<InputProps> = (props) => {
     }
 
     if (rightIcon) {
-      return <IconButton size={size} icon={rightIcon} />;
+      return <IconButton size={size} variant="link" icon={rightIcon} />;
     }
 
     return null;
@@ -135,7 +129,7 @@ export const Input: React.FC<InputProps> = (props) => {
         rightIcon={renderRightIcon()}
         icon={icon}
         {...(otherProps as any)}>
-        {icon ? <IconButton size={size} icon={icon} /> : null}
+        {icon ? <IconButton variant="link" size={size} icon={icon} /> : null}
         <StyledInput
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}

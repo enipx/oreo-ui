@@ -35,13 +35,12 @@ export const iconButtonDefaults = {
 
 // @styles
 export const buttonStateVariant = (options: ButtonSystemThemeParams) => {
-  const { theme, colorScheme, variant: buttonVariant, mode } = options;
+  const { theme, colorScheme, variant: buttonVariant } = options;
 
-  const { borderColor, hoverBackgroundColor } = getColorSchemeStyle({
+  const { hoverBorderColor, hoverBackgroundColor } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
     variant: buttonVariant || 'solid',
-    mode,
   });
 
   return variant({
@@ -49,11 +48,11 @@ export const buttonStateVariant = (options: ButtonSystemThemeParams) => {
     variants: {
       focused: {
         backgroundColor: hoverBackgroundColor,
-        borderColor,
+        borderColor: hoverBorderColor,
       },
       hovered: {
         backgroundColor: hoverBackgroundColor,
-        borderColor,
+        borderColor: hoverBorderColor,
       },
       disabled: {
         opacity: buttonDefaults.disabledOpacity,
@@ -112,12 +111,17 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     fullWidth,
   } = options;
 
-  const { backgroundColor, color, borderColor, hoverBackgroundColor } =
-    getColorSchemeStyle({
-      theme,
-      colorScheme: colorScheme || 'blue',
-      variant: variant || 'solid',
-    });
+  const {
+    backgroundColor,
+    color,
+    borderColor,
+    hoverBorderColor,
+    hoverBackgroundColor,
+  } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'blue',
+    variant: variant || 'solid',
+  });
 
   const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
   const width = fullWidth ? '100%' : 'auto';
@@ -152,6 +156,7 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     :active,
     :focus {
       background-color: ${hoverBackgroundColor};
+      border-color: ${hoverBorderColor};
       text-decoration: ${variant === 'link' ? 'underline' : 'auto'}
     }
   `;

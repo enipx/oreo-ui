@@ -70,7 +70,12 @@ export const Toast = (props: ToastProps) => {
   return (
     <Animated.Container.View style={animatedStyles}>
       <ToastBase pos={pos} render={render}>
-        {render || <Alert onClose={hideHandler} {...otherProps} />}
+        {render || (
+          <Alert
+            onClose={hideHandler}
+            {...({ ...otherProps, toast: true } as any)}
+          />
+        )}
       </ToastBase>
     </Animated.Container.View>
   );

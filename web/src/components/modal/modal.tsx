@@ -114,6 +114,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
     closeOnEscape,
     modalSize,
     onClose,
+    onOpen,
     size: specifiedSize,
     ...otherProps
   } = props;
@@ -186,6 +187,10 @@ export const Modal: React.FC<ModalProps> = (props) => {
   useEffect(() => {
     if (preventScrolling) {
       preventPageScrollingHandler(props.isOpen);
+    }
+
+    if (props.isOpen) {
+      onOpen?.();
     }
   }, [props.isOpen]);
 

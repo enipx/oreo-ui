@@ -4,7 +4,7 @@ import type {
 } from '../components.types';
 import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getColorSchemeStyle } from './base';
+import { getColorSchemeStyle, styleModeHandler } from './base';
 
 // @defaults
 export const tableDefaults = {
@@ -72,7 +72,11 @@ export const tableDefaultStyle = (options: TableSystemThemeParams) => {
     hovered,
   } = options;
 
-  const borderColor = theme.colors.gray[50];
+  const borderColor = styleModeHandler({
+    theme,
+    light: 'gray.50',
+    dark: 'gray.800',
+  });
 
   const { backgroundColor } = getColorSchemeStyle({
     theme,

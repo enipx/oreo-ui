@@ -56,7 +56,7 @@ export const AlertIcon = (props: AlertProps) => {
 
   if (withIcon) {
     return (
-      <View mt="xs" mr="sm">
+      <View bg="transparent" mt="xs" mr="sm">
         {Icon[type]}
       </View>
     );
@@ -122,11 +122,11 @@ export const Alert = (props: AlertProps) => {
         colorScheme={colorScheme}
         variant={variant}
       />
-      <View flex={1}>
+      <View flex={1} bg="transparent">
         <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
           {title}
         </StyledAlertTitle>
-        <View mt="sm">
+        <View mt="sm" bg="transparent">
           <StyledAlertContent colorScheme={colorScheme} variant={variant}>
             {content}
           </StyledAlertContent>

@@ -78,13 +78,52 @@ export const getThemeValueHandler = (options: {
 }) => {
   const { theme, key, value } = options;
 
+  const themeObj = theme[key || 'colors'];
+
+  /**
+   * check if value doesn't exist in theme
+   * or if value is an rgb or rgba color
+   */
+  if ((!value.includes('.') || value.includes('rgb')) && !themeObj[value]) {
+    return value;
+  }
+
   const splitValue = value.split('.');
 
-  let res = theme[key || 'colors'][splitValue[0]];
+  let res = themeObj[splitValue[0]];
 
   if (isObject(res) && splitValue?.[1]) {
     res = res[splitValue[1]];
   }
 
   return res;
+};
+
+/**
+ *
+ * @param hex : string
+ * @param alpha number
+ * @returns return string
+ * This method convert hext color code to rgba
+ * @source https://stackoverflow.com/questions/21646738/convert-hex-to-rgba
+ */
+export const convertHexToRgbaHandler = (hex: string, alpha?: number) => {
+  let c;
+
+  if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+    c = hex.substring(1).split('');
+    if (c.length === 3) {
+      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c = '0x' + c.join('');
+
+    // @ts-ignore
+    return `rgba(${[(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',')},${
+      alpha || 1
+    })`;
+  }
+
+  console.error('Bad Hex: ', hex);
+
+  return hex;
 };

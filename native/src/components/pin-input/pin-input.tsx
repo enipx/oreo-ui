@@ -87,11 +87,12 @@ export const PinInputField: React.FC<
       editable={!disabled}
       onFocus={onFocusHandler}
       onBlur={onBlurHandler}
-      {...(otherProps as any)}
       textAlign="center"
       selectTextOnFocus
       selectionColor={pinInputDefaults.selectionColor}
       secureTextEntry={isPassword}
+      underlineColorAndroid="transparent"
+      {...(otherProps as any)}
     />
   );
 });

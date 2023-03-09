@@ -13,4 +13,5 @@ export const Badge = styled(
 
 Badge.defaultProps = {
   fontSize: 'xs',
+  variant: 'solid',
 };

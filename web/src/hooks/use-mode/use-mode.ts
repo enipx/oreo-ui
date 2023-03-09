@@ -1,5 +1,5 @@
 // @imports
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import type { ThemeModeKeys } from '@/core/constants/index.types';
 import { setLocalStorage, getLocalStorage } from '@/core/helpers/storage';
@@ -27,20 +27,15 @@ export const useMode = (options: UseModeOptionsType) => {
 
   const [mode, setMode] = useState<ThemeModeKeys>(_mode);
 
-  const toggleHandler = () => {
-    const newMode: ThemeModeKeys = mode === 'light' ? 'dark' : 'light';
-    saveHandler(newMode);
-  };
+  const toggleHandler = useCallback(() => {
+    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
 
-  const saveHandler = (__mode: ThemeModeKeys) => {
+  const saveHandler = useCallback((__mode: ThemeModeKeys, toggle?: boolean) => {
     setMode(__mode);
-    if (saveToStorage) {
-      setLocalStorage('mode', __mode);
-    }
-    onChange?.();
-  };
+  }, []);
 
-  const loadHandler = () => {
+  const loadHandler = useCallback(() => {
     const storedMode = getLocalStorage('mode');
 
     if (storedMode) {
@@ -57,7 +52,7 @@ export const useMode = (options: UseModeOptionsType) => {
 
       saveHandler(__mode);
     }
-  };
+  }, []);
 
   useKeydown({
     key: keyboardShortcut,
@@ -68,6 +63,13 @@ export const useMode = (options: UseModeOptionsType) => {
   useEffect(() => {
     loadHandler();
   }, []);
+
+  useEffect(() => {
+    if (saveToStorage) {
+      setLocalStorage('mode', mode);
+    }
+    onChange?.();
+  }, [mode]);
 
   return { mode, toggle: toggleHandler, save: saveHandler, load: loadHandler };
 };

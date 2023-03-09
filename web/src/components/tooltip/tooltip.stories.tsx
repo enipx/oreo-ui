@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { View } from '../view';
 import { Tooltip } from './tooltip';
 
 export default {
@@ -8,11 +9,9 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (
-  <>
-    <div style={{ height: '100px' }} />
+  <View flexCenterX padding="lg">
     <Tooltip {...args}>Hover on me</Tooltip>
-    <div style={{ height: '100px' }} />
-  </>
+  </View>
 );
 
 export const Default = Template.bind({});

@@ -49,7 +49,7 @@ export const AvatarBase = (props: AvatarProps) => {
         }}
         fallback={
           name ? (
-            <View>
+            <View bg="transparent">
               <StyledAvatarText {...props}>
                 {getNameInitialsHandler(name)}
               </StyledAvatarText>

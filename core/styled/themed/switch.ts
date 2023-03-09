@@ -1,5 +1,6 @@
 import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { styleModeHandler } from './base';
 import { checkboxDefaultStyle, checkboxSizeVariant } from './checkbox';
 
 import { ObjectTypes } from '@/core/constants/index.types';
@@ -53,8 +54,14 @@ export const switchCheckedStyle = (options: SystemThemeParams) => {
   });
 
   const baseStyle = `
-    background-color: ${theme.colors.blue[500]};
-    border-color: ${theme.colors.blue[500]};
+    background-color: ${styleModeHandler({
+      theme,
+      light: 'blue.500',
+    })};
+    border-color: ${styleModeHandler({
+      theme,
+      light: 'blue.500',
+    })};
   `;
 
   const native = `
@@ -93,17 +100,34 @@ export const switchBaseStyle = (options: SystemThemeParams) => {
   const { width, height } = switchSizing({ ...options, size });
 
   const baseStyle = `
-    background-color: ${theme.colors.gray[300]};
-    border-color: ${theme.colors.gray[300]};
+    background-color: ${styleModeHandler({
+      theme,
+      light: 'gray.300',
+      dark: 'gray.400',
+    })};
+    border-color: ${styleModeHandler({
+      theme,
+      light: 'gray.300',
+      dark: 'gray.400',
+    })};
     opacity: ${disabled ? switchDefaults.disabledOpacity : 1};
   `;
 
+  const nativeControlColor = checked
+    ? styleModeHandler({
+        theme,
+        light: 'blue.500',
+      })
+    : styleModeHandler({
+        theme,
+        light: 'gray.300',
+        dark: 'gray.400',
+      });
+
   const native = `
     ${baseStyle}
-    background-color: ${
-      checked ? theme.colors.blue[500] : theme.colors.gray[300]
-    };
-    border-color: ${checked ? theme.colors.blue[500] : theme.colors.gray[300]};
+    background-color: ${nativeControlColor};
+    border-color: ${nativeControlColor};
     flex-direction: row;
     justify-content: ${checked ? 'flex-end' : 'flex-start'};
     padding-left: ${switchDefaults.controlX};
@@ -117,7 +141,10 @@ export const switchBaseStyle = (options: SystemThemeParams) => {
       width: ${width};
       height: ${height};
       border-radius: 50%;
-      background-color: ${theme.colors.white};
+      background-color: ${styleModeHandler({
+        theme,
+        light: 'white',
+      })};
       left: ${switchDefaults.controlX};
       transform: translate(0%, -50%);
       ${transitionStyle()}
@@ -138,7 +165,10 @@ export const switchControlBaseStyle = (options: SystemThemeParams) => {
   const { width, height } = switchSizing({ ...options, size });
 
   const baseStyle = `
-    background-color: ${theme.colors.white};
+    background-color: ${styleModeHandler({
+      theme,
+      light: 'white',
+    })};
     border-radius: ${theme.radii.full};
     width: ${width};
     height: ${height};

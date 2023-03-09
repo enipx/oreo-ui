@@ -88,7 +88,11 @@ export const Toast = (props: ToastStateProps) => {
       className={transitionClassName.active}
       render={render}>
       {render || (
-        <Alert onClose={hideHandler} {...otherProps} transition="none" />
+        <Alert
+          onClose={hideHandler}
+          {...({ ...otherProps, toast: true } as any)}
+          transition="none"
+        />
       )}
     </ToastBase>
   );

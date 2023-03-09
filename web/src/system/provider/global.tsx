@@ -36,8 +36,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${baseBackgroundColor};
     color: ${baseColor};
-    font-size: md;
-    line-height: base;
   }
 
   // ----- Elements

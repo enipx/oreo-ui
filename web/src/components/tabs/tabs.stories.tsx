@@ -30,3 +30,21 @@ Default.args = {
   withEqualWidth: true,
   colorSchemeVariant: 'subtle',
 };
+
+export const Fenced = Template.bind({});
+Fenced.args = {
+  withEqualWidth: true,
+  variant: 'fenced',
+};
+
+export const Pills = Template.bind({});
+Pills.args = {
+  withEqualWidth: true,
+  variant: 'pills',
+};
+
+export const Unstyled = Template.bind({});
+Unstyled.args = {
+  withEqualWidth: true,
+  variant: 'unstyled',
+};

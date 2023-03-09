@@ -23,11 +23,26 @@ Default.args = {
 const AvatarGroupStory = (args: any) => {
   return (
     <Avatar.Group {...args}>
-      <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
-      <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
-      <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
-      <Avatar name="Prosper Otemuyiwa" src="https://bit.ly/prosper-baba" />
-      <Avatar name="Christian Nwamba" src="https://bit.ly/code-beast" />
+      <Avatar
+        name="Random Image"
+        src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&w=200"
+      />
+      <Avatar
+        name="Random Image"
+        src="https://images.pexels.com/photos/11608681/pexels-photo-11608681.jpeg?auto=compress&cs=tinysrgb&w=200&h=750&dpr=1"
+      />
+      <Avatar
+        name="Random Image"
+        src="https://images.pexels.com/photos/2738919/pexels-photo-2738919.jpeg?auto=compress&cs=tinysrgb&w=200&h=750&dpr=1"
+      />
+      <Avatar
+        name="Random Image"
+        src="https://images.pexels.com/photos/3936894/pexels-photo-3936894.jpeg?auto=compress&cs=tinysrgb&w=200&h=750&dpr=1"
+      />
+      <Avatar
+        name="Random Image"
+        src="https://images.pexels.com/photos/7562076/pexels-photo-7562076.jpeg?auto=compress&cs=tinysrgb&w=200&h=750&dpr=1"
+      />
     </Avatar.Group>
   );
 };
