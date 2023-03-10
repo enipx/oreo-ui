@@ -21,3 +21,22 @@ export const ArrowDownIcon: React.FC<NativeSvgProps> = (props) => {
     </Svg>
   );
 };
+
+export const CheckMarkIcon: React.FC<NativeSvgProps> = (props) => {
+  const { iconColor } = useModeTheme();
+
+  const iconSize = iconSizing[props.size || 'sm'];
+  const stroke = iconColor;
+
+  return (
+    <Svg width={iconSize} height={iconSize} fill="none" viewBox="0 0 24 24">
+      <Path
+        d="m2 11.666 6.669 6.665L22 5"
+        stroke={props.stroke || stroke || '#000'}
+        strokeWidth={props.strokeWidth || 2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+};

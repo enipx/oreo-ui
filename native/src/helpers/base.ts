@@ -16,3 +16,12 @@ export const getLayout = () => {
 
   return { width, height };
 };
+
+export const getWidowLayout = (divisible = 1) => {
+  const { width, height } = getLayout();
+
+  return {
+    width: width / divisible,
+    height: height / divisible,
+  };
+};

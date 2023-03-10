@@ -487,6 +487,7 @@ export interface ModalThemedDefaultProps {
    * set modal size
    */
   size?: ModalSizesType;
+
   modalSize?: ModalSizesType;
   /**
    * add custom style to modal

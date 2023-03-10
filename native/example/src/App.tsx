@@ -87,6 +87,20 @@ export default function App() {
             label="Select"
             hint="You can only select a single item at a time"
             placeholder="Select an option"
+            data={[
+              { id: 'general', value: '🧮 General' },
+              { id: 'transport', value: '🚗 Transport' },
+              { id: 'home', value: '🏡 Home' },
+              { id: 'business', value: '💼 Business' },
+              { id: 'groceries', value: '🛒 Groceries' },
+              { id: 'food', value: '🍱 Food' },
+              { id: 'shopping', value: '🛍️ Shopping' },
+              { id: 'clothing', value: '👕 Clothing' },
+              { id: 'miscellaneous', value: '🤪 Miscellaneous' },
+            ]}
+            onChange={(item) => {
+              console.log({ item });
+            }}
           />
         </View>
 

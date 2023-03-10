@@ -87,6 +87,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
     size: specifiedSize,
     modalSize,
     title,
+    withScrollView,
     ...otherProps
   } = props;
 
@@ -153,6 +154,20 @@ export const Modal: React.FC<ModalProps> = (props) => {
     return null;
   };
 
+  const renderChildren = () => {
+    if (isModalFull(size || '') || withScrollView) {
+      return (
+        <ScrollView
+          style={[isModalFull(size || '') && { flex: 1 }]}
+          viewProps={isModalFull(size || '') ? { flex: 1 } : {}}>
+          {children}
+        </ScrollView>
+      );
+    }
+
+    return <>{children}</>;
+  };
+
   return (
     <DefaultModal
       animationType="fade"
@@ -171,15 +186,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
         <ModalContent modalSize={size} {...otherProps} style={style}>
           <ModalHeader title={title} {...otherProps} onClose={onClose} />
           <ModalBody modalSize={size} {...otherProps}>
-            <ScrollView
-              style={[isModalFull(size || '') && { flex: 1 }]}
-              viewProps={
-                isModalFull(size || '')
-                  ? { flex: 1, bg: 'transparent' }
-                  : { bg: 'transparent' }
-              }>
-              {children}
-            </ScrollView>
+            {renderChildren()}
           </ModalBody>
           {renderModalFooter()}
         </ModalContent>

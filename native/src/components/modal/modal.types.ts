@@ -13,6 +13,11 @@ export interface ModalProps
    * update footer confirm button props
    */
   footerConfirmButtonProps?: ButtonProps;
+
+  /**
+   * use scroll view
+   */
+  withScrollView?: boolean;
 }
 
 export interface ModalContextProps {

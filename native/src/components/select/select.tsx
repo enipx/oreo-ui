@@ -1,10 +1,11 @@
 // @imports
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { IconButton } from '../icon-button';
 import { Text } from '../text';
 import { View } from '../view/view';
+import { FlatList } from '../flat-list';
 import { StyledHintText, StyledInputContainer } from '../input/input';
-import { ArrowDownIcon } from './select-icon';
+import { ArrowDownIcon, CheckMarkIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
 
 import {
@@ -13,6 +14,9 @@ import {
   selectPlaceholderBaseStyle,
 } from '@/core/styled/themed/select';
 import { styled, baseStyled } from '@/core/styled/native';
+import { useModal } from '../modal';
+import { BaseButton } from '../button';
+import { getWidowLayout } from '../../helpers/base';
 
 // @exports
 export const StyledSelectContainer = styled(
@@ -50,8 +54,18 @@ export const Select: React.FC<SelectProps> = (props) => {
     hint,
     label,
     placeholder,
+    data,
+    value,
+    valueProperty,
+    keyProperty,
+    onChange,
+    renderOptions,
     ...otherProps
   } = props;
+
+  const modal = useModal();
+
+  const [selectedValue, setSelectedValue] = useState(value || undefined);
 
   const isDisabled = disabled || state === 'disabled';
 
@@ -59,11 +73,85 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   const activeOpacity = isDisabled ? 1 : selectDefaults.activeOpacity;
 
+  const getItemValue = useCallback(
+    (item: any) => {
+      const defaultValue = item?.value || item;
+      const defaultKey = item?.id || item;
+
+      const _value = valueProperty
+        ? item?.[valueProperty] || defaultValue
+        : defaultValue;
+
+      const key = keyProperty ? item?.[keyProperty] || defaultKey : defaultKey;
+
+      return {
+        value: _value,
+        key,
+      };
+    },
+    [valueProperty, keyProperty]
+  );
+
+  const renderComponent = useCallback(
+    (options: any) => {
+      const { item } = options;
+
+      if (renderOptions) {
+        return renderOptions(options);
+      }
+
+      const { value: itemValue, key: itemKey } = getItemValue(item);
+
+      const isActive = getItemValue(selectedValue).key === itemKey;
+
+      const onPressHandler = () => {
+        setSelectedValue(item);
+        onChange?.(item);
+        modal.hide();
+      };
+
+      return (
+        <BaseButton onPress={onPressHandler}>
+          <View
+            py="base"
+            flexDirection="row"
+            justifyContent="space-between"
+            flexCenterX>
+            <Text>{itemValue}</Text>
+
+            {isActive ? (
+              <View>
+                <CheckMarkIcon size="2xs" />
+              </View>
+            ) : null}
+          </View>
+        </BaseButton>
+      );
+    },
+    [getItemValue, modal, onChange, renderOptions, selectedValue]
+  );
+
   const onPressHandler = () => {
     if (!isDisabled) {
       // ..
+      modal.show({
+        pos: 'bottom',
+        removeContentMargin: true,
+        children: (
+          <View>
+            <FlatList data={data || []} renderComponent={renderComponent} />
+          </View>
+        ),
+        style: { maxHeight: getWidowLayout(1.5).height },
+      });
     }
   };
+
+  useEffect(() => {
+    if (value) {
+      setSelectedValue(value);
+    }
+  }, [value]);
 
   const renderDropdownIcon = () => {
     return (
@@ -76,18 +164,14 @@ export const Select: React.FC<SelectProps> = (props) => {
   };
 
   const renderChildren = () => {
-    if (placeholder) {
-      return (
-        <>
-          <StyledSelectPlaceholder size={size}>
-            {placeholder}
-          </StyledSelectPlaceholder>
-          {renderDropdownIcon()}
-        </>
-      );
-    }
-
-    return renderDropdownIcon();
+    return (
+      <>
+        <StyledSelectPlaceholder size={size}>
+          {getItemValue(selectedValue).value || placeholder}
+        </StyledSelectPlaceholder>
+        {renderDropdownIcon()}
+      </>
+    );
   };
 
   return (
