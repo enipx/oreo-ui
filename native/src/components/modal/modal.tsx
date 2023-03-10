@@ -173,6 +173,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
       animationType="fade"
       visible={isOpen}
       onRequestClose={onClose}
+      statusBarTranslucent
       {...otherProps}>
       <ModalOverlay modalSize={size} {...otherProps}>
         <BaseButton
