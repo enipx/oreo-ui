@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useDisclosure } from '../../hooks';
 import { Button } from '../button';
 import { Text } from '../text';
-import { Modal } from './modal';
+import { View } from '../view';
+import { Modal, useModal } from './';
 
 const StoryModal = (args: any) => {
   return (
@@ -20,20 +21,36 @@ const StoryWrapper = (args: any) => {
   const [isOpen, handler] = useDisclosure(false);
 
   return (
-    <>
+    <View flexCenterX>
       <Button colorScheme="gray" text="Open modal" onClick={handler.open} />
       <StoryModal {...args} isOpen={isOpen} onClose={handler.close} />
       <div style={{ height: '2000px' }} />
-    </>
+    </View>
+  );
+};
+
+const APIStoryWrapper = (args: any) => {
+  const modal = useModal();
+
+  return (
+    <View flexCenterX>
+      <Button
+        text="Open modal"
+        colorScheme="gray"
+        mr="md"
+        onClick={() => {
+          modal.show({
+            ...args,
+          });
+        }}
+      />
+    </View>
   );
 };
 
 export default {
   title: 'Components/Modal',
   component: Modal,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = (args) => (
@@ -42,6 +59,17 @@ const Template: ComponentStory<typeof Modal> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  title: 'Discard changes',
+  size: 'xs',
+  withFooter: true,
+};
+
+const APITemplate: ComponentStory<typeof Modal> = (args) => (
+  <APIStoryWrapper {...args} />
+);
+
+export const API = APITemplate.bind({});
+API.args = {
   title: 'Discard changes',
   size: 'xs',
   withFooter: true,

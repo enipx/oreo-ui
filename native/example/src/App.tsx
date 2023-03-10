@@ -28,6 +28,7 @@ import {
   useMode,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
+import { ModalApi } from './Modal';
 
 const customTheme = {
   colors: {
@@ -137,6 +138,8 @@ export default function App() {
             </Text>
           ))}
         </Modal>
+
+        <ModalApi />
 
         <View marginY="lg">
           <Accordion>

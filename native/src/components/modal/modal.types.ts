@@ -14,3 +14,14 @@ export interface ModalProps
    */
   footerConfirmButtonProps?: ButtonProps;
 }
+
+export interface ModalContextProps {
+  show: (content: ModalProps) => void;
+  hide: () => void;
+}
+
+export type useModalProps = () => ModalContextProps;
+
+export interface ModalProviderProps {
+  children?: React.ReactNode;
+}

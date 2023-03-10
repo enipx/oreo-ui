@@ -8,6 +8,7 @@ import type { OreoProviderProps } from './provider.types';
 
 import defaultTheme from '@/core/theme';
 import { ToastProvider } from '../../components/toast';
+import { ModalProvider } from '../../components/modal';
 
 // @file declarations
 export type { DefaultTheme };
@@ -19,7 +20,9 @@ export const OreoProvider = (props: OreoProviderProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <ModalProvider>{children}</ModalProvider>
+      </ToastProvider>
     </ThemeProvider>
   );
 };

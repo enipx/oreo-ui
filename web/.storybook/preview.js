@@ -5,11 +5,10 @@ import { OreoProvider } from '../src/system/provider';
 export const decorators = [
   (Story) => (
     <OreoProvider theme={{
-        colors: {
+      colors: {
         primary: '#0ff',
         
       },
-      mode: 'dark'
     }}>
       <Story />
     </OreoProvider>
