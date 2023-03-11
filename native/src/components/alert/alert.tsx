@@ -48,18 +48,14 @@ export const AlertIcon = (props: AlertProps) => {
   const type = getAlertIconType(props);
 
   const Icon: AlertIconObjectType = {
-    warning: <WarningIcon fill={color} />,
-    info: <InfoIcon fill={color} />,
-    success: <SuccessIcon fill={color} />,
-    danger: <DangerIcon fill={color} />,
+    warning: <WarningIcon size="md" fill={color} />,
+    info: <InfoIcon size="md" fill={color} />,
+    success: <SuccessIcon size="md" fill={color} />,
+    danger: <DangerIcon size="md" fill={color} />,
   };
 
   if (withIcon) {
-    return (
-      <View bg="transparent" mt="xs" mr="sm">
-        {Icon[type]}
-      </View>
-    );
+    return <View bg="transparent">{Icon[type]}</View>;
   }
 
   if (icon) return icon as JSX.Element;
@@ -122,7 +118,7 @@ export const Alert = (props: AlertProps) => {
         colorScheme={colorScheme}
         variant={variant}
       />
-      <View flex={1} bg="transparent">
+      <View flex={1} bg="transparent" pr="sm">
         <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
           {title}
         </StyledAlertTitle>

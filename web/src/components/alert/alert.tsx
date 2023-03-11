@@ -35,10 +35,10 @@ export const AlertIcon = (props: AlertProps) => {
   const type = getAlertIconType(props);
 
   const Icon: AlertIconObjectType = {
-    warning: <WarningIcon />,
-    info: <InfoIcon />,
-    success: <SuccessIcon />,
-    danger: <DangerIcon />,
+    warning: <WarningIcon size="sm" />,
+    info: <InfoIcon size="sm" />,
+    success: <SuccessIcon size="sm" />,
+    danger: <DangerIcon size="sm" />,
   };
 
   if (withIcon) {

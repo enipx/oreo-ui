@@ -2,6 +2,8 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 import { checkboxDefaultStyle, checkboxSizeVariant } from './checkbox';
 
+import { isPackageNative } from '@/core/helpers/base';
+
 // @checkbox themes
 export const radioDefaults = {
   disabledOpacity: 0.5,
@@ -12,18 +14,20 @@ export const radioDefaults = {
 export const radioCheckedStyle = (options: SystemThemeParams) => {
   const { theme, type = 'web', size = radioDefaults.size } = options;
 
+  const isNative = isPackageNative(type);
+
   const sizes = {
     sm: {
-      width: theme.space[1],
-      height: theme.space[1],
+      width: theme.space[isNative ? 1.5 : 1],
+      height: theme.space[isNative ? 1.5 : 1],
     },
     md: {
-      width: theme.space[1.5],
-      height: theme.space[1.5],
+      width: theme.space[isNative ? 2 : 1.5],
+      height: theme.space[isNative ? 2 : 1.5],
     },
     lg: {
-      width: theme.space[2],
-      height: theme.space[2],
+      width: theme.space[isNative ? 3 : 2],
+      height: theme.space[isNative ? 3 : 2],
     },
   };
 

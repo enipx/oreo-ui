@@ -1,8 +1,7 @@
 // @imports
 import { useId } from 'react';
 
-import { StyledHintText } from '../input/input';
-import { Text } from '../text';
+import { InputLabel, InputHint } from '../input/input';
 import { View } from '../view';
 import type { RadioProps, RadioDataType } from './radio.types';
 
@@ -44,14 +43,8 @@ export const RadioControl: React.FC<RadioProps> = (props) => {
       return (
         <label htmlFor={checkboxId}>
           <View as="span" ml="md" display="block">
-            <Text as="span" display="block" fontWeight="medium" fontSize="sm">
-              {label}
-            </Text>
-            {description ? (
-              <StyledHintText state="default" as="span" fontSize="xs">
-                {description}
-              </StyledHintText>
-            ) : null}
+            <InputLabel label={label} mb="0" as="span" display="block" />
+            <InputHint as="span" state="default" hint={description} mt="0" />
           </View>
         </label>
       );

@@ -26,3 +26,12 @@ export interface InputTextProps
     InputThemedDefaultProps {}
 
 export type InputFocusEventType = NativeSyntheticEvent<TextInputFocusEventData>;
+
+export interface InputLabelProps extends TextProps {
+  label?: string;
+}
+
+export interface InputHintProps extends TextProps {
+  hint?: string;
+  state?: InputProps['state'];
+}

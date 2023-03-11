@@ -77,6 +77,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
           colorScheme={colorScheme}
           fontSize={buttonTextsize[size]}
           variant={variant}
+          buttonSize={size}
           {...(textProps as any)}>
           {text}
         </StyleButtonText>

@@ -1,6 +1,7 @@
 import { variant } from 'styled-system';
 
 import type {
+  ButtonSizeType,
   ButtonThemedStyledProps,
   IconButtonThemedStyledProps,
 } from '../components.types';
@@ -15,6 +16,7 @@ import type { FontSizeKeys } from '@/core/theme/utilities/typography';
 
 // @types
 type ButtonSystemThemeParams = SystemThemeParams & ButtonThemedStyledProps;
+
 type IconButtonSystemThemeParams = SystemThemeParams &
   IconButtonThemedStyledProps;
 
@@ -170,13 +172,24 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
 };
 
 export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
-  const { theme, type = 'web', colorScheme, variant } = options;
+  const { theme, type = 'web', colorScheme, variant, buttonSize } = options;
 
   const { color } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
     variant: variant || 'solid',
   });
+
+  const nativeFontSize: { [key in ButtonSizeType]: number | string } = {
+    xs: theme.fontSizes.sm,
+    sm: theme.fontSizes.sm,
+    lg: theme.fontSizes.lg,
+    md: theme.fontSizes.md,
+  };
+
+  const size: ButtonSizeType = buttonSize || buttonDefaults.size;
+
+  const fontSize = nativeFontSize[size];
 
   const baseStyle = `
     font-weight: ${theme.fontWeights.medium};
@@ -185,6 +198,7 @@ export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    font-size: ${fontSize};
   `;
 
   const web = `

@@ -4,6 +4,8 @@ import { styleModeHandler } from './base';
 import { checkboxDefaultStyle, checkboxSizeVariant } from './checkbox';
 
 import { ObjectTypes } from '@/core/constants/index.types';
+import { isPackageNative } from '@/core/helpers/base';
+import { add } from '@/core/helpers/number';
 
 // @checkbox themes
 export const switchDefaults = {
@@ -14,22 +16,30 @@ export const switchDefaults = {
 };
 
 export const switchSizing = (options: SystemThemeParams) => {
-  const { theme, control } = options;
+  const { theme, control, type = 'web' } = options;
+
+  const isNative = isPackageNative(type);
 
   const size = options?.size || switchDefaults.size;
 
+  const defaultSizes = {
+    sm: isNative ? `${add(theme.space[3], theme.space[1])}px` : theme.space[3],
+    md: isNative ? `${add(theme.space[4], theme.space[1])}px` : theme.space[4],
+    lg: isNative ? `${add(theme.space[5], theme.space[1])}px` : theme.space[6],
+  };
+
   const defaultSize: ObjectTypes = {
     sm: {
-      width: theme.space[3],
-      height: theme.space[3],
+      height: defaultSizes.sm,
+      width: defaultSizes.sm,
     },
     md: {
-      width: theme.space[4],
-      height: theme.space[4],
+      height: defaultSizes.md,
+      width: defaultSizes.md,
     },
     lg: {
-      width: theme.space[6],
-      height: theme.space[6],
+      height: defaultSizes.lg,
+      width: defaultSizes.lg,
     },
   };
 

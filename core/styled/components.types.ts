@@ -112,6 +112,8 @@ export interface TextThemedStyledProps extends TypographyThemeStyledProps {
    * set text transform
    */
   textTransform?: CSSProperties['textTransform'];
+
+  as?: string;
 }
 
 export type ButtonColorSchemeType = DefaultColorsSchemeKeys;

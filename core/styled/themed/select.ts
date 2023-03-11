@@ -1,7 +1,7 @@
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 
-import { ObjectTypes } from '@/core/constants/index.types';
+import type { ObjectTypes } from '@/core/constants/index.types';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @button themes

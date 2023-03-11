@@ -1,7 +1,6 @@
 // @imports
 import { IconButton } from '../icon-button';
-import { StyledHintText, StyledInputContainer } from '../input/input';
-import { Text } from '../text';
+import { InputLabel, InputHint, StyledInputContainer } from '../input/input';
 import { View } from '../view';
 import { ArrowDownIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
@@ -85,11 +84,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   return (
     <View>
-      {label ? (
-        <Text fontWeight="medium" fontSize="sm" mb="sm">
-          {label}
-        </Text>
-      ) : null}
+      <InputLabel label={label} />
       <StyledSelectContainer
         size={size}
         disabled={isDisabled}
@@ -103,11 +98,8 @@ export const Select: React.FC<SelectProps> = (props) => {
         </StyledSelect>
         {renderDropdownIcon()}
       </StyledSelectContainer>
-      {hint ? (
-        <StyledHintText state={selectState} fontSize="xs" mt="sm">
-          {hint}
-        </StyledHintText>
-      ) : null}
+
+      <InputHint hint={hint} state={selectState} />
     </View>
   );
 };

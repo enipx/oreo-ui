@@ -4,7 +4,7 @@ import { IconButton } from '../icon-button';
 import { Text } from '../text';
 import { View } from '../view/view';
 import { FlatList } from '../flat-list';
-import { StyledHintText, StyledInputContainer } from '../input/input';
+import { InputHint, InputLabel, StyledInputContainer } from '../input/input';
 import { ArrowDownIcon, CheckMarkIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
 
@@ -176,11 +176,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   return (
     <View>
-      {label ? (
-        <Text fontWeight="medium" fontSize="sm" mb="sm">
-          {label}
-        </Text>
-      ) : null}
+      <InputLabel label={label} />
       <StyledSelect onPress={onPressHandler} activeOpacity={activeOpacity}>
         <StyledSelectContainer
           size={size}
@@ -190,11 +186,7 @@ export const Select: React.FC<SelectProps> = (props) => {
           {renderChildren()}
         </StyledSelectContainer>
       </StyledSelect>
-      {hint ? (
-        <StyledHintText state={selectState} fontSize="xs" mt="sm">
-          {hint}
-        </StyledHintText>
-      ) : null}
+      <InputHint hint={hint} state={selectState} />
     </View>
   );
 };

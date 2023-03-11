@@ -10,6 +10,7 @@ import { addTransitionsHandler } from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 
+import { add } from '@/core/helpers/number';
 import { convertHexToRgbaHandler } from '@/core/helpers/theme';
 
 // @defaults
@@ -97,8 +98,9 @@ export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
   const native = `
     ${baseStyle}
     flex-direction: row;
-    padding-horizontal: ${theme.space[4]};
-    padding-vertical: ${theme.space[3]};
+    border-radius: ${add(theme.radii.base, theme.radii.xs)}px;
+    padding-horizontal: ${theme.space[3]};
+    padding-vertical: ${theme.space[4]};
     border-left-width: 4px;
     border-left-color: ${borderColor};
   `;
@@ -106,7 +108,7 @@ export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
   const web = `
     ${baseStyle}
     display: flex;
-    padding: ${theme.space[3]} ${theme.space[4]};
+    padding: ${theme.space[3]} ${theme.space[3]};
     color: ${color};
     ${addTransitionsHandler([{ name: 'fade' }])}
 
@@ -156,7 +158,7 @@ export const alertTitleDefaultStyle = (option: AlertSystemThemeParams) => {
 
   const baseStyle = `
     color: ${isContent ? contentColor : color};
-    font-size: ${theme.fontSizes.sm};
+    font-size: ${theme.fontSizes.md};
   `;
 
   const native = `

@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { StyledHintText } from '../input/input';
-import { Text } from '../text';
+import { InputHint, InputLabel } from '../input/input';
 import { View } from '../view';
 import { StyledButton } from '../button/button';
 import type {
@@ -55,14 +54,8 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     if (label) {
       return (
         <View ml="md">
-          <Text fontWeight="medium" fontSize="sm">
-            {label}
-          </Text>
-          {description ? (
-            <StyledHintText state="default" fontSize="xs">
-              {description}
-            </StyledHintText>
-          ) : null}
+          <InputLabel label={label} mb="0" />
+          <InputHint state="default" hint={description} mt="0" />
         </View>
       );
     }

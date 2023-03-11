@@ -9,6 +9,8 @@ import type {
   InputContainerProps,
   InputTextProps,
   InputFocusEventType,
+  InputLabelProps,
+  InputHintProps,
 } from './input.types';
 
 import {
@@ -46,6 +48,30 @@ export const StyledHintText = styled(Text)<InputTextProps>`
   opacity: ${({ state }) =>
     isInputDisabled(state) ? inputDefaults.disabledOpacity : 1};
 `;
+
+export const InputLabel = ({ label, ...otherProps }: InputLabelProps) => {
+  if (!label) {
+    return null;
+  }
+
+  return (
+    <Text fontWeight="medium" mb="sm" {...otherProps}>
+      {label}
+    </Text>
+  );
+};
+
+export const InputHint = ({ hint, state, ...otherProps }: InputHintProps) => {
+  if (!hint) {
+    return null;
+  }
+
+  return (
+    <StyledHintText state={state} fontSize="sm" mt="sm" {...otherProps}>
+      {hint}
+    </StyledHintText>
+  );
+};
 
 export const Input: React.FC<InputProps> = (props) => {
   const {
@@ -120,11 +146,7 @@ export const Input: React.FC<InputProps> = (props) => {
 
   return (
     <View>
-      {label ? (
-        <Text fontWeight="medium" fontSize="sm" mb="sm">
-          {label}
-        </Text>
-      ) : null}
+      <InputLabel label={label} />
       <StyledInputContainer
         size={size}
         disabled={isDisabled}
@@ -147,11 +169,7 @@ export const Input: React.FC<InputProps> = (props) => {
         />
         {renderRightIcon()}
       </StyledInputContainer>
-      {hint ? (
-        <StyledHintText state={inputState} fontSize="xs" mt="sm">
-          {hint}
-        </StyledHintText>
-      ) : null}
+      <InputHint hint={hint} state={inputState} />
     </View>
   );
 };

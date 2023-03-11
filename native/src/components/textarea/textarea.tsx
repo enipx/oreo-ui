@@ -1,9 +1,8 @@
 // @imports
 import React from 'react';
 import { IconButton } from '../icon-button';
-import { Text } from '../text';
 import { View } from '../view/view';
-import { StyledHintText } from '../input/input';
+import { InputHint, InputLabel } from '../input/input';
 import { InputField } from '../input/input-field';
 import type { TextareaProps } from './textarea.types';
 
@@ -41,11 +40,7 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
 
   return (
     <View>
-      {label ? (
-        <Text fontWeight="medium" fontSize="sm" mb="sm">
-          {label}
-        </Text>
-      ) : null}
+      <InputLabel label={label} />
       <View position="relative">
         {icon ? (
           <View zIndex="docked" position="absolute" right="md" bottom="md">
@@ -61,11 +56,7 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
           {...(otherProps as any)}
         />
       </View>
-      {hint ? (
-        <StyledHintText state={textareaState} fontSize="xs" mt="sm">
-          {hint}
-        </StyledHintText>
-      ) : null}
+      <InputHint hint={hint} state={textareaState} />
     </View>
   );
 };

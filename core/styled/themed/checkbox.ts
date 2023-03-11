@@ -4,6 +4,8 @@ import { variant } from '../system';
 import { styleModeHandler } from './base';
 
 import type { ObjectTypes } from '@/core/constants/index.types';
+import { isPackageNative } from '@/core/helpers/base';
+import { add } from '@/core/helpers/number';
 import type { RadiiKeys } from '@/core/theme/utilities/radius';
 
 // @checkbox themes
@@ -206,37 +208,49 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
 };
 
 export const checkboxSizing = (options: SystemThemeParams) => {
-  const { theme, isSwitch } = options;
+  const { theme, isSwitch, type = 'web' } = options;
+
+  const isNative = isPackageNative(type);
 
   const size = options?.size || checkboxDefaults.size;
 
+  const defaultSizes = {
+    sm: isNative ? `${add(theme.space[3], theme.space[1])}px` : theme.space[3],
+    md: isNative ? `${add(theme.space[4], theme.space[1])}px` : theme.space[4],
+    lg: isNative ? `${add(theme.space[5], theme.space[1])}px` : theme.space[5],
+  };
+
   const defaultSize: ObjectTypes = {
     sm: {
-      height: theme.space[3],
-      width: theme.space[3],
+      height: defaultSizes.sm,
+      width: defaultSizes.sm,
     },
     md: {
-      height: theme.space[4],
-      width: theme.space[4],
+      height: defaultSizes.md,
+      width: defaultSizes.md,
     },
     lg: {
-      height: theme.space[5],
-      width: theme.space[5],
+      height: defaultSizes.lg,
+      width: defaultSizes.lg,
     },
   };
 
   const switchSize: ObjectTypes = {
     sm: {
-      height: theme.space[4],
-      width: theme.space[7],
+      height: isNative ? theme.space[5] : theme.space[4],
+      width: isNative ? theme.space[9] : theme.space[7],
     },
     md: {
-      height: theme.space[5],
-      width: theme.space[9],
+      height: isNative ? theme.space[6] : theme.space[5],
+      width: isNative
+        ? `${add(theme.space[10], theme.space[1])}px`
+        : theme.space[9],
     },
     lg: {
       height: theme.space[7],
-      width: theme.space[12],
+      width: isNative
+        ? `${add(theme.space[12], theme.space[1])}px`
+        : theme.space[12],
     },
   };
 

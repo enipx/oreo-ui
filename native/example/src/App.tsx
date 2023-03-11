@@ -122,7 +122,6 @@ export default function App() {
           onChange={(value) => {
             console.log({ value });
           }}
-          size="sm"
           horizontal
         />
 

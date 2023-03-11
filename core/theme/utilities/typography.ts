@@ -32,10 +32,16 @@ const fontSizes = {
   '9xl': 128,
 };
 
-const fonts = {
+const webFonts = {
   heading: `-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   body: `inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   mono: `SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`,
+};
+
+const nativeFonts = {
+  heading: '',
+  body: '',
+  mono: '',
 };
 
 const lineHeights = {
@@ -57,7 +63,7 @@ const typography = (arg?: PackageTypes) => {
     fontSizes: convertObjectDimensionsUnit(fontSizes, {
       dimension: isWeb ? 'rem' : 'px',
     }) as FontSizeTypes,
-    fonts,
+    fonts: isWeb ? webFonts : nativeFonts,
     lineHeights,
   };
 };
@@ -71,7 +77,7 @@ export type FontSizeTypes = typeof fontSizes;
 
 export type FontSizeKeys = keyof FontSizeTypes;
 
-export type FontTypes = typeof fonts;
+export type FontTypes = typeof webFonts;
 
 export type FontKeys = keyof FontTypes;
 

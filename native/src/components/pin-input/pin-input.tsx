@@ -2,8 +2,7 @@
 import React, { useRef, useEffect, useState, forwardRef } from 'react';
 import { Keyboard } from 'react-native';
 
-import { StyledHintText } from '../input/input';
-import { Text } from '../text';
+import { InputHint, InputLabel } from '../input/input';
 import { View } from '../view';
 import type {
   PinInputProps,
@@ -165,11 +164,7 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
 
   return (
     <View>
-      {label ? (
-        <Text fontWeight="medium" fontSize="sm" mb="sm">
-          {label}
-        </Text>
-      ) : null}
+      <InputLabel label={label} />
       <View flexDirection="row">
         {inputsLengthArray.map((_input, _index) => {
           const inputValue = inputsValues?.[_index] || '';
@@ -197,11 +192,7 @@ export const PinInput: React.FC<PinInputProps> = (props) => {
           );
         })}
       </View>
-      {hint ? (
-        <StyledHintText state={pinInputState} fontSize="xs" mt="sm">
-          {hint}
-        </StyledHintText>
-      ) : null}
+      <InputHint hint={hint} state={pinInputState} />
     </View>
   );
 };
