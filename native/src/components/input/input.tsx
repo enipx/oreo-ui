@@ -23,24 +23,29 @@ import {
   isInputDisabled,
   inputDefaults,
 } from '@/core/styled/themed/input';
-import { styled, baseStyled } from '@/core/styled/native';
+import { styled, baseStyled, useTheme } from '@/core/styled/native';
 
 // @exports
 export const StyledInputContainer = styled(
   baseStyled('View', ['layout', 'flexbox', 'grid'])
 )<InputContainerProps>`
-  ${({ theme, disabled }) =>
-    inputContainerDefaultStyle({ theme, disabled, type: 'native' })};
-  ${({ theme, rightIcon, icon }) =>
-    inputSizeVariant({ theme, icon, rightIcon, type: 'native' })};
+  ${(props) => inputContainerDefaultStyle({ ...props, type: 'native' } as any)};
+  ${(props) => inputSizeVariant({ ...props, type: 'native' } as any)};
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 `;
 
 export const StyledInput = styled(
-  baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
+  baseStyled('TextInput', [
+    'shadow',
+    'grid',
+    'position',
+    'background',
+    'layout',
+    'space',
+  ])
 )<InputProps>`
-  ${({ theme }) => inputDefaultStyle({ theme, type: 'native' })}
+  ${(props) => inputDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 export const StyledHintText = styled(Text)<InputTextProps>`
@@ -55,7 +60,7 @@ export const InputLabel = ({ label, ...otherProps }: InputLabelProps) => {
   }
 
   return (
-    <Text fontWeight="medium" mb="sm" {...otherProps}>
+    <Text fontWeight="medium" mb="sm" {...(otherProps as any)}>
       {label}
     </Text>
   );
@@ -67,7 +72,11 @@ export const InputHint = ({ hint, state, ...otherProps }: InputHintProps) => {
   }
 
   return (
-    <StyledHintText state={state} fontSize="sm" mt="sm" {...otherProps}>
+    <StyledHintText
+      state={state}
+      fontSize="sm"
+      mt="sm"
+      {...(otherProps as any)}>
       {hint}
     </StyledHintText>
   );
@@ -88,6 +97,8 @@ export const Input: React.FC<InputProps> = (props) => {
     keyboardType: _keyboardType,
     ...otherProps
   } = props;
+
+  const { components } = useTheme();
 
   const isPassword = type === 'password';
 
@@ -158,13 +169,14 @@ export const Input: React.FC<InputProps> = (props) => {
         {icon ? <IconButton variant="link" size={size} icon={icon} /> : null}
         <StyledInput
           editable={!isDisabled}
-          selectionColor={inputDefaults.selectionColor}
+          selectionColor={components.input.selectionColor}
           selectTextOnFocus={false}
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           secureTextEntry={toggledPassword}
           keyboardType={keyboardType}
           underlineColorAndroid="transparent"
+          size={size}
           {...(otherProps as any)}
         />
         {renderRightIcon()}

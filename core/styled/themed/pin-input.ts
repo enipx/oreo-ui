@@ -1,4 +1,4 @@
-import { PackageTypes } from '../../constants/index.types';
+import type { PackageTypes } from '../../constants/index.types';
 import type { PinInputThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { variant } from '../system';
@@ -11,7 +11,6 @@ import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 export const pinInputDefaults = {
   size: 'md',
   state: 'default',
-  selectionColor: 'rgba(34, 109, 204, 0.5)',
   length: 4,
   key: 'pin-input',
 };
@@ -173,7 +172,7 @@ export const pinInputOnChangeHandler = (options: inputOnChangeHandler) => {
         filterTextArray.filter((value) => value !== inputValue)?.[0] || '';
 
       if (filterTextArray.every((value) => value === inputValue)) {
-        replaceValue = filterTextArray[0];
+        replaceValue = filterTextArray?.[0] || '';
       }
 
       newInputsValues.splice(position, 1, replaceValue);

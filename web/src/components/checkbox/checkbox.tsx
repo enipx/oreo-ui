@@ -15,13 +15,18 @@ import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledCheckbox = styled(
-  baseStyled('input', ['shadow', 'grid', 'position', 'background'])
+  baseStyled('input', [
+    'shadow',
+    'grid',
+    'position',
+    'background',
+    'space',
+    'layout',
+  ])
 )<CheckboxProps>`
-  ${({ theme, disabled }) => checkboxDefaultStyle({ theme, disabled })};
-  ${({ theme, disabled, size }) =>
-    checkboxSizeVariant({ theme, disabled, size })};
-  ${({ theme, disabled, size, indeterminate }) =>
-    checkboxCheckedStyle({ theme, disabled, size, indeterminate })};
+  ${(props) => checkboxDefaultStyle({ ...props, type: 'web' } as any)};
+  ${(props) => checkboxSizeVariant({ ...props, type: 'web' } as any)};
+  ${(props) => checkboxCheckedStyle({ ...props, type: 'web' } as any)};
 `;
 
 export const Checkbox: React.FC<CheckboxProps> = (props) => {

@@ -1,12 +1,7 @@
-import type {
-  AvatarThemedDefaultProps,
-  AvatarSizeTypes,
-} from '../components.types';
+import type { AvatarThemedDefaultProps } from '../components.types';
 import { flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, getColorSchemeStyle, styleModeHandler } from './base';
-
-import { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @defaults
 export const avatarDefaults = {
@@ -15,110 +10,50 @@ export const avatarDefaults = {
   svgClassName: 'avatar__svg',
   placeholderStrokeWidth: 1.8,
   alt: 'avatar',
+  size: 'md',
 };
 
 // @themes
 type AvatarSystemThemeParams = SystemThemeParams & AvatarThemedDefaultProps;
 
-export const getAvatarSizeStyle = (options: AvatarSystemThemeParams) => {
-  type SizesObjectType = {
-    width: string | number;
-    height: string | number;
-    fontSize: string | number;
-    baseFontSize: string | number;
-  };
-
-  type SizesType = {
-    [key in AvatarSizeTypes]: SizesObjectType;
-  };
-
-  const { theme, size } = options;
-
-  const baseSize: SizesObjectType = {
-    width: theme.space?.[size as SpacingKeys] || size || '',
-    height: theme.space?.[size as SpacingKeys] || size || '',
-    fontSize: theme.fontSizes.md,
-    baseFontSize: theme.fontSizes.sm,
-  };
-
-  const sizes: SizesType = {
-    xs: {
-      width: theme.space[6],
-      height: theme.space[6],
-      fontSize: theme.fontSizes.xs,
-      baseFontSize: theme.fontSizes.xs,
-    },
-    sm: {
-      width: theme.space[8],
-      height: theme.space[8],
-      fontSize: theme.fontSizes.sm,
-      baseFontSize: theme.fontSizes.sm,
-    },
-    md: {
-      width: theme.space[10],
-      height: theme.space[10],
-      fontSize: theme.fontSizes.md,
-      baseFontSize: theme.fontSizes.sm,
-    },
-    lg: {
-      width: theme.space[12],
-      height: theme.space[12],
-      fontSize: theme.fontSizes.lg,
-      baseFontSize: theme.fontSizes.sm,
-    },
-    xl: {
-      width: theme.space[16],
-      height: theme.space[16],
-      fontSize: theme.fontSizes.xl,
-      baseFontSize: theme.fontSizes.md,
-    },
-  };
-
-  return sizes?.[size || 'md'] || baseSize;
+type AvatarStyleObjectType = {
+  width: string | number;
+  height: string | number;
+  fontSize: string | number;
+  initialsFontSize: string | number;
+  borderWidth: string | number;
+  groupSpacing: string | number;
+  borderColor: string | number;
 };
 
-export const getBorderStyle = (options: AvatarSystemThemeParams) => {
-  const { theme, size, isGrouped } = options;
+export const getAvatarSizeStyle = (options: AvatarSystemThemeParams) => {
+  const { theme, size = avatarDefaults.size, isGrouped } = options;
+
+  const { avatar } = theme.components;
 
   const borderColor = isGrouped
     ? getBaseStyle(options).backgroundColor
     : theme.colors.transparent;
 
-  const styles: {
-    [key in AvatarSizeTypes]: {
-      borderWidth: string | number;
-      borderColor: string | number;
-      spacing: string | number;
-    };
-  } = {
-    xs: {
-      borderWidth: '2px',
-      borderColor,
-      spacing: `-${theme.space[2]}`,
-    },
-    sm: {
-      borderWidth: '2px',
-      borderColor,
-      spacing: `-${theme.space[2.5]}`,
-    },
-    md: {
-      borderWidth: '2px',
-      borderColor,
-      spacing: `-${theme.space[3]}`,
-    },
-    lg: {
-      borderWidth: '3px',
-      borderColor,
-      spacing: `-${theme.space[4]}`,
-    },
-    xl: {
-      borderWidth: '3px',
-      borderColor,
-      spacing: `-${theme.space[4]}`,
-    },
+  const width = avatar.size[size as keyof typeof avatar.size];
+  const height = width;
+  const fontSize = avatar.fontSizes[size as keyof typeof avatar.size];
+  const initialsFontSize =
+    avatar.initialsFontSizes[size as keyof typeof avatar.size];
+  const borderWidth = avatar.borderWidths[size as keyof typeof avatar.size];
+  const groupSpacing = avatar.groupSpacing[size as keyof typeof avatar.size];
+
+  const styles: AvatarStyleObjectType = {
+    width,
+    height,
+    fontSize,
+    initialsFontSize,
+    borderWidth,
+    groupSpacing,
+    borderColor,
   };
 
-  return styles?.[size || 'md'] || styles.md;
+  return styles;
 };
 
 export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
@@ -131,9 +66,15 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
     isLastItem,
   } = options;
 
-  const { width, height, fontSize, baseFontSize } = getAvatarSizeStyle(options);
-
-  const { borderColor, borderWidth, spacing } = getBorderStyle(options);
+  const {
+    width,
+    height,
+    fontSize,
+    initialsFontSize,
+    borderColor,
+    borderWidth,
+    groupSpacing,
+  } = getAvatarSizeStyle(options);
 
   const { backgroundColor: schemeBackgroundColor, color } = getColorSchemeStyle(
     {
@@ -158,7 +99,7 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
     background-color: ${backgroundColor};
     width: ${width};
     height: ${height};
-    margin-right: ${isGrouped && !isLastItem ? spacing : 0};
+    margin-right: ${isGrouped && !isLastItem ? groupSpacing : 0};
     border-width: ${borderWidth};
     border-style: solid;
     border-color: ${borderColor};
@@ -180,10 +121,10 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
     vertical-align: top;
     color: ${color};
     font-weight: ${theme.fontWeights.medium};
-    font-size: ${baseFontSize};
+    font-size: ${fontSize};
 
     .${avatarDefaults.initialsClassName} {
-      font-size: ${fontSize};
+      font-size: ${initialsFontSize};
       font-weight: ${theme.fontWeights.semiBold};
     }
 

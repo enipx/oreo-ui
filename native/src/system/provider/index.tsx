@@ -16,7 +16,7 @@ export type { DefaultTheme };
 export const OreoProvider = (props: OreoProviderProps) => {
   const { theme: specifiedTheme, children } = props;
 
-  const theme = mergedObjectsHandler(defaultTheme(), specifiedTheme);
+  const theme = mergedObjectsHandler(defaultTheme('native'), specifiedTheme);
 
   return (
     <ThemeProvider theme={theme}>

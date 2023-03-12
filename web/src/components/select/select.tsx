@@ -19,8 +19,8 @@ export const StyledSelectContainer = styled(
 export const StyledSelect = styled(
   baseStyled('select', ['shadow', 'grid', 'position', 'background'])
 )<SelectProps>`
-  ${({ theme, disabled }) => inputDefaultStyle({ theme, disabled })}
-  ${({ theme, size }) => selectBaseStyle({ theme, size })}
+  ${(props) => inputDefaultStyle({ ...props } as any)}
+  ${(props) => selectBaseStyle({ ...props } as any)}
 `;
 
 export const Select: React.FC<SelectProps> = (props) => {

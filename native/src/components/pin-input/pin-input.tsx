@@ -23,7 +23,7 @@ import {
   pinInputOnKeyDownHandler,
   pinInputDefaultStyle,
 } from '@/core/styled/themed/pin-input';
-import { styled, baseStyled } from '@/core/styled/native';
+import { styled, baseStyled, useTheme } from '@/core/styled/native';
 import type { InputFocusEventType } from '@components/input/input.types';
 
 // @exports
@@ -53,6 +53,8 @@ export const PinInputField: React.FC<
     onFocus,
     ...otherProps
   } = props;
+
+  const { components } = useTheme();
 
   const isPassword = type === 'password';
 
@@ -88,7 +90,7 @@ export const PinInputField: React.FC<
       onBlur={onBlurHandler}
       textAlign="center"
       selectTextOnFocus
-      selectionColor={pinInputDefaults.selectionColor}
+      selectionColor={components.input.selectionColor}
       secureTextEntry={isPassword}
       underlineColorAndroid="transparent"
       {...(otherProps as any)}

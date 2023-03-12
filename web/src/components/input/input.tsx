@@ -27,9 +27,8 @@ import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledInputContainer = styled(View)<InputContainerProps>`
-  ${({ theme, disabled }) => inputContainerDefaultStyle({ theme, disabled })};
-  ${({ theme, rightIcon, icon }) =>
-    inputSizeVariant({ theme, icon, rightIcon })};
+  ${(props) => inputContainerDefaultStyle({ ...props } as any)};
+  ${(props) => inputSizeVariant({ ...props } as any)};
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 `;

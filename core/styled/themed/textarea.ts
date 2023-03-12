@@ -11,7 +11,6 @@ import {
 export const textareaDefaults = {
   disabledOpacity: 0.5,
   state: 'default',
-  selectionColor: 'rgba(34, 109, 204, 0.5)',
 };
 
 export { backgroundColor, borderColor, hoverBorderColor, focusBorderColor };
@@ -29,7 +28,7 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
     border-style: solid;
     position: relative;
     overflow: hidden;
-    min-height: ${theme.space[20]};
+    min-height: ${theme.components.textarea.height};
     outline: 0;
     border-radius: ${theme.radii.md};
     padding-left: ${theme.space.md};

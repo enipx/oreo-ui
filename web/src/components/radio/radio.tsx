@@ -19,10 +19,9 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledRadio = styled(
   baseStyled('input', ['shadow', 'grid', 'position', 'background'])
 )<RadioProps>`
-  ${({ theme, disabled }) => radioDefaultStyle({ theme, disabled })};
-  ${({ theme, disabled }) => radioSizeVariant({ theme, disabled })};
-  ${({ theme, disabled, size }) =>
-    radioCheckedStyle({ theme, disabled, size })};
+  ${(props) => radioDefaultStyle({ ...props, type: 'web' } as any)};
+  ${(props) => radioSizeVariant({ ...props, type: 'web' } as any)};
+  ${(props) => radioCheckedStyle({ ...props, type: 'web' } as any)};
 `;
 
 export const RadioControl: React.FC<RadioProps> = (props) => {

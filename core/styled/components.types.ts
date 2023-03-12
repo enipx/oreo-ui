@@ -725,7 +725,7 @@ export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
   disabledAutoHide?: boolean;
 }
 
-export type AvatarSizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
+export type AvatarSizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export interface AvatarThemedDefaultProps {
   /**

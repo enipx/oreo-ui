@@ -1,10 +1,10 @@
+import type { InputThemedDefaultProps } from '../components.types';
 import { flexCenterXStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { variant } from '../system';
 import { styleModeHandler, variantModeHandler } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 
 // @defaults
 export const inputDefaults = {
@@ -13,8 +13,10 @@ export const inputDefaults = {
   activeOpacity: 0.8,
   size: 'md',
   state: 'default',
-  selectionColor: 'rgba(34, 109, 204, 0.5)',
 };
+
+// @types
+type InputSystemThemeParams = SystemThemeParams & InputThemedDefaultProps;
 
 // @variants
 export const backgroundColor: any = variantModeHandler('state', {
@@ -51,59 +53,59 @@ export const hintColor: any = variantModeHandler('state', {
   disabled: { light: 'gray.500', dark: 'gray.300' },
 });
 
-export const inputSizeVariant = (options: SystemThemeParams) => {
-  const { theme, type = 'web', icon, rightIcon } = options;
+export const inputSizeVariant = (options: InputSystemThemeParams) => {
+  const {
+    theme,
+    type = 'web',
+    icon,
+    rightIcon,
+    size = inputDefaults.size,
+  } = options;
 
-  const getLeftPadding = (property: SpacingKeys) => {
+  const isNative = isPackageNative(type);
+
+  const {
+    height: inputHeights,
+    fontSizes,
+    borderRadius: inputRadii,
+    paddingX: inputPaddingX,
+  } = theme.components.input;
+
+  const height = inputHeights[size as keyof typeof inputHeights];
+
+  const fontSize = fontSizes[size as keyof typeof fontSizes];
+
+  const borderRadius = inputRadii[size as keyof typeof inputRadii];
+
+  const paddingX = inputPaddingX[size as keyof typeof inputPaddingX];
+
+  const getLeftPadding = (property: number | string) => {
     const iconExist = !!icon;
     return iconExist ? 0 : property;
   };
 
-  const getRightPadding = (property: SpacingKeys) => {
+  const getRightPadding = (property: number | string) => {
     const iconExist = !!rightIcon;
     return iconExist ? 0 : property;
   };
 
-  const isNative = isPackageNative(type);
+  const styles = {
+    ...(isNative ? {} : { fontSize }),
+    height,
+    paddingLeft: getLeftPadding(paddingX),
+    paddingRight: getRightPadding(paddingX),
+    borderRadius,
+  };
 
-  return variant({
-    prop: 'size',
-    variants: {
-      xs: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.sm }),
-        height: theme.space[6],
-        pl: getLeftPadding(2),
-        pr: getRightPadding(2),
-        borderRadius: theme.radii.md,
-      },
-      sm: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.sm }),
-        height: theme.space[8],
-        pl: getLeftPadding(3),
-        pr: getRightPadding(2),
-        borderRadius: theme.radii.md,
-      },
-      md: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.md }),
-        height: theme.space[10],
-        pl: getLeftPadding(4),
-        pr: getRightPadding(2),
-        borderRadius: theme.radii.base,
-      },
-      lg: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.lg }),
-        height: theme.space[12],
-        pl: getLeftPadding(4),
-        pr: getRightPadding(2),
-        borderRadius: theme.radii.base,
-      },
-    },
-  });
+  return convertReactCSSToCSSHandler(styles);
 };
 
 // @styles
-export const inputDefaultStyle = (option: SystemThemeParams) => {
-  const { theme, type = 'web' } = option;
+export const inputDefaultStyle = (option: InputSystemThemeParams) => {
+  const { theme, type = 'web', size = inputDefaults.size } = option;
+  const { fontSizes } = theme.components.input;
+
+  const fontSize = fontSizes[size as keyof typeof fontSizes];
 
   const baseStyle = `
     border: 0;
@@ -116,6 +118,7 @@ export const inputDefaultStyle = (option: SystemThemeParams) => {
     ${baseStyle}
     height: 100%;
     flex: 1;
+    font-size: ${fontSize};
   `;
 
   const web = `
@@ -138,7 +141,7 @@ export const inputDefaultStyle = (option: SystemThemeParams) => {
   return res[type];
 };
 
-export const inputContainerDefaultStyle = (option: SystemThemeParams) => {
+export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
   const { theme, type = 'web', disabled } = option;
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
@@ -173,10 +176,20 @@ export const inputContainerDefaultStyle = (option: SystemThemeParams) => {
   return res[type];
 };
 
-export const inputFieldDefaultStyle = (option: SystemThemeParams) => {
-  const { theme, type = 'web', disabled, resize } = option;
+export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
+  const {
+    theme,
+    type = 'web',
+    disabled,
+    resize,
+    size = inputDefaults.size,
+  } = option;
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
+
+  const { fontSizes } = theme.components.input;
+
+  const fontSize = fontSizes[size as keyof typeof fontSizes];
 
   const baseStyle = `
     ${transitionStyle()}
@@ -190,6 +203,7 @@ export const inputFieldDefaultStyle = (option: SystemThemeParams) => {
     border-radius: ${theme.radii.md};
     padding: ${theme.space.md};
     color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
+    font-size: ${fontSize};
   `;
 
   const native = `
@@ -200,11 +214,10 @@ export const inputFieldDefaultStyle = (option: SystemThemeParams) => {
     ${baseStyle}
     appearance: none;
     white-space: nowrap;
-    font-size: ${theme.fontSizes.sm};
     resize: ${resize || 'auto'};
 
     ::placeholder {
-      font-size: ${theme.fontSizes.sm};
+      font-size: ${fontSize};
     }
   `;
 

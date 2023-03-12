@@ -8,22 +8,9 @@ import type { TextareaProps } from './textarea.types';
 
 import { textareaDefaults } from '@/core/styled/themed/textarea';
 
-import {
-  textareaDefaultStyle,
-  borderColor,
-  backgroundColor,
-} from '@/core/styled/themed/textarea';
-import { styled, baseStyled, defaultTheme } from '@/core/styled/native';
+import { useTheme } from '@/core/styled/native';
 
 // @exports
-export const StyledInput = styled(
-  baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
-)<TextareaProps>`
-  ${({ theme }) => textareaDefaultStyle({ theme, type: 'native' })}
-  border-color: ${borderColor};
-  background-color: ${backgroundColor};
-`;
-
 export const Textarea: React.FC<TextareaProps> = (props) => {
   const {
     label,
@@ -33,6 +20,8 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
     hint,
     ...otherProps
   } = props;
+
+  const { components } = useTheme();
 
   const disabled = defaultDisabled || state === 'disabled';
 
@@ -52,7 +41,7 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
           editable={!disabled}
           state={textareaState}
           textAlignVertical="top"
-          minHeight={defaultTheme.space[20]}
+          minHeight={components.textarea.height}
           {...(otherProps as any)}
         />
       </View>

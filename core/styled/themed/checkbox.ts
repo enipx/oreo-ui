@@ -1,12 +1,8 @@
 import { flexCenterStyle, positionCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { variant } from '../system';
 import { styleModeHandler } from './base';
 
-import type { ObjectTypes } from '@/core/constants/index.types';
-import { isPackageNative } from '@/core/helpers/base';
-import { add } from '@/core/helpers/number';
-import type { RadiiKeys } from '@/core/theme/utilities/radius';
+import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 
 // @checkbox themes
 export const checkboxDefaults = {
@@ -207,90 +203,37 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const checkboxSizing = (options: SystemThemeParams) => {
-  const { theme, isSwitch, type = 'web' } = options;
+export const getInputsSizing = (options: SystemThemeParams) => {
+  const { theme, isSwitch, isRadio } = options;
 
-  const isNative = isPackageNative(type);
+  const { checkbox, switch: themeSwitch, radio } = theme.components;
 
-  const size = options?.size || checkboxDefaults.size;
-
-  const defaultSizes = {
-    sm: isNative ? `${add(theme.space[3], theme.space[1])}px` : theme.space[3],
-    md: isNative ? `${add(theme.space[4], theme.space[1])}px` : theme.space[4],
-    lg: isNative ? `${add(theme.space[5], theme.space[1])}px` : theme.space[5],
-  };
-
-  const defaultSize: ObjectTypes = {
-    sm: {
-      height: defaultSizes.sm,
-      width: defaultSizes.sm,
-    },
-    md: {
-      height: defaultSizes.md,
-      width: defaultSizes.md,
-    },
-    lg: {
-      height: defaultSizes.lg,
-      width: defaultSizes.lg,
-    },
-  };
-
-  const switchSize: ObjectTypes = {
-    sm: {
-      height: isNative ? theme.space[5] : theme.space[4],
-      width: isNative ? theme.space[9] : theme.space[7],
-    },
-    md: {
-      height: isNative ? theme.space[6] : theme.space[5],
-      width: isNative
-        ? `${add(theme.space[10], theme.space[1])}px`
-        : theme.space[9],
-    },
-    lg: {
-      height: theme.space[7],
-      width: isNative
-        ? `${add(theme.space[12], theme.space[1])}px`
-        : theme.space[12],
-    },
-  };
-
-  if (isSwitch) {
-    return switchSize[size];
+  if (isRadio) {
+    return radio;
   }
 
-  return defaultSize[size];
+  if (isSwitch) {
+    return themeSwitch;
+  }
+
+  return checkbox;
 };
 
 export const checkboxSizeVariant = (options: SystemThemeParams) => {
-  const { theme, isRadio, isSwitch } = options;
+  const { size = checkboxDefaults.size } = options;
 
-  const getBorderRadius = (key?: RadiiKeys) => {
-    if (isRadio || isSwitch) {
-      return theme.radii.full;
-    }
+  const input = getInputsSizing(options);
 
-    return theme.radii[key || 'sm'];
+  const width = input.width[size as keyof typeof input.width];
+  const height = input.height[size as keyof typeof input.height];
+  const borderRadius =
+    input.borderRadius[size as keyof typeof input.borderRadius];
+
+  const styles = {
+    width,
+    height,
+    borderRadius,
   };
 
-  const getSize = (size?: string) => {
-    return checkboxSizing({ ...options, size });
-  };
-
-  return variant({
-    prop: 'size',
-    variants: {
-      sm: {
-        ...getSize('sm'),
-        borderRadius: getBorderRadius(),
-      },
-      md: {
-        ...getSize('md'),
-        borderRadius: getBorderRadius(),
-      },
-      lg: {
-        ...getSize('lg'),
-        borderRadius: getBorderRadius(),
-      },
-    },
-  });
+  return convertReactCSSToCSSHandler(styles);
 };

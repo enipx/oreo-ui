@@ -12,6 +12,7 @@ import {
   avatarTextDefaultStyle,
   avatarDefaults,
 } from '@/core/styled/themed/avatar';
+import { layout, border } from '@/core/styled/system';
 import { useTheme, styled, baseStyled } from '@/core/styled/native';
 
 // @exports
@@ -19,6 +20,8 @@ export const StyledAvatar = styled(
   baseStyled('View', ['layout', 'space'])
 )<AvatarProps>`
   ${(props) => avatarDefaultStyle({ ...props, type: 'native' } as any)}
+  ${layout}
+  ${border}
 `;
 
 export const StyledAvatarText = styled(

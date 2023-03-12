@@ -18,11 +18,10 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledSwitch = styled(
   baseStyled('input', ['shadow', 'grid', 'position', 'background'])
 )<SwitchProps>`
-  ${({ theme, disabled }) => switchDefaultStyle({ theme, disabled })};
-  ${({ theme, disabled, size }) => switchBaseStyle({ theme, disabled, size })};
-  ${({ theme, disabled }) => switchSizeVariant({ theme, disabled })};
-  ${({ theme, disabled, size }) =>
-    switchCheckedStyle({ theme, disabled, size })};
+  ${(props) => switchDefaultStyle({ ...props, type: 'web' } as any)};
+  ${(props) => switchBaseStyle({ ...props, type: 'web' } as any)};
+  ${(props) => switchSizeVariant({ ...props, type: 'web' } as any)};
+  ${(props) => switchCheckedStyle({ ...props, type: 'web' } as any)};
 `;
 
 export const Switch: React.FC<SwitchProps> = (props) => {

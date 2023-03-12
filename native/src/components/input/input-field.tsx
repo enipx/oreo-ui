@@ -8,13 +8,13 @@ import {
   backgroundColor,
   inputDefaults,
 } from '@/core/styled/themed/input';
-import { styled, baseStyled } from '@/core/styled/native';
+import { styled, baseStyled, useTheme } from '@/core/styled/native';
 
 // @exports
 export const StyledInputField = styled(
   baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
 )<InputProps>`
-  ${({ theme }) => inputFieldDefaultStyle({ theme, type: 'native' })};
+  ${(props) => inputFieldDefaultStyle({ ...props, type: 'native' })};
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 `;
@@ -29,6 +29,8 @@ export const InputField: React.FC<InputProps> = (props) => {
     keyboardType: _keyboardType,
     ...otherProps
   } = props;
+
+  const { components } = useTheme();
 
   const isPassword = type === 'password';
 
@@ -55,7 +57,7 @@ export const InputField: React.FC<InputProps> = (props) => {
   return (
     <StyledInputField
       editable={!disabled}
-      selectionColor={inputDefaults.selectionColor}
+      selectionColor={components.input.selectionColor}
       selectTextOnFocus={false}
       onFocus={onFocusHandler}
       onBlur={onBlurHandler}

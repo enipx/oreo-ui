@@ -10,6 +10,7 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getColorSchemeStyle } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
+import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 import type { RadiiKeys } from '@/core/theme/utilities/radius';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 import type { FontSizeKeys } from '@/core/theme/utilities/typography';
@@ -64,43 +65,36 @@ export const buttonStateVariant = (options: ButtonSystemThemeParams) => {
 };
 
 export const buttonSizeVariant = (options: ButtonSystemThemeParams) => {
-  const { theme, type = 'web', rounded } = options;
+  const { theme, type = 'web', rounded, size = buttonDefaults.size } = options;
 
   const isNative = isPackageNative(type);
 
-  const getBorderRadius = (size: RadiiKeys) => {
-    return rounded ? theme.radii.full : theme.radii[size];
+  const {
+    height: heights,
+    fontSizes,
+    borderRadius: radiis,
+    paddingX: _paddingX,
+  } = theme.components.button;
+
+  const height = heights[size as keyof typeof heights];
+
+  const fontSize = fontSizes[size as keyof typeof fontSizes];
+
+  const borderRadius = rounded
+    ? theme.radii.full
+    : radiis[size as keyof typeof radiis];
+
+  const paddingX = _paddingX[size as keyof typeof _paddingX];
+
+  const styles = {
+    ...(isNative ? {} : { fontSize }),
+    height,
+    paddingLeft: paddingX,
+    paddingRight: paddingX,
+    borderRadius,
   };
 
-  return variant({
-    prop: 'size',
-    variants: {
-      xs: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.xs }),
-        height: theme.space[6],
-        px: 2,
-        borderRadius: getBorderRadius('sm'),
-      },
-      sm: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.xs }),
-        height: theme.space[8],
-        px: 3,
-        borderRadius: getBorderRadius('sm'),
-      },
-      lg: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.md }),
-        height: theme.space[12],
-        px: 6,
-        borderRadius: getBorderRadius('md'),
-      },
-      md: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.sm }),
-        height: theme.space[10],
-        px: 4,
-        borderRadius: getBorderRadius('md'),
-      },
-    },
-  });
+  return convertReactCSSToCSSHandler(styles);
 };
 
 export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
@@ -180,16 +174,11 @@ export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
     variant: variant || 'solid',
   });
 
-  const nativeFontSize: { [key in ButtonSizeType]: number | string } = {
-    xs: theme.fontSizes.sm,
-    sm: theme.fontSizes.sm,
-    lg: theme.fontSizes.lg,
-    md: theme.fontSizes.md,
-  };
+  const { fontSizes } = theme.components.button;
 
   const size: ButtonSizeType = buttonSize || buttonDefaults.size;
 
-  const fontSize = nativeFontSize[size];
+  const fontSize = fontSizes[size];
 
   const baseStyle = `
     font-weight: ${theme.fontWeights.medium};

@@ -57,7 +57,6 @@ export default function App() {
 
         <Input
           type="password"
-          size="md"
           label="Email"
           hint="Please enter a valid email"
           // state="disabled"

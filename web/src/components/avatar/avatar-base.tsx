@@ -6,6 +6,7 @@ import { ProfileIcon } from './avatar-icon';
 import type { AvatarProps } from './avatar.types';
 
 import { getNameInitialsHandler } from '@/core/helpers/string';
+import { layout, border } from '@/core/styled/system';
 import {
   avatarDefaultStyle,
   avatarDefaults,
@@ -15,6 +16,8 @@ import { styled } from '@/core/styled/web';
 // @exports
 export const StyledAvatar = styled(View)<AvatarProps>`
   ${(props) => avatarDefaultStyle({ ...props } as any)}
+  ${layout}
+  ${border}
 `;
 
 export const AvatarBase = (props: AvatarProps) => {

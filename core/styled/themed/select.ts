@@ -1,9 +1,6 @@
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 
-import type { ObjectTypes } from '@/core/constants/index.types';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
-
 // @button themes
 export const selectDefaults = {
   disabledOpacity: 0.5,
@@ -11,59 +8,39 @@ export const selectDefaults = {
   activeOpacity: 0.8,
   size: 'md',
   state: 'default',
-  selectionColor: 'rgba(34, 109, 204, 0.5)',
 };
 
 export const selectDefaultFontSize = (option: SystemThemeParams) => {
-  const { theme } = option;
+  const { theme, size = selectDefaults.size } = option;
 
-  const size = option?.size || selectDefaults.size;
+  const { fontSizes } = theme.components.select;
 
-  const defaultPadding: ObjectTypes = {
-    xs: theme.fontSizes.xs,
-    sm: theme.fontSizes.sm,
-    md: theme.fontSizes.md,
-    lg: theme.fontSizes.lg,
-  };
+  const fontSize = fontSizes[size as keyof typeof fontSizes];
 
-  return defaultPadding[size];
+  return fontSize;
 };
 
 export const selectDefaultPadding = (option: SystemThemeParams) => {
-  const { theme } = option;
+  const { theme, size = selectDefaults.size } = option;
 
-  const size = option?.size || selectDefaults.size;
+  const { paddingX: selectPaddingX } = theme.components.input;
 
-  const getPadding = (property: SpacingKeys) => {
-    return theme.space[property];
+  const paddingX = selectPaddingX[size as keyof typeof selectPaddingX];
+
+  const styles = {
+    pl: paddingX,
+    pr: paddingX,
   };
 
-  const defaultPadding: ObjectTypes = {
-    xs: {
-      pl: getPadding(2),
-      pr: getPadding(2),
-    },
-    sm: {
-      pl: getPadding(3),
-      pr: getPadding(3),
-    },
-    md: {
-      pl: getPadding(3.5),
-      pr: getPadding(3.5),
-    },
-    lg: {
-      pl: getPadding(4),
-      pr: getPadding(4),
-    },
-  };
-
-  return defaultPadding[size];
+  return styles;
 };
 
 export const selectBaseStyle = (option: SystemThemeParams) => {
   const { type = 'web' } = option;
 
   const { pl, pr } = selectDefaultPadding(option);
+
+  const fontSize = selectDefaultFontSize(option);
 
   const baseStyle = `
     padding-left: ${pl};
@@ -76,6 +53,7 @@ export const selectBaseStyle = (option: SystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    font-size: ${fontSize};
   `;
 
   const res: SystemThemeReturnType = {

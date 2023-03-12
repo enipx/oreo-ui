@@ -3,10 +3,6 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 import { checkboxDefaultStyle, checkboxSizeVariant } from './checkbox';
 
-import { ObjectTypes } from '@/core/constants/index.types';
-import { isPackageNative } from '@/core/helpers/base';
-import { add } from '@/core/helpers/number';
-
 // @checkbox themes
 export const switchDefaults = {
   disabledOpacity: 0.5,
@@ -16,38 +12,19 @@ export const switchDefaults = {
 };
 
 export const switchSizing = (options: SystemThemeParams) => {
-  const { theme, control, type = 'web' } = options;
+  const { theme, control, size = switchDefaults.size } = options;
 
-  const isNative = isPackageNative(type);
+  const { control: controlSize } = theme.components.switch;
 
-  const size = options?.size || switchDefaults.size;
-
-  const defaultSizes = {
-    sm: isNative ? `${add(theme.space[3], theme.space[1])}px` : theme.space[3],
-    md: isNative ? `${add(theme.space[4], theme.space[1])}px` : theme.space[4],
-    lg: isNative ? `${add(theme.space[5], theme.space[1])}px` : theme.space[6],
+  const res = {
+    width: controlSize.width[size as keyof typeof controlSize.width],
+    height: controlSize.height[size as keyof typeof controlSize.height],
   };
-
-  const defaultSize: ObjectTypes = {
-    sm: {
-      height: defaultSizes.sm,
-      width: defaultSizes.sm,
-    },
-    md: {
-      height: defaultSizes.md,
-      width: defaultSizes.md,
-    },
-    lg: {
-      height: defaultSizes.lg,
-      width: defaultSizes.lg,
-    },
-  };
-
-  const res = defaultSize[size];
 
   if (control) {
     return {
       width: `calc(${res.width} + ${switchDefaults.controlX})`,
+      height: '',
     };
   }
 

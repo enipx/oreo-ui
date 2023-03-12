@@ -41,7 +41,7 @@ export const convertReactCSSToCSSHandler = (reactCSS?: React.CSSProperties) => {
 
     // remove ' in value
     // @ts-ignore
-    const cssValue = reactCSS[key].replace("'", '');
+    const cssValue = reactCSS?.[key]?.replace?.("'", '');
     // build the result
     // you can break the line, add indent for it if you need
     return `${styles}${cssKey}:${cssValue};`;
@@ -90,7 +90,7 @@ export const getThemeValueHandler = (options: {
 
   const splitValue = value.split('.');
 
-  let res = themeObj[splitValue[0]];
+  let res = themeObj[splitValue[0] as keyof typeof themeObj];
 
   if (isObject(res) && splitValue?.[1]) {
     res = res[splitValue[1]];

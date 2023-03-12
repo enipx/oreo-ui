@@ -18,17 +18,13 @@ import { baseStyled, styled } from '@/core/styled/native';
 
 // @exports
 export const StyledSwitch = styled(StyledButton)<SwitchProps>`
-  ${({ theme, disabled, checked }) =>
-    switchDefaultStyle({ theme, disabled, checked, type: 'native' })};
-  ${({ theme, disabled, checked, size }) =>
-    switchBaseStyle({ theme, disabled, checked, size, type: 'native' })};
-  ${({ theme, disabled }) =>
-    switchSizeVariant({ theme, disabled, type: 'native' })};
+  ${(props) => switchDefaultStyle({ ...props, type: 'native' })};
+  ${(props) => switchBaseStyle({ ...props, type: 'native' })};
+  ${(props) => switchSizeVariant({ ...props, type: 'native' })};
 `;
 
 export const SwitchControl = styled(baseStyled('View'))`
-  ${({ theme, disabled, checked, size }) =>
-    switchControlBaseStyle({ theme, disabled, checked, size, type: 'native' })};
+  ${(props) => switchControlBaseStyle({ ...props, type: 'native' })};
 `;
 
 export const Switch: React.FC<SwitchProps> = (props) => {

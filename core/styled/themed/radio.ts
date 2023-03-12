@@ -2,8 +2,6 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 import { checkboxDefaultStyle, checkboxSizeVariant } from './checkbox';
 
-import { isPackageNative } from '@/core/helpers/base';
-
 // @checkbox themes
 export const radioDefaults = {
   disabledOpacity: 0.5,
@@ -14,24 +12,12 @@ export const radioDefaults = {
 export const radioCheckedStyle = (options: SystemThemeParams) => {
   const { theme, type = 'web', size = radioDefaults.size } = options;
 
-  const isNative = isPackageNative(type);
+  const { checked } = theme.components.radio;
 
-  const sizes = {
-    sm: {
-      width: theme.space[isNative ? 1.5 : 1],
-      height: theme.space[isNative ? 1.5 : 1],
-    },
-    md: {
-      width: theme.space[isNative ? 2 : 1.5],
-      height: theme.space[isNative ? 2 : 1.5],
-    },
-    lg: {
-      width: theme.space[isNative ? 3 : 2],
-      height: theme.space[isNative ? 3 : 2],
-    },
-  };
+  type SizeKey = keyof typeof checked.width;
 
-  type SizeKey = keyof typeof sizes;
+  const checkedWidth = checked.width[size as SizeKey];
+  const checkedHeight = checked.height[size as SizeKey];
 
   const baseStyle = ``;
 
@@ -42,8 +28,8 @@ export const radioCheckedStyle = (options: SystemThemeParams) => {
   const web = `
     :checked:after {
       ${baseStyle}
-      width: ${sizes[size as SizeKey].width};
-      height: ${sizes[size as SizeKey].height};
+      width: ${checkedWidth};
+      height: ${checkedHeight};
       border-radius: 50%;
       background-color: ${styleModeHandler({
         light: 'white',
