@@ -1122,3 +1122,19 @@ export interface ImageThemedDefaultProps
 
   fallback?: React.ReactNode;
 }
+
+export type SpinnerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+export interface SpinnerThemedDefaultProps {
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  size?: SpinnerSizeType;
+
+  duration?: number;
+
+  thickness?: string;
+
+  color?: string;
+
+  emptyColor?: string;
+}

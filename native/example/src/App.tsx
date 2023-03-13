@@ -25,6 +25,7 @@ import {
   Image,
   Flex,
   Grid,
+  Spinner,
   useMode,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
@@ -292,6 +293,8 @@ export default function App() {
             <View bg="blue.500" height="80px" />
           </Grid>
         </View>
+
+        <Spinner />
       </Container>
     </OreoProvider>
   );

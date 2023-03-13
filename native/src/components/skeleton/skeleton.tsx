@@ -1,6 +1,6 @@
 // @imports
 import React, { useRef, useEffect } from 'react';
-import { Animated } from 'react-native';
+import { AnimatedBase } from '../animated';
 import type { SkeletonProps } from './skeleton.types';
 
 import { layout, border, space } from '@/core/styled/system';
@@ -36,14 +36,14 @@ export const StyledSkeletonBase = styled(baseStyled('View'))<SkeletonProps>`
 `;
 
 export const SkeletonBase = (props: SkeletonProps & { index?: number }) => {
-  const startValue = useRef(new Animated.Value(-spacing[8])).current;
+  const startValue = useRef(new AnimatedBase.Value(-spacing[8])).current;
   const endValue = getLayout().width;
 
   const index = (props.index as any) || 0;
 
   useEffect(() => {
-    Animated.loop(
-      Animated.timing(startValue, {
+    AnimatedBase.loop(
+      AnimatedBase.timing(startValue, {
         toValue: endValue,
         useNativeDriver: true,
         duration: 1500,
@@ -54,14 +54,14 @@ export const SkeletonBase = (props: SkeletonProps & { index?: number }) => {
 
   return (
     <StyledSkeleton {...props}>
-      <Animated.View
+      <AnimatedBase.View
         style={[
           {
             transform: [{ translateX: startValue }],
           },
         ]}>
         <StyledSkeletonBase endColor={props.endColor} />
-      </Animated.View>
+      </AnimatedBase.View>
     </StyledSkeleton>
   );
 };

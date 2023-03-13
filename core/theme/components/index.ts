@@ -9,6 +9,7 @@ import modal from './modal';
 import pinInput from './pin-input';
 import radio from './radio';
 import select from './select';
+import spinner from './spinner';
 import themeSwitch from './switch';
 import textarea from './textarea';
 
@@ -22,6 +23,7 @@ const components = (arg?: PackageTypes) => {
     input: input(arg),
     pinInput: pinInput(arg),
     select: select(arg),
+    spinner: spinner(arg),
     textarea: textarea(arg),
     checkbox: checkbox(arg),
     radio: radio(arg),

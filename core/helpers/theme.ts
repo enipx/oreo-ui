@@ -80,20 +80,27 @@ export const getThemeValueHandler = (options: {
 
   const themeObj = theme[key || 'colors'];
 
+  let res = value;
+
   /**
    * check if value doesn't exist in theme
    * or if value is an rgb or rgba color
    */
-  if ((!value.includes('.') || value.includes('rgb')) && !themeObj[value]) {
-    return value;
+  if (
+    !value ||
+    ((!value.includes('.') || value.includes('rgb')) && !themeObj[value])
+  ) {
+    return res;
   }
 
   const splitValue = value.split('.');
 
-  let res = themeObj[splitValue[0] as keyof typeof themeObj];
+  if (splitValue[0]) {
+    res = themeObj[splitValue[0]];
 
-  if (isObject(res) && splitValue?.[1]) {
-    res = res[splitValue[1]];
+    if (isObject(res) && splitValue?.[1]) {
+      res = res[splitValue[1] as any] || res;
+    }
   }
 
   return res;
@@ -119,7 +126,7 @@ export const convertHexToRgbaHandler = (hex: string, alpha?: number) => {
 
     // @ts-ignore
     return `rgba(${[(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',')},${
-      alpha || 1
+      alpha === undefined ? 1 : alpha
     })`;
   }
 

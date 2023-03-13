@@ -24,3 +24,5 @@ export const Animated = (props: AnimatedProps) => {
 };
 
 Animated.Container = DefaultAnimated;
+
+export const AnimatedBase = DefaultAnimated;
