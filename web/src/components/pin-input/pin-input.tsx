@@ -28,10 +28,10 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledInput = styled(
   baseStyled('input', ['shadow', 'grid', 'position', 'background'])
 )<PinInputProps & { inputIndex?: number }>`
-  ${({ theme, disabled }) => inputContainerDefaultStyle({ theme, disabled })}
-  ${({ theme, disabled }) => pinInputDefaultStyle({ theme, disabled })}
-  ${({ theme, disabled, inputIndex }) =>
-    pinInputSizeVariant({ theme, disabled, index: inputIndex })}
+  ${(props) => inputContainerDefaultStyle({ ...props } as any)}
+  ${(props) => pinInputDefaultStyle({ ...props } as any)}
+  ${(props) =>
+    pinInputSizeVariant({ ...props, index: props.inputIndex } as any)}
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 

@@ -20,7 +20,7 @@ export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   size: 'md',
-  width: '320px',
+  width: '280px',
   label: 'Email',
   hint: 'Please enter a valid email',
   type: 'password',

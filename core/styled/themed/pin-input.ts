@@ -1,11 +1,10 @@
 import type { PackageTypes } from '../../constants/index.types';
 import type { PinInputThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { variant } from '../system';
 
 import { isPackageNative, isPackageWeb } from '@/core/helpers/base';
 import { minus, add } from '@/core/helpers/number';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 
 // @defaults
 export const pinInputDefaults = {
@@ -16,44 +15,41 @@ export const pinInputDefaults = {
 };
 
 export const pinInputSizeVariant = (options: SystemThemeParams) => {
-  const { theme, type = 'web', index } = options;
+  const { theme, type = 'web', index, size = pinInputDefaults.size } = options;
 
-  const getLeftPadding = (property: SpacingKeys) => {
-    const isFirst = index === 0;
-    return isFirst ? 0 : property;
-  };
+  const isFirstInput = index === 0;
 
   const isNative = isPackageNative(type);
 
-  return variant({
-    prop: 'size',
-    variants: {
-      xs: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.xs }),
-        size: theme.space[6],
-        borderRadius: theme.radii.md,
-        ml: getLeftPadding(3),
-      },
-      sm: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.md }),
-        size: theme.space[8],
-        borderRadius: theme.radii.md,
-        ml: getLeftPadding(3),
-      },
-      md: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.lg }),
-        size: theme.space[10],
-        borderRadius: theme.radii.base,
-        ml: getLeftPadding(3),
-      },
-      lg: {
-        ...(isNative ? {} : { fontSize: theme.fontSizes.lg }),
-        size: theme.space[12],
-        borderRadius: theme.radii.base,
-        ml: getLeftPadding(3),
-      },
-    },
-  });
+  const {
+    height: inputHeights,
+    width: inputWidths,
+    fontSizes,
+    borderRadius: inputRadii,
+    marginLeft: inputmarginLeft,
+  } = theme.components.pinInput;
+
+  const height = inputHeights[size as keyof typeof inputHeights];
+
+  const width = inputWidths[size as keyof typeof inputHeights];
+
+  const fontSize = fontSizes[size as keyof typeof fontSizes];
+
+  const borderRadius = inputRadii[size as keyof typeof inputRadii];
+
+  const marginLeft = isFirstInput
+    ? 0
+    : inputmarginLeft[size as keyof typeof inputmarginLeft];
+
+  const styles = {
+    ...(isNative ? {} : { fontSize }),
+    height,
+    width,
+    marginLeft,
+    borderRadius,
+  };
+
+  return convertReactCSSToCSSHandler(styles);
 };
 
 export const pinInputDefaultStyle = (option: SystemThemeParams) => {

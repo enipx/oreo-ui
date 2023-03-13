@@ -5,10 +5,10 @@ import type { PackageTypes } from '@/core/constants/index.types';
 
 // @file declarations
 
-const input = (arg?: PackageTypes) => {
+const pinInput = (arg?: PackageTypes) => {
   const { space, radii, fontSizes: themeFontSizes } = themeUtilities(arg);
 
-  const height = {
+  const size = {
     xs: space[6],
     sm: space[8],
     md: space[10],
@@ -36,25 +36,25 @@ const input = (arg?: PackageTypes) => {
     lg: themeFontSizes.md,
   };
 
-  const paddingX = {
+  const marginLeft = {
     xs: space[2],
     sm: space[3],
-    md: space[4],
+    md: space[3],
     lg: space[4],
   };
 
   return {
-    height,
+    height: size,
+    width: size,
     borderRadius,
     fontSizes,
     placeholderFontSizes,
-    paddingX,
-    selectionColor: 'rgba(34, 109, 204, 0.5)',
+    marginLeft,
   };
 };
 
 // @types definitions
-export type InputType = ReturnType<typeof input>;
+export type PinInputType = ReturnType<typeof pinInput>;
 
 // @exports
-export default input;
+export default pinInput;

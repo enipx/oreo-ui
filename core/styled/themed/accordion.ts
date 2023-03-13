@@ -1,15 +1,29 @@
 // @imports
 
-import type { AccordionIconPositionTypes } from '../components.types';
+import type {
+  AccordionIconPositionTypes,
+  AccordionThemedDefaultProps,
+} from '../components.types';
 import { flexCenterYStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { baseBorderColor, baseColor, modeHandler } from './base';
+import {
+  baseBorderColor,
+  baseColor,
+  modeHandler,
+  styleModeHandler,
+} from './base';
+
+import { convertHexToRgbaHandler } from '@/core/helpers/theme';
 
 // @defaults
 export const accordionDefaults = {
   transitionDuration: '200ms',
   iconOpacity: '0.5',
 };
+
+// @types
+type AccordionSystemThemeParams = SystemThemeParams &
+  AccordionThemedDefaultProps;
 
 // @theme
 export const buttonColor = baseColor;
@@ -19,8 +33,46 @@ export const borderBottomColor = baseBorderColor;
 export const hoverBackgroundColor = modeHandler('gray.50', 'gray.800');
 
 // @styles
-export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
+export const accordionContainerDefaultStyle = (
+  option: AccordionSystemThemeParams
+) => {
+  const { theme, type = 'web', variant } = option;
+
+  const { seperated } = getAccordionVariant(variant);
+
+  const baseStyle = `
+    border-radius: ${theme.radii.base};
+    border-width: ${seperated ? '0' : '1px'};
+    border-style: solid;
+    overflow: hidden;
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const accordionButtonDefaultStyle = (
+  option: AccordionSystemThemeParams
+) => {
   const { theme, type = 'web' } = option;
+
+  const hoverBackgroundColor = styleModeHandler({
+    theme,
+    light: convertHexToRgbaHandler(theme.colors.gray[50], 0.5),
+    dark: convertHexToRgbaHandler(theme.colors.gray[800], 0.5),
+  });
 
   const baseStyle = `
     background-color: transparent;
@@ -28,14 +80,13 @@ export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
     border: 0;
     outline: 0;
     border-bottom: 1px solid transparent;
+    padding: ${theme.space[3]} ${theme.space[4]};
   `;
 
   const native = `
     ${baseStyle}
     ${flexCenterYStyle}
     flex-direction: row;
-    padding-horizontal: ${theme.space[2]};
-    padding-vertical: ${theme.space[3]};
     border-bottom-width: 1px;
   `;
 
@@ -47,7 +98,10 @@ export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
     cursor: pointer;
     font-size: ${theme.fontSizes.md};
     text-align: left;
-    padding: ${theme.space[3]} ${theme.space[4]};
+
+    &:hover {
+      background-color: ${hoverBackgroundColor};
+    }
   `;
 
   const res: SystemThemeReturnType = {
@@ -58,7 +112,9 @@ export const accordionButtonDefaultStyle = (option: SystemThemeParams) => {
   return res[type];
 };
 
-export const accordionPanelDefaultStyle = (option: SystemThemeParams) => {
+export const accordionPanelDefaultStyle = (
+  option: AccordionSystemThemeParams
+) => {
   const {
     type = 'web',
     transitionDuration = accordionDefaults.transitionDuration,
@@ -95,4 +151,12 @@ export const accordionIconOrderHandler = (
   };
 
   return order[position || 'right'];
+};
+
+export const getAccordionVariant = (
+  variant?: AccordionThemedDefaultProps['variant']
+) => {
+  return {
+    seperated: variant === 'separated',
+  };
 };

@@ -13,12 +13,12 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   width: '320px',
-  label: 'Name',
+  placeholder: 'Enter name',
 };
 
 export const Email = Template.bind({});
 Email.args = {
-  width: '320px',
+  width: '280px',
   label: 'Email',
   icon: (
     <svg

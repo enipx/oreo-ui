@@ -13,3 +13,9 @@ export const Default = Template.bind({});
 Default.args = {
   children: 'DEFAULT',
 };
+
+export const Rounded = Template.bind({});
+Rounded.args = {
+  children: 'DEFAULT',
+  rounded: true,
+};

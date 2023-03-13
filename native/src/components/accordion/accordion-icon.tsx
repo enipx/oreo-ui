@@ -15,7 +15,7 @@ export const ChevronUpIcon: React.FC<NativeSvgProps> = (props) => {
       <Path
         d="m19 8.5-7 7-7-7"
         stroke={stroke || '#000'}
-        strokeWidth={props.strokeWidth || 1.5}
+        strokeWidth={props.strokeWidth || 2}
         strokeLinecap="round"
         strokeLinejoin="round"
       />

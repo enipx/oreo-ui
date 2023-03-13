@@ -30,12 +30,14 @@ import type { InputFocusEventType } from '@components/input/input.types';
 export const StyledPinInputField = styled(
   baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
 )<PinInputFieldProps & { inputIndex?: number }>`
-  ${({ theme, disabled }) =>
-    inputContainerDefaultStyle({ theme, disabled, type: 'native' })}
-  ${({ theme, disabled }) =>
-    pinInputDefaultStyle({ theme, disabled, type: 'native' })}
-  ${({ theme, disabled, inputIndex }) =>
-    pinInputSizeVariant({ theme, disabled, index: inputIndex })}
+  ${(props) => inputContainerDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => pinInputDefaultStyle({ ...props, type: 'native' } as any)}
+${(props) =>
+    pinInputSizeVariant({
+      ...props,
+      index: props.inputIndex,
+      type: 'native',
+    } as any)}
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 `;

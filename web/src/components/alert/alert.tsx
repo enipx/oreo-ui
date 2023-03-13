@@ -62,7 +62,7 @@ export const AlertCloseButton = (
       onClick={onClick}
       size="xs"
       className={alertDefaults.closeClassName}
-      icon={<CloseIcon size="4xs" />}
+      icon={<CloseIcon size="md" />}
     />
   );
 };
@@ -114,14 +114,17 @@ export const Alert = (props: AlertProps) => {
       variant={variant}
       className={transitionClassName.active}
       {...(otherProps as any)}>
-      <AlertIcon
-        icon={icon}
-        withIcon={withIcon}
-        iconType={iconType}
-        colorScheme={colorScheme}
-      />
       <View className={alertDefaults.contentClassName}>
-        <Text>{title}</Text>
+        <View flexCenterY>
+          <AlertIcon
+            icon={icon}
+            withIcon={withIcon}
+            iconType={iconType}
+            colorScheme={colorScheme}
+            variant={variant}
+          />
+          <Text>{title}</Text>
+        </View>
         <View className={alertDefaults.contentDescrClassName}>
           {content || children}
         </View>

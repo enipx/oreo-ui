@@ -11,8 +11,8 @@ const select = (arg?: PackageTypes) => {
   const fontSizes = {
     xs: themeFontSizes.sm,
     sm: themeFontSizes.sm,
-    md: themeFontSizes.md,
-    lg: themeFontSizes.lg,
+    md: themeFontSizes.sm,
+    lg: themeFontSizes.md,
   };
 
   const paddingX = {

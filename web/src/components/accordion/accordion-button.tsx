@@ -12,7 +12,6 @@ import { useAccordion } from './use-accordion';
 import {
   accordionButtonDefaultStyle,
   borderBottomColor,
-  hoverBackgroundColor,
   accordionDefaults,
   accordionIconOrderHandler,
   buttonColor,
@@ -27,10 +26,6 @@ export const StyledAccordionButton = styled(
   border-bottom-color: ${({ isActive }) =>
     isActive ? 'transparent' : borderBottomColor};
   color: ${buttonColor};
-
-  :hover {
-    background-color: ${hoverBackgroundColor};
-  }
 `;
 
 export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {

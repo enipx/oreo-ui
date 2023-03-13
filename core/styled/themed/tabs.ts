@@ -8,7 +8,10 @@ import { flexCenterYStyle, flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, getColorSchemeStyle, styleModeHandler } from './base';
 
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
+import {
+  convertHexToRgbaHandler,
+  convertReactCSSToCSSHandler,
+} from '@/core/helpers/theme';
 
 // @defaults
 export const tabsDefaults = {
@@ -34,7 +37,11 @@ export const tabListVariantStyle = (options: TabsListSystemThemeParams) => {
   const variantBackgroundColor: {
     [key in TabsVariantThemedDefaultProps]: string;
   } = {
-    pills: styleModeHandler({ theme, light: 'gray.50', dark: 'gray.800' }),
+    pills: styleModeHandler({
+      theme,
+      light: convertHexToRgbaHandler(theme.colors.gray[50], 0.75),
+      dark: convertHexToRgbaHandler(theme.colors.gray[800], 0.5),
+    }),
     fenced: theme.colors.transparent,
     unstyled: theme.colors.transparent,
   };
@@ -44,7 +51,7 @@ export const tabListVariantStyle = (options: TabsListSystemThemeParams) => {
   if (getTabsStyleHandler(options as any).isPills) {
     const baseStyle = `
       background-color: ${backgroundColor};
-      border-radius: ${theme.radii.md};
+      border-radius: ${theme.radii.base};
       padding: ${theme.space[0.75]};
     `;
 
@@ -135,6 +142,14 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     colorSchemeVariant,
   } = options;
 
+  const { color } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'blue',
+    variant: colorSchemeVariant || 'outline',
+  });
+
+  const borderBottomColor = isActive ? color : theme.colors.transparent;
+
   if (getTabsStyleHandler(options).isUnstyled) {
     const { color: baseColor } = getBaseStyle(options);
 
@@ -203,14 +218,21 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
   if (getTabsStyleHandler(options).isPills) {
     const { color, backgroundColor } = getBaseStyle(options);
 
+    const borderColor = styleModeHandler({
+      theme,
+      light: 'gray.100',
+      dark: 'gray.700',
+    });
+
     const baseStyle = `
-      border-width: 0;
-      border-bottom-width: 0;
       margin-bottom: 0px;
       background-color: ${
         isActive ? backgroundColor : theme.colors.transparent
       };
-      border-radius: ${theme.radii.sm};
+      border-radius: ${theme.radii.base};
+      border-color: ${borderColor};
+      border-style: solid;
+      border-width: ${isActive ? '1px' : '0'};
     `;
 
     const native = `
@@ -267,6 +289,13 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
     return res[type];
   }
+
+  return `
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: ${borderBottomColor};
+    margin-bottom: -2px;
+  `;
 };
 
 export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
@@ -288,23 +317,17 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
 
   const { color: baseColor } = getBaseStyle(options);
 
-  const borderBottomColor = isActive ? color : theme.colors.transparent;
-
   const baseStyle = `
     ${flexCenterStyle}
     border: 0;
     background-color: ${theme.colors.transparent};
-    border-bottom: 2px solid ${borderBottomColor};
-    margin-bottom: -2px;
   `;
 
   const native = `
     ${baseStyle}
-    padding-vertical: ${theme.space[3]};
+    padding-vertical: ${theme.space[2]};
     padding-horizontal: ${theme.space[4]};
     align-self: flex-start;
-    border-bottom-width: 2px;
-    border-bottom-color: ${borderBottomColor};
     ${withEqualWidth ? 'flex: 1' : ''}
   `;
 
@@ -317,7 +340,7 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
     opacity: ${disabled ? '0.5' : '1'};
     white-space: nowrap;
     width: auto;
-    font-size: ${theme.fontSizes.md};
+    font-size: ${theme.fontSizes.sm};
     padding: ${theme.space[2]} ${theme.space[4]};
     color: ${isActive ? color : baseColor};
     flex: ${withEqualWidth ? 1 : 0};

@@ -29,7 +29,7 @@ export const AccordionPanel: React.FC<AccordionPanelProps> = (props) => {
   }
 
   return (
-    <View px="2" pt="2" pb="4">
+    <View px="4" pt="1" pb="4">
       {content ? <Text>{content}</Text> : children}
     </View>
   );

@@ -98,9 +98,11 @@ export type StyledThemeProps = Record<string, any>;
 export type WebSvgProps = SVGProps<SVGElement> &
   ThemeTypeProps & {
     size?: IconSizingKeys;
+    altColor?: string;
   };
 
 export type NativeSvgProps = SVGProps<SVGElement> &
   ThemeTypeProps & {
     size?: IconSizingKeys;
+    altColor?: string;
   };

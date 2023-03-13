@@ -54,6 +54,7 @@ export const selectBaseStyle = (option: SystemThemeParams) => {
   const web = `
     ${baseStyle}
     font-size: ${fontSize};
+    height: 100%;
   `;
 
   const res: SystemThemeReturnType = {

@@ -6,6 +6,7 @@ import checkbox from './checkbox';
 import drawer from './drawer';
 import input from './input';
 import modal from './modal';
+import pinInput from './pin-input';
 import radio from './radio';
 import select from './select';
 import themeSwitch from './switch';
@@ -19,6 +20,7 @@ const components = (arg?: PackageTypes) => {
     modal: modal(arg),
     drawer: drawer(arg),
     input: input(arg),
+    pinInput: pinInput(arg),
     select: select(arg),
     textarea: textarea(arg),
     checkbox: checkbox(arg),

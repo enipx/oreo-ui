@@ -18,7 +18,7 @@ export const ChevronUpIcon: React.FC<WebSvgProps> = (props) => {
       <path
         d="m19 8.5-7 7-7-7"
         stroke="currentColor"
-        strokeWidth={props.strokeWidth || 1.5}
+        strokeWidth={props.strokeWidth || 2}
         strokeLinecap="round"
         strokeLinejoin="round"
       />

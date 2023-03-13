@@ -211,11 +211,18 @@ export default function App() {
         </View>
 
         <Badge colorScheme="blue" fontSize="sm">
-          Default
+          DEFAULT
+        </Badge>
+
+        <Badge colorScheme="blue" fontSize="sm" rounded mt="lg">
+          DEFAULT
         </Badge>
 
         <View my="lg">
-          <Tabs withEqualWidth onTabChange={(val) => console.log(val)}>
+          <Tabs
+            variant="pills"
+            withEqualWidth
+            onTabChange={(val) => console.log(val)}>
             <Tabs.List>
               <Tabs.Item value="1" title="Item 1" />
               <Tabs.Item value="2" title="Item 2" />

@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { View } from '../view';
 import { Tabs } from './tabs';
 
 export default {
@@ -11,17 +12,19 @@ export default {
 } as ComponentMeta<typeof Tabs>;
 
 const Template: ComponentStory<typeof Tabs> = (args) => (
-  <Tabs {...args} onTabChange={(val) => console.log(val)}>
-    <Tabs.List>
-      <Tabs.Item value="1">Item 1</Tabs.Item>
-      <Tabs.Item value="2">Item 2</Tabs.Item>
-      <Tabs.Item value="3">Item 3</Tabs.Item>
-    </Tabs.List>
+  <View maxWidth="370px">
+    <Tabs {...args} onTabChange={(val) => console.log(val)}>
+      <Tabs.List>
+        <Tabs.Item value="1">Item 1</Tabs.Item>
+        <Tabs.Item value="2">Item 2</Tabs.Item>
+        <Tabs.Item value="3">Item 3</Tabs.Item>
+      </Tabs.List>
 
-    <Tabs.Panel value="1">Tab 1</Tabs.Panel>
-    <Tabs.Panel value="2">Tab 2</Tabs.Panel>
-    <Tabs.Panel value="3">Tab 3</Tabs.Panel>
-  </Tabs>
+      <Tabs.Panel value="1">Tab 1</Tabs.Panel>
+      <Tabs.Panel value="2">Tab 2</Tabs.Panel>
+      <Tabs.Panel value="3">Tab 3</Tabs.Panel>
+    </Tabs>
+  </View>
 );
 
 export const Default = Template.bind({});

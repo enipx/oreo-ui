@@ -48,14 +48,18 @@ export const AlertIcon = (props: AlertProps) => {
   const type = getAlertIconType(props);
 
   const Icon: AlertIconObjectType = {
-    warning: <WarningIcon size="md" fill={color} />,
-    info: <InfoIcon size="md" fill={color} />,
-    success: <SuccessIcon size="md" fill={color} />,
-    danger: <DangerIcon size="md" fill={color} />,
+    warning: <WarningIcon size="sm" fill={color} />,
+    info: <InfoIcon size="sm" fill={color} />,
+    success: <SuccessIcon size="sm" fill={color} />,
+    danger: <DangerIcon size="sm" fill={color} />,
   };
 
   if (withIcon) {
-    return <View bg="transparent">{Icon[type]}</View>;
+    return (
+      <View bg="transparent" mr="sm">
+        {Icon[type]}
+      </View>
+    );
   }
 
   if (icon) return icon as JSX.Element;
@@ -78,7 +82,7 @@ export const AlertCloseButton = (
     <IconButton
       onPress={onPress}
       size="xs"
-      icon={<CloseIcon fill={color} size="4xs" />}
+      icon={<CloseIcon stroke={color} size="md" />}
     />
   );
 };
@@ -111,18 +115,21 @@ export const Alert = (props: AlertProps) => {
       colorScheme={colorScheme}
       variant={variant}
       {...(otherProps as any)}>
-      <AlertIcon
-        icon={icon}
-        withIcon={withIcon}
-        iconType={iconType}
-        colorScheme={colorScheme}
-        variant={variant}
-      />
       <View flex={1} bg="transparent" pr="sm">
-        <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
-          {title}
-        </StyledAlertTitle>
-        <View mt="sm" bg="transparent">
+        <View flexDirection="row" flexCenterX>
+          <AlertIcon
+            icon={icon}
+            withIcon={withIcon}
+            iconType={iconType}
+            colorScheme={colorScheme}
+            variant={variant}
+          />
+          <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
+            {title}
+          </StyledAlertTitle>
+        </View>
+
+        <View mt="md" bg="transparent">
           <StyledAlertContent colorScheme={colorScheme} variant={variant}>
             {content}
           </StyledAlertContent>

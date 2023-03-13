@@ -1,5 +1,5 @@
 import type { InputThemedDefaultProps } from '../components.types';
-import { flexCenterXStyle, transitionStyle } from '../css';
+import { flexCenterXStyle, flexCenterYStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler, variantModeHandler } from './base';
 
@@ -103,9 +103,11 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
 // @styles
 export const inputDefaultStyle = (option: InputSystemThemeParams) => {
   const { theme, type = 'web', size = inputDefaults.size } = option;
-  const { fontSizes } = theme.components.input;
+  const { fontSizes, placeholderFontSizes } = theme.components.input;
 
   const fontSize = fontSizes[size as keyof typeof fontSizes];
+  const placeholderFontSize =
+    placeholderFontSizes[size as keyof typeof fontSizes];
 
   const baseStyle = `
     border: 0;
@@ -131,6 +133,10 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     :disabled {
       cursor: not-allowed;
     }
+
+    ::placeholder {
+      font-size: ${placeholderFontSize};
+    }
   `;
 
   const res: SystemThemeReturnType = {
@@ -142,7 +148,9 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
 };
 
 export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
-  const { theme, type = 'web', disabled } = option;
+  const { theme, type = 'web', disabled, state } = option;
+
+  const { focused } = isInputState(state);
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
 
@@ -150,7 +158,7 @@ export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
     ${transitionStyle()}
     outline: 0;
     opacity: ${opacity};
-    border-width: 1px;
+    border-width: ${focused ? '2px' : '1px'};
     border-style: solid;
     position: relative;
     overflow: hidden;
@@ -165,7 +173,7 @@ export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
-    ${flexCenterXStyle}
+    ${flexCenterYStyle}
   `;
 
   const res: SystemThemeReturnType = {
@@ -232,4 +240,10 @@ export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
 // @utilities
 export const isInputDisabled = (state?: string) => {
   return state === 'disabled';
+};
+
+export const isInputState = (state?: InputThemedDefaultProps['state']) => {
+  return {
+    focused: state === 'focused',
+  };
 };

@@ -120,10 +120,15 @@ export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
       width: ${theme.space[5]};
       cursor: pointer;
       color: ${color};
+      flex-shrink: 0;
+
+      svg {
+        flex-shrink: 0;
+      }
     }
 
     .alert__icon {
-      margin-right: ${theme.space[2]};
+      margin-right: ${theme.space[1]};
     }
 
     .alert__close {
@@ -138,7 +143,7 @@ export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
       &__description {
         color: ${contentColor};
         font-weight: ${theme.fontWeights.regular};
-        margin-top: ${theme.space[1]};
+        margin-top: ${theme.space[2]};
       }
     }
   `;

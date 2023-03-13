@@ -794,6 +794,8 @@ export interface BadgeThemedDefaultProps extends TypographyProps, ColorProps {
   colorScheme?: DefaultColorsSchemeKeys;
 
   variant?: DefaultColorsVariantsType;
+
+  rounded?: boolean;
 }
 
 export type TabsVariantThemedDefaultProps = 'fenced' | 'unstyled' | 'pills';
