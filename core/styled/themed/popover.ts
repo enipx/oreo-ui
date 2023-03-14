@@ -12,11 +12,13 @@ type PopoverSystemThemeParams = SystemThemeParams & PopoverThemedDefaultProps;
 export const popoverContentDefaultStyle = (
   options: PopoverSystemThemeParams
 ) => {
-  const { theme, type = 'web' } = options;
+  const { theme, type = 'web', dropdown } = options;
 
   const arrowSize = theme.space[2];
 
   const arrowHalfSize = theme.space[1];
+
+  const minWidth = dropdown ? theme.components.dropdown.minWidth : 'initial';
 
   const { borderColor } = getBaseStyle(options);
 
@@ -24,7 +26,7 @@ export const popoverContentDefaultStyle = (
     position: relative;
     border: 1px solid ${borderColor};
     border-radius: ${theme.radii.base};
-    min-width: 220px;
+    min-width: ${minWidth};
     max-width: ${theme.breakpoints[0]};
     z-index: ${theme.zIndices.popover};
     visibility: hidden;

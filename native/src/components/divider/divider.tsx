@@ -16,7 +16,7 @@ export const Divider = styled(
     'layout',
   ])
 )<DividerProps>`
-  ${(props) => dividerDefaultStyle({ ...props } as any)}
+  ${(props) => dividerDefaultStyle({ ...props, type: 'native' } as any)}
   ${width}
   ${height}
 `;

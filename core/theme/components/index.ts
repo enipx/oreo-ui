@@ -5,6 +5,7 @@ import button from './button';
 import checkbox from './checkbox';
 import divider from './divider';
 import drawer from './drawer';
+import dropdown from './dropdown';
 import input from './input';
 import modal from './modal';
 import pinInput from './pin-input';
@@ -20,8 +21,9 @@ const components = (arg?: PackageTypes) => {
     avatar: avatar(arg),
     button: button(arg),
     divider: divider(arg),
-    modal: modal(arg),
     drawer: drawer(arg),
+    dropdown: dropdown(arg),
+    modal: modal(arg),
     input: input(arg),
     pinInput: pinInput(arg),
     select: select(arg),

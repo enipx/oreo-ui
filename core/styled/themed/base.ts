@@ -147,7 +147,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
   const subtleModeStyle = {
     base: styleModeHandler({
       light: `${colorScheme}.50`,
-      dark: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.2),
+      dark: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.1),
       theme,
     }),
     border: styleModeHandler({

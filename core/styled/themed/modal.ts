@@ -1,4 +1,7 @@
-import type { ModalSizesType } from '../components.types';
+import type {
+  ModalSizesType,
+  ModalThemedDefaultProps,
+} from '../components.types';
 import { flexCenterXStyle, flexCenterYStyle, transitionStyle } from '../css';
 import {
   addTransitionsHandler,
@@ -22,9 +25,12 @@ export const modalDefaults = {
   size: 'md',
 };
 
+// @types
+type ModalSystemThemeParams = SystemThemeParams & ModalThemedDefaultProps;
+
 // @themes
 export const modalDefaultTransitions = (
-  options: Partial<SystemThemeParams>
+  options: Partial<ModalSystemThemeParams>
 ) => {
   const { pos, isDrawer } = options;
 
@@ -36,7 +42,7 @@ export const modalDefaultTransitions = (
     bottom: 'fadeBottom',
   };
 
-  return positions[pos];
+  return positions[pos as keyof typeof positions];
 };
 
 export const modalOverlayBackgroundColor = themer('mode', {
@@ -45,7 +51,7 @@ export const modalOverlayBackgroundColor = themer('mode', {
 });
 
 // @variants
-export const modalSizeVariant = (options: SystemThemeParams) => {
+export const modalSizeVariant = (options: ModalSystemThemeParams) => {
   const { theme, size: specifiedSize, modalSize, isDrawer } = options;
 
   const size = specifiedSize || modalSize;
@@ -54,7 +60,7 @@ export const modalSizeVariant = (options: SystemThemeParams) => {
     ? theme.components.drawer.sizes
     : theme.components.modal.sizes;
 
-  if (isModalFull(size || modalSize)) {
+  if (isModalFull(size || modalSize || '')) {
     return `
       max-width: 100%;
       min-height: 100vh;
@@ -67,7 +73,7 @@ export const modalSizeVariant = (options: SystemThemeParams) => {
 };
 
 // @styles
-export const modalDisplayStyle = (options: SystemThemeParams) => {
+export const modalDisplayStyle = (options: ModalSystemThemeParams) => {
   const { isOpen } = options;
 
   const display = isOpen ? 'flex' : 'none';
@@ -77,7 +83,7 @@ export const modalDisplayStyle = (options: SystemThemeParams) => {
   `;
 };
 
-export const modalPositionStyle = (options: SystemThemeParams) => {
+export const modalPositionStyle = (options: ModalSystemThemeParams) => {
   const { pos, type = 'web' } = options;
 
   const positions = {
@@ -93,7 +99,7 @@ export const modalPositionStyle = (options: SystemThemeParams) => {
   `;
 };
 
-const modalfilterStyle = (options: SystemThemeParams) => {
+const modalfilterStyle = (options: ModalSystemThemeParams) => {
   const { overlayBlur, overlayFilter } = options;
   let style = '';
 
@@ -108,7 +114,7 @@ const modalfilterStyle = (options: SystemThemeParams) => {
   return style;
 };
 
-const modalOverflowStyle = (options: SystemThemeParams) => {
+const modalOverflowStyle = (options: ModalSystemThemeParams) => {
   const { overflow } = options;
 
   let style = '';
@@ -124,7 +130,7 @@ const modalOverflowStyle = (options: SystemThemeParams) => {
   return style;
 };
 
-const modalFlexwStyle = (options: SystemThemeParams) => {
+const modalFlexwStyle = (options: ModalSystemThemeParams) => {
   const { modalSize } = options;
 
   let style = '';
@@ -136,7 +142,7 @@ const modalFlexwStyle = (options: SystemThemeParams) => {
   return style;
 };
 
-export const modalDefaultStyle = (options: SystemThemeParams) => {
+export const modalDefaultStyle = (options: ModalSystemThemeParams) => {
   const {
     theme,
     type = 'web',
@@ -193,7 +199,7 @@ export const modalDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
+export const modalOverlayDefaultStyle = (options: ModalSystemThemeParams) => {
   const {
     theme,
     type = 'web',
@@ -242,10 +248,10 @@ export const modalOverlayDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const modalContentDefaultStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web' } = options;
+export const modalContentDefaultStyle = (options: ModalSystemThemeParams) => {
+  const { theme, type = 'web', removeContentPadding } = options;
 
-  const padding = theme.space[4];
+  const padding = removeContentPadding ? 0 : theme.space[4];
 
   const borderRadius = theme.radii.md;
 
@@ -299,7 +305,7 @@ export const modalContentDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const modalHeaderDefaultStyle = (options: SystemThemeParams) => {
+export const modalHeaderDefaultStyle = (options: ModalSystemThemeParams) => {
   const { theme, type = 'web' } = options;
 
   const baseStyle = `
@@ -331,7 +337,7 @@ export const modalHeaderDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const modalBodyDefaultStyle = (options: SystemThemeParams) => {
+export const modalBodyDefaultStyle = (options: ModalSystemThemeParams) => {
   const {
     theme,
     type = 'web',
@@ -376,7 +382,7 @@ export const modalBodyDefaultStyle = (options: SystemThemeParams) => {
   return res[type];
 };
 
-export const modalFooterDefaultStyle = (options: SystemThemeParams) => {
+export const modalFooterDefaultStyle = (options: ModalSystemThemeParams) => {
   const { theme, type = 'web', footerAlt } = options;
 
   const footerStyle = () => {
@@ -431,10 +437,10 @@ export const modalFooterDefaultStyle = (options: SystemThemeParams) => {
 };
 
 // @utilities
-export const isModalFull = (size: ModalSizesType) => {
+export const isModalFull = (size?: ModalSizesType) => {
   return size === 'full';
 };
 
-const isOverflowInside = (overflow: string) => {
+const isOverflowInside = (overflow?: string) => {
   return overflow === 'inside';
 };

@@ -17,6 +17,7 @@ import { styled, baseStyled } from '@/core/styled/native';
 import { useModal } from '../modal';
 import { BaseButton } from '../button';
 import { getWidowLayout } from '../../helpers/base';
+import { Divider } from '../divider';
 
 // @exports
 export const StyledSelectContainer = styled(
@@ -60,6 +61,7 @@ export const Select: React.FC<SelectProps> = (props) => {
     keyProperty,
     onChange,
     renderOptions,
+    renderSelect,
     ...otherProps
   } = props;
 
@@ -94,7 +96,9 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   const renderComponent = useCallback(
     (options: any) => {
-      const { item } = options;
+      const { item, index } = options;
+
+      const isLastItem = index === (data?.length || 0) - 1;
 
       if (renderOptions) {
         return renderOptions(options);
@@ -114,22 +118,36 @@ export const Select: React.FC<SelectProps> = (props) => {
         <BaseButton onPress={onPressHandler}>
           <View
             py="base"
+            px="base"
             flexDirection="row"
             justifyContent="space-between"
             flexCenterX>
-            <Text>{itemValue}</Text>
+            <Text fontSize="md">{itemValue}</Text>
 
             {isActive ? (
               <View>
-                <CheckMarkIcon size="2xs" />
+                <CheckMarkIcon strokeWidth={2.5} size="2xs" />
               </View>
             ) : null}
           </View>
+          {isLastItem ? null : <Divider />}
         </BaseButton>
       );
     },
-    [getItemValue, modal, onChange, renderOptions, selectedValue]
+    [data?.length, getItemValue, modal, onChange, renderOptions, selectedValue]
   );
+
+  const renderComponentSelect = useCallback(() => {
+    if (renderSelect) {
+      return renderSelect(data || []);
+    }
+
+    return (
+      <View>
+        <FlatList data={data || []} renderComponent={renderComponent} />
+      </View>
+    );
+  }, [data, renderComponent, renderSelect]);
 
   const onPressHandler = () => {
     if (!isDisabled) {
@@ -137,11 +155,9 @@ export const Select: React.FC<SelectProps> = (props) => {
       modal.show({
         pos: 'bottom',
         removeContentMargin: true,
-        children: (
-          <View>
-            <FlatList data={data || []} renderComponent={renderComponent} />
-          </View>
-        ),
+        removeContentPadding: true,
+        hideCloseButton: true,
+        children: renderComponentSelect(),
         style: { maxHeight: getWidowLayout(1.5).height },
       });
     }

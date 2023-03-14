@@ -1,6 +1,9 @@
 import type { DividerThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { baseBorderColorStyle } from './base';
+import { baseBorderColorStyle, styleModeHandler } from './base';
+
+import { isPackageNative } from '@/core/helpers/base';
+import { convertHexToRgbaHandler } from '@/core/helpers/theme';
 
 // @defaults
 export const dividerDefaults = {
@@ -18,7 +21,13 @@ export const dividerDefaultStyle = (options: DividerSystemThemeParams) => {
     orientation,
   } = options;
 
-  const borderColor = baseBorderColorStyle({ theme });
+  const isNative = isPackageNative(type);
+
+  const borderColor = styleModeHandler({
+    theme,
+    light: isNative ? 'blackAlpha.50' : 'blackAlpha.100',
+    dark: isNative ? 'whiteAlpha.50' : 'whiteAlpha.100',
+  });
 
   const { vertical } = getDividerOrientation(orientation);
 

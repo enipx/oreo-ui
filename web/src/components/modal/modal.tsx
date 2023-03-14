@@ -73,6 +73,10 @@ export const StyledModal = styled(defaultView())<ModalProps>`
 export const ModalHeader: React.FC<ModalProps> = (props) => {
   const { title, hideCloseButton, children, onClose } = props;
 
+  if (hideCloseButton && !title && !children) {
+    return null;
+  }
+
   const renderTitle = () => {
     if (title) {
       return isString(title) ? <Text>{title}</Text> : title;
@@ -90,7 +94,7 @@ export const ModalHeader: React.FC<ModalProps> = (props) => {
       <IconButton
         ml="auto"
         size="sm"
-        icon={<CloseIcon size="3xs" />}
+        icon={<CloseIcon size="md" />}
         onClick={onClose}
       />
     );
@@ -124,7 +128,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
   const size = modalSize || specifiedSize;
 
   const transitionType = modalDefaultTransitions({
-    pos: props?.pos || '',
+    pos: props?.pos,
     isDrawer: props.isDrawer,
   });
 

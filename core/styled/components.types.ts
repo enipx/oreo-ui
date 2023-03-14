@@ -551,6 +551,11 @@ export interface ModalThemedDefaultProps {
    */
   removeContentMargin?: boolean;
 
+  /**
+   * set default content padding
+   */
+  removeContentPadding?: boolean;
+
   isDrawer?: boolean;
 }
 

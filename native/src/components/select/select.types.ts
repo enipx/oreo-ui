@@ -44,6 +44,13 @@ export interface SelectProps
 
   /**
    *
+   * @param data : any[]
+   * @returns used to render custom select modal
+   */
+  renderSelect?: (data: any[]) => JSX.Element;
+
+  /**
+   *
    * @param item : FlatListRenderProps
    * @returns used to render custom options
    */

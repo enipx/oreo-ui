@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { PopoverProps } from '../popover';
+import { PopoverProps, PopoverContentProps } from '../popover';
 
 export interface DropdownProps extends PopoverProps {}
+
+export interface DropdownContentProps extends PopoverContentProps {}
 
 export interface DropdownItemProps
   extends React.InputHTMLAttributes<HTMLButtonElement> {
