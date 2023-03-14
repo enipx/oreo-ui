@@ -76,6 +76,30 @@ export const baseColor = modeHandler('gray.900', 'gray.50');
 
 export const baseBorderColor = modeHandler('gray.50', 'gray.800');
 
+export const baseBackgroundColorStyle = (options: StyledThemeProps) => {
+  return styleModeHandler({
+    theme: options.theme,
+    light: 'white',
+    dark: 'gray.900',
+  });
+};
+
+export const baseColorStyle = (options: StyledThemeProps) => {
+  return styleModeHandler({
+    theme: options.theme,
+    light: 'gray.900',
+    dark: 'gray.50',
+  });
+};
+
+export const baseBorderColorStyle = (options: StyledThemeProps) => {
+  return styleModeHandler({
+    theme: options.theme,
+    light: 'gray.50',
+    dark: 'gray.800',
+  });
+};
+
 // @styles
 type BaseStyleObjectType = { [key in ThemeModeKeys]: any };
 

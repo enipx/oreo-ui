@@ -5,6 +5,7 @@ export * from './badge';
 export * from './button';
 export * from './container';
 export * from './checkbox';
+export * from './divider';
 export * from './flat-list';
 export * from './flex';
 export * from './grid';

@@ -16,6 +16,7 @@ const spinner = (arg?: PackageTypes) => {
     'xl': space[10],
     '2xl': space[14],
   };
+
   const borderWidths = {
     'xs': '2px',
     'sm': '2px',

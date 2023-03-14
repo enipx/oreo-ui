@@ -5,6 +5,7 @@ export * from './badge';
 export * from './button';
 export * from './checkbox';
 export * from './container';
+export * from './divider';
 export * from './flex';
 export * from './icon-button';
 export * from './indicator';

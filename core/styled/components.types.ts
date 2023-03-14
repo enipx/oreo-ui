@@ -1138,3 +1138,18 @@ export interface SpinnerThemedDefaultProps {
 
   emptyColor?: string;
 }
+
+export type DividerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type DividerOrientationType = 'vertical' | 'horizontal';
+
+export interface DividerThemedDefaultProps {
+  colorScheme?: DefaultColorsSchemeKeys;
+
+  size?: DividerSizeType;
+
+  orientation?: DividerOrientationType;
+}
+
+export interface DividerThemedStyledProps
+  extends DividerThemedDefaultProps,
+    SpaceProps {}

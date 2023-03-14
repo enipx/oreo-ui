@@ -3,6 +3,7 @@ import type { PackageTypes } from '../../constants/index.types';
 import avatar from './avatar';
 import button from './button';
 import checkbox from './checkbox';
+import divider from './divider';
 import drawer from './drawer';
 import input from './input';
 import modal from './modal';
@@ -18,6 +19,7 @@ const components = (arg?: PackageTypes) => {
   return {
     avatar: avatar(arg),
     button: button(arg),
+    divider: divider(arg),
     modal: modal(arg),
     drawer: drawer(arg),
     input: input(arg),

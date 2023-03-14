@@ -26,6 +26,7 @@ import {
   Flex,
   Grid,
   Spinner,
+  Divider,
   useMode,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
@@ -295,6 +296,8 @@ export default function App() {
         </View>
 
         <Spinner />
+
+        <Divider my="lg" />
       </Container>
     </OreoProvider>
   );
