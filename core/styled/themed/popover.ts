@@ -23,11 +23,13 @@ export const popoverContentDefaultStyle = (
   const baseStyle = `
     position: relative;
     border: 1px solid ${borderColor};
-    border-radius: ${theme.radii.md};
+    border-radius: ${theme.radii.base};
+    min-width: 220px;
     max-width: ${theme.breakpoints[0]};
     z-index: ${theme.zIndices.popover};
     visibility: hidden;
     box-shadow: ${theme.shadows.sm};
+    overflow: hidden;
     
 
     ${addTransitionsHandler([{ name: 'fade', duration: '300ms' }])}

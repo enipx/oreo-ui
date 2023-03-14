@@ -97,6 +97,36 @@ export const buttonSizeVariant = (options: ButtonSystemThemeParams) => {
   return convertReactCSSToCSSHandler(styles);
 };
 
+export const buttonBaseStyle = (options: ButtonSystemThemeParams) => {
+  const { theme, type = 'web' } = options;
+
+  const baseStyle = `
+    appearance: none;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background-color: ${theme.colors.transparent};
+    font-weight: ${theme.fontWeights.medium};
+    font-size: ${theme.fontSizes.sm};
+    display: block;
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
 export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
   const {
     theme,

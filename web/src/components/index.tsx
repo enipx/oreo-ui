@@ -6,6 +6,7 @@ export * from './button';
 export * from './checkbox';
 export * from './container';
 export * from './divider';
+export * from './dropdown';
 export * from './flex';
 export * from './icon-button';
 export * from './indicator';
