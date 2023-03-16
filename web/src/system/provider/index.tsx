@@ -6,12 +6,13 @@ import { useMode } from '../../hooks/use-mode/use-mode';
 import { GlobalStyle } from './global';
 import { OreoProviderProps } from './provider.types';
 
+import { Subset } from '@/core/constants/index.types';
 import { mergedObjectsHandler } from '@/core/helpers/base';
-import { ThemeProvider, DefaultTheme } from '@/core/styled/web';
+import { ThemeProvider } from '@/core/styled/web';
 import defaultTheme, { ThemeType } from '@/core/theme';
 
 // @file declarations
-export type { DefaultTheme };
+export type DefaultTheme = Subset<ThemeType>;
 
 export const OreoProvider = (props: OreoProviderProps) => {
   const { theme: specifiedTheme, children } = props;

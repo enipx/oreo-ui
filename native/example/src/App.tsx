@@ -28,14 +28,13 @@ import {
   Spinner,
   Divider,
   useMode,
+  DefaultTheme,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 import { ModalApi } from './Modal';
 
-const customTheme = {
-  colors: {
-    primary: '#0f0',
-  },
+const customTheme: DefaultTheme = {
+  colors: {},
 };
 
 export default function App() {
