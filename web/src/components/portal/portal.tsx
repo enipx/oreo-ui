@@ -13,17 +13,15 @@ export const Portal: React.FC<PortalProps> = (props) => {
 
   const portalNode = getPortalNode();
 
-  const domNode = specifiedDomNode || portalNode || document.body;
-
   useEffect(() => {
-    if (domExistsHandler()) {
-      createPortalNode();
-    }
+    createPortalNode();
   }, []);
 
   if (!domExistsHandler()) {
     return null;
   }
+
+  const domNode = specifiedDomNode || portalNode || document.body;
 
   return createPortal(children, domNode);
 };

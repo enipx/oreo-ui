@@ -7,14 +7,9 @@ import {
   addTransitionsHandler,
   TransitionsTypeObject,
 } from '../css/transitions';
-import type {
-  StyledThemeProps,
-  SystemThemeParams,
-  SystemThemeReturnType,
-} from '../index.types';
+import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { mediaQueryStyle } from '../mixins';
-import { themer } from '../web';
-import { styleModeHandler } from './base';
+import { modeHandler, styleModeHandler } from './base';
 import { drawerContentDefaultStyle, drawerDefaultTransitions } from './drawer';
 
 import { isPackageNative } from '@/core/helpers/base';
@@ -45,10 +40,10 @@ export const modalDefaultTransitions = (
   return positions[pos as keyof typeof positions];
 };
 
-export const modalOverlayBackgroundColor = themer('mode', {
-  light: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[400],
-  dark: ({ theme }: StyledThemeProps) => theme.colors.blackAlpha[400],
-});
+export const modalOverlayBackgroundColor = modeHandler(
+  'blackAlpha.400',
+  'blackAlpha.400'
+);
 
 // @variants
 export const modalSizeVariant = (options: ModalSystemThemeParams) => {

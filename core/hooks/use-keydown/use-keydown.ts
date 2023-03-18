@@ -1,6 +1,8 @@
 // @imports
 import { useEffect, useCallback } from 'react';
 
+import { domExistsHandler } from '@/core/helpers/dom';
+
 type UseKeydownkOptionsType = {
   key: KeyboardEvent['key'];
   callback?: () => void;
@@ -57,11 +59,15 @@ export const useKeydown = (options: UseKeydownkOptionsType) => {
     if (!enabled) return;
 
     // bind the event listener
-    window.addEventListener('keydown', keydownHandler);
+    if (domExistsHandler()) {
+      window.addEventListener('keydown', keydownHandler);
+    }
 
     return () => {
       // unbind the event listener on clean up
-      document.removeEventListener('keydown', keydownHandler);
+      if (domExistsHandler()) {
+        window.removeEventListener('keydown', keydownHandler);
+      }
     };
   }, [key, enabled, callback]);
 

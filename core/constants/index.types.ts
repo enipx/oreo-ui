@@ -11,7 +11,9 @@ export type DimensionsUnitTypes = 'px' | 'em' | 'rem';
 
 /**
  * This allow Partial type to work for nested objects
- * @soure https://twitter.com/micdah/status/1580531114657316865
+ * @source
+ * - https://twitter.com/micdah/status/1580531114657316865
+ * - https://grrr.tech/posts/2021/typescript-partial/
  */
 export type Subset<K> = {
   [attr in keyof K]?: K[attr] extends object

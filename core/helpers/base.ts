@@ -188,7 +188,11 @@ export const generateUIDHandler = (options?: { length: number }) => {
   const uId1 = (Math.random() * 46656) | 0;
   const uId2 = (Math.random() * 46656) | 0;
 
-  const defaultUid = [...Array(halfLength)].map(() => '0').join('');
+  let defaultUid = '';
+
+  for (let i = 0; i < halfLength; i++) {
+    defaultUid += '0';
+  }
 
   const uId1Length = (defaultUid + uId1.toString(36)).slice(-halfLength);
   const uId2Length = (defaultUid + uId2.toString(36)).slice(-halfLength);

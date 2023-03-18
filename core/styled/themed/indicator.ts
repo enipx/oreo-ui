@@ -1,13 +1,12 @@
 import type {
   IndicatorThemedDefaultProps,
-  AvatarSizeTypes,
-  IndicatorPostionTypes,
+  IndicatorPositionTypes,
 } from '../components.types';
 import { flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, getColorSchemeStyle } from './base';
 
-import { SpacingKeys } from '@/core/theme/utilities/spacing';
+import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @defaults
 export const indicatorDefaults = {};
@@ -25,69 +24,43 @@ export const getIndicatorSizeStyle = (options: IndicatorSystemThemeParams) => {
     borderWidth: string | number;
   };
 
-  type SizesType = {
-    [key in AvatarSizeTypes]: SizesObjectType;
-  };
-
   const { theme, size } = options;
+
+  const { fontSizes, size: sizes, borderWidths } = theme.components.indicator;
 
   const borderColor = getBaseStyle(options).backgroundColor;
 
-  const fontSize = theme.fontSizes['2xs'];
+  const width = sizes[size as keyof typeof sizes];
+
+  const height = width;
+
+  const fontSize = fontSizes[size as keyof typeof sizes];
+
+  const borderWidth = borderWidths[size as keyof typeof sizes];
 
   const baseSize: SizesObjectType = {
     width: theme.space?.[size as SpacingKeys] || size || '',
     height: theme.space?.[size as SpacingKeys] || size || '',
+    fontSize: fontSizes.md,
+    borderColor,
+    borderWidth: borderWidths.md,
+  };
+
+  const sizeStyle: SizesObjectType = {
+    width,
+    height,
     fontSize,
     borderColor,
-    borderWidth: '2px',
+    borderWidth,
   };
 
-  const sizes: SizesType = {
-    xs: {
-      width: theme.space[3],
-      height: theme.space[3],
-      fontSize,
-      borderColor,
-      borderWidth: '2px',
-    },
-    sm: {
-      width: theme.space[3.5],
-      height: theme.space[3.5],
-      fontSize,
-      borderColor,
-      borderWidth: '2px',
-    },
-    md: {
-      width: theme.space[4],
-      height: theme.space[4],
-      fontSize,
-      borderColor,
-      borderWidth: '2px',
-    },
-    lg: {
-      width: theme.space[4.5],
-      height: theme.space[4.5],
-      fontSize,
-      borderColor,
-      borderWidth: '2px',
-    },
-    xl: {
-      width: theme.space[5],
-      height: theme.space[5],
-      fontSize,
-      borderColor,
-      borderWidth: '3px',
-    },
-  };
-
-  return sizes?.[size || 'md'] || baseSize;
+  return size ? sizeStyle : baseSize;
 };
 
 export const getIndicatorPositionStyle = (
   options: IndicatorSystemThemeParams
 ) => {
-  type PositionType = { [key in IndicatorPostionTypes]: string };
+  type PositionType = { [key in IndicatorPositionTypes]: string };
 
   const { pos, offset: _offset } = options;
 

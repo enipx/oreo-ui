@@ -1,4 +1,5 @@
 import { packageName } from '@/core/constants';
+import { domExistsHandler } from '@/core/helpers/dom';
 
 // @portal defaults
 const portalClassName = `${packageName}-portal`;
@@ -9,11 +10,15 @@ export const portalDefaults = {
 };
 
 export const getPortalNode = () => {
+  if (!domExistsHandler()) {
+    return undefined;
+  }
+
   return document.querySelector(portalDefaults.selector);
 };
 
 export const createPortalNode = () => {
-  if (!getPortalNode()) {
+  if (domExistsHandler() && !getPortalNode()) {
     const portalNode = document.createElement('div');
     portalNode.className = portalDefaults.className;
 

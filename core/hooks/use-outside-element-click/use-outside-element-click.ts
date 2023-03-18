@@ -1,6 +1,8 @@
 // @imports
 import { useEffect } from 'react';
 
+import { domExistsHandler } from '@/core/helpers/dom';
+
 type UseOutsideElementClickOptionsType = {
   element?: (HTMLElement | null | undefined)[];
   callback?: () => void;
@@ -25,11 +27,15 @@ export const useOutsideElementClick = (
     if (!enabled) return;
 
     // bind the event listener
-    window.addEventListener('mousedown', mousedownHandler);
+    if (domExistsHandler()) {
+      window.addEventListener('mousedown', mousedownHandler);
+    }
 
     return () => {
       // unbind the event listener on clean up
-      document.removeEventListener('mousedown', mousedownHandler);
+      if (domExistsHandler()) {
+        window.removeEventListener('mousedown', mousedownHandler);
+      }
     };
   }, [element, enabled]);
 

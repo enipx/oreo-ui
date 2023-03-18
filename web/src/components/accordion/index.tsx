@@ -1,6 +1,6 @@
 export type {
   AccordionProps,
-  AccordionControlProps,
+  AccordionButtonProps,
   AccordionItemProps,
   AccordionPanelProps,
 } from './accordion.types';

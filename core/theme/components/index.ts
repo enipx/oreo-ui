@@ -6,6 +6,7 @@ import checkbox from './checkbox';
 import divider from './divider';
 import drawer from './drawer';
 import dropdown from './dropdown';
+import indicator from './indicator';
 import input from './input';
 import modal from './modal';
 import pinInput from './pin-input';
@@ -24,6 +25,7 @@ const components = (arg?: PackageTypes) => {
     drawer: drawer(arg),
     dropdown: dropdown(arg),
     modal: modal(arg),
+    indicator: indicator(arg),
     input: input(arg),
     pinInput: pinInput(arg),
     select: select(arg),
