@@ -8,11 +8,7 @@ import { OreoProviderProps } from './provider.types';
 
 import { Subset } from '@/core/constants/index.types';
 import { mergedObjectsHandler } from '@/core/helpers/base';
-import {
-  ThemeProvider,
-  ServerStyleSheet,
-  StyleSheetManager,
-} from '@/core/styled/web';
+import { ThemeProvider } from '@/core/styled/web';
 import defaultTheme, { ThemeType } from '@/core/theme';
 
 // @file declarations
@@ -44,5 +40,3 @@ export const OreoProvider = (props: OreoProviderProps) => {
     </ThemeProvider>
   );
 };
-
-export { ServerStyleSheet, StyleSheetManager };

@@ -1,17 +1,11 @@
 // @imports
 import { createGlobalStyle } from 'styled-components';
 
-import { convertThemeToCSSVariableHandler } from '@/core/helpers/theme';
 import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
 import defaultTheme from '@/core/theme';
 
 // @file declarations
 export const GlobalStyle = createGlobalStyle`
-  
-  /* :root {
-    ${(props) => convertThemeToCSSVariableHandler({ ...props } as any)}
-  } */
-
   *,
   *::before,
   *::after {
