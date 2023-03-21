@@ -1,6 +1,7 @@
 // @imports
 import { ModalProvider } from '@components/modal';
 import { ToastProvider } from '@components/toast';
+import React from 'react';
 
 import { useMode } from '../../hooks/use-mode/use-mode';
 import { GlobalStyle } from './global';
@@ -37,10 +38,12 @@ export const OreoProvider = (props: OreoProviderProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle theme={theme} />
-      <ToastProvider>
-        <ModalProvider>{children}</ModalProvider>
-      </ToastProvider>
+      <>
+        <GlobalStyle theme={theme} />
+        <ToastProvider>
+          <ModalProvider>{children}</ModalProvider>
+        </ToastProvider>
+      </>
     </ThemeProvider>
   );
 };
