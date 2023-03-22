@@ -2,13 +2,9 @@
 import styled, {
   keyframes,
   css,
-  ThemeContext,
-  ThemeConsumer,
   ThemeProvider,
   DefaultTheme,
   useTheme,
-  ServerStyleSheet,
-  StyleSheetManager,
 } from 'styled-components';
 import themer from 'styled-theming';
 
@@ -81,10 +77,6 @@ export {
   keyframes,
   baseStyled,
   css,
-  ThemeContext,
-  ThemeConsumer,
   ThemeProvider,
   useTheme,
-  ServerStyleSheet,
-  StyleSheetManager,
 };

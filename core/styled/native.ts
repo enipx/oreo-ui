@@ -28,9 +28,7 @@ import {
 const {
   default: styled,
   css,
-  ThemeContext,
   ThemeProvider,
-  ThemeConsumer,
   useTheme,
 } = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeType>;
 
@@ -77,9 +75,7 @@ export type DefaultTheme = ThemeType;
 export {
   styled,
   css,
-  ThemeContext,
   ThemeProvider,
-  ThemeConsumer,
   useTheme,
   variant,
   themer,

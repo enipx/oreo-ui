@@ -24,10 +24,10 @@ export default [
       },
     ],
     plugins: [
+      peerDepsExternal(),
       cleaner({
         targets: ['./dist'],
       }),
-      peerDepsExternal(),
       resolve(),
       commonjs(),
       babel({
