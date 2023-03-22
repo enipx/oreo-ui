@@ -1,4 +1,4 @@
-import type { ThemeProviderProps, DefaultTheme } from 'styled-components';
+import type { ThemeProviderProps, DefaultTheme } from './web';
 
 export interface ProviderThemedStyledProps
   extends Partial<ThemeProviderProps<DefaultTheme>> {}

@@ -1,9 +1,9 @@
 // @imports
 import type { ReactHTML, SVGProps } from 'react';
-import type {
-  ReactNativeStyledInterface,
-  DefaultTheme,
-} from 'styled-components/native';
+
+import type { PackageTypes, ThemeModeKeys } from '../constants/index.types';
+import type { IconSizingKeys } from '../theme/utilities/sizing';
+import type { ReactNativeStyledInterface, DefaultTheme } from './native';
 import type {
   SpaceProps,
   ColorProps,
@@ -15,10 +15,7 @@ import type {
   BorderProps,
   PositionProps,
   ShadowProps,
-} from 'styled-system';
-
-import type { PackageTypes, ThemeModeKeys } from '../constants/index.types';
-import type { IconSizingKeys } from '../theme/utilities/sizing';
+} from './system';
 
 // @file declarations
 export type ThemeTypeProps = {

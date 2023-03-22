@@ -1,5 +1,6 @@
 // @imports
 import * as styledComponents from 'styled-components/native';
+import type { ReactNativeStyledInterface } from 'styled-components/native';
 import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
@@ -70,7 +71,9 @@ const baseStyled = (
   `;
 };
 
-export type DefaultTheme = ThemeType;
+type DefaultTheme = ThemeType;
+
+export type { ReactNativeStyledInterface, DefaultTheme };
 
 export {
   styled,

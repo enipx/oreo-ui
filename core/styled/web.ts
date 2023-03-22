@@ -5,6 +5,9 @@ import styled, {
   ThemeProvider,
   DefaultTheme,
   useTheme,
+  createGlobalStyle,
+  CSSProperties,
+  ThemeProviderProps,
 } from 'styled-components';
 import themer from 'styled-theming';
 
@@ -68,7 +71,7 @@ const baseStyled = (
   `;
 };
 
-export type { DefaultTheme };
+export type { DefaultTheme, CSSProperties, ThemeProviderProps };
 
 export {
   styled,
@@ -79,4 +82,5 @@ export {
   css,
   ThemeProvider,
   useTheme,
+  createGlobalStyle,
 };

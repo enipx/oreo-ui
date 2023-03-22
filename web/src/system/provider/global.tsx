@@ -1,7 +1,6 @@
 // @imports
-import { createGlobalStyle } from 'styled-components';
-
 import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
+import { createGlobalStyle } from '@/core/styled/web';
 import defaultTheme from '@/core/theme';
 
 // @file declarations

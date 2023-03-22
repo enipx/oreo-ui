@@ -1,5 +1,3 @@
-import type { CSSProperties } from 'styled-components';
-
 import type { ObjectTypes } from '../constants/index.types';
 import type { BreakpointsKeys } from '../theme/utilities/breakpoints';
 import type {
@@ -19,6 +17,7 @@ import type {
   FlexboxProps,
   BorderProps,
 } from './system';
+import type { CSSProperties } from './web';
 
 export interface ViewThemedStyledProps extends LayoutThemeStyledProps {
   /**
