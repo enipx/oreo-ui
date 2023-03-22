@@ -1,6 +1,6 @@
 // @imports
-import { View } from '..';
 import { IconButton } from '../icon-button';
+import { View } from '../view';
 import {
   useAccordionItemContext,
   useAccordionContext,
