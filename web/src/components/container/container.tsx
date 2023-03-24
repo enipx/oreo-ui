@@ -1,6 +1,5 @@
 // @imports
-import { View } from '@components/view';
-
+import { View } from '../view';
 import type { ContainerProps } from './container.types';
 
 import { styled } from '@/core/styled/web';

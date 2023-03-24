@@ -21,7 +21,7 @@ export const Portal: React.FC<PortalProps> = (props) => {
     return null;
   }
 
-  const domNode = specifiedDomNode || portalNode || document.body;
+  const domNode = specifiedDomNode || portalNode || document?.body;
 
   return createPortal(children, domNode);
 };

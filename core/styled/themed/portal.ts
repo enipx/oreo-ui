@@ -14,14 +14,14 @@ export const getPortalNode = () => {
     return undefined;
   }
 
-  return document.querySelector(portalDefaults.selector);
+  return document?.querySelector?.(portalDefaults.selector);
 };
 
 export const createPortalNode = () => {
   if (domExistsHandler() && !getPortalNode()) {
-    const portalNode = document.createElement('div');
+    const portalNode = document?.createElement?.('div');
     portalNode.className = portalDefaults.className;
 
-    document.body.append(portalNode);
+    document?.body?.append?.(portalNode);
   }
 };

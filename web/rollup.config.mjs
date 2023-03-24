@@ -1,4 +1,4 @@
-import { babel } from '@rollup/plugin-babel';
+// import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
@@ -7,6 +7,7 @@ import dts from 'rollup-plugin-dts';
 import { minify } from 'rollup-plugin-esbuild';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default [
   {
@@ -24,20 +25,21 @@ export default [
       },
     ],
     plugins: [
-      peerDepsExternal(),
       cleaner({
         targets: ['./dist'],
       }),
+      peerDepsExternal(),
       resolve(),
       commonjs(),
-      babel({
-        babelHelpers: 'bundled',
-      }),
       typescript({
         exclude: ['**/*.stories.tsx', '**/*.test.tsx', './jest-setup.ts'],
       }),
       json(),
       minify(),
+      visualizer({
+        filename: 'dist-analysis.html',
+        open: true,
+      }),
     ],
   },
   {

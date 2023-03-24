@@ -4,7 +4,6 @@ import type { ReactNativeStyledInterface } from 'styled-components/native';
 import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
-import { applyDefaultThemeHandler } from '../helpers/theme';
 import defaultThemeHandler, { ThemeType } from '../theme';
 import type {
   NativeThemeStyledTagProps,
@@ -56,9 +55,11 @@ const baseStyled = (
   const _position = isStyledIgnored('position') ? '' : position;
   const _shadow = isStyledIgnored('shadow') ? '' : shadow;
 
-  // @ts-ignore
-  return styled[tag].attrs(applyDefaultThemeHandler)`
-    ${_space}
+  return styled[tag]`
+    ${
+      // @ts-ignore
+      _space
+    }
     ${_color}
     ${_typography}
     ${_layout}

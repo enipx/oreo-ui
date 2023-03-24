@@ -13,9 +13,7 @@ export const domExistsHandler = () => {
 };
 
 export const preventPageScrollingHandler = (prevent?: boolean) => {
-  if (domExistsHandler() && prevent) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'unset';
+  if (domExistsHandler() && document.body) {
+    document.body.style.overflow = prevent ? 'hidden' : 'unset';
   }
 };

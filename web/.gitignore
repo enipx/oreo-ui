@@ -7,7 +7,6 @@
 /coverage
 storybook-static
 
-
 # production
 dist/
 
@@ -26,6 +25,9 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# others
+/dist-analysis.html
 
 
 

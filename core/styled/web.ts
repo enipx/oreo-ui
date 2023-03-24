@@ -12,11 +12,9 @@ import styled, {
 import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
-import { applyDefaultThemeHandler } from '../helpers/theme';
 import type {
   WebThemeStyledTagProps,
   ThemeStyledCategoriesArrayProps,
-  ThemeStyledProps,
   ThemeStyledCategoriesProps,
 } from './index.types';
 import {
@@ -55,9 +53,7 @@ const baseStyled = (
   const _position = isStyledIgnored('position') ? '' : position;
   const _shadow = isStyledIgnored('shadow') ? '' : shadow;
 
-  return styled(tag).attrs((props) =>
-    applyDefaultThemeHandler({ packageType: 'web', ...props })
-  )<ThemeStyledProps>`
+  return styled[tag]`
     ${_space}
     ${_color}
     ${_typography}
