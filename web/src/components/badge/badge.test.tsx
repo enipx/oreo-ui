@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 
-import { Container } from './badge';
+import { Badge } from './badge';
 
-describe('Container', () => {
-  test('renders container', async () => {
-    render(<Container />);
+describe('Badge', () => {
+  test('renders Badge', async () => {
+    render(<Badge />);
   });
 });

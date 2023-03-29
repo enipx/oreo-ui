@@ -21,7 +21,7 @@ const getBreakpoints = (arg?: PackageTypes) => {
 
   return convertObjectDimensionsUnit(breakpointsObject, {
     dimension: isWeb ? 'rem' : 'px',
-  }) as BreakpointsTypes;
+  }) as BreakpointsObjectTypes;
 };
 
 const updateBreakpointsAlias = (bp: any) => {
@@ -42,7 +42,9 @@ export type BreakpointsTypes = typeof breakpoints;
 
 export type BreakpointsKeys = keyof BreakpointsTypes;
 
-export type BreakpointsObjectKeys = keyof typeof breakpointsObject;
+export type BreakpointsObjectTypes = typeof breakpointsObject;
+
+export type BreakpointsObjectKeys = keyof BreakpointsObjectTypes;
 
 // @exports
 export { breakpointsObject, updateBreakpointsAlias, getBreakpoints };

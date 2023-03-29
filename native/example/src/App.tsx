@@ -29,6 +29,7 @@ import {
   Divider,
   useMode,
   DefaultTheme,
+  Show,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 import { ModalApi } from './Modal';
@@ -154,6 +155,8 @@ export default function App() {
 
         <ModalApi />
 
+        <Toast />
+
         <View marginY="lg">
           <Accordion>
             <Accordion.Item value="item-1">
@@ -215,7 +218,7 @@ export default function App() {
           DEFAULT
         </Badge>
 
-        <Badge colorScheme="blue" fontSize="sm" rounded mt="lg">
+        <Badge colorScheme="blue" fontSize="sm" rounded>
           DEFAULT
         </Badge>
 
@@ -241,8 +244,6 @@ export default function App() {
             </Tabs.Panel>
           </Tabs>
         </View>
-
-        <Toast />
 
         <View my="lg">
           <Skeleton width="40px" height="40px" rounded mb="md" />
@@ -297,6 +298,10 @@ export default function App() {
         <Spinner />
 
         <Divider my="lg" />
+
+        <Show above={100}>
+          <Text>Show text</Text>
+        </Show>
       </Container>
     </OreoProvider>
   );

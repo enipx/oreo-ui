@@ -16,6 +16,7 @@ export * from './image';
 export * from './modal';
 export * from './pin-input';
 export * from './radio';
+export * from './show-hide';
 export * from './switch';
 export * from './select';
 export * from './skeleton';

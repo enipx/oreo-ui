@@ -1,4 +1,5 @@
 import type { FlexThemedStyledProps } from '../components.types';
+import { flexCenterStyle, flexCenterXStyle, flexCenterYStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
 // @defaults
@@ -8,7 +9,17 @@ export const flexDefaults = {};
 type FlexSystemThemeParams = SystemThemeParams & FlexThemedStyledProps;
 
 export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
-  const { type = 'web', row, column, flexDirection, reverse, inline } = options;
+  const {
+    type = 'web',
+    row,
+    column,
+    flexDirection,
+    reverse,
+    inline,
+    center,
+    centerX,
+    centerY,
+  } = options;
 
   const _row = reverse ? 'row-reverse' : 'row';
 
@@ -25,13 +36,17 @@ export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
   const flex = inline ? 'inline-flex' : 'flex';
 
   const baseStyle = `
-    display: ${flex};
+    ${center ? flexCenterStyle : ''}
+    ${centerX ? flexCenterXStyle : ''}
+    ${centerY ? flexCenterYStyle : ''}
     flex-direction: ${_flexDirection};
+    display: ${flex};
   `;
 
   const native = `
     ${baseStyle}
     display: flex;
+    
   `;
 
   const web = `

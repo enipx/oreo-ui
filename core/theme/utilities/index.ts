@@ -33,6 +33,7 @@ const utilities = (arg?: PackageTypes) => {
     breakpoints,
     colors,
     space,
+    sizes: space,
     radii,
     zIndices,
     shadows,

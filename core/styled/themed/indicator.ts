@@ -38,9 +38,13 @@ export const getIndicatorSizeStyle = (options: IndicatorSystemThemeParams) => {
 
   const borderWidth = borderWidths[size as keyof typeof sizes];
 
+  const defaultSize = size
+    ? theme.space?.[size as SpacingKeys] || size
+    : sizes.md;
+
   const baseSize: SizesObjectType = {
-    width: theme.space?.[size as SpacingKeys] || size || '',
-    height: theme.space?.[size as SpacingKeys] || size || '',
+    width: defaultSize,
+    height: defaultSize,
     fontSize: fontSizes.md,
     borderColor,
     borderWidth: borderWidths.md,

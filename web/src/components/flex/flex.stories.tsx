@@ -20,11 +20,7 @@ const Template: ComponentStory<typeof Flex> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  column: true,
-  reverse: true,
-  inline: true,
-};
+Default.args = {};
 
 export const Spacing = Template.bind({});
 Spacing.args = {

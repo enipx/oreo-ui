@@ -1,5 +1,8 @@
 import type { ObjectTypes } from '../constants/index.types';
-import type { BreakpointsKeys } from '../theme/utilities/breakpoints';
+import type {
+  BreakpointsKeys,
+  BreakpointsObjectKeys,
+} from '../theme/utilities/breakpoints';
 import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
@@ -71,6 +74,18 @@ export interface FlexThemedStyledProps extends ViewThemedStyledProps {
    * give all children specified spacing
    */
   spacing?: string | number;
+  /**
+   * align children horizontally and vertically
+   */
+  center?: boolean;
+  /**
+   * align children vertically
+   */
+  centerY?: boolean;
+  /**
+   * align children horizontally
+   */
+  centerX?: boolean;
 }
 
 export interface GridThemedStyledProps extends LayoutThemeStyledProps {
@@ -1157,3 +1172,65 @@ export interface DividerThemedDefaultProps {
 export interface DividerThemedStyledProps
   extends DividerThemedDefaultProps,
     SpaceProps {}
+
+export interface ShowThemedDefaultProps {
+  children?: React.ReactNode;
+
+  /**
+   * show item at breakpoint
+   */
+  breakpoint?: string;
+
+  /**
+   * show item when breakpoint is above the specified point
+   */
+  above?: BreakpointsObjectKeys;
+
+  /**
+   * show item when breakpoint is below the specified point
+   */
+  below?: BreakpointsObjectKeys;
+}
+
+export interface ShowNativeThemedDefaultProps {
+  children?: React.ReactNode;
+  /**
+   * show item when breakpoint is above the specified point
+   */
+  above?: number;
+
+  /**
+   * show item when breakpoint is below the specified point
+   */
+  below?: number;
+}
+
+export interface HideThemedDefaultProps extends ShowThemedDefaultProps {}
+
+export interface ScrollbarThemedDefaultProps {
+  children?: React.ReactNode;
+
+  /**
+   * set scrollbar track style
+   */
+  _track?: React.CSSProperties;
+
+  /**
+   * set scrollbar thumb style
+   */
+  _handle?: React.CSSProperties;
+
+  /**
+   * set scrollbar thumb hover style
+   */
+  _hover?: React.CSSProperties;
+
+  /**
+   * set scroll width
+   */
+  scrollWidth?: string;
+}
+
+export interface ScrollbarThemedStyledProps
+  extends ViewThemedStyledProps,
+    ScrollbarThemedDefaultProps {}

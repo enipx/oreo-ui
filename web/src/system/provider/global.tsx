@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     }};
     margin: 0;
     padding: 0;
+    color: ${baseColor};
   }
 
   // ----- HTML
@@ -28,7 +29,6 @@ export const GlobalStyle = createGlobalStyle`
   // ---- Body
   body {
     background-color: ${baseBackgroundColor};
-    color: ${baseColor};
   }
 
   // ----- Elements
@@ -172,4 +172,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
+  a {
+    text-decoration: none;
+  }
 `;

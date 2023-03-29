@@ -1,5 +1,5 @@
 // @imports
-import styled, {
+import defaultStyled, {
   keyframes,
   css,
   ThemeProvider,
@@ -32,6 +32,11 @@ import {
 } from './system';
 
 // @file declarations
+const styled: typeof defaultStyled =
+  typeof defaultStyled === 'function'
+    ? defaultStyled
+    : defaultStyled['default'];
+
 const baseStyled = (
   tag: WebThemeStyledTagProps,
   omitProps?: ThemeStyledCategoriesArrayProps
