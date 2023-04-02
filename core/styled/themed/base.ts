@@ -11,6 +11,7 @@ import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
 } from '@/core/theme/utilities/colors';
+import { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @defaults
 export const baseDefaults = {
@@ -303,4 +304,10 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
   };
 
   return variants[variant];
+};
+
+export const getSpacingValue = (options: { value?: any; theme: ThemeType }) => {
+  const { theme, value } = options;
+
+  return value ? theme.space?.[value as SpacingKeys] || value : '';
 };

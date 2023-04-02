@@ -5,8 +5,6 @@ import { textDefaultStyle } from '@/core/styled/themed/text';
 import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
-export const Text = styled(
-  baseStyled('p', ['background', 'border', 'grid', 'position', 'shadow'])
-)<TextProps>`
+export const Text = styled(baseStyled('p'))<TextProps>`
   ${(props) => textDefaultStyle({ ...props } as any)}
 `;

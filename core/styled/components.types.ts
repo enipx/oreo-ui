@@ -17,7 +17,6 @@ import type {
   ColorProps,
   TypographyProps,
   LayoutProps,
-  FlexboxProps,
   BorderProps,
 } from './system';
 import type { CSSProperties } from './web';
@@ -121,6 +120,14 @@ export interface GridItemThemedStyledProps extends LayoutThemeStyledProps {
   children?: React.ReactNode;
 }
 
+export interface ComponentsDefaultProps {
+  as?: string;
+
+  _hover?: React.CSSProperties;
+
+  _focus?: React.CSSProperties;
+}
+
 export interface TextThemedStyledProps extends TypographyThemeStyledProps {
   /**
    * set text transform
@@ -137,11 +144,8 @@ export type ButtonStateType = 'hovered' | 'disabled' | 'focused' | 'default';
 export type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface ButtonThemedStyledProps
-  extends LayoutProps,
-    SpaceProps,
-    ColorProps,
-    FlexboxProps,
-    TypographyProps {
+  extends LayoutThemeStyledProps,
+    ComponentsDefaultProps {
   /**
    * set left icon
    */
@@ -191,7 +195,9 @@ export interface ButtonThemedStyledProps
   children?: React.ReactNode;
 }
 
-export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
+export interface IconButtonThemedStyledProps
+  extends LayoutThemeStyledProps,
+    ComponentsDefaultProps {
   /**
    * set left icon
    */
@@ -228,8 +234,6 @@ export interface IconButtonThemedStyledProps extends SpaceProps, BorderProps {
    * convert icon to a round icon
    */
   rounded?: boolean;
-
-  as?: any;
 }
 
 export type InputStateType = 'default' | 'focused' | 'invalid' | 'disabled';

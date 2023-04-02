@@ -7,7 +7,7 @@ import type {
 } from '../components.types';
 import { flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getColorSchemeStyle } from './base';
+import { getColorSchemeStyle, getSpacingValue } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
 import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
@@ -135,6 +135,9 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     colorScheme,
     variant,
     fullWidth,
+    width: _width,
+    _hover,
+    _focus,
   } = options;
 
   const {
@@ -150,7 +153,8 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
   });
 
   const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
-  const width = fullWidth ? '100%' : 'auto';
+  const width =
+    getSpacingValue({ theme, value: _width }) || fullWidth ? '100%' : 'auto';
 
   const baseStyle = `
     ${flexCenterStyle}
@@ -184,6 +188,14 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
       background-color: ${hoverBackgroundColor};
       border-color: ${hoverBorderColor};
       text-decoration: ${variant === 'link' ? 'underline' : 'auto'}
+    }
+
+    :hover {
+      ${convertReactCSSToCSSHandler(_hover)}
+    }
+
+    :focus {
+      ${convertReactCSSToCSSHandler(_focus)}
     }
   `;
 
@@ -236,7 +248,15 @@ export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
 export const iconButtonDefaultStyle = (
   options: IconButtonSystemThemeParams
 ) => {
-  const { theme, type = 'web', disabled, colorScheme, variant } = options;
+  const {
+    theme,
+    type = 'web',
+    disabled,
+    colorScheme,
+    variant,
+    _focus,
+    _hover,
+  } = options;
 
   const { backgroundColor, color, iconBorderColor, hoverBackgroundColor } =
     getColorSchemeStyle({
@@ -276,6 +296,14 @@ export const iconButtonDefaultStyle = (
     :active,
     :focus {
       background-color: ${hoverBackgroundColor};
+    }
+
+    :hover {
+      ${convertReactCSSToCSSHandler(_hover)}
+    }
+  
+    :focus {
+      ${convertReactCSSToCSSHandler(_focus)}
     }
   `;
 

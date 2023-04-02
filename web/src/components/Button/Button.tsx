@@ -5,6 +5,14 @@ import { View } from '../view';
 import type { ButtonProps } from './button.types';
 
 import {
+  width,
+  height,
+  border,
+  compose,
+  typography,
+  flexbox,
+} from '@/core/styled/system';
+import {
   buttonDefaultStyle,
   buttonIconSpacing,
   buttonSizeVariant,
@@ -14,12 +22,11 @@ import {
 import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
-export const StyledButton = styled(
-  baseStyled('button', ['shadow', 'grid', 'position', 'background'])
-)<ButtonProps>`
+export const StyledButton = styled(baseStyled('button'))<ButtonProps>`
   ${(props) => buttonDefaultStyle({ ...props } as any)}
   ${(props) => buttonSizeVariant({ ...props } as any)}
   ${(props) => buttonStateVariant({ ...props } as any)}
+  ${compose(width, height, border, typography, flexbox)}
 `;
 
 export const Button = forwardRef((props: ButtonProps, ref) => {

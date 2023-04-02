@@ -23,23 +23,23 @@ import { isString } from '@/core/helpers/base';
 
 // @styles
 export const ModalOverlay = styled(StyledView)<ModalProps>`
-  ${(props) => modalOverlayDefaultStyle({ ...props, type: 'native' })}
+  ${(props) => modalOverlayDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 export const ModalContent = styled(StyledView)<ModalProps>`
-  ${(props) => modalContentDefaultStyle({ ...props, type: 'native' })}
+  ${(props) => modalContentDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 export const ModalBody = styled(StyledView)<ModalProps>`
-  ${(props) => modalBodyDefaultStyle({ ...props, type: 'native' })}
+  ${(props) => modalBodyDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 export const ModalFooter = styled(StyledView)<ModalProps>`
-  ${(props) => modalFooterDefaultStyle({ ...props, type: 'native' })}
+  ${(props) => modalFooterDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 export const StyledModalHeader = styled(StyledView)<ModalProps>`
-  ${(props) => modalHeaderDefaultStyle({ ...props, type: 'native' })}
+  ${(props) => modalHeaderDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
 // @exports
@@ -47,7 +47,6 @@ export const ModalHeader: React.FC<ModalProps> = (props) => {
   const { title, hideCloseButton, children, onClose } = props;
 
   if (hideCloseButton && !title && !children) {
-    console.log('empty');
     return null;
   }
 
