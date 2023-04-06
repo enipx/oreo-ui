@@ -14,7 +14,7 @@ import type {
 import {
   inputContainerDefaultStyle,
   backgroundColor,
-  borderColor,
+  nativeBorderColor,
 } from '@/core/styled/themed/input';
 import {
   pinInputSizeVariant,
@@ -38,7 +38,7 @@ ${(props) =>
       index: props.inputIndex,
       type: 'native',
     } as any)}
-  border-color: ${borderColor};
+  border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
 `;
 

@@ -4,7 +4,7 @@ import components from './components';
 import utilities from './utilities';
 
 // @file declarations
-const mode: ThemeModeKeys = 'light';
+const mode = 'light' as ThemeModeKeys;
 
 const theme = (arg?: PackageTypes) => ({
   ...utilities(arg),

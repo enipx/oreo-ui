@@ -6,6 +6,7 @@ import checkbox from './checkbox';
 import divider from './divider';
 import drawer from './drawer';
 import dropdown from './dropdown';
+import iconButton from './icon-button';
 import indicator from './indicator';
 import input from './input';
 import modal from './modal';
@@ -24,6 +25,7 @@ const components = (arg?: PackageTypes) => {
     divider: divider(arg),
     drawer: drawer(arg),
     dropdown: dropdown(arg),
+    iconButton: iconButton(arg),
     modal: modal(arg),
     indicator: indicator(arg),
     input: input(arg),

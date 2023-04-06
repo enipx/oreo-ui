@@ -5,11 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import { InputHint, InputLabel } from '../input/input';
 import { View } from '../view';
 import { StyledButton } from '../button/button';
-import type {
-  RadioProps,
-  RadioCheckedIconSizeType,
-  RadioDataType,
-} from './radio.types';
+import type { RadioProps, RadioDataType } from './radio.types';
 
 import {
   radioDefaults,
@@ -24,10 +20,8 @@ import { useModeTheme } from '../../hooks';
 
 // @exports
 export const StyledRadio = styled(StyledButton)<RadioProps>`
-  ${({ theme, disabled, checked }) =>
-    radioDefaultStyle({ theme, disabled, checked, type: 'native' })};
-  ${({ theme, disabled }) =>
-    radioSizeVariant({ theme, disabled, type: 'native' })};
+  ${(props) => radioDefaultStyle({ ...props, type: 'native' } as any)};
+  ${(props) => radioSizeVariant({ ...props, type: 'native' } as any)};
 `;
 
 export const RadioControl: React.FC<RadioProps> = (props) => {
@@ -40,7 +34,7 @@ export const RadioControl: React.FC<RadioProps> = (props) => {
     ...otherProps
   } = props;
 
-  const { bg } = useModeTheme();
+  const { bg, theme } = useModeTheme();
 
   const activeOpacity = otherProps.disabled ? 1 : radioDefaults.activeOpacity;
 
@@ -58,11 +52,7 @@ export const RadioControl: React.FC<RadioProps> = (props) => {
   };
 
   const renderIcon = () => {
-    const iconSizes: RadioCheckedIconSizeType = {
-      sm: 5,
-      md: 6,
-      lg: 7,
-    };
+    const iconSizes = theme.components.radio.checked.width;
 
     const iconSize = iconSizes[size || 'md'];
 

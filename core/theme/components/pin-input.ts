@@ -18,7 +18,7 @@ const pinInput = (arg?: PackageTypes) => {
   const borderRadius = {
     xs: radii.md,
     sm: radii.md,
-    md: radii.base,
+    md: radii.md,
     lg: radii.base,
   };
 

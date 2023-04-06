@@ -9,10 +9,8 @@ import type {
 } from './pin-input.types';
 
 import {
-  inputContainerDefaultStyle,
+  inputDefaultStyle,
   backgroundColor,
-  hoverBorderColor,
-  focusBorderColor,
   borderColor,
 } from '@/core/styled/themed/input';
 import {
@@ -28,20 +26,12 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledInput = styled(
   baseStyled('input', ['shadow', 'grid', 'position', 'background'])
 )<PinInputProps & { inputIndex?: number }>`
-  ${(props) => inputContainerDefaultStyle({ ...props } as any)}
+  ${(props) => inputDefaultStyle({ ...props } as any)}
   ${(props) => pinInputDefaultStyle({ ...props } as any)}
   ${(props) =>
     pinInputSizeVariant({ ...props, index: props.inputIndex } as any)}
   border-color: ${borderColor};
   background-color: ${backgroundColor};
-
-  :hover {
-    border-color: ${hoverBorderColor};
-  }
-
-  :focus {
-    border-color: ${focusBorderColor};
-  }
 `;
 
 export const PinInput: React.FC<PinInputProps> = (props) => {

@@ -1,5 +1,5 @@
 // @imports
-import { useEffect, useState } from 'react';
+import { useEffect, useState, forwardRef } from 'react';
 
 import { IconButton } from '../icon-button';
 import { Text } from '../text';
@@ -8,11 +8,11 @@ import { HidePasswordIcon, ShowPasswordIcon } from './input-icon';
 import type {
   InputProps,
   InputContainerProps,
-  InputFocusEventType,
   InputHintProps,
   InputLabelProps,
 } from './input.types';
 
+import { width, height, compose } from '@/core/styled/system';
 import {
   inputSizeVariant,
   inputContainerDefaultStyle,
@@ -26,17 +26,18 @@ import {
 import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
-export const StyledInputContainer = styled(View)<InputContainerProps>`
-  ${(props) => inputContainerDefaultStyle({ ...props } as any)};
-  ${(props) => inputSizeVariant({ ...props } as any)};
-  border-color: ${borderColor};
-  background-color: ${backgroundColor};
+export const StyledInputContainer = styled(
+  baseStyled('div', ['layout'])
+)<InputContainerProps>`
+  ${(props) => inputContainerDefaultStyle({ ...props, type: 'web' } as any)};
+  ${(props) => inputSizeVariant({ ...props, type: 'web' } as any)};
+  ${compose(width, height)}
 `;
 
-export const StyledInput = styled(
-  baseStyled('input', ['shadow', 'grid', 'position', 'background'])
-)<InputProps>`
-  ${({ theme }) => inputDefaultStyle({ theme })}
+export const StyledInput = styled('input')<InputProps>`
+  ${(props) => inputDefaultStyle({ ...props, type: 'web' } as any)};
+  background-color: ${backgroundColor};
+  border-color: ${borderColor};
 `;
 
 export const StyledHintText = styled(Text)<InputHintProps>`
@@ -73,7 +74,7 @@ export const InputHint = ({ hint, state, ...otherProps }: InputHintProps) => {
   );
 };
 
-export const Input: React.FC<InputProps> = (props) => {
+export const Input = forwardRef((props: InputProps, ref) => {
   const {
     icon,
     rightIcon,
@@ -96,24 +97,12 @@ export const Input: React.FC<InputProps> = (props) => {
 
   const isDisabled = disabled || state === 'disabled';
 
-  const isStateDefault = state === inputDefaults.state || !state;
-
   const defaultState: InputProps['state'] = isDisabled ? 'disabled' : state;
 
   const [inputState, setInputState] =
     useState<InputProps['state']>(defaultState);
 
-  const onFocusHandler = (event: InputFocusEventType) => {
-    if (inputState !== 'focused' && isStateDefault) setInputState('focused');
-
-    onFocus?.(event);
-  };
-
-  const onBlurHandler = (event: InputFocusEventType) => {
-    if (inputState !== 'default' && isStateDefault) setInputState('default');
-
-    onBlur?.(event);
-  };
+  const isFocused = inputState === 'focused';
 
   const toggledPasswordHandler = () => {
     setToggledPassword(!toggledPassword);
@@ -129,6 +118,7 @@ export const Input: React.FC<InputProps> = (props) => {
       return (
         <IconButton
           onClick={toggledPasswordHandler}
+          className={inputDefaults.rightIconClassName}
           variant="link"
           size={size}
           icon={toggledPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}
@@ -137,7 +127,14 @@ export const Input: React.FC<InputProps> = (props) => {
     }
 
     if (rightIcon) {
-      return <IconButton size={size} variant="link" icon={rightIcon} />;
+      return (
+        <IconButton
+          className={inputDefaults.rightIconClassName}
+          size={size}
+          variant="link"
+          icon={rightIcon}
+        />
+      );
     }
 
     return null;
@@ -147,18 +144,28 @@ export const Input: React.FC<InputProps> = (props) => {
     <View>
       <InputLabel label={label} />
       <StyledInputContainer
-        size={size}
-        disabled={isDisabled}
-        state={inputState}
         rightIcon={renderRightIcon()}
         icon={icon}
+        size={size}
+        disabled={isDisabled}
         {...(otherProps as any)}>
-        {icon ? <IconButton variant="link" size={size} icon={icon} /> : null}
+        {icon ? (
+          <IconButton
+            className={inputDefaults.leftIconClassName}
+            variant="link"
+            size={size}
+            icon={icon}
+          />
+        ) : null}
         <StyledInput
-          onFocus={onFocusHandler}
-          onBlur={onBlurHandler}
           type={inputType}
           disabled={isDisabled}
+          state={inputState}
+          rightIcon={renderRightIcon()}
+          icon={icon}
+          ref={ref}
+          autoFocus={isFocused}
+          size={size}
           {...(otherProps as any)}
         />
         {renderRightIcon()}
@@ -167,4 +174,4 @@ export const Input: React.FC<InputProps> = (props) => {
       <InputHint hint={hint} state={inputState} />
     </View>
   );
-};
+});

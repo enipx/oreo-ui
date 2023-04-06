@@ -14,7 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     }};
     margin: 0;
     padding: 0;
-    color: ${baseColor};
+    /**
+      @important: Don't add color property here
+    */
   }
 
   // ----- HTML
@@ -24,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     touch-action: manipulation;
+    color: ${baseColor};
   }
   
   // ---- Body

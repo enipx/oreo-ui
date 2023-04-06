@@ -17,7 +17,7 @@ import {
   inputSizeVariant,
   inputContainerDefaultStyle,
   inputDefaultStyle,
-  borderColor,
+  nativeBorderColor,
   backgroundColor,
   hintColor,
   isInputDisabled,
@@ -31,7 +31,7 @@ export const StyledInputContainer = styled(
 )<InputContainerProps>`
   ${(props) => inputContainerDefaultStyle({ ...props, type: 'native' } as any)};
   ${(props) => inputSizeVariant({ ...props, type: 'native' } as any)};
-  border-color: ${borderColor};
+  border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
 `;
 

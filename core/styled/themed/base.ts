@@ -311,3 +311,13 @@ export const getSpacingValue = (options: { value?: any; theme: ThemeType }) => {
 
   return value ? theme.space?.[value as SpacingKeys] || value : '';
 };
+
+export const getThemeMode = (theme: ThemeType) => {
+  const { mode } = theme;
+
+  return {
+    isDark: mode === 'dark',
+    isLight: mode === 'light',
+    mode,
+  };
+};

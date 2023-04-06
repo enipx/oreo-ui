@@ -1,10 +1,19 @@
 import type { InputThemedDefaultProps } from '../components.types';
-import { flexCenterXStyle, flexCenterYStyle, transitionStyle } from '../css';
+import { flexCenterXStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { styleModeHandler, variantModeHandler } from './base';
+import {
+  getBaseStyle,
+  getThemeMode,
+  styleModeHandler,
+  variantModeHandler,
+} from './base';
 
+import { packagePrefix } from '@/core/constants';
 import { isPackageNative } from '@/core/helpers/base';
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
+import {
+  convertHexToRgbaHandler,
+  convertReactCSSToCSSHandler,
+} from '@/core/helpers/theme';
 
 // @defaults
 export const inputDefaults = {
@@ -13,6 +22,8 @@ export const inputDefaults = {
   activeOpacity: 0.8,
   size: 'md',
   state: 'default',
+  leftIconClassName: `${packagePrefix}-input_icon-left`,
+  rightIconClassName: `${packagePrefix}-input_icon-right`,
 };
 
 // @types
@@ -27,6 +38,13 @@ export const backgroundColor: any = variantModeHandler('state', {
 });
 
 export const borderColor: any = variantModeHandler('state', {
+  default: { light: 'gray.100', dark: 'gray.700' },
+  focused: { light: 'gray.100', dark: 'gray.700' },
+  invalid: { light: 'red.500', dark: 'red.600' },
+  disabled: { light: 'gray.200', dark: 'gray.600' },
+});
+
+export const nativeBorderColor: any = variantModeHandler('state', {
   default: { light: 'gray.100', dark: 'gray.700' },
   focused: { light: 'blue.500', dark: 'blue.600' },
   invalid: { light: 'red.500', dark: 'red.600' },
@@ -54,13 +72,7 @@ export const hintColor: any = variantModeHandler('state', {
 });
 
 export const inputSizeVariant = (options: InputSystemThemeParams) => {
-  const {
-    theme,
-    type = 'web',
-    icon,
-    rightIcon,
-    size = inputDefaults.size,
-  } = options;
+  const { theme, type = 'web', size = inputDefaults.size } = options;
 
   const isNative = isPackageNative(type);
 
@@ -68,7 +80,6 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
     height: inputHeights,
     fontSizes,
     borderRadius: inputRadii,
-    paddingX: inputPaddingX,
   } = theme.components.input;
 
   const height = inputHeights[size as keyof typeof inputHeights];
@@ -77,23 +88,9 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
 
   const borderRadius = inputRadii[size as keyof typeof inputRadii];
 
-  const paddingX = inputPaddingX[size as keyof typeof inputPaddingX];
-
-  const getLeftPadding = (property: number | string) => {
-    const iconExist = !!icon;
-    return iconExist ? 0 : property;
-  };
-
-  const getRightPadding = (property: number | string) => {
-    const iconExist = !!rightIcon;
-    return iconExist ? 0 : property;
-  };
-
   const styles = {
     ...(isNative ? {} : { fontSize }),
     height,
-    paddingLeft: getLeftPadding(paddingX),
-    paddingRight: getRightPadding(paddingX),
     borderRadius,
   };
 
@@ -101,19 +98,74 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
 };
 
 // @styles
+export const inputPseudoStyle = (option: InputSystemThemeParams) => {
+  const { theme, type = 'web', focus } = option;
+
+  const { isDark } = getThemeMode(theme);
+
+  const borderColor = isDark ? theme.colors.blue[200] : theme.colors.blue[600];
+
+  const { backgroundColor: baseBgColor } = getBaseStyle({ theme });
+
+  const baseStyle = `
+  `;
+
+  const native = `
+    ${baseStyle}
+  `;
+
+  const web = `
+    ${baseStyle}
+
+    :disabled {
+      cursor: not-allowed;
+    }
+
+    :focus {
+      ${focus || ''}
+      box-shadow: ${baseBgColor} 0px 0px 0px 2px, ${convertHexToRgbaHandler(
+    borderColor,
+    0.5
+  )} 0px 0px 0px 4px;
+    }
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
 export const inputDefaultStyle = (option: InputSystemThemeParams) => {
   const { theme, type = 'web', size = inputDefaults.size } = option;
-  const { fontSizes, placeholderFontSizes } = theme.components.input;
+  const {
+    fontSizes,
+    placeholderFontSizes,
+    paddingX: inputPaddingX,
+    borderRadius: inputRadii,
+  } = theme.components.input;
+
+  const borderRadius = inputRadii[size as keyof typeof inputRadii];
 
   const fontSize = fontSizes[size as keyof typeof fontSizes];
+
   const placeholderFontSize =
     placeholderFontSizes[size as keyof typeof fontSizes];
 
+  const paddingX = inputPaddingX[size as keyof typeof inputPaddingX];
+
+  const { paddingLeft, paddingRight } = getPadding({
+    ...option,
+    property: paddingX,
+  });
+
   const baseStyle = `
-    border: 0;
     outline: 0;
-    background-color: transparent;
     color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
+    padding: 0 ${paddingRight} 0 ${paddingLeft};
+    border-radius: ${borderRadius};
   `;
 
   const native = `
@@ -129,14 +181,16 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     appearance: none;
     white-space: nowrap;
     font-size: inherit;
-
-    :disabled {
-      cursor: not-allowed;
-    }
+    height: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${theme.colors.transparent};
 
     ::placeholder {
       font-size: ${placeholderFontSize};
     }
+
+    ${inputPseudoStyle(option)}
   `;
 
   const res: SystemThemeReturnType = {
@@ -148,20 +202,14 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
 };
 
 export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
-  const { theme, type = 'web', disabled, state } = option;
-
-  const { focused } = isInputState(state);
+  const { theme, type = 'web', disabled } = option;
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
 
   const baseStyle = `
     ${transitionStyle()}
-    outline: 0;
     opacity: ${opacity};
-    border-width: ${focused ? '2px' : '1px'};
-    border-style: solid;
     position: relative;
-    overflow: hidden;
     color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
   `;
 
@@ -169,11 +217,26 @@ export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
     ${baseStyle}
     ${flexCenterXStyle}
     flex-direction: row;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
   `;
 
   const web = `
     ${baseStyle}
-    ${flexCenterYStyle}
+
+    .${inputDefaults.leftIconClassName},
+    .${inputDefaults.rightIconClassName} {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%
+    }
+
+    .${inputDefaults.rightIconClassName} {
+      left: auto;
+      right: 0;
+    }
   `;
 
   const res: SystemThemeReturnType = {
@@ -245,5 +308,19 @@ export const isInputDisabled = (state?: string) => {
 export const isInputState = (state?: InputThemedDefaultProps['state']) => {
   return {
     focused: state === 'focused',
+  };
+};
+
+const getPadding = (options: InputSystemThemeParams) => {
+  const { icon, property, rightIcon, theme } = options;
+
+  const leftIconExist = !!icon;
+  const rightIconExist = !!rightIcon;
+
+  const iconSize = theme.components.iconButton.width.md;
+
+  return {
+    paddingLeft: leftIconExist ? iconSize : property,
+    paddingRight: rightIconExist ? iconSize : property,
   };
 };

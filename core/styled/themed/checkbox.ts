@@ -1,6 +1,7 @@
 import { flexCenterStyle, positionCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
+import { inputPseudoStyle } from './input';
 
 import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 
@@ -182,16 +183,21 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
       border-color: ${checkedBorderColor};
     }
 
+    :hover {
+      border-color: ${hoverBorderColor};
+    }
+
+    ${inputPseudoStyle({
+      ...options,
+      focus: `border-color: ${hoverBorderColor};`,
+    })}
+
     :disabled {
       cursor: not-allowed;
-  
+    
       + label {
         cursor: not-allowed;
       }
-    }
-
-    :hover {
-      border-color: ${hoverBorderColor};
     }
   `;
 

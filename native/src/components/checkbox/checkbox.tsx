@@ -20,8 +20,8 @@ import { CheckedIcon, IndeterminateIcon } from './checkbox-icon';
 
 // @exports
 export const StyledCheckbox = styled(StyledButton)<CheckboxProps>`
-  ${(props) => checkboxDefaultStyle({ ...props, type: 'native' })};
-  ${(props) => checkboxSizeVariant({ ...props, type: 'native' })};
+  ${(props) => checkboxDefaultStyle({ ...props, type: 'native' } as any)};
+  ${(props) => checkboxSizeVariant({ ...props, type: 'native' } as any)};
 `;
 
 export const Checkbox: React.FC<CheckboxProps> = (props) => {

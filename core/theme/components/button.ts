@@ -21,7 +21,7 @@ const button = (arg?: PackageTypes) => {
   const borderRadius = {
     xs: radii.sm,
     sm: radii.sm,
-    md: radii.md,
+    md: radii.sm,
     lg: radii.md,
   };
 

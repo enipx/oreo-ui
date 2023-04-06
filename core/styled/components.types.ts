@@ -126,6 +126,8 @@ export interface ComponentsDefaultProps {
   _hover?: React.CSSProperties;
 
   _focus?: React.CSSProperties;
+
+  _active?: React.CSSProperties;
 }
 
 export interface TextThemedStyledProps extends TypographyThemeStyledProps {

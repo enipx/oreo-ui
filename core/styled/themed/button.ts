@@ -7,11 +7,19 @@ import type {
 } from '../components.types';
 import { flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getColorSchemeStyle, getSpacingValue } from './base';
+import {
+  getBaseStyle,
+  getColorSchemeStyle,
+  getSpacingValue,
+  getThemeMode,
+} from './base';
 
+import { packagePrefix } from '@/core/constants';
 import { isPackageNative } from '@/core/helpers/base';
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
-import type { RadiiKeys } from '@/core/theme/utilities/radius';
+import {
+  convertHexToRgbaHandler,
+  convertReactCSSToCSSHandler,
+} from '@/core/helpers/theme';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 import type { FontSizeKeys } from '@/core/theme/utilities/typography';
 
@@ -27,6 +35,7 @@ export const buttonDefaults = {
   activeOpacity: 0.8,
   colorScheme: 'blue',
   size: 'md',
+  iconClassName: `${packagePrefix}-button_icon`,
 };
 
 export const iconButtonDefaults = {
@@ -138,19 +147,19 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     width: _width,
     _hover,
     _focus,
+    _active,
   } = options;
 
-  const {
-    backgroundColor,
-    color,
-    borderColor,
-    hoverBorderColor,
-    hoverBackgroundColor,
-  } = getColorSchemeStyle({
-    theme,
-    colorScheme: colorScheme || 'blue',
-    variant: variant || 'solid',
-  });
+  const { isDark } = getThemeMode(theme);
+
+  const { backgroundColor: baseBgColor } = getBaseStyle({ theme });
+
+  const { backgroundColor, color, borderColor, hoverBackgroundColor } =
+    getColorSchemeStyle({
+      theme,
+      colorScheme: colorScheme || 'blue',
+      variant: variant || 'solid',
+    });
 
   const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
   const width =
@@ -161,9 +170,6 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     ${transitionStyle()}
     opacity: ${opacity};
     background-color: ${backgroundColor};
-    border-width: 1px;
-    border-style: solid;
-    border-color: ${borderColor};
   `;
 
   const native = `
@@ -178,6 +184,7 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.lineHeights[0]};
     outline: 0;
+    border: 0;
     white-space: nowrap;
     width: ${width};
     color: ${color};
@@ -186,8 +193,11 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     :active,
     :focus {
       background-color: ${hoverBackgroundColor};
-      border-color: ${hoverBorderColor};
       text-decoration: ${variant === 'link' ? 'underline' : 'auto'}
+    }
+
+    :active {
+      ${convertReactCSSToCSSHandler(_active)}
     }
 
     :hover {
@@ -195,7 +205,15 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     }
 
     :focus {
+      box-shadow: ${baseBgColor} 0px 0px 0px 2px, ${convertHexToRgbaHandler(
+    borderColor,
+    isDark ? 0.7 : 0.5
+  )} 0px 0px 0px 4px;
       ${convertReactCSSToCSSHandler(_focus)}
+    }
+
+    .${buttonDefaults.iconClassName} {
+      color: ${color};
     }
   `;
 
@@ -256,7 +274,12 @@ export const iconButtonDefaultStyle = (
     variant,
     _focus,
     _hover,
+    _active,
   } = options;
+
+  const { isDark } = getThemeMode(theme);
+
+  const { backgroundColor: baseBgColor } = getBaseStyle({ theme });
 
   const { backgroundColor, color, iconBorderColor, hoverBackgroundColor } =
     getColorSchemeStyle({
@@ -273,9 +296,7 @@ export const iconButtonDefaultStyle = (
     opacity: ${opacity};
     flex-shrink: 0;
     background-color: ${backgroundColor};
-    border-width: 1px;
-    border-style: solid;
-    border-color: ${iconBorderColor};
+    border: 0;
   `;
 
   const native = `
@@ -303,7 +324,15 @@ export const iconButtonDefaultStyle = (
     }
   
     :focus {
+      box-shadow: ${baseBgColor} 0px 0px 0px 2px, ${convertHexToRgbaHandler(
+    iconBorderColor,
+    isDark ? 0.7 : 0.5
+  )} 0px 0px 0px 4px;
       ${convertReactCSSToCSSHandler(_focus)}
+    }
+
+    :active {
+      ${convertReactCSSToCSSHandler(_active)}
     }
   `;
 
@@ -316,33 +345,29 @@ export const iconButtonDefaultStyle = (
 };
 
 export const iconButtonSizeVariant = (options: IconButtonSystemThemeParams) => {
-  const { theme, rounded } = options;
+  const { theme, rounded, size } = options;
 
-  const getBorderRadius = (key: RadiiKeys) => {
-    return rounded ? theme.radii.full : theme.radii[key];
+  const {
+    height: heights,
+    width: widths,
+    borderRadius: radiis,
+  } = theme.components.iconButton;
+
+  const width = widths[size as keyof typeof widths];
+
+  const height = heights[size as keyof typeof heights];
+
+  const borderRadius = rounded
+    ? theme.radii.full
+    : radiis[size as keyof typeof radiis];
+
+  const styles = {
+    height,
+    width,
+    borderRadius,
   };
 
-  return variant({
-    prop: 'size',
-    variants: {
-      xs: {
-        size: theme.space[6],
-        borderRadius: getBorderRadius('sm'),
-      },
-      sm: {
-        size: theme.space[8],
-        borderRadius: getBorderRadius('sm'),
-      },
-      lg: {
-        size: theme.space[12],
-        borderRadius: getBorderRadius('md'),
-      },
-      md: {
-        size: theme.space[10],
-        borderRadius: getBorderRadius('md'),
-      },
-    },
-  });
+  return convertReactCSSToCSSHandler(styles);
 };
 
 export const buttonIconSpacing: Record<string, SpacingKeys> = {

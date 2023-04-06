@@ -47,13 +47,19 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
       ref={ref}
       {...(otherProps as any)}>
       {icon ? (
-        <View as="span" mr={buttonIconSpacing[size]}>
+        <View
+          className={buttonDefaults.iconClassName}
+          as="span"
+          mr={buttonIconSpacing[size]}>
           {icon}
         </View>
       ) : null}
       {children || text}
       {rightIcon ? (
-        <View as="span" ml={buttonIconSpacing[size]}>
+        <View
+          className={buttonDefaults.iconClassName}
+          as="span"
+          ml={buttonIconSpacing[size]}>
           {rightIcon}
         </View>
       ) : null}

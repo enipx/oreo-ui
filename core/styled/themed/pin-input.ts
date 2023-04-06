@@ -57,6 +57,7 @@ export const pinInputDefaultStyle = (option: SystemThemeParams) => {
 
   const baseStyle = `
     text-align: center;
+    padding: 0;
   `;
 
   const native = `
