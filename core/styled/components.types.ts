@@ -894,6 +894,10 @@ export interface TabsPanelThemedStyledProps
   extends TabsPanelThemedDefaultProps,
     ViewThemedStyledProps {}
 
+export interface TabsItemThemedStyledProps
+  extends TabsItemThemedDefaultProps,
+    LayoutThemeStyledProps {}
+
 export type TableThemedSizeTypes = 'sm' | 'md' | 'lg';
 export interface TableThemedDefaultProps {
   /**

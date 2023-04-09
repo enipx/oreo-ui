@@ -2,7 +2,7 @@
 import { useEffect, memo } from 'react';
 
 import { useTabsContext } from './tabs-context';
-import type { TabsItemProps, TabsProps } from './tabs.types';
+import type { TabsItemProps } from './tabs.types';
 import { useTabs } from './use-tabs';
 
 import {
@@ -13,13 +13,13 @@ import {
 import { baseStyled, styled } from '@/core/styled/web';
 
 // @exports
-export const StyledTabsItem = styled(baseStyled('button'))<TabsProps>`
+export const StyledTabsItem = styled(baseStyled('button'))<any>`
   ${(props) => tabsItemDefaultStyle({ ...props } as any)}
   ${(props) => tabsItemVariantStyle({ ...props } as any)}
   ${(props) => tabsItemCustomStyle({ ...props } as any)}
 `;
 
-export const TabsItem: React.FC<TabsItemProps> = memo((props) => {
+export const TabsItem = memo((props: TabsItemProps) => {
   const tabsContextValue = useTabsContext();
 
   const { children, value = '', disabled, ...otherProps } = props;

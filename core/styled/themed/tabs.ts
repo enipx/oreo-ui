@@ -6,7 +6,12 @@ import type {
 } from '../components.types';
 import { flexCenterYStyle, flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getBaseStyle, getColorSchemeStyle, styleModeHandler } from './base';
+import {
+  getBaseStyle,
+  getColorSchemeStyle,
+  getUtilitiesValue,
+  styleModeHandler,
+} from './base';
 
 import {
   convertHexToRgbaHandler,
@@ -138,15 +143,20 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     theme,
     type = 'web',
     isActive,
+    color: customColor,
     colorScheme,
     colorSchemeVariant,
   } = options;
 
-  const { color } = getColorSchemeStyle({
+  const { color: defaultColor } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
     variant: colorSchemeVariant || 'outline',
   });
+
+  const color =
+    getUtilitiesValue({ theme, value: customColor, key: 'colors' }) ||
+    defaultColor;
 
   const borderBottomColor = isActive ? color : theme.colors.transparent;
 
@@ -307,13 +317,18 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
     disabled,
     colorSchemeVariant,
     withEqualWidth,
+    color: customColor,
   } = options;
 
-  const { color } = getColorSchemeStyle({
+  const { color: defaultColor } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
     variant: colorSchemeVariant || 'outline',
   });
+
+  const color =
+    getUtilitiesValue({ theme, value: customColor, key: 'colors' }) ||
+    defaultColor;
 
   const { color: baseColor } = getBaseStyle(options);
 
@@ -344,6 +359,7 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
     padding: ${theme.space[2]} ${theme.space[4]};
     color: ${isActive ? color : baseColor};
     flex: ${withEqualWidth ? 1 : 0};
+    gap: ${theme.space[2]}};
   `;
 
   const res: SystemThemeReturnType = {

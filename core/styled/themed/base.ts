@@ -6,12 +6,12 @@ import {
   convertHexToRgbaHandler,
   getThemeValueHandler,
 } from '@/core/helpers/theme';
-import type { ThemeType } from '@/core/theme';
+import type { ThemeKeys, ThemeType } from '@/core/theme';
 import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
 } from '@/core/theme/utilities/colors';
-import { SpacingKeys } from '@/core/theme/utilities/spacing';
+import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @defaults
 export const baseDefaults = {
@@ -306,10 +306,22 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
   return variants[variant];
 };
 
-export const getSpacingValue = (options: { value?: any; theme: ThemeType }) => {
-  const { theme, value } = options;
+export const getUtilitiesValue = (options: {
+  value?: any;
+  key?: ThemeKeys;
+  theme: ThemeType;
+}) => {
+  const { theme, value, key = 'space' } = options;
 
-  return value ? theme.space?.[value as SpacingKeys] || value : '';
+  if (value && key === 'colors') {
+    return getThemeValueHandler({ theme, value }) || value;
+  }
+
+  return value ? theme?.[key]?.[value as SpacingKeys] || value : '';
+};
+
+export const getSpacingValue = (options: { value?: any; theme: ThemeType }) => {
+  return getUtilitiesValue(options);
 };
 
 export const getThemeMode = (theme: ThemeType) => {

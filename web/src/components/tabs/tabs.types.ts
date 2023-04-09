@@ -2,9 +2,9 @@ import type { RefObject } from 'react';
 
 import type {
   TabsThemedDefaultProps,
-  TabsItemThemedDefaultProps,
   TabsListThemedStyledProps,
   TabsPanelThemedStyledProps,
+  TabsItemThemedStyledProps,
 } from '@/core/styled/components.types';
 
 export interface TabsProps extends TabsThemedDefaultProps {
@@ -13,7 +13,7 @@ export interface TabsProps extends TabsThemedDefaultProps {
 
 export interface TabsListProps extends TabsListThemedStyledProps {}
 
-export interface TabsItemProps extends TabsItemThemedDefaultProps {}
+export interface TabsItemProps extends TabsItemThemedStyledProps {}
 
 export interface TabsPanelProps extends TabsPanelThemedStyledProps {}
 

@@ -178,4 +178,10 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  code, pre, code *, pre * {
+    font-family: ${({ theme }) => {
+      return theme?.fonts?.mono || defaultTheme().fonts.mono;
+    }};
+  }
 `;

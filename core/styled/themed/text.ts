@@ -1,6 +1,6 @@
 import type { TextThemedStyledProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getBaseStyle } from './base';
+import { getBaseStyle, getUtilitiesValue } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
 import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
@@ -24,12 +24,15 @@ export const getNativeTextFont = (option: TextSystemThemeParams) => {
 };
 
 export const getTextStyles = (option: TextSystemThemeParams) => {
-  const { theme, type } = option;
+  const { theme, type, fontSize } = option;
 
   const isNative = isPackageNative(type);
 
   const getSize = (size: FontSizeKeys) => {
-    return theme.fontSizes[size];
+    return (
+      getUtilitiesValue({ theme, key: 'fontSizes', value: fontSize }) ||
+      theme.fontSizes[size]
+    );
   };
 
   const getWeight = (weight: FontWeightKeys) => {
