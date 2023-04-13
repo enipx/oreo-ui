@@ -1,5 +1,5 @@
 // @imports
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 import { TabsContextProvider } from './tabs-context';
 import { TabsItem } from './tabs-item';
@@ -26,6 +26,13 @@ export const Tabs = (props: TabsProps) => {
   const storeValues = (item: string) => {
     setAllValues((prev) => [...prev, item]);
   };
+
+  useEffect(() => {
+    if (defaultValue && defaultValue !== value) {
+      setValue(defaultValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultValue]);
 
   return useMemo(() => {
     return (

@@ -23,8 +23,8 @@ export const StyledAccordionButton = styled(
   baseStyled('button')
 )<AccordionProps>`
   ${(props) => accordionButtonDefaultStyle({ ...props } as any)}
-  border-bottom-color: ${({ isActive }) =>
-    isActive ? 'transparent' : borderBottomColor};
+  border-bottom-color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.transparent : borderBottomColor};
   color: ${buttonColor};
 `;
 

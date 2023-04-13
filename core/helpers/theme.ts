@@ -117,6 +117,10 @@ export const getThemeValueHandler = (options: {
 export const convertHexToRgbaHandler = (hex: string, alpha?: number) => {
   let c;
 
+  if (hex === 'transparent') {
+    return hex;
+  }
+
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
     c = hex.substring(1).split('');
     if (c.length === 3) {

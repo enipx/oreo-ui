@@ -41,7 +41,7 @@ export const accordionContainerDefaultStyle = (
   const { seperated } = getAccordionVariant(variant);
 
   const baseStyle = `
-    border-radius: ${theme.radii.base};
+    border-radius: ${seperated ? '0' : theme.radii.base};
     border-width: ${seperated ? '0' : '1px'};
     border-style: solid;
     overflow: hidden;

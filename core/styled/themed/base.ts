@@ -75,6 +75,8 @@ export const baseBackgroundColor = modeHandler('white', 'gray.900');
 
 export const baseColor = modeHandler('gray.700', 'gray.100');
 
+export const linkColor = modeHandler('blue.500', 'blue.300');
+
 export const baseBorderColor = modeHandler('gray.50', 'gray.800');
 
 export const baseBackgroundColorStyle = (options: StyledThemeProps) => {
@@ -153,7 +155,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
     }),
     border: styleModeHandler({
       light: `${colorScheme}.50`,
-      dark: 'transparent',
+      dark: theme.colors.transparent,
       theme,
     }),
     hoverBg: styleModeHandler({
@@ -163,7 +165,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
     }),
     hoverBorder: styleModeHandler({
       light: `${colorScheme}.100`,
-      dark: 'transparent',
+      dark: theme.colors.transparent,
       theme,
     }),
     color: styleModeHandler({
@@ -192,7 +194,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
 
   const outlineModeStyle = {
     base: styleModeHandler({
-      light: `transparent`,
+      light: theme.colors.transparent,
       theme,
     }),
     border: styleModeHandler({
@@ -219,7 +221,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
 
   const ghostModeStyle = {
     base: styleModeHandler({
-      light: `transparent`,
+      light: theme.colors.transparent,
       theme,
     }),
     hoverBg: styleModeHandler({
@@ -229,7 +231,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
     }),
     hoverBorder: styleModeHandler({
       light: `${colorScheme}.50`,
-      dark: 'transparent',
+      dark: theme.colors.transparent,
       theme,
     }),
     color: styleModeHandler({

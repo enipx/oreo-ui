@@ -26,7 +26,7 @@ export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
     }
 
     return (
-      <View ref={panelRef} padding="4" {...otherProps}>
+      <View ref={panelRef} {...otherProps}>
         {children}
       </View>
     );

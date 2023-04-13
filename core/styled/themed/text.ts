@@ -85,6 +85,9 @@ export const getTextStyles = (option: TextSystemThemeParams) => {
       padding: `${theme.space[0.5]} ${theme.space[2]}`,
       whiteSpace: 'nowrap',
     },
+    strong: {
+      ...baseStyles,
+    },
   };
 
   const style = styles?.[option.as as keyof typeof styles];

@@ -1,5 +1,9 @@
 // @imports
-import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
+import {
+  baseBackgroundColor,
+  baseColor,
+  linkColor,
+} from '@/core/styled/themed/base';
 import { createGlobalStyle } from '@/core/styled/web';
 import defaultTheme from '@/core/theme';
 
@@ -177,6 +181,11 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: inherit;
+
+    &:hover, &:active {
+      color: inherit;
+    }
   }
 
   code, pre, code *, pre * {

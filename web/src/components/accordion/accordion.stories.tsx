@@ -37,7 +37,9 @@ const Template: ComponentStory<typeof Accordion> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  variant: 'default',
+};
 
 export const Seperated = Template.bind({});
 Seperated.args = {

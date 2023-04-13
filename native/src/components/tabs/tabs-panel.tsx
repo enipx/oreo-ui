@@ -24,11 +24,7 @@ export const TabsPanel = (props: TabsPanelProps) => {
       return null;
     }
 
-    return (
-      <View p="4" {...otherProps}>
-        {children}
-      </View>
-    );
+    return <View {...otherProps}>{children}</View>;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 };

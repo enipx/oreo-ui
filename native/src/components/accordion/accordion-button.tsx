@@ -21,8 +21,8 @@ import { styled } from '@/core/styled/native';
 // @exports
 export const StyledAccordionButton = styled(BaseButton)<AccordionProps>`
   ${(props) => accordionButtonDefaultStyle({ ...props, type: 'native' } as any)}
-  border-bottom-color: ${({ isActive }) =>
-    isActive ? 'transparent' : borderBottomColor};
+  border-bottom-color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.transparent : borderBottomColor};
 `;
 
 export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
