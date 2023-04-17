@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Tabs> = (args) => (
   <View maxWidth="370px">
     <Tabs {...args} onTabChange={(val) => console.log(val)}>
       <Tabs.List>
-        <Tabs.Item value="1">
+        <Tabs.Item value="1" color="#368FB9">
           <svg
             width="16"
             height="16"
@@ -27,7 +27,7 @@ const Template: ComponentStory<typeof Tabs> = (args) => (
           </svg>
           yarn
         </Tabs.Item>
-        <Tabs.Item value="2">
+        <Tabs.Item value="2" color="#C12127">
           <svg
             width="16"
             height="16"
@@ -39,7 +39,7 @@ const Template: ComponentStory<typeof Tabs> = (args) => (
           </svg>
           npm
         </Tabs.Item>
-        <Tabs.Item value="3">
+        <Tabs.Item value="3" color="#DD6B20">
           <svg
             stroke="currentColor"
             fill="#DD6B20"

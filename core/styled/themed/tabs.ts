@@ -128,6 +128,7 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
     ${baseStyle}
     flex-wrap: nowrap;
     display: ${display};
+    width: 100%;
   `;
 
   const res: SystemThemeReturnType = {
@@ -176,7 +177,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     const web = `
       ${baseStyle}
       outline: 0;
-      color: ${baseColor};
+      color: ${isActive ? color : baseColor};
     `;
 
     const res: SystemThemeReturnType = {
@@ -226,7 +227,11 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
   }
 
   if (getTabsStyleHandler(options).isPills) {
-    const { color, backgroundColor } = getBaseStyle(options);
+    const { color: defaultColor, backgroundColor } = getBaseStyle(options);
+
+    const color =
+      getUtilitiesValue({ theme, value: customColor, key: 'colors' }) ||
+      defaultColor;
 
     const borderColor = styleModeHandler({
       theme,
@@ -254,7 +259,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
       font-weight: ${
         isActive ? theme.fontWeights.medium : theme.fontWeights.regular
       };
-      color: ${color};
+      color: ${isActive ? color : defaultColor};
     `;
 
     const res: SystemThemeReturnType = {

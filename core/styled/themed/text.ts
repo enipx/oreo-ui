@@ -24,7 +24,7 @@ export const getNativeTextFont = (option: TextSystemThemeParams) => {
 };
 
 export const getTextStyles = (option: TextSystemThemeParams) => {
-  const { theme, type, fontSize } = option;
+  const { theme, type, fontSize, fontWeight } = option;
 
   const isNative = isPackageNative(type);
 
@@ -42,7 +42,9 @@ export const getTextStyles = (option: TextSystemThemeParams) => {
   const { borderColor } = getBaseStyle(option);
 
   const baseStyles = {
-    fontWeight: getWeight('bold'),
+    fontWeight:
+      getUtilitiesValue({ theme, key: 'fontWeights', value: fontWeight }) ||
+      getWeight('bold'),
   };
 
   const styles: { [key: string]: React.CSSProperties } = {

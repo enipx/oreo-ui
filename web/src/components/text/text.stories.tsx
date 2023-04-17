@@ -23,6 +23,7 @@ export const H1 = Template.bind({});
 H1.args = {
   children: 'Heading 1',
   as: 'h1',
+  fontWeight: 400,
 };
 
 export const H2 = Template.bind({});
