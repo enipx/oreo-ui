@@ -12,7 +12,7 @@ import {
   avatarTextDefaultStyle,
   avatarDefaults,
 } from '@/core/styled/themed/avatar';
-import { layout, border } from '@/core/styled/system';
+import { width, height, border, space, compose } from '@/core/styled/system';
 import { useTheme, styled, baseStyled } from '@/core/styled/native';
 
 // @exports
@@ -20,8 +20,7 @@ export const StyledAvatar = styled(
   baseStyled('View', ['layout', 'space'])
 )<AvatarProps>`
   ${(props) => avatarDefaultStyle({ ...props, type: 'native' } as any)}
-  ${layout}
-  ${border}
+  ${compose(space, width, height, border)}
 `;
 
 export const StyledAvatarText = styled(
@@ -38,9 +37,6 @@ export const AvatarBase = (props: AvatarProps) => {
   const alt = _alt || name || avatarDefaults.alt;
 
   const renderChildren = () => {
-    // ...
-    if (children) return children;
-
     return (
       <Image
         src={src}
@@ -51,18 +47,20 @@ export const AvatarBase = (props: AvatarProps) => {
           height: '100%',
         }}
         fallback={
-          name ? (
-            <View bg="transparent">
-              <StyledAvatarText {...props}>
-                {getNameInitialsHandler(name)}
-              </StyledAvatarText>
-            </View>
-          ) : (
-            <ProfileIcon
-              theme={theme as any}
-              strokeWidth={avatarDefaults.placeholderStrokeWidth}
-            />
-          )
+          name
+            ? children || (
+                <View bg="transparent">
+                  <StyledAvatarText {...props}>
+                    {getNameInitialsHandler(name)}
+                  </StyledAvatarText>
+                </View>
+              )
+            : children || (
+                <ProfileIcon
+                  theme={theme as any}
+                  strokeWidth={avatarDefaults.placeholderStrokeWidth}
+                />
+              )
         }
         {...imgProps}
       />

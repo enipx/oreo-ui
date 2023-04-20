@@ -21,7 +21,7 @@ export const Spacer = styled(View)<FlexProps>`
 `;
 
 export const Flex = (props: FlexProps) => {
-  const { children, spacing, ...otherProps } = props;
+  const { children, ...otherProps } = props;
 
   const renderChildren = isString(children) ? (
     <View>{children}</View>
@@ -32,13 +32,9 @@ export const Flex = (props: FlexProps) => {
   return (
     <StyledFlex {...otherProps}>
       {Children.map(renderChildren, (child, _index) => {
-        const isFirstItem = _index === 0;
-
         if (!child) return null;
 
-        return cloneElement(child as any, {
-          style: isFirstItem ? {} : { marginLeft: spacing },
-        });
+        return cloneElement(child as any);
       })}
     </StyledFlex>
   );

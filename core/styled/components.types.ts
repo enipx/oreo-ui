@@ -777,6 +777,10 @@ export interface AvatarThemedDefaultProps {
   isLastItem?: boolean;
 }
 
+export interface AvatarThemedStyledProps
+  extends Omit<LayoutThemeStyledProps, 'size'>,
+    AvatarThemedDefaultProps {}
+
 export interface AvatarGroupThemedDefaultProps {
   size?: AvatarSizeTypes;
 
@@ -788,6 +792,10 @@ export interface AvatarGroupThemedDefaultProps {
 
   variant?: DefaultColorsVariantsType;
 }
+
+export interface AvatarGroupThemedStyledProps
+  extends Omit<LayoutThemeStyledProps, 'size'>,
+    AvatarGroupThemedDefaultProps {}
 
 export type IndicatorSizeTypes = AvatarSizeTypes;
 

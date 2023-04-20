@@ -24,7 +24,7 @@ Default.args = {};
 
 export const Spacing = Template.bind({});
 Spacing.args = {
-  spacing: '1rem',
+  spacing: 'lg',
 };
 
 const FillTemplate: ComponentStory<typeof Flex> = (args) => (

@@ -1,6 +1,7 @@
 import type { FlexThemedStyledProps } from '../components.types';
 import { flexCenterStyle, flexCenterXStyle, flexCenterYStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { getUtilitiesValue } from './base';
 
 // @defaults
 export const flexDefaults = {};
@@ -10,6 +11,7 @@ type FlexSystemThemeParams = SystemThemeParams & FlexThemedStyledProps;
 
 export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
   const {
+    theme,
     type = 'web',
     row,
     column,
@@ -19,6 +21,7 @@ export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
     center,
     centerX,
     centerY,
+    spacing,
   } = options;
 
   const _row = reverse ? 'row-reverse' : 'row';
@@ -46,11 +49,11 @@ export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
   const native = `
     ${baseStyle}
     display: flex;
-    
   `;
 
   const web = `
     ${baseStyle}
+    ${spacing ? `gap: ${getUtilitiesValue({ theme, value: spacing })}` : ''}
   `;
 
   const res: SystemThemeReturnType = {

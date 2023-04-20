@@ -1,7 +1,12 @@
 import type { AvatarThemedDefaultProps } from '../components.types';
 import { flexCenterStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { getBaseStyle, getColorSchemeStyle, styleModeHandler } from './base';
+import {
+  getBaseStyle,
+  getColorSchemeStyle,
+  getUtilitiesValue,
+  styleModeHandler,
+} from './base';
 
 // @defaults
 export const avatarDefaults = {
@@ -64,6 +69,7 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
     variant,
     isGrouped,
     isLastItem,
+    marginRight,
   } = options;
 
   const {
@@ -99,7 +105,12 @@ export const avatarDefaultStyle = (options: AvatarSystemThemeParams) => {
     background-color: ${backgroundColor};
     width: ${width};
     height: ${height};
-    margin-right: ${isGrouped && !isLastItem ? groupSpacing : 0};
+    margin-right: ${
+      getUtilitiesValue({ theme, value: marginRight }) ||
+      (isGrouped && !isLastItem)
+        ? groupSpacing
+        : 0
+    };
     border-width: ${borderWidth};
     border-style: solid;
     border-color: ${borderColor};

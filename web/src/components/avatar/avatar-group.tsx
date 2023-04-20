@@ -1,15 +1,16 @@
 // @imports
-import { View } from '@components/view';
 import { Children, cloneElement } from 'react';
 
 import { AvatarBase } from './avatar-base';
 import type { AvatarGroupProps, AvatarProps } from './avatar.types';
 
 import { avatarGroupDefaultStyle } from '@/core/styled/themed/avatar';
-import { styled } from '@/core/styled/web';
+import { baseStyled, styled } from '@/core/styled/web';
 
 // @exports
-export const StyledAvatarGroup = styled(View)<AvatarGroupProps>`
+export const StyledAvatarGroup = styled(
+  baseStyled('div', ['layout'])
+)<AvatarGroupProps>`
   ${(props) => avatarGroupDefaultStyle({ ...props } as any)}
 `;
 

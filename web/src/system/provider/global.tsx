@@ -185,6 +185,7 @@ export const GlobalStyle = createGlobalStyle`
 
     &:hover, &:active {
       color: inherit;
+      text-decoration: underline;
     }
   }
 
