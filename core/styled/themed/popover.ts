@@ -20,10 +20,11 @@ export const popoverContentDefaultStyle = (
 
   const minWidth = dropdown ? theme.components.dropdown.minWidth : 'initial';
 
-  const { borderColor } = getBaseStyle(options);
+  const { borderColor, backgroundColor } = getBaseStyle(options);
 
   const baseStyle = `
     position: relative;
+    background-color: ${backgroundColor};
     border: 1px solid ${borderColor};
     border-radius: ${theme.radii.base};
     min-width: ${minWidth};

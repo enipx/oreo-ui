@@ -99,7 +99,7 @@ export interface GridThemedStyledProps extends LayoutThemeStyledProps {
   columns?: number;
 
   /**
-   * set display to inline-flex
+   * set display to inline-grid
    */
   inline?: boolean;
 
@@ -128,6 +128,8 @@ export interface ComponentsDefaultProps {
   _focus?: React.CSSProperties;
 
   _active?: React.CSSProperties;
+
+  _disabled?: React.CSSProperties;
 }
 
 export interface TextThemedStyledProps extends TypographyThemeStyledProps {
@@ -194,6 +196,21 @@ export interface ButtonThemedStyledProps
    */
   rounded?: boolean;
 
+  /**
+   * set loading state
+   */
+  loading?: boolean;
+
+  /**
+   * set loading state text
+   */
+  loadingText?: string;
+
+  /**
+   * set loading state icon
+   */
+  loadingIcon?: React.ReactNode;
+
   children?: React.ReactNode;
 }
 
@@ -242,7 +259,7 @@ export type InputStateType = 'default' | 'focused' | 'invalid' | 'disabled';
 
 export type InputSizeType = 'xs' | 'sm' | 'md' | 'lg';
 
-export type InputThemedDefaultProps = {
+export interface InputThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * set left icon
    */
@@ -271,9 +288,15 @@ export type InputThemedDefaultProps = {
    * set input hint
    */
   hint?: string;
-};
 
-export type PinInputThemedDefaultProps = {
+  showPasswordIcon?: React.ReactNode;
+
+  hidePasswordIcon?: React.ReactNode;
+
+  _placeholder?: React.CSSProperties;
+}
+
+export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * button state
    */
@@ -281,7 +304,7 @@ export type PinInputThemedDefaultProps = {
   /**
    * button size
    */
-  size?: InputSizeType;
+  size?: InputSizeType | string;
   /**
    * set button state to disabled
    */
@@ -317,7 +340,9 @@ export type PinInputThemedDefaultProps = {
    * focus input on mount
    */
   focusOnMounted?: boolean;
-};
+
+  _placeholder?: React.CSSProperties;
+}
 
 export interface InputThemedStyledProps
   extends InputThemedDefaultProps,
@@ -922,6 +947,8 @@ export interface TableThemedDefaultProps {
   colorScheme?: DefaultColorsSchemeKeys;
 
   hovered?: boolean;
+
+  whiteSpace?: React.CSSProperties['whiteSpace'];
 }
 
 export interface TableHeadThemedDefaultProps extends ViewThemedStyledProps {
@@ -1113,7 +1140,7 @@ export interface SkeletonThemedDefaultProps
   /**
    * check if content is loading
    */
-  loaded?: string;
+  loading?: boolean;
 
   /**
    * set placeholder start color
@@ -1177,6 +1204,7 @@ export interface SpinnerThemedDefaultProps {
 }
 
 export type DividerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
 export type DividerOrientationType = 'vertical' | 'horizontal';
 
 export interface DividerThemedDefaultProps {

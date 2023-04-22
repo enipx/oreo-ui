@@ -57,6 +57,17 @@ export default function App() {
           onPress={toggleMode}
         />
 
+        <Button
+          loading
+          loadingText="loading"
+          colorScheme="gray"
+          text="Button"
+          my="lg"
+          fullWidth
+          rounded
+          onPress={toggleMode}
+        />
+
         <Input
           type="password"
           label="Email"

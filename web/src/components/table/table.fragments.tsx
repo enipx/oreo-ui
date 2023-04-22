@@ -11,7 +11,14 @@ import type {
   TrProps,
 } from './table.types';
 
-import { layout } from '@/core/styled/system';
+import {
+  layout,
+  overflowX,
+  overflow,
+  overflowY,
+  display,
+  compose,
+} from '@/core/styled/system';
 import {
   tableContainerDefaultStyle,
   tableCaptionDefaultStyle,
@@ -25,7 +32,7 @@ export const StyledTcaption = styled(baseStyled('caption'))<TableCaptionProps>`
 
 export const TableContainer = styled(baseStyled('div'))<TableContainerProps>`
   ${(props) => tableContainerDefaultStyle({ ...props } as any)}
-  ${layout}
+  ${compose(layout, overflow, overflowX, overflowY, display)}
 `;
 
 export const Thead = styled(baseStyled('thead'))<TheadProps>``;

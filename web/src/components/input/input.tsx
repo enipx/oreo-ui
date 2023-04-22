@@ -12,12 +12,20 @@ import type {
   InputLabelProps,
 } from './input.types';
 
-import { width, height, compose } from '@/core/styled/system';
+import {
+  width,
+  height,
+  minWidth,
+  maxWidth,
+  compose,
+} from '@/core/styled/system';
 import {
   inputSizeVariant,
   inputContainerDefaultStyle,
   inputDefaultStyle,
   borderColor,
+  hoverBorderColor,
+  focusBorderColor,
   backgroundColor,
   hintColor,
   isInputDisabled,
@@ -31,11 +39,20 @@ export const StyledInputContainer = styled(
 )<InputContainerProps>`
   ${(props) => inputContainerDefaultStyle({ ...props, type: 'web' } as any)};
   ${(props) => inputSizeVariant({ ...props, type: 'web' } as any)};
-  ${compose(width, height)}
+  ${compose(width, height, minWidth, maxWidth)}
 `;
 
 export const StyledInput = styled('input')<InputProps>`
+  &:hover {
+    border-color: ${hoverBorderColor};
+  }
+
+  &:focus {
+    border-color: ${focusBorderColor};
+  }
+
   ${(props) => inputDefaultStyle({ ...props, type: 'web' } as any)};
+
   background-color: ${backgroundColor};
   border-color: ${borderColor};
 `;
@@ -86,6 +103,8 @@ export const Input = forwardRef((props: InputProps, ref) => {
     onFocus,
     onBlur,
     type,
+    showPasswordIcon,
+    hidePasswordIcon,
     ...otherProps
   } = props;
 
@@ -121,7 +140,11 @@ export const Input = forwardRef((props: InputProps, ref) => {
           className={inputDefaults.rightIconClassName}
           variant="link"
           size={size}
-          icon={toggledPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}
+          icon={
+            toggledPassword
+              ? showPasswordIcon || <ShowPasswordIcon />
+              : hidePasswordIcon || <HidePasswordIcon />
+          }
         />
       );
     }

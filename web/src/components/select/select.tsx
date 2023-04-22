@@ -5,22 +5,51 @@ import { View } from '../view';
 import { ArrowDownIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
 
-import { inputDefaultStyle } from '@/core/styled/themed/input';
-import { selectDefaults, selectBaseStyle } from '@/core/styled/themed/select';
+import {
+  width,
+  height,
+  minWidth,
+  maxWidth,
+  compose,
+} from '@/core/styled/system';
+import {
+  inputDefaultStyle,
+  backgroundColor,
+  borderColor,
+  hoverBorderColor,
+  focusBorderColor,
+} from '@/core/styled/themed/input';
+import {
+  selectDefaults,
+  selectBaseStyle,
+  selectContainerBaseStyle,
+} from '@/core/styled/themed/select';
 import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledSelectContainer = styled(
   StyledInputContainer
 )<SelectContainerProps>`
-  padding: 0;
+  ${(props) => selectContainerBaseStyle({ ...props, type: 'web' } as any)};
+  ${compose(width, height, minWidth, maxWidth)}
 `;
 
 export const StyledSelect = styled(
   baseStyled('select', ['shadow', 'grid', 'position', 'background'])
 )<SelectProps>`
+  &:hover {
+    border-color: ${hoverBorderColor};
+  }
+
+  &:focus {
+    border-color: ${focusBorderColor};
+  }
+
   ${(props) => inputDefaultStyle({ ...props } as any)}
   ${(props) => selectBaseStyle({ ...props } as any)}
+
+  background-color: ${backgroundColor};
+  border-color: ${borderColor};
 `;
 
 export const Select: React.FC<SelectProps> = (props) => {
@@ -49,7 +78,7 @@ export const Select: React.FC<SelectProps> = (props) => {
       <IconButton
         size={size}
         icon={icon || <ArrowDownIcon size="xs" />}
-        style={{ position: 'absolute', right: 0, pointerEvents: 'none' }}
+        className={selectDefaults.dropdownIconClassName}
       />
     );
   };
@@ -85,14 +114,11 @@ export const Select: React.FC<SelectProps> = (props) => {
   return (
     <View>
       <InputLabel label={label} />
-      <StyledSelectContainer
-        size={size}
-        disabled={isDisabled}
-        state={selectState}
-        {...(otherProps as any)}>
+      <StyledSelectContainer size={size} {...(otherProps as any)}>
         <StyledSelect
           size={size}
           {...(otherProps as any)}
+          state={selectState}
           disabled={isDisabled}>
           {renderChildren()}
         </StyledSelect>

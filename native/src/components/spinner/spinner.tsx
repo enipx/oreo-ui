@@ -9,15 +9,14 @@ import {
   spinnerDefaults,
 } from '@/core/styled/themed/spinner';
 import { styled } from '@/core/styled/native';
-import { width, height } from '@/core/styled/system';
+import { width, height, compose } from '@/core/styled/system';
 import { AnimatedBase } from '../animated';
 import { Easing } from 'react-native';
 
 // @exports
 export const StyledSpinner = styled(View)<SpinnerProps>`
   ${(props) => spinnerDefaultStyle({ ...props, type: 'native' } as any)}
-  ${width}
-  ${height}
+  ${compose(width, height)}
 `;
 
 export const Spinner = (props: SpinnerProps) => {

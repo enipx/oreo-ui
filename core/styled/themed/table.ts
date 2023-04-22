@@ -15,7 +15,7 @@ export const tableDefaults = {
 type TableSystemThemeParams = SystemThemeParams & TableThemedDefaultProps;
 
 export const tableContainerDefaultStyle = (options: TableSystemThemeParams) => {
-  const { type = 'web' } = options;
+  const { type = 'web', whiteSpace } = options;
 
   const baseStyle = `
   `;
@@ -27,7 +27,7 @@ export const tableContainerDefaultStyle = (options: TableSystemThemeParams) => {
   const web = `
     ${baseStyle}
     display: block;
-    white-space: nowrap;
+    white-space: ${whiteSpace || 'nowrap'};
     overflow: auto hidden;
     max-width: 100%;
   `;

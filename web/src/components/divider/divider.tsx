@@ -1,7 +1,7 @@
 // @imports
 import type { DividerProps } from './divider.types';
 
-import { layout } from '@/core/styled/system';
+import { width, height, compose } from '@/core/styled/system';
 import { dividerDefaultStyle } from '@/core/styled/themed/divider';
 import { styled, baseStyled } from '@/core/styled/web';
 
@@ -17,5 +17,5 @@ export const Divider = styled(
   ])
 )<DividerProps>`
   ${(props) => dividerDefaultStyle({ ...props } as any)}
-  ${layout}
+  ${compose(width, height)}
 `;

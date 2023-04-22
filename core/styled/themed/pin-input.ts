@@ -15,7 +15,16 @@ export const pinInputDefaults = {
 };
 
 export const pinInputSizeVariant = (options: SystemThemeParams) => {
-  const { theme, type = 'web', index, size = pinInputDefaults.size } = options;
+  const {
+    theme,
+    type = 'web',
+    index,
+    size = pinInputDefaults.size,
+    fontSize: _fontSize,
+    borderRadius: _borderRadius,
+    ml,
+    marginLeft: _marginLeft,
+  } = options;
 
   const isFirstInput = index === 0;
 
@@ -29,17 +38,24 @@ export const pinInputSizeVariant = (options: SystemThemeParams) => {
     marginLeft: inputmarginLeft,
   } = theme.components.pinInput;
 
-  const height = inputHeights[size as keyof typeof inputHeights];
+  const height = inputHeights?.[size as keyof typeof inputHeights] || size;
 
-  const width = inputWidths[size as keyof typeof inputHeights];
+  const width = inputWidths?.[size as keyof typeof inputHeights] || size;
 
-  const fontSize = fontSizes[size as keyof typeof fontSizes];
+  const fontSize =
+    fontSizes?.[size as keyof typeof fontSizes] || _fontSize || fontSizes.md;
 
-  const borderRadius = inputRadii[size as keyof typeof inputRadii];
+  const borderRadius =
+    inputRadii?.[size as keyof typeof inputRadii] ||
+    _borderRadius ||
+    inputRadii.md;
 
   const marginLeft = isFirstInput
     ? 0
-    : inputmarginLeft[size as keyof typeof inputmarginLeft];
+    : inputmarginLeft?.[size as keyof typeof inputmarginLeft] ||
+      ml ||
+      _marginLeft ||
+      inputmarginLeft.md;
 
   const styles = {
     ...(isNative ? {} : { fontSize }),

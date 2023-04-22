@@ -31,7 +31,7 @@ const LoadingStory = (props: any) => {
 
   return (
     <View flexCenter flexDirection="column" maxWidth="500px" mx="auto" my="lg">
-      <Skeleton loaded={!loading} {...props}>
+      <Skeleton loading={loading} {...props}>
         <View>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

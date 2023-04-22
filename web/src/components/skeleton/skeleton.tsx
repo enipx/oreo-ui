@@ -26,7 +26,7 @@ export const StyledSkeleton = styled(
 `;
 
 export const Skeleton = (props: SkeletonProps) => {
-  const { count = 1, children, loaded, ...otherProps } = props;
+  const { count = 1, children, loading = false, ...otherProps } = props;
 
   const countArray = [...Array(count)];
 
@@ -51,7 +51,7 @@ export const Skeleton = (props: SkeletonProps) => {
     );
   };
 
-  if (loaded && children) {
+  if (!loading && children) {
     return <FadeIn>{children}</FadeIn>;
   }
 

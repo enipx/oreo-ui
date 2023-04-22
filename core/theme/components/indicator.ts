@@ -18,10 +18,10 @@ const indicator = (arg?: PackageTypes) => {
   };
 
   const fontSizes = {
-    'xs': themeFontSizes.xs,
-    'sm': themeFontSizes.xs,
-    'md': themeFontSizes.xs,
-    'lg': themeFontSizes.xs,
+    'xs': themeFontSizes['2xs'],
+    'sm': themeFontSizes['2xs'],
+    'md': themeFontSizes['2xs'],
+    'lg': themeFontSizes['2xs'],
     'xl': themeFontSizes.xs,
     '2xl': themeFontSizes.xs,
   };

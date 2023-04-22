@@ -12,6 +12,8 @@ import {
   inputDefaultStyle,
   backgroundColor,
   borderColor,
+  hoverBorderColor,
+  focusBorderColor,
 } from '@/core/styled/themed/input';
 import {
   pinInputSizeVariant,
@@ -24,12 +26,21 @@ import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledInput = styled(
-  baseStyled('input', ['shadow', 'grid', 'position', 'background'])
+  baseStyled('input', ['shadow', 'grid', 'position', 'background', 'layout'])
 )<PinInputProps & { inputIndex?: number }>`
+  &:hover {
+    border-color: ${hoverBorderColor};
+  }
+
+  &:focus {
+    border-color: ${focusBorderColor};
+  }
+
   ${(props) => inputDefaultStyle({ ...props } as any)}
   ${(props) => pinInputDefaultStyle({ ...props } as any)}
   ${(props) =>
     pinInputSizeVariant({ ...props, index: props.inputIndex } as any)}
+
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 `;

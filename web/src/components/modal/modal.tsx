@@ -214,7 +214,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
 
   return (
     <Portal>
-      <StyledModal {...otherProps}>
+      <StyledModal size={size} {...otherProps}>
         <ModalOverlay onClick={overlayOnClickHandler} {...otherProps} />
         <ModalContent
           ref={modalContentRef}

@@ -1,6 +1,7 @@
 // @imports
 import { forwardRef } from 'react';
 
+import { Spinner } from '../spinner';
 import { View } from '../view';
 import type { ButtonProps } from './button.types';
 
@@ -14,7 +15,6 @@ import {
 } from '@/core/styled/system';
 import {
   buttonDefaultStyle,
-  buttonIconSpacing,
   buttonSizeVariant,
   buttonStateVariant,
   buttonDefaults,
@@ -37,8 +37,42 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
     size = buttonDefaults.size,
     colorScheme = buttonDefaults.colorScheme,
     children,
+    loading,
+    loadingText,
+    loadingIcon,
     ...otherProps
   } = props;
+
+  const renderChildren = () => {
+    if (loading) {
+      return (
+        <>
+          {loadingIcon || (
+            <View className={buttonDefaults.iconClassName} as="span">
+              <Spinner size="xs" color="inherit" />
+            </View>
+          )}
+          {loadingText || null}
+        </>
+      );
+    }
+
+    return (
+      <>
+        {icon ? (
+          <View className={buttonDefaults.iconClassName} as="span">
+            {icon}
+          </View>
+        ) : null}
+        {children || text}
+        {rightIcon ? (
+          <View className={buttonDefaults.iconClassName} as="span">
+            {rightIcon}
+          </View>
+        ) : null}
+      </>
+    );
+  };
 
   return (
     <StyledButton
@@ -46,23 +80,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
       size={size}
       ref={ref}
       {...(otherProps as any)}>
-      {icon ? (
-        <View
-          className={buttonDefaults.iconClassName}
-          as="span"
-          mr={buttonIconSpacing[size]}>
-          {icon}
-        </View>
-      ) : null}
-      {children || text}
-      {rightIcon ? (
-        <View
-          className={buttonDefaults.iconClassName}
-          as="span"
-          ml={buttonIconSpacing[size]}>
-          {rightIcon}
-        </View>
-      ) : null}
+      {renderChildren()}
     </StyledButton>
   );
 });

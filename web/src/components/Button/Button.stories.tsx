@@ -105,3 +105,11 @@ Rounded.args = {
   size: 'md',
   rounded: true,
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  text: 'Button',
+  size: 'md',
+  loading: true,
+  loadingText: 'Loading',
+};

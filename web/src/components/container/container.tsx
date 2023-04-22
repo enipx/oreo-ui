@@ -12,7 +12,7 @@ export const Container = styled(View)<ContainerProps>`
     if (type) {
       const { breakpoints } = theme;
 
-      return `max-width: ${breakpoints[type]}`;
+      return `max-width: ${breakpoints?.[type] || type}`;
     }
 
     return '';

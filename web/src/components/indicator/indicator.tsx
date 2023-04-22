@@ -3,12 +3,16 @@ import { View } from '@components/view';
 
 import type { IndicatorProps } from './indicator.types';
 
+import { width, height, compose } from '@/core/styled/system';
 import { indicatorDefaultStyle } from '@/core/styled/themed/indicator';
-import { styled } from '@/core/styled/web';
+import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
-export const StyledIndicator = styled(View)<IndicatorProps>`
+export const StyledIndicator = styled(
+  baseStyled('div', ['layout'])
+)<IndicatorProps>`
   ${(props) => indicatorDefaultStyle({ ...props } as any)}
+  ${compose(width, height)}
 `;
 
 export const Indicator = (props: IndicatorProps) => {

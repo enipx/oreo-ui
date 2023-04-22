@@ -25,6 +25,7 @@ export const IconButton: React.FC<IconButtonProps> = (props) => {
     icon,
     size = iconButtonDefaults.size,
     colorScheme = iconButtonDefaults.colorScheme,
+    children,
     ...otherProps
   } = props;
 
@@ -33,7 +34,7 @@ export const IconButton: React.FC<IconButtonProps> = (props) => {
       size={size}
       colorScheme={colorScheme}
       {...(otherProps as any)}>
-      {icon ? icon : null}
+      {icon ? icon : children || null}
     </StyledIconButton>
   );
 };

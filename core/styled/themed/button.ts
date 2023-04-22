@@ -145,6 +145,7 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     variant,
     fullWidth,
     width: _width,
+    size,
     _hover,
     _focus,
     _active,
@@ -162,6 +163,7 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     });
 
   const opacity = disabled ? buttonDefaults.disabledOpacity : 1;
+
   const width =
     getSpacingValue({ theme, value: _width }) || fullWidth ? '100%' : 'auto';
 
@@ -170,11 +172,13 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     ${transitionStyle()}
     opacity: ${opacity};
     background-color: ${backgroundColor};
+    border: ${variant === 'outline' ? '1px' : '0'} solid ${borderColor};
   `;
 
   const native = `
     ${baseStyle}
     ${!fullWidth ? 'align-self: flex-start;' : ''}
+    flex-direction: row;
   `;
 
   const web = `
@@ -184,16 +188,18 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.lineHeights[0]};
     outline: 0;
-    border: 0;
     white-space: nowrap;
     width: ${width};
     color: ${color};
+    gap: ${getSpacingValue({
+      theme,
+      value: buttonIconSpacing[size || buttonDefaults.size],
+    })};
 
     :hover,
-    :active,
-    :focus {
+    :active {
       background-color: ${hoverBackgroundColor};
-      text-decoration: ${variant === 'link' ? 'underline' : 'auto'}
+      text-decoration: ${variant === 'link' ? 'underline' : 'auto'};
     }
 
     :active {
@@ -206,7 +212,7 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
 
     :focus {
       box-shadow: ${baseBgColor} 0px 0px 0px 2px, ${convertHexToRgbaHandler(
-    borderColor,
+    theme.colors.blue[400],
     isDark ? 0.7 : 0.5
   )} 0px 0px 0px 4px;
       ${convertReactCSSToCSSHandler(_focus)}
@@ -281,12 +287,17 @@ export const iconButtonDefaultStyle = (
 
   const { backgroundColor: baseBgColor } = getBaseStyle({ theme });
 
-  const { backgroundColor, color, iconBorderColor, hoverBackgroundColor } =
-    getColorSchemeStyle({
-      theme,
-      colorScheme: colorScheme || 'gray',
-      variant: variant || 'ghost',
-    });
+  const {
+    backgroundColor,
+    color,
+    iconBorderColor,
+    hoverBackgroundColor,
+    borderColor,
+  } = getColorSchemeStyle({
+    theme,
+    colorScheme: colorScheme || 'gray',
+    variant: variant || 'ghost',
+  });
 
   const opacity = disabled ? iconButtonDefaults.disabledOpacity : 1;
 
@@ -296,7 +307,7 @@ export const iconButtonDefaultStyle = (
     opacity: ${opacity};
     flex-shrink: 0;
     background-color: ${backgroundColor};
-    border: 0;
+    border: ${variant === 'outline' ? '1px' : '0'} solid ${borderColor};
   `;
 
   const native = `

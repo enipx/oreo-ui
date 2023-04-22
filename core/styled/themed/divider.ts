@@ -1,9 +1,8 @@
 import type { DividerThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { baseBorderColorStyle, styleModeHandler } from './base';
+import { styleModeHandler } from './base';
 
 import { isPackageNative } from '@/core/helpers/base';
-import { convertHexToRgbaHandler } from '@/core/helpers/theme';
 
 // @defaults
 export const dividerDefaults = {

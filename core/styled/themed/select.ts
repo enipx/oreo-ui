@@ -8,6 +8,7 @@ export const selectDefaults = {
   activeOpacity: 0.8,
   size: 'md',
   state: 'default',
+  dropdownIconClassName: 'select__dropdown_icon',
 };
 
 export const selectDefaultFontSize = (option: SystemThemeParams) => {
@@ -72,7 +73,7 @@ export const selectContainerBaseStyle = (option: SystemThemeParams) => {
 
   const baseStyle = `
     padding: 0;
-    padding-left: ${pl};
+    position: relative;
   `;
 
   const native = `
@@ -80,10 +81,19 @@ export const selectContainerBaseStyle = (option: SystemThemeParams) => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-left: ${pl};
   `;
 
   const web = `
     ${baseStyle}
+
+    .${selectDefaults.dropdownIconClassName} {
+      position: absolute;
+      right: 0;
+      pointer-events: none;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   `;
 
   const res: SystemThemeReturnType = {

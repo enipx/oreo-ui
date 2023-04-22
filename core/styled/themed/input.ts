@@ -39,7 +39,7 @@ export const backgroundColor: any = variantModeHandler('state', {
 
 export const borderColor: any = variantModeHandler('state', {
   default: { light: 'gray.100', dark: 'gray.700' },
-  focused: { light: 'gray.100', dark: 'gray.700' },
+  focused: { light: 'blue.500', dark: 'blue.600' },
   invalid: { light: 'red.500', dark: 'red.600' },
   disabled: { light: 'gray.200', dark: 'gray.600' },
 });
@@ -53,15 +53,15 @@ export const nativeBorderColor: any = variantModeHandler('state', {
 
 export const hoverBorderColor: any = variantModeHandler('state', {
   default: { light: 'gray.200', dark: 'gray.600' },
-  focused: { light: 'gray.500', dark: 'gray.300' },
-  invalid: { light: 'gray.500', dark: 'gray.300' },
+  focused: { light: 'blue.500', dark: 'blue.600' },
+  invalid: { light: 'red.500', dark: 'red.300' },
   disabled: { light: 'gray.200', dark: 'gray.600' },
 });
 
 export const focusBorderColor: any = variantModeHandler('state', {
   default: { light: 'blue.500', dark: 'blue.600' },
   focused: { light: 'blue.500', dark: 'blue.600' },
-  invalid: { light: 'blue.500', dark: 'blue.600' },
+  invalid: { light: 'red.500', dark: 'red.300' },
 });
 
 export const hintColor: any = variantModeHandler('state', {
@@ -99,13 +99,32 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
 
 // @styles
 export const inputPseudoStyle = (option: InputSystemThemeParams) => {
-  const { theme, type = 'web', focus } = option;
+  const {
+    theme,
+    type = 'web',
+    focus,
+    _active,
+    _focus,
+    _disabled,
+    _hover,
+    _placeholder,
+    removeFocusBoxShadow,
+  } = option;
 
   const { isDark } = getThemeMode(theme);
 
   const borderColor = isDark ? theme.colors.blue[200] : theme.colors.blue[600];
 
   const { backgroundColor: baseBgColor } = getBaseStyle({ theme });
+
+  const boxShadow = removeFocusBoxShadow
+    ? ''
+    : `
+    ${baseBgColor} 0px 0px 0px 1px, ${convertHexToRgbaHandler(
+        borderColor,
+        0.5
+      )} 0px 0px 0px 3px
+  `;
 
   const baseStyle = `
   `;
@@ -117,16 +136,27 @@ export const inputPseudoStyle = (option: InputSystemThemeParams) => {
   const web = `
     ${baseStyle}
 
+    :active {
+      ${convertReactCSSToCSSHandler(_active)}
+    }
+
     :disabled {
       cursor: not-allowed;
+      ${convertReactCSSToCSSHandler(_disabled)}
     }
 
     :focus {
       ${focus || ''}
-      box-shadow: ${baseBgColor} 0px 0px 0px 2px, ${convertHexToRgbaHandler(
-    borderColor,
-    0.5
-  )} 0px 0px 0px 4px;
+      box-shadow: ${boxShadow};
+      ${convertReactCSSToCSSHandler(_focus)}
+    }
+
+    :hover {
+      ${convertReactCSSToCSSHandler(_hover)}
+    }
+
+    ::placeholder {
+      ${convertReactCSSToCSSHandler(_placeholder)}
     }
   `;
 
@@ -161,9 +191,11 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     property: paddingX,
   });
 
+  const { color } = getBaseStyle({ theme });
+
   const baseStyle = `
     outline: 0;
-    color: ${styleModeHandler({ light: 'gray.500', dark: 'gray.50', theme })};
+    color: ${color};
     padding: 0 ${paddingRight} 0 ${paddingLeft};
     border-radius: ${borderRadius};
   `;
@@ -187,10 +219,18 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     border-color: ${theme.colors.transparent};
 
     ::placeholder {
+      color: ${styleModeHandler({
+        light: 'gray.400',
+        dark: 'gray.400',
+        theme,
+      })};
       font-size: ${placeholderFontSize};
     }
 
-    ${inputPseudoStyle(option)}
+    ${inputPseudoStyle({
+      ...option,
+      removeFocusBoxShadow: true,
+    })}
   `;
 
   const res: SystemThemeReturnType = {

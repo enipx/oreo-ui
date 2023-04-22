@@ -169,8 +169,8 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
       theme,
     }),
     color: styleModeHandler({
-      light: `${colorScheme}.700`,
-      dark: `${colorScheme}.50`,
+      light: `${colorScheme}.500`,
+      dark: `${colorScheme}.300`,
       theme,
     }),
   };
@@ -208,13 +208,13 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
       theme,
     }),
     hoverBg: styleModeHandler({
-      light: `${colorScheme}.50`,
+      light: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.5),
       dark: convertHexToRgbaHandler(theme.colors[colorScheme][50], 0.1),
       theme,
     }),
     color: styleModeHandler({
       light: `${colorScheme}.500`,
-      dark: `${colorScheme}.400`,
+      dark: `${colorScheme}.300`,
       theme,
     }),
   };
@@ -235,8 +235,8 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
       theme,
     }),
     color: styleModeHandler({
-      light: `${colorScheme}.700`,
-      dark: `${colorScheme}.200`,
+      light: `${colorScheme}.500`,
+      dark: `${colorScheme}.300`,
       theme,
     }),
   };
@@ -248,7 +248,7 @@ export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
     }),
     color: styleModeHandler({
       light: `${colorScheme}.500`,
-      dark: `${colorScheme}.200`,
+      dark: `${colorScheme}.300`,
       theme,
     }),
   };
