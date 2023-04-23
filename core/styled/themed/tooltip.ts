@@ -24,6 +24,7 @@ export const tooltipDefaultStyle = (options: TooltipSystemThemeParams) => {
     light: 'gray.500',
     dark: 'gray.200',
   });
+
   const defaultColor = styleModeHandler({
     theme,
     light: 'white',
@@ -33,11 +34,14 @@ export const tooltipDefaultStyle = (options: TooltipSystemThemeParams) => {
   const backgroundColor = colorScheme
     ? schemeBackgroundColor
     : defaultBackgroundColor;
+
   const color = colorScheme ? schemeColor : defaultColor;
 
   const padding = `${theme.space[1]} ${theme.space[2]}`;
 
   const baseStyle = `
+    ${popoverContentDefaultStyle(options)}
+
     position: relative;
     background-color: ${backgroundColor};
     color: ${color};
@@ -46,7 +50,7 @@ export const tooltipDefaultStyle = (options: TooltipSystemThemeParams) => {
     border-radius: ${theme.radii.xs};
     z-index: ${theme.zIndices.tooltip};
     padding: ${padding};
-    ${popoverContentDefaultStyle(options)}
+    border: 0;
   `;
 
   const native = `

@@ -6,6 +6,8 @@ import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getColorSchemeStyle, styleModeHandler } from './base';
 
+import { convertHexToRgbaHandler } from '@/core/helpers/theme';
+
 // @defaults
 export const tableDefaults = {
   size: 'md',
@@ -78,11 +80,13 @@ export const tableDefaultStyle = (options: TableSystemThemeParams) => {
     dark: 'gray.800',
   });
 
-  const { backgroundColor } = getColorSchemeStyle({
+  const { backgroundColor: bg } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'gray',
     variant: 'subtle',
   });
+
+  const backgroundColor = convertHexToRgbaHandler(bg, 0.5);
 
   const tablePadding: { [key in TableThemedSizeTypes]: string | number } = {
     sm: theme.space[2],

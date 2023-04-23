@@ -83,6 +83,7 @@ export const AlertCloseButton = (
       onPress={onPress}
       size="xs"
       icon={<CloseIcon stroke={color} size="md" />}
+      variant="link"
     />
   );
 };

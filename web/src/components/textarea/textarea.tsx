@@ -4,7 +4,6 @@ import { InputLabel, InputHint } from '../input/input';
 import { View } from '../view';
 import type { TextareaProps } from './textarea.types';
 
-import { baseColor } from '@/core/styled/themed/base';
 import {
   textareaDefaultStyle,
   textareaDefaults,
@@ -18,14 +17,13 @@ import { styled, baseStyled } from '@/core/styled/web';
 export const StyledTextarea = styled(
   baseStyled('textarea', ['shadow', 'grid', 'position', 'background'])
 )<TextareaProps>`
-  ${(props) => textareaDefaultStyle({ ...props } as any)}
-  color: ${baseColor};
-  border-color: ${borderColor};
-  background-color: ${backgroundColor};
-
   :focus {
     border-color: ${focusBorderColor};
   }
+
+  ${(props) => textareaDefaultStyle({ ...props } as any)}
+  border-color: ${borderColor};
+  background-color: ${backgroundColor};
 `;
 
 export const Textarea: React.FC<TextareaProps> = (props) => {

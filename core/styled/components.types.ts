@@ -138,6 +138,8 @@ export interface TextThemedStyledProps extends TypographyThemeStyledProps {
    */
   textTransform?: CSSProperties['textTransform'];
 
+  numberOfLines?: number;
+
   as?: string;
 }
 
@@ -350,7 +352,7 @@ export interface InputThemedStyledProps
     BorderProps,
     Omit<LayoutProps, 'size'> {}
 
-export type TextareaThemedDefaultProps = {
+export interface TextareaThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * set left icon
    */
@@ -371,7 +373,9 @@ export type TextareaThemedDefaultProps = {
    * set input hint
    */
   hint?: string;
-};
+
+  _placeholder?: React.CSSProperties;
+}
 
 export type TextareaResizeType = 'none' | 'both' | 'horizontal' | 'vertical';
 
@@ -1192,7 +1196,7 @@ export type SpinnerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export interface SpinnerThemedDefaultProps {
   colorScheme?: DefaultColorsSchemeKeys;
 
-  size?: SpinnerSizeType;
+  size?: SpinnerSizeType | string;
 
   duration?: number;
 

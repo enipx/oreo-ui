@@ -63,6 +63,7 @@ export const AlertCloseButton = (
       size="xs"
       className={alertDefaults.closeClassName}
       icon={<CloseIcon size="md" />}
+      variant="link"
     />
   );
 };

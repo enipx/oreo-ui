@@ -19,6 +19,19 @@ const Template: ComponentStory<typeof Text> = (args) => (
   />
 );
 
+export const Default = Template.bind({});
+Default.args = {
+  children: 'This is a text',
+  as: 'sub',
+};
+
+export const Truncate = Template.bind({});
+Truncate.args = {
+  children:
+    'Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number. Setting this property to 0 will result in unsetting this value, which means that no lines restriction will be applied.',
+  numberOfLines: 1,
+};
+
 export const H1 = Template.bind({});
 H1.args = {
   children: 'Heading 1',

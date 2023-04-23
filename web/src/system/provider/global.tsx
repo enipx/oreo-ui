@@ -189,9 +189,21 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  code, pre, code *, pre * {
+  code,
+  pre,
+  kbd,
+  samp,
+  code *,
+  pre * {
     font-family: ${({ theme }) => {
       return theme?.fonts?.mono || defaultTheme().fonts.mono;
     }};
+  }
+
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
   }
 `;

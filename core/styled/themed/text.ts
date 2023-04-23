@@ -90,11 +90,33 @@ export const getTextStyles = (option: TextSystemThemeParams) => {
     strong: {
       ...baseStyles,
     },
+    sub: {
+      bottom: `-${theme.space[1]}`,
+    },
+    sup: {
+      top: `${theme.space[1]}`,
+    },
   };
 
   const style = styles?.[option.as as keyof typeof styles];
 
   return convertReactCSSToCSSHandler(style);
+};
+
+export const textTruncateStyle = (option: TextSystemThemeParams) => {
+  const { numberOfLines } = option;
+
+  const styles = numberOfLines
+    ? `
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: ${numberOfLines};
+  `
+    : '';
+
+  return styles;
 };
 
 export const textDefaultStyle = (option: TextSystemThemeParams) => {
@@ -113,6 +135,7 @@ export const textDefaultStyle = (option: TextSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    ${textTruncateStyle(option)}
   `;
 
   const res: SystemThemeReturnType = {

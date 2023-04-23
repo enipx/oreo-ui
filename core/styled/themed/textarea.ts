@@ -1,10 +1,12 @@
 import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
+import { getBaseStyle } from './base';
 import {
   backgroundColor,
   borderColor,
   hoverBorderColor,
   focusBorderColor,
+  inputPseudoStyle,
 } from './input';
 
 // @button themes
@@ -19,6 +21,8 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
   const { theme, type = 'web', disabled, resize } = option;
 
   const opacity = disabled ? textareaDefaults.disabledOpacity : 1;
+
+  const { color } = getBaseStyle({ theme });
 
   const baseStyle = `
     ${transitionStyle()}
@@ -47,6 +51,7 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
     white-space: nowrap;
     font-size: ${theme.fontSizes.sm};
     resize: ${resize || 'auto'};
+    color: ${color};
 
     ::placeholder {
       font-size: ${theme.fontSizes.sm};
@@ -55,6 +60,11 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
     :disabled {
       cursor: not-allowed;
     }
+
+    ${inputPseudoStyle({
+      ...option,
+      removeFocusBoxShadow: true,
+    })}
   `;
 
   const res: SystemThemeReturnType = {
