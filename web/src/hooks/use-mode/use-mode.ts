@@ -31,7 +31,7 @@ export const useMode = (options: UseModeOptionsType) => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
 
-  const saveHandler = useCallback((__mode: ThemeModeKeys, toggle?: boolean) => {
+  const saveHandler = useCallback((__mode: ThemeModeKeys) => {
     setMode(__mode);
   }, []);
 

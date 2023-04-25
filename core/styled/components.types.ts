@@ -1,4 +1,4 @@
-import type { ObjectTypes } from '../constants/index.types';
+import type { ObjectTypes, ThemeModeKeys } from '../constants/index.types';
 import type {
   BreakpointsKeys,
   BreakpointsObjectKeys,
@@ -1284,3 +1284,9 @@ export interface ScrollbarThemedDefaultProps {
 export interface ScrollbarThemedStyledProps
   extends ViewThemedStyledProps,
     ScrollbarThemedDefaultProps {}
+
+export interface ModeContextProviderProps {
+  mode: string;
+  toggle: () => void;
+  update: (arg: ThemeModeKeys) => void;
+}

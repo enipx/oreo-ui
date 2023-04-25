@@ -1,19 +1,25 @@
 // @imports
 import { ModalProvider } from '@components/modal';
 import { ToastProvider } from '@components/toast';
-import React from 'react';
 
 import { useMode } from '../../hooks/use-mode/use-mode';
 import { GlobalStyle } from './global';
 import { OreoProviderProps } from './provider.types';
 
-import { Subset } from '@/core/constants/index.types';
+import type { Subset } from '@/core/constants/index.types';
 import { mergedObjectsHandler } from '@/core/helpers/base';
+import type { ModeContextProviderProps } from '@/core/styled/components.types';
 import { ThemeProvider } from '@/core/styled/web';
 import defaultTheme, { ThemeType } from '@/core/theme';
+import { createContext } from '@/core/utils/context';
 
 // @file declarations
 export type DefaultTheme = Subset<ThemeType>;
+
+const [ModeContextProvider, useModeContext] =
+  createContext<ModeContextProviderProps>();
+
+export { useModeContext };
 
 export const OreoProvider = (props: OreoProviderProps) => {
   const { theme: specifiedTheme, children } = props;
@@ -23,7 +29,11 @@ export const OreoProvider = (props: OreoProviderProps) => {
     specifiedTheme
   ) as ThemeType;
 
-  const { mode } = useMode({
+  const {
+    mode,
+    toggle,
+    save: update,
+  } = useMode({
     mode: _theme.mode,
   });
 
@@ -34,12 +44,17 @@ export const OreoProvider = (props: OreoProviderProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <ModeContextProvider
+        value={{
+          mode,
+          toggle,
+          update,
+        }}>
         <GlobalStyle theme={theme} />
         <ToastProvider>
           <ModalProvider>{children}</ModalProvider>
         </ToastProvider>
-      </>
+      </ModeContextProvider>
     </ThemeProvider>
   );
 };

@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { useModeContext } from '../..';
 import { Button } from './button';
 
 export default {
@@ -113,3 +114,16 @@ Loading.args = {
   loading: true,
   loadingText: 'Loading',
 };
+
+const ModeButtonStory = (args: any) => {
+  const mode = useModeContext();
+
+  return <Button text="Toggle mode" onClick={mode?.toggle} />;
+};
+
+const ModeButtonTemplate: ComponentStory<typeof Button> = (args) => {
+  return <ModeButtonStory {...args} />;
+};
+
+export const ModeButton = ModeButtonTemplate.bind({});
+ModeButton.args = {};

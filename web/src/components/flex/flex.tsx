@@ -1,10 +1,8 @@
 // @imports
 import { View } from '@components/view';
-import { Children, cloneElement } from 'react';
 
 import type { FlexProps } from './flex.types';
 
-import { isString } from '@/core/helpers/base';
 import {
   flexDefaultStyle,
   flexSpacerDefaultStyle,

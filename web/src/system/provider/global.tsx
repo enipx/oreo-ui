@@ -1,194 +1,135 @@
 // @imports
-import {
-  baseBackgroundColor,
-  baseColor,
-  linkColor,
-} from '@/core/styled/themed/base';
+import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
 import { createGlobalStyle } from '@/core/styled/web';
 import defaultTheme from '@/core/theme';
 
 // @file declarations
 export const GlobalStyle = createGlobalStyle`
+  /***
+      The new CSS reset - version 1.8.4 (last updated 14.2.2023)
+      GitHub page: https://github.com/elad2412/the-new-css-reset
+  ***/
+
+  /*
+      Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+      - The "symbol *" part is to solve Firefox SVG sprite bug
+  */
+      *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+  }
+
+  /* Preferred box-sizing value */
   *,
   *::before,
   *::after {
     box-sizing: border-box;
-    font-family: ${({ theme }) => {
-      return theme?.fonts?.body || defaultTheme().fonts.body;
-    }};
-    margin: 0;
-    padding: 0;
-    /**
-      @important: Don't add color property here
-    */
   }
 
-  // ----- HTML
+  /* Reapply the pointer cursor for anchor tags */
+  a, button {
+    cursor: revert;
+  }
+
+  /* Remove list styles (bullets/numbers) */
+  ol, ul, menu {
+    list-style: none;
+  }
+
+  /* For images to not be able to exceed their container */
+  img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+    border-style: none;
+  }
+
+  /* removes spacing between cells in tables */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+  input, textarea {
+    -webkit-user-select: auto;
+  }
+
+  /* revert the 'white-space' property for textarea elements on Safari */
+  textarea {
+    white-space: revert;
+  }
+
+  /* minimum style to allow to style meter element */
+  meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+  }
+
+  /* preformatted text - use only for this feature */
+  :where(pre) {
+    all: revert;
+  }
+
+  /* reset default text opacity of input placeholder */
+  ::placeholder {
+    color: unset;
+  }
+
+  /* remove default dot (•) sign */
+  ::marker {
+    content: initial;
+  }
+
+  /* fix the feature of 'hidden' attribute.
+    display:revert; revert to element instead of attribute */
+  :where([hidden]) {
+    display: none;
+  }
+
+  /* revert for bug in Chromium browsers
+    - fix for the content editable attribute will work properly.
+    - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+  :where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+  }
+
+  /* apply back the draggable feature - exist only in Chromium and Safari */
+  :where([draggable="true"]) {
+    -webkit-user-drag: element;
+  }
+
+  /* Revert Modal native behavior */
+  :where(dialog:modal) {
+    all: revert;
+  }
+
+  /* Set default typo settings & color */
   html {
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     touch-action: manipulation;
     color: ${baseColor};
   }
-  
-  // ---- Body
+    
+
+  /* Set default body style & update font */
   body {
     background-color: ${baseBackgroundColor};
-  }
-
-  // ----- Elements
-  html,
-  body,
-  div,
-  span,
-  applet,
-  object,
-  iframe,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  blockquote,
-  pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  big,
-  cite,
-  code,
-  del,
-  dfn,
-  em,
-  img,
-  ins,
-  kbd,
-  q,
-  s,
-  samp,
-  small,
-  strike,
-  strong,
-  sub,
-  sup,
-  tt,
-  var,
-  b,
-  u,
-  i,
-  center,
-  dl,
-  dt,
-  dd,
-  ol,
-  ul,
-  li,
-  fieldset,
-  form,
-  label,
-  legend,
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td,
-  article,
-  aside,
-  canvas,
-  details,
-  embed,
-  figure,
-  figcaption,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  output,
-  ruby,
-  section,
-  summary,
-  time,
-  mark,
-  audio,
-  video {
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-  }
-
-  // ----- HTML5 reset for older browser
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  section {
-    display: block;
-  }
-
-  img, svg, video, canvas, audio, iframe, embed, object {
-    display: block;
-  }
-
-  img, video {
-    max-width: 100%;
-    height: auto;
-  }
-
-  ol,
-  ul {
-    list-style: none;
-  }
-
-  blockquote,
-  q {
-    quotes: none;
-  }
-
-  blockquote::before,
-  blockquote::after,
-  q::before,
-  q::after {
-    content: '';
-    content: none;
-  }
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
-  /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    font-family: ${({ theme }) => {
+      return theme?.fonts?.body || defaultTheme().fonts.body;
+    }};
     margin: 0;
+    padding: 0;
   }
 
-  a {
-    text-decoration: none;
-    color: inherit;
-
-    &:hover, &:active {
-      color: inherit;
-      text-decoration: underline;
-    }
-  }
-
+  /* Update special element font family to mono */
   code,
   pre,
   kbd,
@@ -200,6 +141,10 @@ export const GlobalStyle = createGlobalStyle`
     }};
   }
 
+  /**
+  * Prevent sub and sup elements from affecting the line height in
+  * all browsers.
+  */
   sub, sup {
     font-size: 75%;
     line-height: 0;

@@ -27,12 +27,12 @@ import {
   Grid,
   Spinner,
   Divider,
-  useMode,
   DefaultTheme,
   Show,
 } from '@oreo-ui/native';
 import { Toast } from './Toast';
 import { ModalApi } from './Modal';
+import { ModeButton } from './Button';
 
 const customTheme: DefaultTheme = {
   colors: {},
@@ -41,32 +41,22 @@ const customTheme: DefaultTheme = {
 export default function App() {
   const [isOpen, modalHandler] = useDisclosure(false);
 
-  const { mode, toggle: toggleMode } = useMode({ mode: 'light' });
-
   return (
-    <OreoProvider theme={{ ...customTheme, mode }}>
+    <OreoProvider theme={{ ...customTheme }}>
       <Container px="lg" scrollable pb="xl">
         <Text>Text</Text>
 
         <Button
+          loading
+          loadingText="Loading"
           colorScheme="gray"
           text="Button"
           my="lg"
           fullWidth
           rounded
-          onPress={toggleMode}
         />
 
-        <Button
-          loading
-          loadingText="loading"
-          colorScheme="gray"
-          text="Button"
-          my="lg"
-          fullWidth
-          rounded
-          onPress={toggleMode}
-        />
+        <ModeButton />
 
         <Input
           type="password"
