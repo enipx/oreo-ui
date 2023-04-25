@@ -22,6 +22,7 @@ export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
     centerX,
     centerY,
     spacing,
+    wrap,
   } = options;
 
   const _row = reverse ? 'row-reverse' : 'row';
@@ -53,6 +54,7 @@ export const flexDefaultStyle = (options: FlexSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    ${wrap ? 'flex-wrap: wrap;' : ''}
     ${spacing ? `gap: ${getUtilitiesValue({ theme, value: spacing })}` : ''}
   `;
 

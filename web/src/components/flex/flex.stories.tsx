@@ -25,6 +25,7 @@ Default.args = {};
 export const Spacing = Template.bind({});
 Spacing.args = {
   spacing: 'lg',
+  wrap: true,
 };
 
 const FillTemplate: ComponentStory<typeof Flex> = (args) => (

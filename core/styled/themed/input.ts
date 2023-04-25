@@ -1,5 +1,5 @@
 import type { InputThemedDefaultProps } from '../components.types';
-import { flexCenterXStyle, transitionStyle } from '../css';
+import { flexCenterXStyle, flexCenterYStyle, transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import {
   getBaseStyle,
@@ -209,6 +209,7 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    ${flexCenterYStyle}
     width: 100%;
     appearance: none;
     white-space: nowrap;

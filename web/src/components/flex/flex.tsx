@@ -23,21 +23,7 @@ export const Spacer = styled(View)<FlexProps>`
 export const Flex = (props: FlexProps) => {
   const { children, ...otherProps } = props;
 
-  const renderChildren = isString(children) ? (
-    <View>{children}</View>
-  ) : (
-    children
-  );
-
-  return (
-    <StyledFlex {...otherProps}>
-      {Children.map(renderChildren, (child, _index) => {
-        if (!child) return null;
-
-        return cloneElement(child as any);
-      })}
-    </StyledFlex>
-  );
+  return <StyledFlex {...otherProps}>{children}</StyledFlex>;
 };
 
 Flex.Fill = Spacer;
