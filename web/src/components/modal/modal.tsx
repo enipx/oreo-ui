@@ -15,7 +15,7 @@ import {
 } from '@/core/helpers/dom';
 import { useKeydown } from '@/core/hooks/use-keydown';
 import { getTransitionClassName } from '@/core/styled/css/transitions';
-import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
+import { border, compose } from '@/core/styled/system';
 import {
   modalOverlayDefaultStyle,
   modalOverlayBackgroundColor,
@@ -30,15 +30,7 @@ import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const defaultView = () => {
-  return baseStyled('div', [
-    'layout',
-    'typography',
-    'flexbox',
-    'grid',
-    'position',
-    'shadow',
-    'space',
-  ]);
+  return 'div' as any;
 };
 
 export const StyledModalHeader = styled(defaultView())<ModalProps>`
@@ -53,13 +45,11 @@ export const ModalOverlay = styled(defaultView())<ModalProps>`
 
 export const ModalContent = styled(baseStyled('div', ['position']))<ModalProps>`
   ${(props) => modalContentDefaultStyle(props as any)}
-  background-color: ${baseBackgroundColor};
-  color: ${baseColor};
+  ${compose(border)};
 `;
 
 export const ModalBody = styled(defaultView())<ModalProps>`
   ${(props) => modalBodyDefaultStyle(props as any)}
-  color: ${baseColor};
 `;
 
 export const ModalFooter = styled(defaultView())<ModalProps>`
@@ -119,6 +109,10 @@ export const Modal: React.FC<ModalProps> = (props) => {
     modalSize,
     onClose,
     onOpen,
+    overflow,
+    withFooter,
+    isDrawer,
+    hideCloseButton,
     size: specifiedSize,
     ...otherProps
   } = props;
@@ -164,7 +158,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
   const renderModalFooter = () => {
     if (props.withFooter) {
       return (
-        <ModalFooter {...otherProps}>
+        <ModalFooter>
           {props.footerContent || (
             <>
               <Button
@@ -214,16 +208,33 @@ export const Modal: React.FC<ModalProps> = (props) => {
 
   return (
     <Portal>
-      <StyledModal size={size} {...otherProps}>
+      <StyledModal
+        size={size}
+        modalSize={size}
+        overflow={overflow}
+        withFooter={withFooter}
+        isDrawer={isDrawer}
+        {...otherProps}>
         <ModalOverlay onClick={overlayOnClickHandler} {...otherProps} />
         <ModalContent
           ref={modalContentRef}
           className={activeCls}
           modalSize={size}
           style={style}
+          overflow={overflow}
           {...otherProps}>
-          <ModalHeader title={title} onClose={onCloseHandler} {...otherProps} />
-          <ModalBody {...otherProps}>{children}</ModalBody>
+          <ModalHeader
+            hideCloseButton={hideCloseButton}
+            title={title}
+            onClose={onCloseHandler}
+          />
+          <ModalBody
+            modalSize={size}
+            overflow={overflow}
+            withFooter={withFooter}
+            isDrawer={isDrawer}>
+            {children}
+          </ModalBody>
           {renderModalFooter()}
         </ModalContent>
       </StyledModal>

@@ -38,7 +38,6 @@ export default [
       minify(),
       visualizer({
         filename: 'dist-analysis.html',
-        open: true,
       }),
     ],
   },

@@ -4,7 +4,7 @@ import type { ButtonProps } from '../button';
 
 export interface ModalProps
   extends DefaultModalProps,
-    Omit<ModalThemedDefaultProps, 'style'> {
+    Omit<ModalThemedDefaultProps, 'style' | 'children'> {
   /**
    * update footer close button props
    */

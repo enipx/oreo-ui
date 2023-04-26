@@ -17,6 +17,7 @@ import {
   height,
   minWidth,
   maxWidth,
+  border,
   compose,
 } from '@/core/styled/system';
 import {
@@ -55,6 +56,7 @@ export const StyledInput = styled('input')<InputProps>`
 
   background-color: ${backgroundColor};
   border-color: ${borderColor};
+  ${compose(border)};
 `;
 
 export const StyledHintText = styled(Text)<InputHintProps>`

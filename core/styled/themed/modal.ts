@@ -9,7 +9,7 @@ import {
 } from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { mediaQueryStyle } from '../mixins';
-import { modeHandler, styleModeHandler } from './base';
+import { getBaseStyle, modeHandler, styleModeHandler } from './base';
 import { drawerContentDefaultStyle, drawerDefaultTransitions } from './drawer';
 
 import { isPackageNative } from '@/core/helpers/base';
@@ -202,12 +202,15 @@ export const modalOverlayDefaultStyle = (options: ModalSystemThemeParams) => {
     overlayOpacity,
     modalSize,
     removeContentMargin,
+    removeContentPadding,
   } = options;
 
   const opacity = overlayOpacity || 1;
 
   const padding =
-    isModalFull(modalSize) || removeContentMargin ? 0 : theme.space[4];
+    isModalFull(modalSize) || removeContentMargin || removeContentPadding
+      ? 0
+      : theme.space[4];
 
   const baseStyle = `
   `;
@@ -248,7 +251,13 @@ export const modalContentDefaultStyle = (options: ModalSystemThemeParams) => {
 
   const padding = removeContentPadding ? 0 : theme.space[4];
 
+  const paddingY = removeContentPadding ? 0 : theme.space[4];
+
+  const paddingX = removeContentPadding ? 0 : theme.space[5];
+
   const borderRadius = theme.radii.md;
+
+  const { backgroundColor, color } = getBaseStyle({ theme });
 
   const baseStyle = `
   `;
@@ -273,10 +282,12 @@ export const modalContentDefaultStyle = (options: ModalSystemThemeParams) => {
     border-radius: ${borderRadius};
     display: flex;
     flex-direction: column;
-    padding: ${theme.space[4]} ${theme.space[5]};
+    padding: ${paddingY} ${paddingX};
     position: relative;
     z-index: ${theme.zIndices.modal};
     word-break: break-word;
+    background-color: ${backgroundColor};
+    color: ${color};
     ${modalSizeVariant(options)}
     ${modalOverflowStyle(options)}
     ${drawerContentDefaultStyle(options)}
@@ -353,8 +364,6 @@ export const modalBodyDefaultStyle = (options: ModalSystemThemeParams) => {
   const overflowY = isOverflowInside(overflow) ? 'auto' : 'unset';
 
   const baseStyle = `
-    padding-top: ${theme.space[2]};
-    padding-bottom: ${theme.space[2]};
     background-color: ${theme.colors.transparent};
   `;
 

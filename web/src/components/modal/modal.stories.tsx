@@ -58,10 +58,15 @@ const Template: ComponentStory<typeof Modal> = (args) => (
 );
 
 export const Default = Template.bind({});
+
 Default.args = {
   title: 'Discard changes',
   size: 'xs',
   withFooter: true,
+  removeContentMargin: true,
+  removeContentPadding: true,
+  hideCloseButton: true,
+  borderRadius: '16px',
 };
 
 const APITemplate: ComponentStory<typeof Modal> = (args) => (

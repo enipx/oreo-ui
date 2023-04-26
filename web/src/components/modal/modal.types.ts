@@ -1,8 +1,13 @@
 import type { ButtonProps } from '../button';
 
-import type { ModalThemedDefaultProps } from '@/core/styled/components.types';
+import type {
+  ModalThemedDefaultProps,
+  ViewThemedStyledProps,
+} from '@/core/styled/components.types';
 
-export interface ModalProps extends ModalThemedDefaultProps {
+export interface ModalProps
+  extends ModalThemedDefaultProps,
+    Omit<ViewThemedStyledProps, 'size' | 'overflow' | 'color'> {
   /**
    * update footer close button props
    */

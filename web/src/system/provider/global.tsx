@@ -24,6 +24,8 @@ export const GlobalStyle = createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   /* Reapply the pointer cursor for anchor tags */
@@ -127,6 +129,17 @@ export const GlobalStyle = createGlobalStyle`
     }};
     margin: 0;
     padding: 0;
+  }
+
+  /* Anchor default style */
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover, &:active {
+      color: inherit;
+      text-decoration: underline;
+    }
   }
 
   /* Update special element font family to mono */

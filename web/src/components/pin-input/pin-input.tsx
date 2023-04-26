@@ -8,6 +8,7 @@ import type {
   PinInputFieldElementType,
 } from './pin-input.types';
 
+import { border, compose } from '@/core/styled/system';
 import {
   inputDefaultStyle,
   backgroundColor,
@@ -43,6 +44,7 @@ export const StyledInput = styled(
 
   border-color: ${borderColor};
   background-color: ${backgroundColor};
+  ${compose(border)};
 `;
 
 export const PinInput: React.FC<PinInputProps> = (props) => {
