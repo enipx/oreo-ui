@@ -14,7 +14,7 @@ import { styled, baseStyled, useTheme } from '@/core/styled/native';
 export const StyledInputField = styled(
   baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
 )<InputProps>`
-  ${(props) => inputFieldDefaultStyle({ ...props, type: 'native' })};
+  ${(props) => inputFieldDefaultStyle({ ...props, type: 'native' } as any)};
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 `;

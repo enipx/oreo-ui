@@ -17,7 +17,7 @@ export const StyledView = styled(baseStyled('View'))<ViewProps>`
   ${({ flexCenterX }) => flexCenterX && flexCenterYStyle}
 `;
 
-export const View: React.FC<ViewProps> = (props) => {
+export const View = (props: ViewProps) => {
   const { enableKeyboardAvoidingView, keyboardAvoidingViewProps } = props;
 
   const renderChildren = () => {

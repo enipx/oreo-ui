@@ -67,7 +67,7 @@ export const SkeletonBase = (props: SkeletonProps & { index?: number }) => {
 };
 
 export const Skeleton = (props: SkeletonProps) => {
-  const { count = 1, children, loaded, ...otherProps } = props;
+  const { count = 1, children, loading = false, ...otherProps } = props;
 
   const countArray = [...Array(count)];
 
@@ -92,7 +92,7 @@ export const Skeleton = (props: SkeletonProps) => {
     );
   };
 
-  if (loaded && children) {
+  if (!loading && children) {
     return <>{children}</>;
   }
 

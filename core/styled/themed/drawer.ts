@@ -1,4 +1,4 @@
-import { TransitionsTypeObject } from '../css/transitions';
+import type { TransitionsTypeObject } from '../css/transitions';
 import type { SystemThemeParams } from '../index.types';
 
 // @defaults

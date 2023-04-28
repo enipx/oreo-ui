@@ -1,5 +1,5 @@
-import { PackageTypes } from '../../constants/index.types';
-import { BreakpointsObjectKeys } from '../../theme/utilities/breakpoints';
+import type { PackageTypes } from '../../constants/index.types';
+import type { BreakpointsObjectKeys } from '../../theme/utilities/breakpoints';
 
 export type MediaStylesSizeTypes = BreakpointsObjectKeys;
 

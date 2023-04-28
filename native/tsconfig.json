@@ -6,6 +6,10 @@
       "@/*": ["../*"],
       "@system/*": ["./src/system/*"],
       "@components/*": ["./src/components/*"],
+      "styled-components/native": [
+        "node_modules/@types/styled-components-react-native"
+      ],
+      "react-native": ["node_modules/@types/react-native"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

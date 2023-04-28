@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ProviderProps } from './index.types';
+import type { ProviderProps } from './index.types';
 
 export function createContext<ContextValueTypes>() {
   const Context = React.createContext<ContextValueTypes | null>(null);

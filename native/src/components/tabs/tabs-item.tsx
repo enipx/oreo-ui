@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 import { useTabsContext } from './tabs-context';
-import type { TabsItemProps, TabsProps } from './tabs.types';
+import type { TabsItemProps, TabsProps, TabsItemTextProps } from './tabs.types';
 
 import { BaseButton } from '../button';
 import { Text } from '../text';
@@ -16,16 +16,16 @@ import { styled } from '@/core/styled/native';
 import { useTabs } from './use-tabs';
 
 // @exports
-export const StyledTabsItem = styled(BaseButton)<TabsProps>`
+export const StyledTabsItem = styled(BaseButton)<TabsItemProps & TabsProps>`
   ${(props) => tabsItemDefaultStyle({ ...props, type: 'native' } as any)}
   ${(props) => tabsItemVariantStyle({ ...props, type: 'native' } as any)}
 `;
 
-export const StyledTabsItemText = styled(Text)<TabsProps>`
+export const StyledTabsItemText = styled(Text)<TabsItemTextProps & TabsProps>`
   ${(props) => tabsItemTextDefaultStyle({ ...props, type: 'native' } as any)}
 `;
 
-export const TabsItem: React.FC<TabsItemProps> = (props) => {
+export const TabsItem = (props: TabsItemProps) => {
   const tabsContextValue = useTabsContext();
 
   const {
@@ -33,9 +33,9 @@ export const TabsItem: React.FC<TabsItemProps> = (props) => {
     value = '',
     disabled,
     title,
-    style,
     textStyle,
     _selected,
+    textProps,
     ...otherProps
   } = props;
 
@@ -74,25 +74,25 @@ export const TabsItem: React.FC<TabsItemProps> = (props) => {
         <StyledTabsItemText
           isActive={isActive}
           disabled={disabled}
-          {...tabsContextValue}
-          {...otherProps}
-          style={textStyle}>
-          {title}
+          {...textProps}
+          style={textStyle as any}
+          {...(tabsContextValue as any)}>
+          {title as any}
         </StyledTabsItemText>
       );
     }
 
-    return children;
+    return <>{children}</>;
   };
 
   return (
     <StyledTabsItem
       onPress={onPressHandler}
-      {...tabsContextValue}
+      {...(tabsContextValue as any)}
       isActive={isActive}
       disabled={disabled}
       {...otherProps}
-      style={[style, isActive ? _selected : {}]}>
+      style={[isActive ? (_selected as any) : {}]}>
       {renderChildren()}
     </StyledTabsItem>
   );

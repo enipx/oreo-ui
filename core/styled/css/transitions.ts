@@ -32,7 +32,7 @@ export const transitionDefaults = {
 };
 
 // @fade
-export const fade = (options: TransitionsKeyframeOptions) => {
+export const fade = (_options: TransitionsKeyframeOptions) => {
   const ins = `
     from { opacity: 0; }
     to { opacity: 1; }

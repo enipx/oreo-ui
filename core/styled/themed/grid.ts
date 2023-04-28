@@ -1,7 +1,7 @@
 import type { GridThemedStyledProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import { SpacingKeys } from '@/core/theme/utilities/spacing';
+import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @defaults
 export const gridDefaults = {

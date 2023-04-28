@@ -1,7 +1,7 @@
 import { isPackageNative } from '../../helpers/base';
 import { getDimensionsUnitHandler } from '../../helpers/layout';
 import { breakpointsObject as breakpoints } from '../../theme/utilities/breakpoints';
-import {
+import type {
   MediaStylesTypes,
   MediaStylesSizeTypes,
   MediaStylesStyleTypes,
