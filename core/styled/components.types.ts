@@ -1279,6 +1279,12 @@ export interface ScrollbarThemedDefaultProps {
    * set scroll width
    */
   scrollWidth?: string;
+
+  scrollHeight?: string;
+
+  scrollBg?: string;
+
+  scrollHoverBg?: string;
 }
 
 export interface ScrollbarThemedStyledProps

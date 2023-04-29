@@ -1,5 +1,5 @@
 // @imports
-import { Modal, ModalProps } from '..';
+import { Modal, ModalProps } from '../modal';
 import type { DrawerProps } from './drawer.types';
 
 // @exports

@@ -1,7 +1,7 @@
 import type { ScrollbarThemedDefaultProps } from '../components.types';
 import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
-import { styleModeHandler } from './base';
+import { getSpacingValue, styleModeHandler } from './base';
 
 import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
 import { SpacingKeys } from '@/core/theme/utilities/spacing';
@@ -11,19 +11,34 @@ type ScrollbarSystemThemeParams = SystemThemeParams &
   ScrollbarThemedDefaultProps;
 
 export const scrollbarDefaultStyle = (option: ScrollbarSystemThemeParams) => {
-  const { theme, type = 'web', _handle, _track, _hover, scrollWidth } = option;
+  const {
+    theme,
+    type = 'web',
+    _handle,
+    _track,
+    _hover,
+    scrollWidth,
+    scrollHeight,
+    scrollBg,
+    scrollHoverBg,
+  } = option;
 
   const scrollbarWidth = scrollWidth
     ? theme.space?.[scrollWidth as SpacingKeys] || scrollWidth
     : theme.space[1.5];
 
-  const bg = styleModeHandler({ theme, light: 'gray.50', dark: 'gray.800' });
+  const scrollbarHeight = getSpacingValue({ theme, value: scrollHeight });
 
-  const hoverBg = styleModeHandler({
-    theme,
-    light: 'gray.100',
-    dark: 'gray.700',
-  });
+  const bg =
+    scrollBg || styleModeHandler({ theme, light: 'gray.50', dark: 'gray.800' });
+
+  const hoverBg =
+    scrollHoverBg ||
+    styleModeHandler({
+      theme,
+      light: 'gray.100',
+      dark: 'gray.700',
+    });
 
   const baseStyle = `
   `;
@@ -37,6 +52,7 @@ export const scrollbarDefaultStyle = (option: ScrollbarSystemThemeParams) => {
 
     &::-webkit-scrollbar {
       width: ${scrollbarWidth};
+      ${scrollHeight ? `height: ${scrollbarHeight}` : ''}
     }
 
     /* Track */
