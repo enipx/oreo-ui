@@ -4,7 +4,7 @@ import defaultStyled, {
   css,
   ThemeProvider,
   DefaultTheme,
-  useTheme,
+  useTheme as useStyledTheme,
   createGlobalStyle,
   CSSProperties,
   ThemeProviderProps,
@@ -12,6 +12,7 @@ import defaultStyled, {
 import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
+import type { ThemeType } from '../theme';
 import type {
   WebThemeStyledTagProps,
   ThemeStyledCategoriesArrayProps,
@@ -71,6 +72,8 @@ const baseStyled = (
     ${_shadow}
   `;
 };
+
+const useTheme: () => ThemeType = useStyledTheme;
 
 export type { DefaultTheme, CSSProperties, ThemeProviderProps };
 

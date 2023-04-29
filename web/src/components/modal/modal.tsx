@@ -222,6 +222,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
           modalSize={size}
           style={style}
           overflow={overflow}
+          isDrawer={isDrawer}
           {...otherProps}>
           <ModalHeader
             hideCloseButton={hideCloseButton}

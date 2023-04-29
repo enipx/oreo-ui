@@ -10,6 +10,7 @@ import type {
 import type { TransitionsType } from './css/transitions';
 import type {
   LayoutThemeStyledProps,
+  ThemeStyledProps,
   TypographyThemeStyledProps,
 } from './index.types';
 import type {
@@ -21,7 +22,7 @@ import type {
 } from './system';
 import type { CSSProperties } from './web';
 
-export interface ViewThemedStyledProps extends LayoutThemeStyledProps {
+export interface ViewThemedStyledProps extends ThemeStyledProps {
   /**
    * align children horizontally and vertically
    */
@@ -933,7 +934,7 @@ export interface TabsPanelThemedStyledProps
 
 export interface TabsItemThemedStyledProps
   extends TabsItemThemedDefaultProps,
-    LayoutThemeStyledProps {}
+    TypographyThemeStyledProps {}
 
 export type TableThemedSizeTypes = 'sm' | 'md' | 'lg';
 export interface TableThemedDefaultProps {

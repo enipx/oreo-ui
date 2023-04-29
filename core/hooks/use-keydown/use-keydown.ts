@@ -32,10 +32,15 @@ export const useKeydown = (options: UseKeydownkOptionsType) => {
           return;
       }
 
+      const eventCallback = () => {
+        event.preventDefault();
+        callback?.();
+      };
+
       // shift key
       if (specialKey === 'shift' && event.shiftKey) {
         if (event.key.toLowerCase() === shortcut.toLowerCase()) {
-          callback?.();
+          eventCallback();
           return;
         }
       }
@@ -43,13 +48,13 @@ export const useKeydown = (options: UseKeydownkOptionsType) => {
       // control key
       if (specialKey === 'ctrl' && event.ctrlKey) {
         if (event.key.toLowerCase() === shortcut.toLowerCase()) {
-          callback?.();
+          eventCallback();
           return;
         }
       }
 
       if (event.key === key && enabled) {
-        callback?.();
+        eventCallback();
       }
     },
     [callback]

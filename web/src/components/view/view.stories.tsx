@@ -8,6 +8,7 @@ export default {
   component: View,
   argTypes: {
     backgroundColor: { control: 'color' },
+    bg: { control: 'color' },
   },
 } as ComponentMeta<typeof View>;
 

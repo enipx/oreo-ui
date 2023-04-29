@@ -29,7 +29,7 @@ const {
   default: styled,
   css,
   ThemeProvider,
-  useTheme,
+  useTheme: useStyledTheme,
 } = styledComponents as unknown as styledComponents.ReactNativeThemedStyledComponentsModule<ThemeType>;
 
 const defaultTheme = defaultThemeHandler('native');
@@ -75,6 +75,8 @@ const baseStyled = (
 type DefaultTheme = ThemeType;
 
 export type { ReactNativeStyledInterface, DefaultTheme };
+
+const useTheme: () => ThemeType = useStyledTheme;
 
 export {
   styled,
