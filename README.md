@@ -48,7 +48,6 @@ export default function App() {
 
 Great! You're all set. You can now use Oreo throughout your application.
 
-
 ```jsx
 import { Button } from "@oreo-ui/web" | "@oreo-ui/native"
 
@@ -58,6 +57,12 @@ function Example() {
 ```
 
 Full documentation available [here](https://oreo-ui.com/)
+
+## Todo
+
+- [ ] improve documentation (majorly to accommodate native users properly)
+- [ ] write test
+- [ ] enhance UI and accessibility
 
 ## Contributing
 

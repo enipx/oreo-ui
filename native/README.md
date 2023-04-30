@@ -1,2 +1,0 @@
-# Todo
-- Make view scrollable
