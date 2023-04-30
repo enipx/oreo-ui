@@ -23,7 +23,7 @@ export const Container: React.FC<ContainerProps> = (props) => {
     ...otherProps
   } = props;
 
-  const { bg } = useModeTheme();
+  const { bg, isDark } = useModeTheme();
 
   const backgroundColor =
     (props!.backgroundColor as string) || (props!.bg as string) || bg;
@@ -47,7 +47,7 @@ export const Container: React.FC<ContainerProps> = (props) => {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>
       <StatusBar
-        barStyle={statusBar || 'dark-content'}
+        barStyle={statusBar || isDark ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundColor}
         {...statusBarProps}
       />

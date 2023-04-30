@@ -8,6 +8,10 @@ export const decorators = [
       colors: {
         primary: '#0ff',
       },
+      fonts: {
+        heading: 'inter',
+        body: 'inter',
+      }
     }}>
       <Story />
     </OreoProvider>

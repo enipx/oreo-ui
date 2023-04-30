@@ -18,10 +18,15 @@ export const StyledView = styled(baseStyled('View'))<ViewProps>`
 `;
 
 export const View = (props: ViewProps) => {
-  const { enableKeyboardAvoidingView, keyboardAvoidingViewProps } = props;
+  const {
+    enableKeyboardAvoidingView,
+    keyboardAvoidingViewProps,
+    children,
+    ...otherProps
+  } = props;
 
   const renderChildren = () => {
-    return <StyledView {...(props as any)} />;
+    return <StyledView {...(otherProps as any)}>{children}</StyledView>;
   };
 
   if (enableKeyboardAvoidingView) {

@@ -7,6 +7,7 @@ import {
   styleModeHandler,
   variantModeHandler,
 } from './base';
+import { getNativeTextFont } from './text';
 
 import { packagePrefix } from '@/core/constants';
 import { isPackageNative } from '@/core/helpers/base';
@@ -205,6 +206,7 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     height: 100%;
     flex: 1;
     font-size: ${fontSize};
+    ${getNativeTextFont(option)}
   `;
 
   const web = `
@@ -320,6 +322,7 @@ export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    ${getNativeTextFont(option)}
   `;
 
   const web = `

@@ -10,7 +10,7 @@ import { textDefaultStyle } from '@/core/styled/themed/text';
 export const Text = styled(
   baseStyled('Text', ['background', 'border', 'grid', 'position', 'shadow'])
 )<TextProps>`
-  ${(props) => textDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => textDefaultStyle({ ...props, packageType: 'native' } as any)}
   color: ${baseColor};
   ${typography}
   ${color}

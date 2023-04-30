@@ -7,6 +7,7 @@ import {
   getUtilitiesValue,
   styleModeHandler,
 } from './base';
+import { getNativeTextFont } from './text';
 
 // @defaults
 export const avatarDefaults = {
@@ -202,6 +203,7 @@ export const avatarTextDefaultStyle = (options: AvatarSystemThemeParams) => {
 
   const native = `
     ${baseStyle}
+    ${getNativeTextFont(options)}
   `;
 
   const web = `

@@ -3,6 +3,7 @@ import type { ReactHTML, SVGProps } from 'react';
 
 import type { PackageTypes, ThemeModeKeys } from '../constants/index.types';
 import type { IconSizingKeys } from '../theme/utilities/sizing';
+import type { FontKeys } from '../theme/utilities/typography';
 import type { ReactNativeStyledInterface, DefaultTheme } from './native';
 import type {
   SpaceProps,
@@ -87,6 +88,8 @@ export type SystemThemeParams = Record<string, any> & {
   rightIcon?: React.ReactNode;
   resize?: string;
   index?: number;
+  styleType?: 'css' | 'react';
+  fontKey?: FontKeys;
 };
 
 export type SystemThemeReturnType = { [key in PackageTypes]: string };

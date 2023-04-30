@@ -23,10 +23,30 @@ export const getNativeTextFont = (option: TextSystemThemeParams) => {
   return '';
 };
 
-export const getTextStyles = (option: TextSystemThemeParams) => {
-  const { theme, type, fontSize, fontWeight } = option;
+export const getFonts = (option: TextSystemThemeParams) => {
+  const { theme, fontKey, styleType = 'css' } = option;
 
-  const isNative = isPackageNative(type);
+  const isStyleReact = styleType === 'react';
+
+  if (fontKey && theme.fonts[fontKey]) {
+    if (isStyleReact) {
+      return {
+        fontFamily: theme.fonts[fontKey],
+      };
+    }
+
+    return `
+      font-family: ${theme.fonts[fontKey]};
+    `;
+  }
+
+  return isStyleReact ? {} : '';
+};
+
+export const getTextStyles = (option: TextSystemThemeParams) => {
+  const { theme, packageType, fontSize, fontWeight } = option;
+
+  const isNative = isPackageNative(packageType);
 
   const getSize = (size: FontSizeKeys) => {
     return (
@@ -41,35 +61,49 @@ export const getTextStyles = (option: TextSystemThemeParams) => {
 
   const { borderColor } = getBaseStyle(option);
 
-  const baseStyles = {
+  const baseStyles: any = {
     fontWeight:
       getUtilitiesValue({ theme, key: 'fontWeights', value: fontWeight }) ||
-      getWeight('bold'),
+      getWeight('semiBold'),
+  };
+
+  const headingBaseStyle = {
+    ...((getFonts({
+      ...option,
+      fontKey: 'heading',
+      styleType: 'react',
+    }) as any) || {}),
   };
 
   const styles: { [key: string]: React.CSSProperties } = {
     h1: {
       ...baseStyles,
+      ...headingBaseStyle,
       fontSize: getSize('2xl'),
     },
     h2: {
       ...baseStyles,
+      ...headingBaseStyle,
       fontSize: getSize('xl'),
     },
     h3: {
       ...baseStyles,
+      ...headingBaseStyle,
       fontSize: getSize('lg'),
     },
     h4: {
       ...baseStyles,
+      ...headingBaseStyle,
       fontSize: getSize('md'),
     },
     h5: {
       ...baseStyles,
+      ...headingBaseStyle,
       fontSize: getSize('sm'),
     },
     h6: {
       ...baseStyles,
+      ...headingBaseStyle,
       fontSize: getSize('xs'),
     },
     kbd: {
@@ -98,7 +132,7 @@ export const getTextStyles = (option: TextSystemThemeParams) => {
     },
   };
 
-  const style = styles?.[option.as as keyof typeof styles];
+  const style = styles?.[(option.as || option.type) as keyof typeof styles];
 
   return convertReactCSSToCSSHandler(style);
 };
@@ -120,7 +154,7 @@ export const textTruncateStyle = (option: TextSystemThemeParams) => {
 };
 
 export const textDefaultStyle = (option: TextSystemThemeParams) => {
-  const { theme, type = 'web', textTransform } = option;
+  const { theme, packageType = 'web', textTransform } = option;
 
   const baseStyle = `
     text-transform: ${textTransform || 'none'};
@@ -128,9 +162,9 @@ export const textDefaultStyle = (option: TextSystemThemeParams) => {
   `;
 
   const native = `
+    font-size: ${theme.fontSizes.md};
     ${baseStyle}
     ${getNativeTextFont(option)}
-    font-size: ${theme.fontSizes.md};
   `;
 
   const web = `
@@ -143,5 +177,5 @@ export const textDefaultStyle = (option: TextSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };

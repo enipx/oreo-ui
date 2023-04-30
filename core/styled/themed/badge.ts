@@ -1,6 +1,7 @@
 import type { BadgeThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getColorSchemeStyle } from './base';
+import { getNativeTextFont } from './text';
 
 // @defaults
 export const badgeDefaults = {};
@@ -32,6 +33,7 @@ export const badgeDefaultStyle = (options: BadgeSystemThemeParams) => {
   const native = `
     ${baseStyle}
     align-self: flex-start;
+    ${getNativeTextFont(options)}
   `;
 
   const web = `
