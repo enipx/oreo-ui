@@ -92,18 +92,18 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
   const cursor = disabled ? 'not-allowed' : 'pointer';
 
   const borderColor = () => {
-    if (disabled) {
-      return styleModeHandler({
-        light: 'gray.200',
-        dark: 'gray.600',
-        theme,
-      });
-    }
-
     if (checked) {
       return styleModeHandler({
         light: 'blue.500',
         dark: 'blue.600',
+        theme,
+      });
+    }
+
+    if (disabled) {
+      return styleModeHandler({
+        light: 'gray.200',
+        dark: 'gray.600',
         theme,
       });
     }
@@ -116,18 +116,18 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
   };
 
   const backgroundColor = () => {
-    if (disabled) {
-      return styleModeHandler({
-        light: 'gray.200',
-        dark: 'gray.600',
-        theme,
-      });
-    }
-
     if (checked) {
       return styleModeHandler({
         light: 'blue.500',
         dark: 'blue.600',
+        theme,
+      });
+    }
+
+    if (disabled) {
+      return styleModeHandler({
+        light: 'gray.200',
+        dark: 'gray.600',
         theme,
       });
     }
