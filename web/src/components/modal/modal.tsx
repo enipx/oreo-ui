@@ -1,12 +1,4 @@
 // @imports
-import { Button } from '@components/button';
-import { IconButton } from '@components/icon-button';
-import { Portal } from '@components/portal';
-import { Text } from '@components/text';
-import { useEffect, useRef } from 'react';
-
-import { CloseIcon } from './modal-icon';
-import type { ModalProps } from './modal.types';
 
 import { isString } from '@/core/helpers/base';
 import {
@@ -27,6 +19,15 @@ import {
   modalDefaultTransitions,
 } from '@/core/styled/themed/modal';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useEffect, useRef } from 'react';
+
+import { Button } from '@components/button';
+import { IconButton } from '@components/icon-button';
+import { Portal } from '@components/portal';
+import { Text } from '@components/text';
+
+import { CloseIcon } from './modal-icon';
+import type { ModalProps } from './modal.types';
 
 // @exports
 export const defaultView = () => {

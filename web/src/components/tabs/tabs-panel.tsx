@@ -1,6 +1,7 @@
 // @imports
-import { View } from '@components/view';
 import { useRef, useMemo } from 'react';
+
+import { View } from '@components/view';
 
 import { useTabsContext } from './tabs-context';
 import type { TabsPanelProps } from './tabs.types';

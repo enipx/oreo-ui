@@ -1,5 +1,4 @@
 // @imports
-import type { FadeProps } from './fade.types';
 
 import {
   transitionDefaults,
@@ -9,6 +8,8 @@ import {
   fadeTop,
 } from '@/core/styled/css/transitions';
 import { styled, baseStyled, keyframes, css } from '@/core/styled/web';
+
+import type { FadeProps } from './fade.types';
 
 // @exports
 export const animationOptionsStyle = (props: FadeProps) => {

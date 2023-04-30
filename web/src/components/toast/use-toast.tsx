@@ -1,4 +1,6 @@
 // @imports
+import { generateUIDHandler } from '@/core/helpers/base';
+import { toastDefaults } from '@/core/styled/themed/toast';
 import { useState } from 'react';
 
 import { useToastContext } from './toast-context';
@@ -7,9 +9,6 @@ import type {
   ToastContextProps,
   useToastProps,
 } from './toast.types';
-
-import { generateUIDHandler } from '@/core/helpers/base';
-import { toastDefaults } from '@/core/styled/themed/toast';
 
 // @exports
 export const useToastConfig = () => {

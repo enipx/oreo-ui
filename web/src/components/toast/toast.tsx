@@ -1,12 +1,4 @@
 // @imports
-import { useEffect, useMemo, useRef } from 'react';
-
-import { Alert } from '../alert';
-import { Portal } from '../portal';
-import { ToastContextProvider } from './toast-context';
-import type { ToastProviderProps, ToastStateProps } from './toast.types';
-import { useToastConfig } from './use-toast';
-
 import { useTimeout } from '@/core/hooks/use-timeout';
 import {
   getTransitionClassName,
@@ -20,6 +12,13 @@ import {
   getToastTransition,
 } from '@/core/styled/themed/toast';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useEffect, useMemo, useRef } from 'react';
+
+import { Alert } from '../alert';
+import { Portal } from '../portal';
+import { ToastContextProvider } from './toast-context';
+import type { ToastProviderProps, ToastStateProps } from './toast.types';
+import { useToastConfig } from './use-toast';
 
 // @exports
 export const ToastContainer = styled(baseStyled('ul'))<ToastProviderProps>`

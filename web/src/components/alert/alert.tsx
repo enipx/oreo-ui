@@ -1,4 +1,14 @@
 // @imports
+import {
+  getTransitionClassName,
+  transitionDefaults,
+} from '@/core/styled/css/transitions';
+import {
+  alertDefaultStyle,
+  alertDefaults,
+  getAlertIconType,
+} from '@/core/styled/themed/alert';
+import { styled } from '@/core/styled/web';
 import { useRef, useState } from 'react';
 
 import { IconButton } from '../icon-button';
@@ -12,17 +22,6 @@ import {
   CloseIcon,
 } from './alert-icon';
 import type { AlertProps, AlertIconObjectType } from './alert.types';
-
-import {
-  getTransitionClassName,
-  transitionDefaults,
-} from '@/core/styled/css/transitions';
-import {
-  alertDefaultStyle,
-  alertDefaults,
-  getAlertIconType,
-} from '@/core/styled/themed/alert';
-import { styled } from '@/core/styled/web';
 
 // @exports
 export const StyledAlert = styled(View)<AlertProps>`

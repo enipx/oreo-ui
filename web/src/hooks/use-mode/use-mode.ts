@@ -1,9 +1,9 @@
 // @imports
-import { useCallback, useEffect, useState } from 'react';
 
 import type { ThemeModeKeys } from '@/core/constants/index.types';
-import { setLocalStorage, getLocalStorage } from '@/core/helpers/storage';
+import { getLocalStorage, setLocalStorage } from '@/core/helpers/storage';
 import { useKeydown } from '@/core/hooks/use-keydown';
+import { useCallback, useEffect, useState } from 'react';
 
 export type UseModeOptionsType = {
   mode: ThemeModeKeys;

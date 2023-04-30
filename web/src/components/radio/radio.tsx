@@ -1,10 +1,4 @@
 // @imports
-import { useId } from 'react';
-
-import { InputLabel, InputHint } from '../input/input';
-import { View } from '../view';
-import type { RadioProps, RadioDataType } from './radio.types';
-
 import { isArrayLastItem } from '@/core/helpers/base';
 import {
   radioDefaults,
@@ -14,6 +8,11 @@ import {
   radioDataExist,
 } from '@/core/styled/themed/radio';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useId } from 'react';
+
+import { InputLabel, InputHint } from '../input/input';
+import { View } from '../view';
+import type { RadioProps, RadioDataType } from './radio.types';
 
 // @exports
 export const StyledRadio = styled(

@@ -1,11 +1,10 @@
 // @imports
+import { avatarGroupDefaultStyle } from '@/core/styled/themed/avatar';
+import { baseStyled, styled } from '@/core/styled/web';
 import { Children, cloneElement } from 'react';
 
 import { AvatarBase } from './avatar-base';
 import type { AvatarGroupProps, AvatarProps } from './avatar.types';
-
-import { avatarGroupDefaultStyle } from '@/core/styled/themed/avatar';
-import { baseStyled, styled } from '@/core/styled/web';
 
 // @exports
 export const StyledAvatarGroup = styled(

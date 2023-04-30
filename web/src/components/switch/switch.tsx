@@ -1,10 +1,4 @@
 // @imports
-import { useId } from 'react';
-
-import { InputLabel, InputHint } from '../input/input';
-import { View } from '../view';
-import type { SwitchProps } from './switch.types';
-
 import {
   switchDefaults,
   switchDefaultStyle,
@@ -13,6 +7,11 @@ import {
   switchBaseStyle,
 } from '@/core/styled/themed/switch';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useId } from 'react';
+
+import { InputLabel, InputHint } from '../input/input';
+import { View } from '../view';
+import type { SwitchProps } from './switch.types';
 
 // @exports
 export const StyledSwitch = styled(

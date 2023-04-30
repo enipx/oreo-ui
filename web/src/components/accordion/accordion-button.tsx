@@ -1,4 +1,13 @@
 // @imports
+import {
+  accordionButtonDefaultStyle,
+  borderBottomColor,
+  accordionDefaults,
+  accordionIconOrderHandler,
+  buttonColor,
+} from '@/core/styled/themed/accordion';
+import { baseStyled, styled } from '@/core/styled/web';
+
 import { IconButton } from '../icon-button';
 import { View } from '../view';
 import {
@@ -8,15 +17,6 @@ import {
 import { ChevronUpIcon } from './accordion-icon';
 import type { AccordionButtonProps, AccordionProps } from './accordion.types';
 import { useAccordion } from './use-accordion';
-
-import {
-  accordionButtonDefaultStyle,
-  borderBottomColor,
-  accordionDefaults,
-  accordionIconOrderHandler,
-  buttonColor,
-} from '@/core/styled/themed/accordion';
-import { baseStyled, styled } from '@/core/styled/web';
 
 // @exports
 export const StyledAccordionButton = styled(

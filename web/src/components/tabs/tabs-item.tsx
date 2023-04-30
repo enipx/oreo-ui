@@ -1,16 +1,15 @@
 // @imports
-import { useEffect, memo } from 'react';
-
-import { useTabsContext } from './tabs-context';
-import type { TabsItemProps } from './tabs.types';
-import { useTabs } from './use-tabs';
-
 import {
   tabsItemDefaultStyle,
   tabsItemVariantStyle,
   tabsItemCustomStyle,
 } from '@/core/styled/themed/tabs';
 import { baseStyled, styled } from '@/core/styled/web';
+import { useEffect, memo } from 'react';
+
+import { useTabsContext } from './tabs-context';
+import type { TabsItemProps } from './tabs.types';
+import { useTabs } from './use-tabs';
 
 // @exports
 export const StyledTabsItem = styled(baseStyled('button'))<any>`

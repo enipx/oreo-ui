@@ -1,10 +1,4 @@
 // @imports
-import { useId } from 'react';
-
-import { InputLabel, InputHint } from '../input/input';
-import { View } from '../view';
-import type { CheckboxProps } from './checkbox.types';
-
 import {
   checkboxDefaults,
   checkboxDefaultStyle,
@@ -12,6 +6,11 @@ import {
   checkboxCheckedStyle,
 } from '@/core/styled/themed/checkbox';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useId } from 'react';
+
+import { InputLabel, InputHint } from '../input/input';
+import { View } from '../view';
+import type { CheckboxProps } from './checkbox.types';
 
 // @exports
 export const StyledCheckbox = styled(

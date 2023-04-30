@@ -1,7 +1,7 @@
 // @imports
-import type { PopoverContextProps } from './popover.types';
-
 import { createContext } from '@/core/utils/context';
+
+import type { PopoverContextProps } from './popover.types';
 
 // @exports
 export const [PopoverContextProvider, usePopoverContext] =

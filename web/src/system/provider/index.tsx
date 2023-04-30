@@ -1,10 +1,4 @@
 // @imports
-import { ModalProvider } from '@components/modal';
-import { ToastProvider } from '@components/toast';
-
-import { useMode } from '../../hooks/use-mode/use-mode';
-import { GlobalStyle } from './global';
-import { OreoProviderProps } from './provider.types';
 
 import type { Subset } from '@/core/constants/index.types';
 import { mergedObjectsHandler } from '@/core/helpers/base';
@@ -12,6 +6,13 @@ import type { ModeContextProviderProps } from '@/core/styled/components.types';
 import { ThemeProvider } from '@/core/styled/web';
 import defaultTheme, { ThemeType } from '@/core/theme';
 import { createContext } from '@/core/utils/context';
+
+import { ModalProvider } from '@components/modal';
+import { ToastProvider } from '@components/toast';
+
+import { useMode } from '../../hooks/use-mode/use-mode';
+import { GlobalStyle } from './global';
+import { OreoProviderProps } from './provider.types';
 
 // @file declarations
 export type DefaultTheme = Subset<ThemeType>;

@@ -1,17 +1,4 @@
 // @imports
-import { useEffect, useState, forwardRef } from 'react';
-
-import { IconButton } from '../icon-button';
-import { Text } from '../text';
-import { View } from '../view';
-import { HidePasswordIcon, ShowPasswordIcon } from './input-icon';
-import type {
-  InputProps,
-  InputContainerProps,
-  InputHintProps,
-  InputLabelProps,
-} from './input.types';
-
 import {
   width,
   height,
@@ -33,6 +20,18 @@ import {
   inputDefaults,
 } from '@/core/styled/themed/input';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useEffect, useState, forwardRef } from 'react';
+
+import { IconButton } from '../icon-button';
+import { Text } from '../text';
+import { View } from '../view';
+import { HidePasswordIcon, ShowPasswordIcon } from './input-icon';
+import type {
+  InputProps,
+  InputContainerProps,
+  InputHintProps,
+  InputLabelProps,
+} from './input.types';
 
 // @exports
 export const StyledInputContainer = styled(

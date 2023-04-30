@@ -1,9 +1,8 @@
-import type { usePopper } from 'react-popper';
-
 import type {
   PopoverThemedDefaultProps,
   PopoverContentThemedStyledProps,
 } from '@/core/styled/components.types';
+import type { usePopper } from 'react-popper';
 
 export interface PopoverProps extends PopoverThemedDefaultProps {}
 

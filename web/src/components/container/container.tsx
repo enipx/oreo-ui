@@ -1,8 +1,8 @@
 // @imports
+import { styled } from '@/core/styled/web';
+
 import { View } from '../view';
 import type { ContainerProps } from './container.types';
-
-import { styled } from '@/core/styled/web';
 
 // @exports
 export const Container = styled(View)<ContainerProps>`

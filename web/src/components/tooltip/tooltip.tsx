@@ -1,14 +1,14 @@
 // @imports
-import { usePopover } from '@components/popover/use-popover';
-import { View } from '@components/view';
-import { useState, Children, cloneElement, SetStateAction } from 'react';
-
-import { Portal } from '../portal';
-import type { TooltipProps } from './tooltip.types';
-
 import { isString } from '@/core/helpers/base';
 import { tooltipDefaultStyle } from '@/core/styled/themed/tooltip';
 import { styled } from '@/core/styled/web';
+import { useState, Children, cloneElement, SetStateAction } from 'react';
+
+import { usePopover } from '@components/popover/use-popover';
+import { View } from '@components/view';
+
+import { Portal } from '../portal';
+import type { TooltipProps } from './tooltip.types';
 
 // @exports
 export const StyledTooltip = styled(View)<TooltipProps>`

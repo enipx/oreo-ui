@@ -1,11 +1,10 @@
-import type { RefObject } from 'react';
-
 import type {
   TabsThemedDefaultProps,
   TabsListThemedStyledProps,
   TabsPanelThemedStyledProps,
   TabsItemThemedStyledProps,
 } from '@/core/styled/components.types';
+import type { RefObject } from 'react';
 
 export interface TabsProps extends TabsThemedDefaultProps {
   isActive?: boolean;

@@ -1,8 +1,8 @@
 // @imports
-import React from 'react';
 
 import type { WebSvgProps } from '@/core/styled/index.types';
 import { iconSizing } from '@/core/theme/utilities/sizing';
+import React from 'react';
 
 export const ChevronUpIcon: React.FC<WebSvgProps> = (props) => {
   const { size, style } = props;

@@ -1,13 +1,13 @@
 // @imports
-import { useCallback, useState } from 'react';
-import { usePopper } from 'react-popper';
-
-import type { UsePopverOptions } from './popover.types';
 
 import { useKeydown } from '@/core/hooks/use-keydown';
 import { useOutsideElementClick } from '@/core/hooks/use-outside-element-click';
 import { getTransitionClassName } from '@/core/styled/css/transitions';
 import spacing from '@/core/theme/utilities/spacing';
+import { useCallback, useState } from 'react';
+import { usePopper } from 'react-popper';
+
+import type { UsePopverOptions } from './popover.types';
 
 // @exports
 export const usePopover = (options: UsePopverOptions) => {

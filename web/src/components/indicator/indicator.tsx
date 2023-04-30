@@ -1,11 +1,12 @@
 // @imports
-import { View } from '@components/view';
-
-import type { IndicatorProps } from './indicator.types';
 
 import { width, height, compose } from '@/core/styled/system';
 import { indicatorDefaultStyle } from '@/core/styled/themed/indicator';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import { View } from '@components/view';
+
+import type { IndicatorProps } from './indicator.types';
 
 // @exports
 export const StyledIndicator = styled(

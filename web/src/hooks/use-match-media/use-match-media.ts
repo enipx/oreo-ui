@@ -1,11 +1,11 @@
 // @imports
-import { useEffect, useState } from 'react';
 
 import { domExistsHandler } from '@/core/helpers/dom';
 import {
   BreakpointsObjectKeys,
   getBreakpoints,
 } from '@/core/theme/utilities/breakpoints';
+import { useEffect, useState } from 'react';
 
 // @types
 export type UseMatchMediaOptionType = {

@@ -1,6 +1,5 @@
-import React from 'react';
-
 import type { CheckboxThemedStyledProps } from '@/core/styled/components.types';
+import React from 'react';
 
 export interface CheckboxProps
   extends CheckboxThemedStyledProps,

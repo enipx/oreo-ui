@@ -1,6 +1,5 @@
-import React from 'react';
-
 import type { PinInputThemedDefaultProps } from '@/core/styled/components.types';
+import React from 'react';
 
 export interface PinInputProps
   extends PinInputThemedDefaultProps,

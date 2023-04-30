@@ -1,13 +1,13 @@
 // @imports
-import { View } from '@components/view';
-
-import type { FlexProps } from './flex.types';
-
 import {
   flexDefaultStyle,
   flexSpacerDefaultStyle,
 } from '@/core/styled/themed/flex';
 import { styled } from '@/core/styled/web';
+
+import { View } from '@components/view';
+
+import type { FlexProps } from './flex.types';
 
 // @exports
 export const StyledFlex = styled(View)<FlexProps>`

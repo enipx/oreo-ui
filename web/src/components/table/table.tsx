@@ -1,5 +1,8 @@
 // @imports
 
+import { tableDefaultStyle } from '@/core/styled/themed/table';
+import { styled, baseStyled } from '@/core/styled/web';
+
 import {
   TableContainer,
   Thead,
@@ -11,9 +14,6 @@ import {
   Tcaption,
 } from './table.fragments';
 import type { TableProps } from './table.types';
-
-import { tableDefaultStyle } from '@/core/styled/themed/table';
-import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledTable = styled(baseStyled('table'))`

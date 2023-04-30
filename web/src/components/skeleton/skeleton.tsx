@@ -1,10 +1,11 @@
 // @imports
-import { FadeIn } from '../transitions';
-import type { SkeletonProps } from './skeleton.types';
 
 import { layout, border, space } from '@/core/styled/system';
 import { skeletonDefaultStyle } from '@/core/styled/themed/skeleton';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import { FadeIn } from '../transitions';
+import type { SkeletonProps } from './skeleton.types';
 
 // @exports
 export const StyledSkeleton = styled(

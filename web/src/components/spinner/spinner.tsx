@@ -1,9 +1,10 @@
 // @imports
-import type { SpinnerProps } from './spinner.types';
 
 import { width, height, compose, border } from '@/core/styled/system';
 import { spinnerDefaultStyle } from '@/core/styled/themed/spinner';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import type { SpinnerProps } from './spinner.types';
 
 // @exports
 export const Spinner = styled(

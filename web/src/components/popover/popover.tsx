@@ -1,15 +1,15 @@
 // @imports
-import { View } from '@components/view';
+import { tooltipDefaultStyle } from '@/core/styled/themed/tooltip';
+import { styled } from '@/core/styled/web';
 import { useState } from 'react';
+
+import { View } from '@components/view';
 
 import { PopoverContent } from './popover-content';
 import { PopoverContextProvider } from './popover-context';
 import { PopoverTarget } from './popover-target';
 import type { PopoverProps } from './popover.types';
 import { usePopover } from './use-popover';
-
-import { tooltipDefaultStyle } from '@/core/styled/themed/tooltip';
-import { styled } from '@/core/styled/web';
 
 // @exports
 export const StyledTooltip = styled(View)<PopoverProps>`

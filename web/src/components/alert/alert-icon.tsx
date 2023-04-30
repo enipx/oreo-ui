@@ -1,10 +1,9 @@
 // @imports
+import type { WebSvgProps } from '@/core/styled/index.types';
+import { iconSizing } from '@/core/theme/utilities/sizing';
 import React from 'react';
 
 import { CloseIcon } from '../modal/modal-icon';
-
-import type { WebSvgProps } from '@/core/styled/index.types';
-import { iconSizing } from '@/core/theme/utilities/sizing';
 
 export const InfoIcon = (props: WebSvgProps) => {
   const iconSize = iconSizing[props.size || 'sm'];

@@ -1,11 +1,10 @@
 // @imports
+import { domExistsHandler } from '@/core/helpers/dom';
+import { createPortalNode, getPortalNode } from '@/core/styled/themed/portal';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import type { PortalProps } from './portal.types';
-
-import { domExistsHandler } from '@/core/helpers/dom';
-import { createPortalNode, getPortalNode } from '@/core/styled/themed/portal';
 
 // @exports
 export const Portal: React.FC<PortalProps> = (props) => {

@@ -1,10 +1,4 @@
 // @imports
-import { IconButton } from '../icon-button';
-import { InputLabel, InputHint, StyledInputContainer } from '../input/input';
-import { View } from '../view';
-import { ArrowDownIcon } from './select-icon';
-import type { SelectProps, SelectContainerProps } from './select.types';
-
 import {
   width,
   height,
@@ -25,6 +19,12 @@ import {
   selectContainerBaseStyle,
 } from '@/core/styled/themed/select';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import { IconButton } from '../icon-button';
+import { InputLabel, InputHint, StyledInputContainer } from '../input/input';
+import { View } from '../view';
+import { ArrowDownIcon } from './select-icon';
+import type { SelectProps, SelectContainerProps } from './select.types';
 
 // @exports
 export const StyledSelectContainer = styled(

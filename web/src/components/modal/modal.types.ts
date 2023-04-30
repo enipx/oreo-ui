@@ -1,9 +1,9 @@
-import type { ButtonProps } from '../button';
-
 import type {
   ModalThemedDefaultProps,
   ViewThemedStyledProps,
 } from '@/core/styled/components.types';
+
+import type { ButtonProps } from '../button';
 
 export interface ModalProps
   extends ModalThemedDefaultProps,

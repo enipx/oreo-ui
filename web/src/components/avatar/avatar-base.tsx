@@ -1,10 +1,4 @@
 // @imports
-import { View } from '@components/view';
-
-import { Image } from '../image';
-import { ProfileIcon } from './avatar-icon';
-import type { AvatarProps } from './avatar.types';
-
 import { getNameInitialsHandler } from '@/core/helpers/string';
 import { width, height, border, space, compose } from '@/core/styled/system';
 import {
@@ -12,6 +6,12 @@ import {
   avatarDefaults,
 } from '@/core/styled/themed/avatar';
 import { styled } from '@/core/styled/web';
+
+import { View } from '@components/view';
+
+import { Image } from '../image';
+import { ProfileIcon } from './avatar-icon';
+import type { AvatarProps } from './avatar.types';
 
 // @exports
 export const StyledAvatar = styled(View)<AvatarProps>`

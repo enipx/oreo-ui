@@ -1,12 +1,11 @@
-import type { FocusEvent } from 'react';
-
-import type { TextProps } from '../text';
-import type { ViewProps } from '../view';
-
 import type {
   InputThemedStyledProps,
   InputThemedDefaultProps,
 } from '@/core/styled/components.types';
+import type { FocusEvent } from 'react';
+
+import type { TextProps } from '../text';
+import type { ViewProps } from '../view';
 
 export interface InputContainerProps
   extends Omit<ViewProps, 'size'>,

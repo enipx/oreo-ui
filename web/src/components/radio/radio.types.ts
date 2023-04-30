@@ -1,6 +1,5 @@
-import React from 'react';
-
 import type { RadioThemedStyledProps } from '@/core/styled/components.types';
+import React from 'react';
 
 export type RadioDataType = RadioThemedStyledProps &
   Omit<

@@ -1,11 +1,11 @@
 // @imports
+import { popoverContentDefaultStyle } from '@/core/styled/themed/popover';
+import { styled } from '@/core/styled/web';
+
 import { View } from '@components/view';
 
 import { usePopoverContext } from './popover-context';
 import type { PopoverContentProps } from './popover.types';
-
-import { popoverContentDefaultStyle } from '@/core/styled/themed/popover';
-import { styled } from '@/core/styled/web';
 
 // @exports
 export const StyledPopover = styled(View)<PopoverContentProps>`

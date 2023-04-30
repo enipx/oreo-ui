@@ -1,10 +1,9 @@
 // @imports
+import { isString } from '@/core/helpers/base';
 import { Children, cloneElement } from 'react';
 
 import { usePopoverContext } from './popover-context';
 import type { PopoverTargetProps } from './popover.types';
-
-import { isString } from '@/core/helpers/base';
 
 // @exports
 

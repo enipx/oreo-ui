@@ -1,4 +1,7 @@
 // @imports
+import { accordionContainerDefaultStyle } from '@/core/styled/themed/accordion';
+import { baseBorderColor } from '@/core/styled/themed/base';
+import { styled } from '@/core/styled/web';
 import { useState } from 'react';
 
 import { View } from '../view';
@@ -8,10 +11,6 @@ import { AccordionItem } from './accordion-item';
 import { AccordionPanel } from './accordion-panel';
 import type { AccordionProps } from './accordion.types';
 import { useAccordion } from './use-accordion';
-
-import { accordionContainerDefaultStyle } from '@/core/styled/themed/accordion';
-import { baseBorderColor } from '@/core/styled/themed/base';
-import { styled } from '@/core/styled/web';
 
 // @exports
 export const StyledAccordionContainer = styled(View)<AccordionProps>`

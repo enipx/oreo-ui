@@ -1,11 +1,10 @@
-import type { RefObject } from 'react';
-
 import type {
   AccordionThemedDefaultProps,
   AccordionItemThemedDefaultProps,
   AccordionButtonThemedDefaultProps,
   AccordionPanelThemedDefaultProps,
 } from '@/core/styled/components.types';
+import type { RefObject } from 'react';
 
 export interface AccordionProps extends AccordionThemedDefaultProps {
   isActive?: boolean;

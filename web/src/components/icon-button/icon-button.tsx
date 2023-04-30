@@ -1,5 +1,4 @@
 // @imports
-import type { IconButtonProps } from './icon-button.types';
 
 import { border } from '@/core/styled/system';
 import {
@@ -9,6 +8,8 @@ import {
   iconButtonDefaults,
 } from '@/core/styled/themed/button';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import type { IconButtonProps } from './icon-button.types';
 
 // @exports
 export const StyledIconButton = styled(

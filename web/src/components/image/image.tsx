@@ -1,10 +1,9 @@
 // @imports
+import { imageDefaultStyle } from '@/core/styled/themed/image';
+import { styled, baseStyled } from '@/core/styled/web';
 import { forwardRef, useState, useEffect } from 'react';
 
 import type { ImageProps } from './image.types';
-
-import { imageDefaultStyle } from '@/core/styled/themed/image';
-import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledImage = styled(baseStyled('img'))<ImageProps>`

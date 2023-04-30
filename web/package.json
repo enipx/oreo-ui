@@ -97,6 +97,9 @@
       "universe/web",
       "plugin:prettier/recommended"
     ],
+    "rules": {
+      "import/order": 0
+    },
     "settings": {
       "import/resolver": {
         "alias": {

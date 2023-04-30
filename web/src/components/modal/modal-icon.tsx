@@ -1,8 +1,8 @@
 // @imports
-import React from 'react';
 
 import type { WebSvgProps } from '@/core/styled/index.types';
 import { iconSizing } from '@/core/theme/utilities/sizing';
+import React from 'react';
 
 export const CloseIcon: React.FC<WebSvgProps> = (props) => {
   const iconSize = iconSizing[props.size || 'sm'];

@@ -1,5 +1,4 @@
 // @imports
-import type { ViewProps } from './view.types';
 
 import {
   flexCenterStyle,
@@ -8,6 +7,8 @@ import {
 } from '@/core/styled/css/';
 import { color } from '@/core/styled/system';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import type { ViewProps } from './view.types';
 
 // @exports
 export const View = styled(baseStyled('div'))<ViewProps>`

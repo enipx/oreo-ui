@@ -1,16 +1,5 @@
 // @imports
 
-import type {
-  TableContainerProps,
-  TheadProps,
-  TbodyProps,
-  TfootProps,
-  TableCaptionProps,
-  TdProps,
-  ThProps,
-  TrProps,
-} from './table.types';
-
 import {
   layout,
   overflowX,
@@ -24,6 +13,17 @@ import {
   tableCaptionDefaultStyle,
 } from '@/core/styled/themed/table';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import type {
+  TableContainerProps,
+  TheadProps,
+  TbodyProps,
+  TfootProps,
+  TableCaptionProps,
+  TdProps,
+  ThProps,
+  TrProps,
+} from './table.types';
 
 // @exports
 export const StyledTcaption = styled(baseStyled('caption'))<TableCaptionProps>`

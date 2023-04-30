@@ -1,9 +1,4 @@
 // @imports
-import { IconButton } from '../icon-button';
-import { InputLabel, InputHint } from '../input/input';
-import { View } from '../view';
-import type { TextareaProps } from './textarea.types';
-
 import { border, compose } from '@/core/styled/system';
 import {
   textareaDefaultStyle,
@@ -13,6 +8,11 @@ import {
   focusBorderColor,
 } from '@/core/styled/themed/textarea';
 import { styled, baseStyled } from '@/core/styled/web';
+
+import { IconButton } from '../icon-button';
+import { InputLabel, InputHint } from '../input/input';
+import { View } from '../view';
+import type { TextareaProps } from './textarea.types';
 
 // @exports
 export const StyledTextarea = styled(

@@ -1,10 +1,10 @@
 // @imports
+import { dropdownItemDefaultStyle } from '@/core/styled/themed/dropdown';
+import { styled, baseStyled } from '@/core/styled/web';
+
 import { Text } from '../text';
 import { View } from '../view';
 import type { DropdownItemProps } from './dropdown.types';
-
-import { dropdownItemDefaultStyle } from '@/core/styled/themed/dropdown';
-import { styled, baseStyled } from '@/core/styled/web';
 
 // @exports
 export const StyledDropdownItem = styled(

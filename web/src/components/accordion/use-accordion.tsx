@@ -1,7 +1,7 @@
 // @imports
-import type { UserAccordionProps } from './accordion.types';
-
 import { isArray, isString } from '@/core/helpers/base';
+
+import type { UserAccordionProps } from './accordion.types';
 
 // @exports
 export const useAccordion = (options: UserAccordionProps) => {

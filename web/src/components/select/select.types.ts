@@ -1,9 +1,9 @@
-import type { ViewProps } from '../view';
-
 import type {
   SelectThemedStyledProps,
   SelectThemedDefaultProps,
 } from '@/core/styled/components.types';
+
+import type { ViewProps } from '../view';
 
 export interface SelectContainerProps
   extends Omit<ViewProps, 'size'>,

@@ -1,10 +1,4 @@
 // @imports
-import { forwardRef } from 'react';
-
-import { Spinner } from '../spinner';
-import { View } from '../view';
-import type { ButtonProps } from './button.types';
-
 import {
   width,
   height,
@@ -20,6 +14,11 @@ import {
   buttonDefaults,
 } from '@/core/styled/themed/button';
 import { styled, baseStyled } from '@/core/styled/web';
+import { forwardRef } from 'react';
+
+import { Spinner } from '../spinner';
+import { View } from '../view';
+import type { ButtonProps } from './button.types';
 
 // @exports
 export const StyledButton = styled(baseStyled('button'))<ButtonProps>`

@@ -1,13 +1,4 @@
 // @imports
-import { useRef, useEffect, useState } from 'react';
-
-import { InputLabel, InputHint } from '../input/input';
-import { View } from '../view';
-import type {
-  PinInputProps,
-  PinInputFieldElementType,
-} from './pin-input.types';
-
 import { border, compose } from '@/core/styled/system';
 import {
   inputDefaultStyle,
@@ -24,6 +15,14 @@ import {
   pinInputDefaultStyle,
 } from '@/core/styled/themed/pin-input';
 import { styled, baseStyled } from '@/core/styled/web';
+import { useRef, useEffect, useState } from 'react';
+
+import { InputLabel, InputHint } from '../input/input';
+import { View } from '../view';
+import type {
+  PinInputProps,
+  PinInputFieldElementType,
+} from './pin-input.types';
 
 // @exports
 export const StyledInput = styled(

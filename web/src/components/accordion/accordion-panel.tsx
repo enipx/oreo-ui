@@ -1,6 +1,9 @@
 // @imports
-import { View } from '@components/view';
+import { accordionPanelDefaultStyle } from '@/core/styled/themed/accordion';
+import { styled } from '@/core/styled/web';
 import { useEffect, useRef } from 'react';
+
+import { View } from '@components/view';
 
 import {
   useAccordionItemContext,
@@ -8,9 +11,6 @@ import {
 } from './accordion-context';
 import type { AccordionPanelProps } from './accordion.types';
 import { useAccordion } from './use-accordion';
-
-import { accordionPanelDefaultStyle } from '@/core/styled/themed/accordion';
-import { styled } from '@/core/styled/web';
 
 // @exports
 export const StyledAccordionPanel = styled(View)<AccordionPanelProps>`
