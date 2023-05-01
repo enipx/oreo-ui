@@ -1,6 +1,6 @@
 {
   "name": "@oreo-ui/web",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha1",
   "description": "React UI design system based on utilities and components that allows you to build your product faster",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
