@@ -1,5 +1,5 @@
+import { Divider, Text, useModeTheme, View } from '@oreo-ui/native';
 import React from 'react';
-import { View, Text, useModeTheme, Divider } from '@oreo-ui/native';
 
 interface PreviewCardProps {
   children?: React.ReactNode;
@@ -10,7 +10,7 @@ interface PreviewCardProps {
 export const PreviewCard = (props: PreviewCardProps) => {
   const { children, title, description } = props;
 
-  const { borderColor } = useModeTheme();
+  const { borderColor, isDark } = useModeTheme();
 
   return (
     <View>
@@ -19,7 +19,7 @@ export const PreviewCard = (props: PreviewCardProps) => {
         borderRadius="md"
         overflow="hidden"
         border={`1px solid ${borderColor}`}>
-        <View px={4} py={3} bg="gray.500">
+        <View px={4} py={3} bg={isDark ? 'gray.400' : 'gray.500'}>
           <Text color="white">• {title}</Text>
           {description ? (
             <View mt="xs" opacity=".7">
@@ -30,7 +30,7 @@ export const PreviewCard = (props: PreviewCardProps) => {
           ) : null}
         </View>
 
-        <View p="4">{children}</View>
+        {children ? <View p="4">{children}</View> : null}
       </View>
 
       <Divider />

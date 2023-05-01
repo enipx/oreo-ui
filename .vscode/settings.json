@@ -6,7 +6,7 @@
   "editor.formatOnPaste": true,
 
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
+    "source.organizeImports": false,
   },
 
   "eslint.validate": ["typescript", "javascript"],

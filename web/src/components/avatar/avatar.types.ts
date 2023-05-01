@@ -1,8 +1,9 @@
 import type {
-  AvatarThemedStyledProps,
   AvatarGroupThemedStyledProps,
+  AvatarThemedStyledProps,
 } from '@/core/styled/components.types';
 
-export interface AvatarProps extends AvatarThemedStyledProps {}
+export interface AvatarProps extends Omit<AvatarThemedStyledProps, 'color'> {}
 
-export interface AvatarGroupProps extends AvatarGroupThemedStyledProps {}
+export interface AvatarGroupProps
+  extends Omit<AvatarGroupThemedStyledProps, 'color'> {}

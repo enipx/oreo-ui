@@ -29,7 +29,7 @@ export const AvatarGroup = (props: AvatarGroupProps) => {
   const numberOfUnrenderedAvatar = childrenArray.length - (max || 0);
 
   return (
-    <StyledAvatarGroup {...props}>
+    <StyledAvatarGroup {...(props as any)}>
       {Children.map(avatarChildrenArray, (child, index: number) => {
         const isLastItem = maxExists
           ? false
