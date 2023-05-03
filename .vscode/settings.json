@@ -1,9 +1,9 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
 
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
 
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
 
   "editor.codeActionsOnSave": {
     "source.organizeImports": false,

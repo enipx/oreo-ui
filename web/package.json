@@ -1,10 +1,10 @@
 {
   "name": "@oreo-ui/web",
   "version": "1.0.0-alpha1",
-  "description": "React UI design system based on utilities and components that allows you to build your product faster",
+  "description": "Cross-platform UI components library built for React and React Native",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
-  "types": "./dist/typescript/index.d.ts",
+  "types": "dist/typescript/index.d.ts",
   "repository": "https://github.com/enipx/oreo-ui",
   "author": "enipx <progenipx@gmail.com>",
   "license": "MIT",

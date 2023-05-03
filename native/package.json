@@ -1,7 +1,7 @@
 {
   "name": "@oreo-ui/native",
   "version": "1.0.0-alpha1",
-  "description": "React Native UI design system based on utilities and components that allows you to build your product faster",
+  "description": "Cross-platform UI components library built for React and React Native",
   "main": "./dist/commonjs/index",
   "module": "./dist/module/index",
   "types": "./dist/typescript/index.d.ts",

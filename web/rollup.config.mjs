@@ -1,7 +1,7 @@
 // import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import resolve from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import cleaner from 'rollup-plugin-cleaner';
 import dts from 'rollup-plugin-dts';
 import { minify } from 'rollup-plugin-esbuild';
@@ -28,11 +28,11 @@ export default [
       cleaner({
         targets: ['./dist'],
       }),
+      nodeResolve(),
       peerDepsExternal(),
-      resolve(),
       commonjs(),
       typescript({
-        exclude: ['**/*.stories.tsx', '**/*.test.tsx', './jest-setup.ts'],
+        tsconfig: './tsconfig.json',
       }),
       json(),
       minify(),
