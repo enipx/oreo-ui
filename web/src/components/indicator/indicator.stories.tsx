@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
 
 import { Avatar } from '../avatar';
 import { Indicator } from './indicator';

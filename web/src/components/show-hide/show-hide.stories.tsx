@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
 
 import { Show as ShowElement, Hide as HideElement } from './show-hide';
 

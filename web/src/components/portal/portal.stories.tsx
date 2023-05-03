@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
 
 import { Text } from '../text';
 import { Portal } from './portal';
