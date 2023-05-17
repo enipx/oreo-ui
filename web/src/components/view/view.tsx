@@ -10,6 +10,7 @@ import { styled, baseStyled } from '@/core/styled/web';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import type { ViewProps } from './view.types';
+import { forwardRef } from 'react';
 
 // @exports
 export const StyledView = styled(baseStyled('div'))<ViewProps>`
@@ -20,6 +21,6 @@ export const StyledView = styled(baseStyled('div'))<ViewProps>`
   ${color}
 `;
 
-export const View = (props: ViewProps) => {
-  return <StyledView {...props} />;
-};
+export const View = forwardRef((props: ViewProps, ref) => {
+  return <StyledView {...props} ref={ref} />;
+});

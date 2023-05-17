@@ -11,7 +11,7 @@ import {
   Th,
   Tr,
   Td,
-  Tcaption,
+  TCaption,
 } from './table.fragments';
 import type { TableProps } from './table.types';
 
@@ -33,4 +33,4 @@ Table.Foot = Tfoot;
 Table.Tr = Tr;
 Table.Th = Th;
 Table.Td = Td;
-Table.Caption = Tcaption;
+Table.Caption = TCaption;

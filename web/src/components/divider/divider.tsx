@@ -6,6 +6,7 @@ import { styled, baseStyled } from '@/core/styled/web';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import type { DividerProps } from './divider.types';
+import { forwardRef } from 'react';
 
 // @exports
 export const StyledDivider = styled(
@@ -23,6 +24,6 @@ export const StyledDivider = styled(
   ${compose(width, height)}
 `;
 
-export const Divider = (props: DividerProps) => {
-  return <StyledDivider {...props} />;
-};
+export const Divider = forwardRef((props: DividerProps, ref) => {
+  return <StyledDivider {...props} ref={ref} />;
+});

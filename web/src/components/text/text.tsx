@@ -6,6 +6,7 @@ import { styled, baseStyled } from '@/core/styled/web';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import type { TextProps } from './text.types';
+import { forwardRef } from 'react';
 
 // @exports
 export const StyledText = styled(baseStyled('p'))<TextProps>`
@@ -15,6 +16,6 @@ export const StyledText = styled(baseStyled('p'))<TextProps>`
   ${border}
 `;
 
-export const Text = (props: TextProps) => {
-  return <StyledText {...props} />;
-};
+export const Text = forwardRef((props: TextProps, ref) => {
+  return <StyledText {...props} ref={ref} />;
+});

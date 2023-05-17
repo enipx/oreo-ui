@@ -25,9 +25,10 @@ import type {
   ThProps,
   TrProps,
 } from './table.types';
+import { forwardRef } from 'react';
 
 // @exports
-export const StyledTcaption = styled(baseStyled('caption'))<TableCaptionProps>`
+export const StyledTCaption = styled(baseStyled('caption'))<TableCaptionProps>`
   ${(props) => tableCaptionDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
@@ -64,41 +65,42 @@ export const StyledTd = styled(baseStyled('td'))<TdProps>`
   ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
-export const TableContainer = (props: TableContainerProps) => {
-  return <StyledTableContainer {...props} />;
-};
+export const TableContainer = forwardRef((props: TableContainerProps, ref) => {
+  return <StyledTableContainer {...props} ref={ref} />;
+});
 
-export const Thead = (props: TheadProps) => {
-  return <StyledThead {...props} />;
-};
+export const Thead = forwardRef((props: TheadProps, ref) => {
+  return <StyledThead {...props} ref={ref} />;
+});
 
-export const Tbody = (props: TbodyProps) => {
-  return <StyledTbody {...props} />;
-};
+export const Tbody = forwardRef((props: TbodyProps, ref) => {
+  return <StyledTbody {...props} ref={ref} />;
+});
 
-export const Tfoot = (props: TfootProps) => {
-  return <StyledTfoot {...props} />;
-};
+export const Tfoot = forwardRef((props: TfootProps, ref) => {
+  return <StyledTfoot {...props} ref={ref} />;
+});
 
-export const Th = (props: ThProps) => {
-  return <StyledTh {...props} />;
-};
+export const Th = forwardRef((props: ThProps, ref) => {
+  return <StyledTh {...props} ref={ref} />;
+});
 
-export const Tr = (props: TrProps) => {
-  return <StyledTr {...props} />;
-};
+export const Tr = forwardRef((props: TrProps, ref) => {
+  return <StyledTr {...props} ref={ref} />;
+});
 
-export const Td = (props: TdProps) => {
-  return <StyledTd {...props} />;
-};
+export const Td = forwardRef((props: TdProps, ref) => {
+  return <StyledTd {...props} ref={ref} />;
+});
 
-export const Tcaption = (props: TableCaptionProps) => {
+export const TCaption = forwardRef((props: TableCaptionProps, ref) => {
   return (
-    <StyledTcaption
+    <StyledTCaption
       fontSize="sm"
       fontWeight="medium"
       p="4"
       {...(props as any)}
+      ref={ref}
     />
   );
-};
+});

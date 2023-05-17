@@ -977,6 +977,14 @@ export interface TableThemedDefaultProps {
   whiteSpace?: CSSProperties['whiteSpace'];
 }
 
+export interface TableContainerThemedDefaultProps
+  extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
+}
+
 export interface TableHeadThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
@@ -1239,6 +1247,8 @@ export interface DividerThemedDefaultProps {
   size?: DividerSizeType;
 
   orientation?: DividerOrientationType;
+
+  ref?: any;
 }
 
 export interface DividerThemedStyledProps
