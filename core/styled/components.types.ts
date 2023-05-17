@@ -23,7 +23,7 @@ import type {
 import type { CSSProperties } from './web';
 
 export type MediaStyleType = Record<
-  BreakpointsObjectKeys & 'base',
+  BreakpointsObjectKeys | 'base',
   CSSProperties
 >;
 

@@ -1,6 +1,9 @@
-import type { ThemeProviderProps, DefaultTheme } from './web';
-export interface ProviderThemedStyledProps
-  extends Partial<ThemeProviderProps<DefaultTheme>> {}
+import { Subset } from '../constants/index.types';
+import { ThemeType } from '../theme';
+export interface ProviderThemedStyledProps {
+  theme?: Subset<ThemeType>;
+  children?: React.ReactNode;
+}
 
 export type ObjectOrArray<T, K extends keyof any = keyof any> =
   | T[]

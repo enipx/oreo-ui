@@ -14,7 +14,9 @@ export interface TabsListProps extends TabsListThemedStyledProps {}
 
 export interface TabsItemProps extends TabsItemThemedStyledProps {}
 
-export interface TabsPanelProps extends TabsPanelThemedStyledProps {}
+export interface TabsPanelProps extends TabsPanelThemedStyledProps {
+  ref?: RefObject<HTMLDivElement>;
+}
 
 export interface UseTabsProps extends TabsProps {
   item?: string;

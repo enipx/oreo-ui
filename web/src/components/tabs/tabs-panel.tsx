@@ -27,7 +27,7 @@ export const TabsPanel: React.FC<TabsPanelProps> = (props) => {
     }
 
     return (
-      <View ref={panelRef} {...otherProps}>
+      <View {...({ ref: panelRef } as any)} {...otherProps}>
         {children}
       </View>
     );
