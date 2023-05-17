@@ -7,6 +7,7 @@ import {
   buttonColor,
 } from '@/core/styled/themed/accordion';
 import { baseStyled, styled } from '@/core/styled/web';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import { IconButton } from '../icon-button';
 import { View } from '../view';
@@ -26,6 +27,8 @@ export const StyledAccordionButton = styled(
   border-bottom-color: ${({ isActive, theme }) =>
     isActive ? theme.colors.transparent : borderBottomColor};
   color: ${buttonColor};
+
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
@@ -38,7 +41,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
     ...accordionValue,
   });
 
-  const { children, text } = props;
+  const { children, text, ...otherProps } = props;
 
   const onClickHandler = () => {
     accordionValue?.updateValue?.(item || '');
@@ -90,6 +93,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
     <StyledAccordionButton
       onClick={onClickHandler}
       {...accordionValue}
+      {...otherProps}
       isActive={isActive}>
       {renderChildren()}
 

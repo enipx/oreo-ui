@@ -3,6 +3,7 @@ import {
   getTransitionClassName,
   transitionDefaults,
 } from '@/core/styled/css/transitions';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   alertDefaultStyle,
   alertDefaults,
@@ -26,6 +27,7 @@ import type { AlertProps, AlertIconObjectType } from './alert.types';
 // @exports
 export const StyledAlert = styled(View)<AlertProps>`
   ${(props) => alertDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const AlertIcon = (props: AlertProps) => {

@@ -114,10 +114,7 @@ export interface SpaceProps<
   paddingY?: ResponsiveValue<TVal, ThemeType> | undefined;
 }
 
-export interface TextColorProps<
-  ThemeType extends Theme = RequiredTheme,
-  TVal = ThemeValue<'colors', ThemeType>
-> {
+export interface TextColorProps {
   /**
    * The color utility parses a component's `color` and `bg` props and converts them into CSS declarations.
    * By default the raw value of the prop is returned.
@@ -127,7 +124,7 @@ export interface TextColorProps<
    *
    * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
    */
-  color?: ResponsiveValue<TVal, ThemeType> | undefined;
+  color?: any;
 }
 
 export interface BackgroundColorProps<
@@ -160,7 +157,7 @@ export interface OpacityProps<ThemeType extends Theme = RequiredTheme> {
 export interface ColorProps<
   ThemeType extends Theme = RequiredTheme,
   TVal = ThemeValue<'colors', ThemeType>
-> extends TextColorProps<ThemeType, TVal>,
+> extends TextColorProps,
     BackgroundColorProps<ThemeType, TVal>,
     OpacityProps {}
 

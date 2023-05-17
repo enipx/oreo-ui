@@ -3,9 +3,10 @@ import { styled } from '@/core/styled/web';
 
 import { View } from '../view';
 import type { ContainerProps } from './container.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
-export const Container = styled(View)<ContainerProps>`
+export const StyledContainer = styled(View)<ContainerProps>`
   margin: 0 auto;
   width: 100%;
   ${({ type, theme }) => {
@@ -17,4 +18,9 @@ export const Container = styled(View)<ContainerProps>`
 
     return '';
   }}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
+
+export const Container = (props: ContainerProps) => {
+  return <StyledContainer {...props} />;
+};

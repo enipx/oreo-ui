@@ -13,6 +13,7 @@ import {
   tableCaptionDefaultStyle,
 } from '@/core/styled/themed/table';
 import { styled, baseStyled } from '@/core/styled/web';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import type {
   TableContainerProps,
@@ -28,24 +29,68 @@ import type {
 // @exports
 export const StyledTcaption = styled(baseStyled('caption'))<TableCaptionProps>`
   ${(props) => tableCaptionDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
-export const TableContainer = styled(baseStyled('div'))<TableContainerProps>`
+export const StyledTableContainer = styled(
+  baseStyled('div')
+)<TableContainerProps>`
   ${(props) => tableContainerDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
   ${compose(layout, overflow, overflowX, overflowY, display)}
 `;
 
-export const Thead = styled(baseStyled('thead'))<TheadProps>``;
+export const StyledThead = styled(baseStyled('thead'))<TheadProps>`
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+`;
 
-export const Tbody = styled(baseStyled('tbody'))<TbodyProps>``;
+export const StyledTbody = styled(baseStyled('tbody'))<TbodyProps>`
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+`;
 
-export const Tfoot = styled(baseStyled('tfoot'))<TfootProps>``;
+export const StyledTfoot = styled(baseStyled('tfoot'))<TfootProps>`
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+`;
 
-export const Th = styled(baseStyled('th'))<ThProps>``;
+export const StyledTh = styled(baseStyled('th'))<ThProps>`
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+`;
 
-export const Tr = styled(baseStyled('tr'))<TrProps>``;
+export const StyledTr = styled(baseStyled('tr'))<TrProps>`
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+`;
 
-export const Td = styled(baseStyled('td'))<TdProps>``;
+export const StyledTd = styled(baseStyled('td'))<TdProps>`
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+`;
+
+export const TableContainer = (props: TableContainerProps) => {
+  return <StyledTableContainer {...props} />;
+};
+
+export const Thead = (props: TheadProps) => {
+  return <StyledThead {...props} />;
+};
+
+export const Tbody = (props: TbodyProps) => {
+  return <StyledTbody {...props} />;
+};
+
+export const Tfoot = (props: TfootProps) => {
+  return <StyledTfoot {...props} />;
+};
+
+export const Th = (props: ThProps) => {
+  return <StyledTh {...props} />;
+};
+
+export const Tr = (props: TrProps) => {
+  return <StyledTr {...props} />;
+};
+
+export const Td = (props: TdProps) => {
+  return <StyledTd {...props} />;
+};
 
 export const Tcaption = (props: TableCaptionProps) => {
   return (

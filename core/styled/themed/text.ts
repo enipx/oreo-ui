@@ -70,6 +70,11 @@ export const getTextStyles = (option: TextSystemThemeParams) => {
   const headingBaseStyle = {
     ...((getFonts({
       ...option,
+      fontKey: 'body',
+      styleType: 'react',
+    }) as any) || {}),
+    ...((getFonts({
+      ...option,
       fontKey: 'heading',
       styleType: 'react',
     }) as any) || {}),

@@ -3,6 +3,7 @@
 import { width, height, compose } from '@/core/styled/system';
 import { indicatorDefaultStyle } from '@/core/styled/themed/indicator';
 import { styled, baseStyled } from '@/core/styled/web';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import { View } from '@components/view';
 
@@ -13,6 +14,7 @@ export const StyledIndicator = styled(
   baseStyled('div', ['layout'])
 )<IndicatorProps>`
   ${(props) => indicatorDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
   ${compose(width, height)}
 `;
 

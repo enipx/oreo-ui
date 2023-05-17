@@ -1,10 +1,17 @@
-import type { StyledThemeProps, SystemThemeParams } from '../index.types';
+import { ComponentsDefaultProps } from '../components.types';
+import type {
+  StyledThemeProps,
+  SystemThemeParams,
+  SystemThemeReturnType,
+} from '../index.types';
 import { themer } from '../web';
 
 import type { ThemeModeKeys } from '@/core/constants/index.types';
 import {
   convertHexToRgbaHandler,
+  convertReactCSSToCSSHandler,
   getThemeValueHandler,
+  convertMediaStylesToCss,
 } from '@/core/helpers/theme';
 import type { ThemeKeys, ThemeType } from '@/core/theme';
 import type {
@@ -334,4 +341,49 @@ export const getThemeMode = (theme: ThemeType) => {
     isLight: mode === 'light',
     mode,
   };
+};
+
+type DefaultComponentStyle = SystemThemeParams & ComponentsDefaultProps;
+
+export const componentDefaultStyle = (options: DefaultComponentStyle) => {
+  const {
+    theme,
+    packageType = 'web',
+    _mediaStyle,
+    _css,
+    _hover,
+    _active,
+    _disabled,
+  } = options;
+
+  const mediaStyle = convertMediaStylesToCss(_mediaStyle, theme);
+
+  const native = `
+  
+  `;
+
+  const web = `
+    ${_css || ''};
+
+    ${mediaStyle || ''}
+
+    &:hover {
+      ${convertReactCSSToCSSHandler(_hover)}
+    }
+
+    &:active {
+      ${convertReactCSSToCSSHandler(_active)}
+    }
+
+    &:disabled {
+      ${convertReactCSSToCSSHandler(_disabled)}
+    }
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[packageType];
 };

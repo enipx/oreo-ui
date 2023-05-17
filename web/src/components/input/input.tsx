@@ -7,6 +7,7 @@ import {
   border,
   compose,
 } from '@/core/styled/system';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   inputSizeVariant,
   inputContainerDefaultStyle,
@@ -55,6 +56,9 @@ export const StyledInput = styled('input')<InputProps>`
 
   background-color: ${backgroundColor};
   border-color: ${borderColor};
+
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+
   ${compose(border)};
 `;
 

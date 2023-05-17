@@ -1,6 +1,7 @@
 // @imports
 
 import { border } from '@/core/styled/system';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   iconButtonDefaultStyle,
   iconButtonSizeVariant,
@@ -18,6 +19,7 @@ export const StyledIconButton = styled(
   ${(props) => iconButtonDefaultStyle({ ...props } as any)};
   ${(props) => iconButtonSizeVariant({ ...props } as any)};
   ${(props) => buttonStateVariant({ ...props } as any)};
+  ${(props) => componentDefaultStyle({ ...props } as any)}
   ${border}
 `;
 

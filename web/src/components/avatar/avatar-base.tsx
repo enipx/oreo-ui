@@ -12,10 +12,12 @@ import { View } from '@components/view';
 import { Image } from '../image';
 import { ProfileIcon } from './avatar-icon';
 import type { AvatarProps } from './avatar.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledAvatar = styled(View)<AvatarProps>`
   ${(props) => avatarDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
   ${compose(space, width, height, border)}
 `;
 

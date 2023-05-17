@@ -1,5 +1,6 @@
 // @imports
 import { border, compose } from '@/core/styled/system';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   textareaDefaultStyle,
   textareaDefaults,
@@ -25,6 +26,9 @@ export const StyledTextarea = styled(
   ${(props) => textareaDefaultStyle({ ...props } as any)}
   border-color: ${borderColor};
   background-color: ${backgroundColor};
+
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+
   ${compose(border)};
 `;
 

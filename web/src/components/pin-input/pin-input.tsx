@@ -1,5 +1,6 @@
 // @imports
 import { border, compose } from '@/core/styled/system';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   inputDefaultStyle,
   backgroundColor,
@@ -43,6 +44,9 @@ export const StyledInput = styled(
 
   border-color: ${borderColor};
   background-color: ${backgroundColor};
+
+  ${(props) => componentDefaultStyle({ ...props } as any)}
+
   ${compose(border)};
 `;
 

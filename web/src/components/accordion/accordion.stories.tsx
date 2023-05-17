@@ -13,7 +13,10 @@ const Template: ComponentStory<typeof Accordion> = (args) => (
   <View width="500px" border="1px solid gray.100">
     <Accordion {...args}>
       <Accordion.Item value="item-1">
-        <Accordion.Button text="Section 1 title" />
+        <Accordion.Button
+          _hover={{ backgroundColor: '#000', color: '#fff' }}
+          text="Section 1 title"
+        />
 
         <Accordion.Panel>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

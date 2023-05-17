@@ -10,12 +10,14 @@ import { useEffect, memo } from 'react';
 import { useTabsContext } from './tabs-context';
 import type { TabsItemProps } from './tabs.types';
 import { useTabs } from './use-tabs';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledTabsItem = styled(baseStyled('button'))<any>`
   ${(props) => tabsItemDefaultStyle({ ...props } as any)}
   ${(props) => tabsItemVariantStyle({ ...props } as any)}
   ${(props) => tabsItemCustomStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const TabsItem = memo((props: TabsItemProps) => {
