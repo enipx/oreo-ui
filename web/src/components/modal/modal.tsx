@@ -31,7 +31,7 @@ import type { ModalProps } from './modal.types';
 
 // @exports
 export const defaultView = () => {
-  return 'div' as any;
+  return baseStyled('div', ['all']);
 };
 
 export const StyledModalHeader = styled(defaultView())<ModalProps>`

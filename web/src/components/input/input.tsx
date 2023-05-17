@@ -43,7 +43,7 @@ export const StyledInputContainer = styled(
   ${compose(width, height, minWidth, maxWidth)}
 `;
 
-export const StyledInput = styled('input')<InputProps>`
+export const StyledInput = styled(baseStyled('input', ['all']))<InputProps>`
   &:hover {
     border-color: ${hoverBorderColor};
   }
