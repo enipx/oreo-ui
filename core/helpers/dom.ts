@@ -183,7 +183,6 @@ export const IgnorePropsFromDOM = [
   'flexCenter',
   'flexCenterY',
   'flexCenterX',
-  'type',
   'row',
   'column',
   'columns',

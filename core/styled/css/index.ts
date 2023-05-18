@@ -29,8 +29,8 @@ export const flexCenterXStyle = `
   justify-content: center;
 `;
 
-export const positionCenterStyle = (option?: { transfrom: string }) => {
-  const additionalTransformProperty = option?.transfrom || '';
+export const positionCenterStyle = (option?: { transform: string }) => {
+  const additionalTransformProperty = option?.transform || '';
 
   return `
     position: absolute;
