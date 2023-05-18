@@ -217,7 +217,6 @@ export const IgnorePropsFromDOM = [
   'showPasswordIcon',
   'hidePasswordIcon',
   'length',
-  'onChange',
   'onFilled',
   'focusOnMounted',
   'indeterminate',
@@ -279,4 +278,6 @@ export const IgnorePropsFromDOM = [
   'scrollHeight',
   'scrollBg',
   'scrollHoverBg',
+  'updateValue',
+  'isActive',
 ];
