@@ -1,4 +1,6 @@
 import type { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
+import { MediaStyleType } from '../styled/components.types';
+import { DefaultTheme } from '../styled/web';
 import defaultTheme, { ThemeKeys, ThemeType } from '../theme';
 import { getBreakpoints } from '../theme/utilities/breakpoints';
 import { convertNestObjectToNonNestedObject, isObject } from './base';
@@ -137,4 +139,33 @@ export const convertHexToRgbaHandler = (hex: string, alpha?: number) => {
   console.error('Bad Hex: ', hex);
 
   return hex;
+};
+
+export const convertMediaStylesToCss = (
+  mediaStyle?: MediaStyleType,
+  theme?: DefaultTheme
+) => {
+  if (!mediaStyle) return '';
+
+  let css = '';
+
+  Object.entries(mediaStyle).forEach(([key, value]) => {
+    const breakpoint = theme?.breakpoints?.[key];
+
+    const style = convertReactCSSToCSSHandler(value as any);
+
+    let mediaCss = `${key} {${style};}`;
+
+    if (breakpoint) {
+      mediaCss = `@media screen and (min-width: ${breakpoint}) {${style};}`;
+    }
+
+    if (key === 'base') {
+      mediaCss = `${style};`;
+    }
+
+    css += mediaCss;
+  });
+
+  return css;
 };

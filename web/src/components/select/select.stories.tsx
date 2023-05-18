@@ -23,5 +23,4 @@ Default.args = {
     { value: 'male', title: 'Male' },
     { value: 'others', title: 'Others' },
   ],
-  height: '200px',
 };

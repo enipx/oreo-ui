@@ -19,9 +19,7 @@ export const Spacer = styled(View)<FlexProps>`
 `;
 
 export const Flex = (props: FlexProps) => {
-  const { children, ...otherProps } = props;
-
-  return <StyledFlex {...otherProps}>{children}</StyledFlex>;
+  return <StyledFlex {...props} />;
 };
 
 Flex.Fill = Spacer;

@@ -25,6 +25,7 @@ import { InputLabel, InputHint, StyledInputContainer } from '../input/input';
 import { View } from '../view';
 import { ArrowDownIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledSelectContainer = styled(
@@ -50,6 +51,8 @@ export const StyledSelect = styled(
 
   background-color: ${backgroundColor};
   border-color: ${borderColor};
+
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const Select: React.FC<SelectProps> = (props) => {

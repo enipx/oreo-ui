@@ -10,6 +10,12 @@ const theme = (arg?: PackageTypes) => ({
   ...utilities(arg),
   components: components(arg),
   mode,
+  modeOptions: {
+    keyboardShortcut: 'shift+d',
+    disableKeyboardShortcut: false,
+    saveToStorage: true,
+    useSystemPreferredMode: true,
+  },
 });
 
 // @types definitions

@@ -3,7 +3,7 @@
 import type { ThemeModeKeys } from '@/core/constants/index.types';
 import { getLocalStorage, setLocalStorage } from '@/core/helpers/storage';
 import { useKeydown } from '@/core/hooks/use-keydown';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
 export type UseModeOptionsType = {
   mode: ThemeModeKeys;
@@ -11,7 +11,7 @@ export type UseModeOptionsType = {
   keyboardShortcut?: string;
   disableKeyboardShortcut?: boolean;
   saveToStorage?: boolean;
-  systemPreferredMode?: boolean;
+  useSystemPreferredMode?: boolean;
 };
 
 // @exports
@@ -19,13 +19,33 @@ export const useMode = (options: UseModeOptionsType) => {
   const {
     mode: _mode,
     onChange,
-    keyboardShortcut = 'shift+d',
+    keyboardShortcut,
     disableKeyboardShortcut,
     saveToStorage,
-    systemPreferredMode,
+    useSystemPreferredMode,
   } = options;
 
-  const [mode, setMode] = useState<ThemeModeKeys>(_mode);
+  const getSystemPreferredMode = () => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  };
+
+  const storedMode = getLocalStorage('mode');
+
+  const getCurrentMode = () => {
+    if (storedMode) {
+      return storedMode as ThemeModeKeys;
+    }
+
+    if (useSystemPreferredMode) {
+      return getSystemPreferredMode();
+    }
+
+    return _mode;
+  };
+
+  const [mode, setMode] = useState<ThemeModeKeys>(getCurrentMode());
 
   const toggleHandler = useCallback(() => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -36,33 +56,15 @@ export const useMode = (options: UseModeOptionsType) => {
   }, []);
 
   const loadHandler = useCallback(() => {
-    const storedMode = getLocalStorage('mode');
-
-    if (storedMode) {
-      saveHandler(storedMode as ThemeModeKeys);
-      return;
-    }
-
-    if (systemPreferredMode) {
-      const __mode: ThemeModeKeys = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches
-        ? 'dark'
-        : 'light';
-
-      saveHandler(__mode);
-    }
+    const currentMode = getCurrentMode();
+    saveHandler(currentMode);
   }, []);
 
   useKeydown({
-    key: keyboardShortcut,
+    key: keyboardShortcut || '',
     callback: toggleHandler,
-    enabled: !disableKeyboardShortcut,
+    enabled: !disableKeyboardShortcut && !!keyboardShortcut,
   });
-
-  useEffect(() => {
-    loadHandler();
-  }, []);
 
   useEffect(() => {
     if (saveToStorage) {

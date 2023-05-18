@@ -12,8 +12,7 @@ export const StyledGrid = styled(View)<GridProps>`
 `;
 
 export const Grid = (props: GridProps) => {
-  const { children, ...otherProps } = props;
-  return <StyledGrid {...otherProps}>{children}</StyledGrid>;
+  return <StyledGrid {...props} />;
 };
 
 Grid.Item = View;

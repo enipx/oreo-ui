@@ -22,7 +22,32 @@ import type {
 } from './system';
 import type { CSSProperties } from './web';
 
-export interface ViewThemedStyledProps extends ThemeStyledProps {
+export type MediaStyleType = Record<
+  BreakpointsObjectKeys | 'base',
+  CSSProperties
+>;
+
+export interface ComponentsDefaultProps {
+  as?: any;
+
+  _mediaStyle?: MediaStyleType;
+
+  _css?: string;
+
+  _hover?: CSSProperties;
+
+  _focus?: CSSProperties;
+
+  _active?: CSSProperties;
+
+  _disabled?: CSSProperties;
+
+  children?: React.ReactNode;
+}
+
+export interface ViewThemedStyledProps
+  extends ThemeStyledProps,
+    ComponentsDefaultProps {
   /**
    * align children horizontally and vertically
    */
@@ -45,11 +70,6 @@ export interface ContainerThemedStyledProps extends ViewThemedStyledProps {
 }
 
 export interface FlexThemedStyledProps extends ViewThemedStyledProps {
-  /**
-   * flex content
-   */
-  children?: React.ReactNode;
-
   /**
    * set flex-direction to row
    */
@@ -121,27 +141,15 @@ export interface GridItemThemedStyledProps extends LayoutThemeStyledProps {
   children?: React.ReactNode;
 }
 
-export interface ComponentsDefaultProps {
-  as?: string;
-
-  _hover?: React.CSSProperties;
-
-  _focus?: React.CSSProperties;
-
-  _active?: React.CSSProperties;
-
-  _disabled?: React.CSSProperties;
-}
-
-export interface TextThemedStyledProps extends TypographyThemeStyledProps {
+export interface TextThemedStyledProps
+  extends TypographyThemeStyledProps,
+    ComponentsDefaultProps {
   /**
    * set text transform
    */
   textTransform?: CSSProperties['textTransform'];
 
   numberOfLines?: number;
-
-  as?: string;
 }
 
 export type ButtonColorSchemeType = DefaultColorsSchemeKeys;
@@ -296,7 +304,7 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
 
   hidePasswordIcon?: React.ReactNode;
 
-  _placeholder?: React.CSSProperties;
+  _placeholder?: CSSProperties;
 }
 
 export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
@@ -344,7 +352,7 @@ export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
    */
   focusOnMounted?: boolean;
 
-  _placeholder?: React.CSSProperties;
+  _placeholder?: CSSProperties;
 }
 
 export interface InputThemedStyledProps
@@ -375,7 +383,7 @@ export interface TextareaThemedDefaultProps extends ComponentsDefaultProps {
    */
   hint?: string;
 
-  _placeholder?: React.CSSProperties;
+  _placeholder?: CSSProperties;
 }
 
 export type TextareaResizeType = 'none' | 'both' | 'horizontal' | 'vertical';
@@ -406,7 +414,9 @@ export type CheckboxThemedDefaultProps = {
    */
   description?: string;
 };
-export interface CheckboxThemedStyledProps extends CheckboxThemedDefaultProps {}
+export interface CheckboxThemedStyledProps
+  extends CheckboxThemedDefaultProps,
+    ComponentsDefaultProps {}
 
 export type RadioSizeType = CheckboxSizeType;
 
@@ -438,7 +448,9 @@ export type RadioThemedDefaultProps = {
   horizontal?: boolean;
 };
 
-export interface RadioThemedStyledProps extends RadioThemedDefaultProps {}
+export interface RadioThemedStyledProps
+  extends RadioThemedDefaultProps,
+    ComponentsDefaultProps {}
 
 export type SwitchSizeType = CheckboxSizeType;
 
@@ -456,7 +468,9 @@ export type SwitchThemedDefaultProps = {
    */
   description?: string;
 };
-export interface SwitchThemedStyledProps extends SwitchThemedDefaultProps {}
+export interface SwitchThemedStyledProps
+  extends SwitchThemedDefaultProps,
+    ComponentsDefaultProps {}
 
 export type SelectStateType = InputStateType;
 
@@ -544,7 +558,7 @@ export interface ModalThemedDefaultProps {
   /**
    * add custom style to modal
    */
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   /**
    * close modal on overlat click
    */
@@ -681,7 +695,8 @@ export interface AccordionItemThemedDefaultProps {
   value: string;
 }
 
-export interface AccordionButtonThemedDefaultProps {
+export interface AccordionButtonThemedDefaultProps
+  extends ComponentsDefaultProps {
   /**
    * item content
    */
@@ -741,7 +756,8 @@ export interface AlertThemedDefaultProps {
 
 export interface AlertThemedStyledProps
   extends LayoutThemeStyledProps,
-    AlertThemedDefaultProps {}
+    AlertThemedDefaultProps,
+    ComponentsDefaultProps {}
 
 export type ToastWebPositionTypes =
   | 'top'
@@ -809,6 +825,7 @@ export interface AvatarThemedDefaultProps {
 
 export interface AvatarThemedStyledProps
   extends Omit<LayoutThemeStyledProps, 'size'>,
+    ComponentsDefaultProps,
     AvatarThemedDefaultProps {}
 
 export interface AvatarGroupThemedDefaultProps {
@@ -851,7 +868,10 @@ export interface IndicatorThemedDefaultProps {
   offset?: string;
 }
 
-export interface BadgeThemedDefaultProps extends TypographyProps, ColorProps {
+export interface BadgeThemedDefaultProps
+  extends TypographyProps,
+    ColorProps,
+    ComponentsDefaultProps {
   children?: React.ReactNode;
 
   colorScheme?: DefaultColorsSchemeKeys;
@@ -881,11 +901,11 @@ export interface TabsThemedDefaultProps {
 
   onTabChange?: (arg: string) => void;
 
-  _selected?: React.CSSProperties;
+  _selected?: CSSProperties;
 
-  _hover?: React.CSSProperties;
+  _hover?: CSSProperties;
 
-  _active?: React.CSSProperties;
+  _active?: CSSProperties;
 }
 
 export interface TabsListThemedDefaultProps {
@@ -912,11 +932,11 @@ export interface TabsItemThemedDefaultProps {
 
   disabled?: boolean;
 
-  _selected?: React.CSSProperties;
+  _selected?: CSSProperties;
 
-  _hover?: React.CSSProperties;
+  _hover?: CSSProperties;
 
-  _active?: React.CSSProperties;
+  _active?: CSSProperties;
 }
 
 export interface TabsPanelThemedDefaultProps {
@@ -934,7 +954,8 @@ export interface TabsPanelThemedStyledProps
 
 export interface TabsItemThemedStyledProps
   extends TabsItemThemedDefaultProps,
-    TypographyThemeStyledProps {}
+    TypographyThemeStyledProps,
+    ComponentsDefaultProps {}
 
 export type TableThemedSizeTypes = 'sm' | 'md' | 'lg';
 export interface TableThemedDefaultProps {
@@ -953,7 +974,15 @@ export interface TableThemedDefaultProps {
 
   hovered?: boolean;
 
-  whiteSpace?: React.CSSProperties['whiteSpace'];
+  whiteSpace?: CSSProperties['whiteSpace'];
+}
+
+export interface TableContainerThemedDefaultProps
+  extends ViewThemedStyledProps {
+  /**
+   * table content
+   */
+  children?: React.ReactNode;
 }
 
 export interface TableHeadThemedDefaultProps extends ViewThemedStyledProps {
@@ -1185,7 +1214,7 @@ export interface ImageThemedDefaultProps
   /**
    * Object-fit property
    */
-  fit?: React.CSSProperties['objectFit'];
+  fit?: CSSProperties['objectFit'];
 
   fallbackSrc?: string;
 
@@ -1218,6 +1247,8 @@ export interface DividerThemedDefaultProps {
   size?: DividerSizeType;
 
   orientation?: DividerOrientationType;
+
+  ref?: any;
 }
 
 export interface DividerThemedStyledProps
@@ -1264,17 +1295,17 @@ export interface ScrollbarThemedDefaultProps {
   /**
    * set scrollbar track style
    */
-  _track?: React.CSSProperties;
+  _track?: CSSProperties;
 
   /**
    * set scrollbar thumb style
    */
-  _handle?: React.CSSProperties;
+  _handle?: CSSProperties;
 
   /**
    * set scrollbar thumb hover style
    */
-  _hover?: React.CSSProperties;
+  _hover?: CSSProperties;
 
   /**
    * set scroll width

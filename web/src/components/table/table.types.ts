@@ -7,11 +7,12 @@ import type {
   TrThemedDefaultProps,
   TdThemedDefaultProps,
   TableCaptionThemedDefaultProps,
+  TableContainerThemedDefaultProps,
 } from '@/core/styled/components.types';
 
 export interface TableProps extends TableThemedDefaultProps {}
 
-export interface TableContainerProps {}
+export interface TableContainerProps extends TableContainerThemedDefaultProps {}
 
 export interface TheadProps extends TableHeadThemedDefaultProps {}
 

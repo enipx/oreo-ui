@@ -13,6 +13,7 @@ import { useId } from 'react';
 import { InputLabel, InputHint } from '../input/input';
 import { View } from '../view';
 import type { RadioProps, RadioDataType } from './radio.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledRadio = styled(
@@ -21,6 +22,7 @@ export const StyledRadio = styled(
   ${(props) => radioDefaultStyle({ ...props, type: 'web' } as any)};
   ${(props) => radioSizeVariant({ ...props, type: 'web' } as any)};
   ${(props) => radioCheckedStyle({ ...props, type: 'web' } as any)};
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const RadioControl: React.FC<RadioProps> = (props) => {

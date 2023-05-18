@@ -6,18 +6,18 @@ import type { ThemeModeKeys } from '@/core/constants/index.types';
 
 export type UseModeOptionsType = {
   mode: ThemeModeKeys;
-  onChange?: () => void;
-  systemPreferredMode?: boolean;
+  onChange?: (mode: ThemeModeKeys) => void;
+  useSystemPreferredMode?: boolean;
 };
 
 // @exports
 export const useMode = (options: UseModeOptionsType) => {
-  const { mode: _mode, onChange, systemPreferredMode = true } = options;
+  const { mode: _mode, onChange, useSystemPreferredMode } = options;
 
   const deviceMode = useColorScheme();
 
   const [mode, setMode] = useState<ThemeModeKeys>(
-    systemPreferredMode ? (deviceMode as ThemeModeKeys) : _mode
+    useSystemPreferredMode ? (deviceMode as ThemeModeKeys) : _mode
   );
 
   const toggleHandler = () => {
@@ -27,7 +27,7 @@ export const useMode = (options: UseModeOptionsType) => {
 
   const saveHandler = (__mode: ThemeModeKeys) => {
     setMode(__mode);
-    onChange?.();
+    onChange?.(__mode);
   };
 
   return { mode, toggle: toggleHandler, save: saveHandler };

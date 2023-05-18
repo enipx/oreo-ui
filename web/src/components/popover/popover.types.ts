@@ -6,7 +6,7 @@ import type { usePopper } from 'react-popper';
 
 export interface PopoverProps extends PopoverThemedDefaultProps {}
 
-export interface UsePopverOptions extends PopoverProps {
+export interface UsePopoverOptions extends PopoverProps {
   referenceElement?: HTMLElement | null;
   popperElement?: HTMLElement | null;
   arrowElement?: HTMLElement | null;

@@ -22,14 +22,14 @@ export const Checked = Template.bind({});
 Checked.args = {
   label: 'Remember me',
   description: 'Save my login details for next time.',
-  checked: true,
+  defaultChecked: true,
 };
 
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
   label: 'Remember me',
   description: 'Save my login details for next time.',
-  checked: true,
+  defaultChecked: true,
   indeterminate: true,
 };
 

@@ -13,6 +13,7 @@ import { ToastProvider } from '@components/toast';
 import { useMode } from '../../hooks/use-mode/use-mode';
 import { GlobalStyle } from './global';
 import { OreoProviderProps } from './provider.types';
+import { StyledComponentsRegistry } from './registry';
 
 // @file declarations
 export type DefaultTheme = Subset<ThemeType>;
@@ -20,7 +21,7 @@ export type DefaultTheme = Subset<ThemeType>;
 const [ModeContextProvider, useModeContext] =
   createContext<ModeContextProviderProps>();
 
-export { useModeContext };
+export { useModeContext, StyledComponentsRegistry };
 
 export const OreoProvider = (props: OreoProviderProps) => {
   const { theme: specifiedTheme, children } = props;
@@ -36,6 +37,7 @@ export const OreoProvider = (props: OreoProviderProps) => {
     save: update,
   } = useMode({
     mode: _theme.mode,
+    ..._theme.modeOptions,
   });
 
   const theme: ThemeType = {

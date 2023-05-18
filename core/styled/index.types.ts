@@ -72,7 +72,8 @@ export type ThemeStyledCategoriesProps =
   | 'background'
   | 'border'
   | 'position'
-  | 'shadow';
+  | 'shadow'
+  | 'all';
 
 export type ThemeStyledCategoriesArrayProps = ThemeStyledCategoriesProps[];
 

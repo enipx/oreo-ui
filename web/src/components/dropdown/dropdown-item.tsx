@@ -5,12 +5,14 @@ import { styled, baseStyled } from '@/core/styled/web';
 import { Text } from '../text';
 import { View } from '../view';
 import type { DropdownItemProps } from './dropdown.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledDropdownItem = styled(
   baseStyled('button')
 )<DropdownItemProps>`
   ${(props) => dropdownItemDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const DropdownItem = (props: DropdownItemProps) => {

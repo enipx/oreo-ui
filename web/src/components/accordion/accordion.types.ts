@@ -15,7 +15,11 @@ export interface AccordionItemProps extends AccordionItemThemedDefaultProps {}
 export interface AccordionButtonProps
   extends AccordionButtonThemedDefaultProps {}
 
-export interface AccordionPanelProps extends AccordionPanelThemedDefaultProps {}
+export interface AccordionPanelProps
+  extends AccordionPanelThemedDefaultProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {
+  ref?: RefObject<HTMLDivElement>;
+}
 
 export interface UserAccordionProps extends AccordionProps {
   item?: string;

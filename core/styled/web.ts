@@ -12,6 +12,7 @@ import defaultStyled, {
 import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
+import { IgnorePropsFromDOM } from '../helpers/dom';
 import type { ThemeType } from '../theme';
 import type {
   WebThemeStyledTagProps,
@@ -40,10 +41,15 @@ const styled: typeof defaultStyled =
 
 const baseStyled = (
   tag: WebThemeStyledTagProps,
-  omitProps?: ThemeStyledCategoriesArrayProps
+  omitProps?: ThemeStyledCategoriesArrayProps,
+  options?: {
+    ignoreProps?: string[];
+  }
 ) => {
   const isStyledIgnored = (value: ThemeStyledCategoriesProps) => {
     if (!omitProps) return false;
+
+    if (omitProps?.includes('all')) return true;
 
     return arrayIncludesValueHandler({ value, array: omitProps });
   };
@@ -59,7 +65,10 @@ const baseStyled = (
   const _position = isStyledIgnored('position') ? '' : position;
   const _shadow = isStyledIgnored('shadow') ? '' : shadow;
 
-  return styled[tag]`
+  return styled[tag].withConfig({
+    shouldForwardProp: (prop) =>
+      ![...IgnorePropsFromDOM, ...(options?.ignoreProps || [])].includes(prop),
+  })`
     ${_space}
     ${_color}
     ${_typography}

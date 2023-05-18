@@ -12,6 +12,7 @@ import { useId } from 'react';
 import { InputLabel, InputHint } from '../input/input';
 import { View } from '../view';
 import type { SwitchProps } from './switch.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledSwitch = styled(
@@ -21,6 +22,7 @@ export const StyledSwitch = styled(
   ${(props) => switchBaseStyle({ ...props, type: 'web' } as any)};
   ${(props) => switchSizeVariant({ ...props, type: 'web' } as any)};
   ${(props) => switchCheckedStyle({ ...props, type: 'web' } as any)};
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const Switch: React.FC<SwitchProps> = (props) => {

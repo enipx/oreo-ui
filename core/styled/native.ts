@@ -41,6 +41,8 @@ const baseStyled = (
   const isStyledIgnored = (value: ThemeStyledCategoriesProps) => {
     if (!omitProps) return false;
 
+    if (omitProps?.includes('all')) return true;
+
     return arrayIncludesValueHandler({ value, array: omitProps });
   };
 

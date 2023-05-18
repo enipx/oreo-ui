@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { PinInput } from './pin-input';
+import React from 'react';
 
 export default {
   title: 'Components/Pin Input',

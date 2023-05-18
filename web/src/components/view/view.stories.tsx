@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { Text } from '../text';
 import { View } from './view';
 
 export default {
@@ -19,8 +18,29 @@ export const Primary = Template.bind({});
 Primary.args = {
   bg: 'gray.100',
   size: '400px',
-  children: <Text color="gray.500">This is a view</Text>,
+  children: 'This is a view',
   flexCenter: true,
   p: 'lg',
   mx: 'auto',
+  _mediaStyle: {
+    base: {
+      color: 'yellow',
+    },
+    md: {
+      fontSize: '2rem',
+      color: 'red',
+    },
+    lg: {
+      fontSize: '3rem',
+      color: 'blue',
+    },
+    xl: {
+      fontSize: '4rem',
+      color: 'black',
+    },
+  },
+  _hover: {
+    backgroundColor: '#000 !important',
+    color: '#fff !important',
+  },
 };

@@ -9,9 +9,8 @@ export const decorators = [
         primary: '#0ff',
       },
       fonts: {
-        heading: 'inter',
-        body: 'inter',
-      }
+        body: 'SF Pro Display',
+      },
     }}>
       <Story />
     </OreoProvider>

@@ -6,10 +6,12 @@ import { View } from '@components/view';
 
 import { usePopoverContext } from './popover-context';
 import type { PopoverContentProps } from './popover.types';
+import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledPopover = styled(View)<PopoverContentProps>`
   ${(props) => popoverContentDefaultStyle({ ...props } as any)}
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const PopoverContent = (props: PopoverContentProps) => {

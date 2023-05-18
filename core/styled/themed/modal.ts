@@ -249,6 +249,8 @@ export const modalOverlayDefaultStyle = (options: ModalSystemThemeParams) => {
 export const modalContentDefaultStyle = (options: ModalSystemThemeParams) => {
   const { theme, type = 'web', removeContentPadding } = options;
 
+  const isDark = theme.mode === 'dark';
+
   const padding = removeContentPadding ? 0 : theme.space[4];
 
   const paddingY = removeContentPadding ? 0 : theme.space[4];
@@ -259,7 +261,12 @@ export const modalContentDefaultStyle = (options: ModalSystemThemeParams) => {
 
   const { backgroundColor, color } = getBaseStyle({ theme });
 
+  const border = isDark
+    ? theme.colors.whiteAlpha[100]
+    : theme.colors.blackAlpha[400];
+
   const baseStyle = `
+    border: 1px solid ${border};
   `;
 
   const native = `

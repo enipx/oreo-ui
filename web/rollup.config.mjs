@@ -1,13 +1,34 @@
-// import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import cleaner from 'rollup-plugin-cleaner';
 import dts from 'rollup-plugin-dts';
-import { minify } from 'rollup-plugin-esbuild';
+import esbuild from 'rollup-plugin-esbuild';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import typescript from 'rollup-plugin-typescript2';
-import { visualizer } from 'rollup-plugin-visualizer';
+import analyze from 'rollup-plugin-analyzer';
+import alias from '@rollup/plugin-alias';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const customResolver = resolve({
+  extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json', '.sass', '.scss'],
+});
+
+const outputOptions = {
+  exports: 'named',
+  sourcemap: true,
+  banner: `/*
+  * Oreo UI
+  * {@link https://github.com/enipx/oreo-ui}
+  * @copyright Hashir (@enipx)
+  * @license MIT
+  */
+'use client';`,
+};
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 export default [
   {
@@ -16,28 +37,54 @@ export default [
       {
         file: './dist/commonjs/index.js',
         format: 'cjs',
-        sourcemap: true,
+        ...outputOptions,
       },
       {
         file: './dist/module/index.js',
         format: 'esm',
-        sourcemap: true,
+        ...outputOptions,
       },
     ],
     plugins: [
       cleaner({
         targets: ['./dist'],
       }),
-      nodeResolve(),
+      alias({
+        entries: [
+          { find: '@', replacement: path.resolve(__dirname, '..') },
+          {
+            find: '@system',
+            replacement: path.resolve(__dirname, 'src/system'),
+          },
+          {
+            find: '@components',
+            replacement: path.resolve(__dirname, 'src/components'),
+          },
+        ],
+        customResolver,
+      }),
+      resolve(),
       peerDepsExternal(),
       commonjs(),
-      typescript({
-        tsconfig: './tsconfig.json',
+      esbuild({
+        minifyIdentifiers: true,
+        minifyWhitespace: true,
+        tsconfig: 'tsconfig.json', // default
+        // Add extra loaders
+        loaders: {
+          // Add .json files support
+          // require @rollup/plugin-commonjs
+          '.json': 'json',
+          // Enable JSX in .js files too
+          '.js': 'jsx',
+          '.ts': 'tsx',
+        },
       }),
       json(),
-      minify(),
-      visualizer({
-        filename: 'dist-analysis.html',
+      analyze({
+        hideDeps: true,
+        limit: 0,
+        summaryOnly: true,
       }),
     ],
   },
@@ -49,6 +96,13 @@ export default [
         format: 'es',
       },
     ],
-    plugins: [dts()],
+    plugins: [
+      dts(),
+      analyze({
+        hideDeps: true,
+        limit: 0,
+        summaryOnly: true,
+      }),
+    ],
   },
 ];

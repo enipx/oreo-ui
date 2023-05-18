@@ -7,10 +7,10 @@ import spacing from '@/core/theme/utilities/spacing';
 import { useCallback, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import type { UsePopverOptions } from './popover.types';
+import type { UsePopoverOptions } from './popover.types';
 
 // @exports
-export const usePopover = (options: UsePopverOptions) => {
+export const usePopover = (options: UsePopoverOptions) => {
   const {
     referenceElement,
     popperElement,

@@ -37,7 +37,7 @@ export const AccordionPanel: React.FC<AccordionPanelProps> = (props) => {
   }, [isActive]);
 
   return (
-    <StyledAccordionPanel ref={panelRef} {...accordionValue}>
+    <StyledAccordionPanel ref={panelRef as any} {...accordionValue}>
       <View px="4" pt="2" pb="4">
         {children || content}
       </View>

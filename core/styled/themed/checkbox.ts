@@ -73,7 +73,7 @@ export const checkboxCheckedStyle = (options: SystemThemeParams) => {
       border: ${borderWidth()} solid ${theme.colors.white};
       border-top: 0;
       border-right: 0;
-      ${positionCenterStyle({ transfrom: rotateProperty })}
+      ${positionCenterStyle({ transform: rotateProperty })}
       top: ${isSmall ? getTop('49%') : getTop('45%')};
     }
   `;

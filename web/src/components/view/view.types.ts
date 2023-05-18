@@ -1,3 +1,7 @@
 import type { ViewThemedStyledProps } from '@/core/styled/components.types';
 
-export interface ViewProps extends ViewThemedStyledProps {}
+export interface ViewProps
+  extends ViewThemedStyledProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {
+  ref?: React.RefObject<HTMLDivElement>;
+}
