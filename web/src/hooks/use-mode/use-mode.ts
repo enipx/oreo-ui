@@ -1,6 +1,7 @@
 // @imports
 
 import type { ThemeModeKeys } from '@/core/constants/index.types';
+import { domExistsHandler } from '@/core/helpers/dom';
 import { getLocalStorage, setLocalStorage } from '@/core/helpers/storage';
 import { useKeydown } from '@/core/hooks/use-keydown';
 import { useCallback, useState, useEffect } from 'react';
@@ -26,7 +27,11 @@ export const useMode = (options: UseModeOptionsType) => {
   } = options;
 
   const getSystemPreferredMode = () => {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (!domExistsHandler()) {
+      return _mode;
+    }
+
+    return window?.matchMedia?.('(prefers-color-scheme: dark)')?.matches
       ? 'dark'
       : 'light';
   };
@@ -57,7 +62,10 @@ export const useMode = (options: UseModeOptionsType) => {
 
   const loadHandler = useCallback(() => {
     const currentMode = getCurrentMode();
-    saveHandler(currentMode);
+
+    if (currentMode !== mode) {
+      saveHandler(currentMode);
+    }
   }, []);
 
   useKeydown({
@@ -65,6 +73,10 @@ export const useMode = (options: UseModeOptionsType) => {
     callback: toggleHandler,
     enabled: !disableKeyboardShortcut && !!keyboardShortcut,
   });
+
+  useEffect(() => {
+    loadHandler();
+  }, []);
 
   useEffect(() => {
     if (saveToStorage) {
