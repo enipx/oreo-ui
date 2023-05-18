@@ -353,6 +353,7 @@ export const componentDefaultStyle = (options: DefaultComponentStyle) => {
     _css,
     _hover,
     _active,
+    _focus,
     _disabled,
   } = options;
 
@@ -369,6 +370,10 @@ export const componentDefaultStyle = (options: DefaultComponentStyle) => {
 
     &:hover {
       ${convertReactCSSToCSSHandler(_hover)}
+    }
+
+    &:focus {
+      ${convertReactCSSToCSSHandler(_focus)}
     }
 
     &:active {
