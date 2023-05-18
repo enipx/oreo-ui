@@ -99,6 +99,7 @@ export const TCaption = forwardRef((props: TableCaptionProps, ref) => {
       fontSize="sm"
       fontWeight="medium"
       p="4"
+      textAlign="center"
       {...(props as any)}
       ref={ref}
     />
