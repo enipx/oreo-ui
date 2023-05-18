@@ -37,6 +37,7 @@ export const OreoProvider = (props: OreoProviderProps) => {
     save: update,
   } = useMode({
     mode: _theme.mode,
+    ..._theme.modeOptions,
   });
 
   const theme: ThemeType = {

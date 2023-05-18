@@ -11,7 +11,7 @@ export type UseModeOptionsType = {
   keyboardShortcut?: string;
   disableKeyboardShortcut?: boolean;
   saveToStorage?: boolean;
-  systemPreferredMode?: boolean;
+  useSystemPreferredMode?: boolean;
 };
 
 // @exports
@@ -19,10 +19,10 @@ export const useMode = (options: UseModeOptionsType) => {
   const {
     mode: _mode,
     onChange,
-    keyboardShortcut = 'shift+d',
+    keyboardShortcut,
     disableKeyboardShortcut,
     saveToStorage,
-    systemPreferredMode,
+    useSystemPreferredMode,
   } = options;
 
   const [mode, setMode] = useState<ThemeModeKeys>(_mode);
@@ -43,7 +43,7 @@ export const useMode = (options: UseModeOptionsType) => {
       return;
     }
 
-    if (systemPreferredMode) {
+    if (useSystemPreferredMode) {
       const __mode: ThemeModeKeys = window.matchMedia(
         '(prefers-color-scheme: dark)'
       ).matches
@@ -55,9 +55,9 @@ export const useMode = (options: UseModeOptionsType) => {
   }, []);
 
   useKeydown({
-    key: keyboardShortcut,
+    key: keyboardShortcut || '',
     callback: toggleHandler,
-    enabled: !disableKeyboardShortcut,
+    enabled: !disableKeyboardShortcut && !!keyboardShortcut,
   });
 
   useEffect(() => {
