@@ -2,6 +2,7 @@
 import type { ReactHTML, SVGProps } from 'react';
 
 import type { PackageTypes, ThemeModeKeys } from '../constants/index.types';
+import type { BreakpointsObjectKeys } from '../theme/utilities/breakpoints';
 import type { IconSizingKeys } from '../theme/utilities/sizing';
 import type { FontKeys } from '../theme/utilities/typography';
 import type { ReactNativeStyledInterface, DefaultTheme } from './native';
@@ -108,3 +109,5 @@ export type NativeSvgProps = SVGProps<SVGElement> &
     size?: IconSizingKeys;
     altColor?: string;
   };
+
+export type ResponsiveValue<T> = T | Record<BreakpointsObjectKeys | 'base', T>;

@@ -279,4 +279,7 @@ export const IgnorePropsFromDOM = [
   'scrollHoverBg',
   'updateValue',
   'isActive',
+  'col',
+  'colStart',
+  'colEnd',
 ];

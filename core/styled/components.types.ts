@@ -10,6 +10,7 @@ import type {
 import type { TransitionsType } from './css/transitions';
 import type {
   LayoutThemeStyledProps,
+  ResponsiveValue,
   ThemeStyledProps,
   TypographyThemeStyledProps,
 } from './index.types';
@@ -26,6 +27,8 @@ export type MediaStyleType = Record<
   BreakpointsObjectKeys | 'base',
   CSSProperties
 >;
+
+export type MediaStyleKeyType = keyof MediaStyleType;
 
 export interface ComponentsDefaultProps {
   as?: any;
@@ -108,7 +111,11 @@ export interface FlexThemedStyledProps extends ViewThemedStyledProps {
   centerX?: boolean;
 }
 
-export interface GridThemedStyledProps extends LayoutThemeStyledProps {
+export interface FlexColThemedStyledProps extends ViewThemedStyledProps {
+  col?: ResponsiveValue<number>;
+}
+
+export interface GridThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
@@ -134,11 +141,17 @@ export interface GridThemedStyledProps extends LayoutThemeStyledProps {
   spacingY?: string | number;
 }
 
-export interface GridItemThemedStyledProps extends LayoutThemeStyledProps {
+export interface GridItemThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
   children?: React.ReactNode;
+
+  col?: ResponsiveValue<number>;
+
+  colStart?: ResponsiveValue<number>;
+
+  colEnd?: ResponsiveValue<number>;
 }
 
 export interface TextThemedStyledProps

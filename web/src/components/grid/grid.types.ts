@@ -1,3 +1,9 @@
-import type { GridThemedStyledProps } from '@/core/styled/components.types';
+import type {
+  GridThemedStyledProps,
+  GridItemThemedStyledProps,
+} from '@/core/styled/components.types';
 
 export interface GridProps extends Omit<GridThemedStyledProps, 'color'> {}
+
+export interface GridItemProps
+  extends Omit<GridItemThemedStyledProps, 'color'> {}

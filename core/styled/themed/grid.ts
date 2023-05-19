@@ -1,6 +1,10 @@
-import type { GridThemedStyledProps } from '../components.types';
+import type {
+  GridThemedStyledProps,
+  GridItemThemedStyledProps,
+} from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
+import { getResponsiveStyleHandler } from '@/core/helpers/theme';
 import type { SpacingKeys } from '@/core/theme/utilities/spacing';
 
 // @defaults
@@ -10,6 +14,8 @@ export const gridDefaults = {
 
 // @themes
 type GridSystemThemeParams = SystemThemeParams & GridThemedStyledProps;
+
+type GridItemSystemThemeParams = SystemThemeParams & GridItemThemedStyledProps;
 
 export const gridDefaultStyle = (options: GridSystemThemeParams) => {
   const {
@@ -76,11 +82,43 @@ export const gridItemDefaultStyle = (options: GridSystemThemeParams) => {
   const gapY = theme.space?.[spacingY as SpacingKeys] || spacingY || gap;
 
   const baseStyle = `
+  `;
+
+  const native = `
+    ${baseStyle}
     flex: 1;
     margin-horizontal: ${gapX};
     margin-vertical: ${gapY};
     ${isFirstItem ? 'margin-left: 0;' : ''}
     ${isLastItem ? 'margin-right: 0;' : ''}
+  `;
+
+  const web = `
+    ${baseStyle}
+  `;
+
+  const res: SystemThemeReturnType = {
+    native,
+    web,
+  };
+
+  return res[type];
+};
+
+export const webGridItemDefaultStyle = (options: GridItemSystemThemeParams) => {
+  const { theme, type = 'web', col } = options;
+
+  const colStart = options?.colStart || col || 1;
+  const colEnd = options?.colEnd || col || 1;
+
+  const gridColumnStyle = getResponsiveStyleHandler({
+    property: ['grid-column-start', 'grid-column-end'],
+    props: [colStart, colEnd],
+    theme,
+    prependStyle: 'span',
+  });
+
+  const baseStyle = `
   `;
 
   const native = `
@@ -89,6 +127,7 @@ export const gridItemDefaultStyle = (options: GridSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    ${gridColumnStyle}
   `;
 
   const res: SystemThemeReturnType = {
