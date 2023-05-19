@@ -1,12 +1,6 @@
 // @imports
 
-import {
-  space,
-  background,
-  typography,
-  border,
-  compose,
-} from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { badgeDefaultStyle } from '@/core/styled/themed/badge';
 import { styled, baseStyled } from '@/core/styled/web';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
@@ -18,7 +12,7 @@ import { forwardRef } from 'react';
 export const StyledBadge = styled(baseStyled('span'))<BadgeProps>`
   ${(props) => badgeDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
-  ${compose(space, background, typography, border)}
+  ${allStyleWithoutSize()}
 `;
 
 export const Badge: React.FC<BadgeProps> = forwardRef((props, ref) => {

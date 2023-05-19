@@ -1,6 +1,6 @@
 // @imports
 import { getNameInitialsHandler } from '@/core/helpers/string';
-import { width, height, border, space, compose } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import {
   avatarDefaultStyle,
   avatarDefaults,
@@ -18,7 +18,7 @@ import { componentDefaultStyle } from '@/core/styled/themed/base';
 export const StyledAvatar = styled(View)<AvatarProps>`
   ${(props) => avatarDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
-  ${compose(space, width, height, border)}
+  ${allStyleWithoutSize()}
 `;
 
 export const AvatarBase = (props: AvatarProps) => {

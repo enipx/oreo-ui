@@ -244,7 +244,7 @@ export const getResponsiveStyleHandler = (
 
     // 3. if props is not an object then it's not a responsive props
     const value = `${newPrependStyle || ''} ${
-      replaceValue?.[props] || props
+      replaceValue?.[props as unknown as keyof typeof replaceValue] || props
     }`.trim();
 
     css += `${property}: ${value}`;

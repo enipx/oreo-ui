@@ -26,7 +26,7 @@ export const AvatarGroup = (props: AvatarGroupProps) => {
     ? childrenArray.slice(0, max)
     : childrenArray;
 
-  const numberOfUnrenderedAvatar = childrenArray.length - (max || 0);
+  const numberOfUnRenderedAvatar = childrenArray.length - (max || 0);
 
   return (
     <StyledAvatarGroup {...(props as any)}>
@@ -47,7 +47,7 @@ export const AvatarGroup = (props: AvatarGroupProps) => {
         <AvatarBase
           isGrouped
           isLastItem
-          size={size}>{`+${numberOfUnrenderedAvatar}`}</AvatarBase>
+          size={size}>{`+${numberOfUnRenderedAvatar}`}</AvatarBase>
       ) : null}
     </StyledAvatarGroup>
   );

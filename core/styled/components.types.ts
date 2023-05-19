@@ -14,13 +14,7 @@ import type {
   ThemeStyledProps,
   TypographyThemeStyledProps,
 } from './index.types';
-import type {
-  SpaceProps,
-  ColorProps,
-  TypographyProps,
-  LayoutProps,
-  BorderProps,
-} from './system';
+import type { SpaceProps, LayoutProps, BorderProps } from './system';
 import type { CSSProperties } from './web';
 
 export type MediaStyleType = Record<
@@ -193,7 +187,7 @@ export type ButtonStateType = 'hovered' | 'disabled' | 'focused' | 'default';
 export type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface ButtonThemedStyledProps
-  extends LayoutThemeStyledProps,
+  extends ThemeStyledProps,
     ComponentsDefaultProps {
   /**
    * set left icon
@@ -260,7 +254,7 @@ export interface ButtonThemedStyledProps
 }
 
 export interface IconButtonThemedStyledProps
-  extends LayoutThemeStyledProps,
+  extends ThemeStyledProps,
     ComponentsDefaultProps {
   /**
    * set left icon
@@ -860,7 +854,7 @@ export interface AvatarThemedDefaultProps {
 }
 
 export interface AvatarThemedStyledProps
-  extends Omit<LayoutThemeStyledProps, 'size'>,
+  extends Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps,
     AvatarThemedDefaultProps {}
 
@@ -905,8 +899,7 @@ export interface IndicatorThemedDefaultProps {
 }
 
 export interface BadgeThemedDefaultProps
-  extends TypographyProps,
-    ColorProps,
+  extends ThemeStyledProps,
     ComponentsDefaultProps {
   children?: React.ReactNode;
 
@@ -1233,10 +1226,7 @@ export interface SkeletonThemedDefaultProps
   rounded?: boolean;
 }
 
-export interface ImageThemedDefaultProps
-  extends LayoutProps,
-    BorderProps,
-    SpaceProps {
+export interface ImageThemedDefaultProps extends ThemeStyledProps {
   /**
    * image source
    */

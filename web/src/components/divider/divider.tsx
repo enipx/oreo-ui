@@ -1,6 +1,6 @@
 // @imports
 
-import { width, height, compose } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { dividerDefaultStyle } from '@/core/styled/themed/divider';
 import { styled, baseStyled } from '@/core/styled/web';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
@@ -21,7 +21,7 @@ export const StyledDivider = styled(
 )<DividerProps>`
   ${(props) => dividerDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
-  ${compose(width, height)}
+  ${allStyleWithoutSize()}
 `;
 
 export const Divider = forwardRef((props: DividerProps, ref) => {
