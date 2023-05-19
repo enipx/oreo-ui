@@ -41,3 +41,24 @@ const FillTemplate: ComponentStory<typeof Flex> = (args) => (
 
 export const Spacer = FillTemplate.bind({});
 Spacer.args = {};
+
+const FlexGridTemplate: ComponentStory<typeof Flex> = (args) => (
+  <Flex.Row {...args}>
+    <Flex.Col col={{ base: 12, md: 4, lg: 6 }} bg="blue.500" height="100px">
+      1
+    </Flex.Col>
+
+    <Flex.Col col={{ base: 12, md: 4, lg: 6 }} bg="green.500" height="100px">
+      3
+    </Flex.Col>
+
+    <Flex.Col col={{ base: 12, md: 4, lg: 6 }} bg="red.500" height="100px">
+      2
+    </Flex.Col>
+  </Flex.Row>
+);
+
+export const FlexGrid = FlexGridTemplate.bind({});
+FlexGrid.args = {
+  spacing: 'md',
+};

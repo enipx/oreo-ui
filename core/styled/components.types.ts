@@ -115,6 +115,27 @@ export interface FlexColThemedStyledProps extends ViewThemedStyledProps {
   col?: ResponsiveValue<number>;
 }
 
+export interface FlexRowThemedDefaultProps {
+  /**
+   * give all children specified spacing
+   */
+  spacing?: string | number;
+
+  /**
+   * give all children specified spacing
+   */
+  spacingX?: string | number;
+
+  /**
+   * give all children specified spacing
+   */
+  spacingY?: string | number;
+}
+
+export interface FlexRowThemedStyledProps
+  extends FlexRowThemedDefaultProps,
+    ViewThemedStyledProps {}
+
 export interface GridThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content

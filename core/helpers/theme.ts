@@ -1,10 +1,13 @@
-import type { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
+import type {
+  ApplyDefaultThemeHandlerProps,
+  ObjectTypes,
+} from '../constants/index.types';
 import { MediaStyleKeyType, MediaStyleType } from '../styled/components.types';
 import { ResponsiveValue } from '../styled/index.types';
 import { DefaultTheme } from '../styled/web';
 import defaultTheme, { ThemeKeys, ThemeType } from '../theme';
 import { getBreakpoints } from '../theme/utilities/breakpoints';
-import { convertNestObjectToNonNestedObject, isObject } from './base';
+import { convertNestObjectToNonNestedObject, isArray, isObject } from './base';
 import { convertToKebabCaseHandler } from './string';
 
 /**
@@ -173,15 +176,16 @@ export const convertMediaStylesToCss = (
 
 type GetResponsiveStyleHandlerOptions = {
   props?: ResponsiveValue<any>[];
-  prependStyle?: string;
+  prependStyle?: string | string[];
   property?: string[];
+  replaceValue?: ObjectTypes;
   theme?: DefaultTheme;
 };
 
 export const getResponsiveStyleHandler = (
   options: GetResponsiveStyleHandlerOptions
 ) => {
-  const { prependStyle = '', props, theme, property } = options;
+  const { prependStyle = '', props, theme, property, replaceValue } = options;
 
   if (!props || props.length <= 0 || !property || property.length <= 0)
     return '';
@@ -202,6 +206,10 @@ export const getResponsiveStyleHandler = (
 
   // 1. map through props array
   props.forEach((prop, index) => {
+    const newPrependStyle = isArray(prependStyle)
+      ? prependStyle[index]
+      : prependStyle;
+
     // 2. check if prop is an object, Hence a responsive props
     if (isObject(prop)) {
       // 2.1. map through responsive prop
@@ -212,7 +220,9 @@ export const getResponsiveStyleHandler = (
         const keyValue = prop[newKey];
 
         // 2.3. prepend breakpoint value
-        const value = `${prependStyle} ${keyValue}`.trim();
+        const value = `${newPrependStyle || ''} ${
+          replaceValue?.[keyValue] || keyValue
+        }`.trim();
 
         // 2.4. get css property of this particular props
         const newProps = property[index];
@@ -233,7 +243,9 @@ export const getResponsiveStyleHandler = (
     }
 
     // 3. if props is not an object then it's not a responsive props
-    const value = `${prependStyle} ${props}`.trim();
+    const value = `${newPrependStyle || ''} ${
+      replaceValue?.[props] || props
+    }`.trim();
 
     css += `${property}: ${value}`;
   });
