@@ -307,7 +307,9 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
   _placeholder?: CSSProperties;
 }
 
-export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
+export interface PinInputThemedDefaultProps
+  extends ComponentsDefaultProps,
+    Omit<ThemeStyledProps, 'size'> {
   /**
    * button state
    */
@@ -357,8 +359,7 @@ export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
 
 export interface InputThemedStyledProps
   extends InputThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
+    Omit<ThemeStyledProps, 'size'>,
     Omit<LayoutProps, 'size'> {}
 
 export interface TextareaThemedDefaultProps extends ComponentsDefaultProps {
@@ -390,8 +391,7 @@ export type TextareaResizeType = 'none' | 'both' | 'horizontal' | 'vertical';
 
 export interface TextareaThemedStyledProps
   extends TextareaThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
+    ThemeStyledProps,
     Omit<LayoutProps, 'size'> {}
 
 export type CheckboxSizeType = 'sm' | 'md' | 'lg';
@@ -416,6 +416,7 @@ export type CheckboxThemedDefaultProps = {
 };
 export interface CheckboxThemedStyledProps
   extends CheckboxThemedDefaultProps,
+    Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps {}
 
 export type RadioSizeType = CheckboxSizeType;
@@ -450,6 +451,7 @@ export type RadioThemedDefaultProps = {
 
 export interface RadioThemedStyledProps
   extends RadioThemedDefaultProps,
+    Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps {}
 
 export type SwitchSizeType = CheckboxSizeType;
@@ -470,6 +472,7 @@ export type SwitchThemedDefaultProps = {
 };
 export interface SwitchThemedStyledProps
   extends SwitchThemedDefaultProps,
+    Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps {}
 
 export type SelectStateType = InputStateType;
@@ -519,8 +522,7 @@ export type SelectThemedDefaultProps = {
 
 export interface SelectThemedStyledProps
   extends SelectThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
+    Omit<ThemeStyledProps, 'size'>,
     Omit<LayoutProps, 'size'> {}
 
 export interface PortalThemedDefaultProps {

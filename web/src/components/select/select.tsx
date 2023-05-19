@@ -1,11 +1,5 @@
 // @imports
-import {
-  width,
-  height,
-  minWidth,
-  maxWidth,
-  compose,
-} from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import {
   inputDefaultStyle,
   backgroundColor,
@@ -32,12 +26,9 @@ export const StyledSelectContainer = styled(
   StyledInputContainer
 )<SelectContainerProps>`
   ${(props) => selectContainerBaseStyle({ ...props, type: 'web' } as any)};
-  ${compose(width, height, minWidth, maxWidth)}
 `;
 
-export const StyledSelect = styled(
-  baseStyled('select', ['shadow', 'grid', 'position', 'background'])
-)<SelectProps>`
+export const StyledSelect = styled(baseStyled('select'))<SelectProps>`
   &:hover {
     border-color: ${hoverBorderColor};
   }
@@ -53,6 +44,8 @@ export const StyledSelect = styled(
   border-color: ${borderColor};
 
   ${(props) => componentDefaultStyle({ ...props } as any)}
+
+  ${allStyleWithoutSize()}
 `;
 
 export const Select: React.FC<SelectProps> = (props) => {
@@ -117,7 +110,7 @@ export const Select: React.FC<SelectProps> = (props) => {
   return (
     <View>
       <InputLabel label={label} />
-      <StyledSelectContainer size={size} {...(otherProps as any)}>
+      <StyledSelectContainer size={size}>
         <StyledSelect
           size={size}
           {...(otherProps as any)}
