@@ -1,12 +1,5 @@
 // @imports
-import {
-  width,
-  height,
-  minWidth,
-  maxWidth,
-  border,
-  compose,
-} from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   inputSizeVariant,
@@ -40,10 +33,9 @@ export const StyledInputContainer = styled(
 )<InputContainerProps>`
   ${(props) => inputContainerDefaultStyle({ ...props, type: 'web' } as any)};
   ${(props) => inputSizeVariant({ ...props, type: 'web' } as any)};
-  ${compose(width, height, minWidth, maxWidth)}
 `;
 
-export const StyledInput = styled(baseStyled('input', ['all']))<InputProps>`
+export const StyledInput = styled(baseStyled('input'))<InputProps>`
   &:hover {
     border-color: ${hoverBorderColor};
   }
@@ -59,7 +51,7 @@ export const StyledInput = styled(baseStyled('input', ['all']))<InputProps>`
 
   ${(props) => componentDefaultStyle({ ...props } as any)}
 
-  ${compose(border)};
+  ${allStyleWithoutSize()};
 `;
 
 export const StyledHintText = styled(Text)<InputHintProps>`
@@ -105,8 +97,6 @@ export const Input = forwardRef((props: InputProps, ref) => {
     size = inputDefaults.size as InputProps['size'],
     hint,
     label,
-    onFocus,
-    onBlur,
     type,
     showPasswordIcon,
     hidePasswordIcon,
@@ -175,8 +165,7 @@ export const Input = forwardRef((props: InputProps, ref) => {
         rightIcon={renderRightIcon()}
         icon={icon}
         size={size}
-        disabled={isDisabled}
-        {...(otherProps as any)}>
+        disabled={isDisabled}>
         {icon ? (
           <IconButton
             className={inputDefaults.leftIconClassName}

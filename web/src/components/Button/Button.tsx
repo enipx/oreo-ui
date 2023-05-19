@@ -1,12 +1,5 @@
 // @imports
-import {
-  width,
-  height,
-  border,
-  compose,
-  typography,
-  flexbox,
-} from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   buttonDefaultStyle,
@@ -27,7 +20,7 @@ export const StyledButton = styled(baseStyled('button'))<ButtonProps>`
   ${(props) => buttonSizeVariant({ ...props } as any)}
   ${(props) => buttonStateVariant({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
-  ${compose(width, height, border, typography, flexbox)}
+  ${allStyleWithoutSize()}
 `;
 
 export const Button = forwardRef((props: ButtonProps, ref) => {

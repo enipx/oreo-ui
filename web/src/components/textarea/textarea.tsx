@@ -1,5 +1,5 @@
 // @imports
-import { border, compose } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   textareaDefaultStyle,
@@ -7,6 +7,7 @@ import {
   borderColor,
   backgroundColor,
   focusBorderColor,
+  hoverBorderColor,
 } from '@/core/styled/themed/textarea';
 import { styled, baseStyled } from '@/core/styled/web';
 
@@ -16,20 +17,23 @@ import { View } from '../view';
 import type { TextareaProps } from './textarea.types';
 
 // @exports
-export const StyledTextarea = styled(
-  baseStyled('textarea', ['shadow', 'grid', 'position', 'background'])
-)<TextareaProps>`
+export const StyledTextarea = styled(baseStyled('textarea'))<TextareaProps>`
+  :hover {
+    border-color: ${hoverBorderColor};
+  }
+
   :focus {
     border-color: ${focusBorderColor};
   }
 
   ${(props) => textareaDefaultStyle({ ...props } as any)}
+
   border-color: ${borderColor};
   background-color: ${backgroundColor};
 
   ${(props) => componentDefaultStyle({ ...props } as any)}
 
-  ${compose(border)};
+  ${allStyleWithoutSize()}
 `;
 
 export const Textarea: React.FC<TextareaProps> = (props) => {
@@ -52,7 +56,7 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
   return (
     <View>
       <InputLabel label={label} />
-      <View position="relative" {...(otherProps as any)}>
+      <View position="relative">
         {icon ? (
           <View zIndex="docked" position="absolute" right="md" bottom="md">
             <IconButton variant="link" size="xs" icon={icon} />

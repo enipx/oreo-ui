@@ -1,5 +1,6 @@
 // @imports
 import { isArrayLastItem } from '@/core/helpers/base';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import {
   radioDefaults,
   radioDefaultStyle,
@@ -16,13 +17,12 @@ import type { RadioProps, RadioDataType } from './radio.types';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
-export const StyledRadio = styled(
-  baseStyled('input', ['shadow', 'grid', 'position', 'background'])
-)<RadioProps>`
+export const StyledRadio = styled(baseStyled('input'))<RadioProps>`
   ${(props) => radioDefaultStyle({ ...props, type: 'web' } as any)};
   ${(props) => radioSizeVariant({ ...props, type: 'web' } as any)};
   ${(props) => radioCheckedStyle({ ...props, type: 'web' } as any)};
   ${(props) => componentDefaultStyle({ ...props } as any)}
+  ${allStyleWithoutSize()}
 `;
 
 export const RadioControl: React.FC<RadioProps> = (props) => {

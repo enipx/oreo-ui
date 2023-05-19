@@ -7,4 +7,4 @@ type DefaultImageProps = React.DetailedHTMLProps<
 
 export interface ImageProps
   extends ImageThemedDefaultProps,
-    Omit<DefaultImageProps, 'width' | 'height'> {}
+    Omit<DefaultImageProps, 'width' | 'height' | 'color'> {}

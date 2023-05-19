@@ -1,6 +1,6 @@
 // @imports
 
-import { width, height, compose } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { indicatorDefaultStyle } from '@/core/styled/themed/indicator';
 import { styled, baseStyled } from '@/core/styled/web';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
@@ -15,7 +15,7 @@ export const StyledIndicator = styled(
 )<IndicatorProps>`
   ${(props) => indicatorDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
-  ${compose(width, height)}
+  ${allStyleWithoutSize()}
 `;
 
 export const Indicator = (props: IndicatorProps) => {

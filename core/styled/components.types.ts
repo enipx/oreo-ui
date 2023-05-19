@@ -10,22 +10,19 @@ import type {
 import type { TransitionsType } from './css/transitions';
 import type {
   LayoutThemeStyledProps,
+  ResponsiveValue,
   ThemeStyledProps,
   TypographyThemeStyledProps,
 } from './index.types';
-import type {
-  SpaceProps,
-  ColorProps,
-  TypographyProps,
-  LayoutProps,
-  BorderProps,
-} from './system';
+import type { SpaceProps, LayoutProps, BorderProps } from './system';
 import type { CSSProperties } from './web';
 
 export type MediaStyleType = Record<
   BreakpointsObjectKeys | 'base',
   CSSProperties
 >;
+
+export type MediaStyleKeyType = keyof MediaStyleType;
 
 export interface ComponentsDefaultProps {
   as?: any;
@@ -108,7 +105,32 @@ export interface FlexThemedStyledProps extends ViewThemedStyledProps {
   centerX?: boolean;
 }
 
-export interface GridThemedStyledProps extends LayoutThemeStyledProps {
+export interface FlexColThemedStyledProps extends ViewThemedStyledProps {
+  col?: ResponsiveValue<number>;
+}
+
+export interface FlexRowThemedDefaultProps {
+  /**
+   * give all children specified spacing
+   */
+  spacing?: string | number;
+
+  /**
+   * give all children specified spacing
+   */
+  spacingX?: string | number;
+
+  /**
+   * give all children specified spacing
+   */
+  spacingY?: string | number;
+}
+
+export interface FlexRowThemedStyledProps
+  extends FlexRowThemedDefaultProps,
+    ViewThemedStyledProps {}
+
+export interface GridThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
@@ -134,11 +156,17 @@ export interface GridThemedStyledProps extends LayoutThemeStyledProps {
   spacingY?: string | number;
 }
 
-export interface GridItemThemedStyledProps extends LayoutThemeStyledProps {
+export interface GridItemThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
   children?: React.ReactNode;
+
+  col?: ResponsiveValue<number>;
+
+  colStart?: ResponsiveValue<number>;
+
+  colEnd?: ResponsiveValue<number>;
 }
 
 export interface TextThemedStyledProps
@@ -159,7 +187,7 @@ export type ButtonStateType = 'hovered' | 'disabled' | 'focused' | 'default';
 export type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface ButtonThemedStyledProps
-  extends LayoutThemeStyledProps,
+  extends ThemeStyledProps,
     ComponentsDefaultProps {
   /**
    * set left icon
@@ -226,7 +254,7 @@ export interface ButtonThemedStyledProps
 }
 
 export interface IconButtonThemedStyledProps
-  extends LayoutThemeStyledProps,
+  extends ThemeStyledProps,
     ComponentsDefaultProps {
   /**
    * set left icon
@@ -307,7 +335,9 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
   _placeholder?: CSSProperties;
 }
 
-export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
+export interface PinInputThemedDefaultProps
+  extends ComponentsDefaultProps,
+    Omit<ThemeStyledProps, 'size'> {
   /**
    * button state
    */
@@ -357,8 +387,7 @@ export interface PinInputThemedDefaultProps extends ComponentsDefaultProps {
 
 export interface InputThemedStyledProps
   extends InputThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
+    Omit<ThemeStyledProps, 'size'>,
     Omit<LayoutProps, 'size'> {}
 
 export interface TextareaThemedDefaultProps extends ComponentsDefaultProps {
@@ -390,8 +419,7 @@ export type TextareaResizeType = 'none' | 'both' | 'horizontal' | 'vertical';
 
 export interface TextareaThemedStyledProps
   extends TextareaThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
+    ThemeStyledProps,
     Omit<LayoutProps, 'size'> {}
 
 export type CheckboxSizeType = 'sm' | 'md' | 'lg';
@@ -416,6 +444,7 @@ export type CheckboxThemedDefaultProps = {
 };
 export interface CheckboxThemedStyledProps
   extends CheckboxThemedDefaultProps,
+    Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps {}
 
 export type RadioSizeType = CheckboxSizeType;
@@ -450,6 +479,7 @@ export type RadioThemedDefaultProps = {
 
 export interface RadioThemedStyledProps
   extends RadioThemedDefaultProps,
+    Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps {}
 
 export type SwitchSizeType = CheckboxSizeType;
@@ -470,6 +500,7 @@ export type SwitchThemedDefaultProps = {
 };
 export interface SwitchThemedStyledProps
   extends SwitchThemedDefaultProps,
+    Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps {}
 
 export type SelectStateType = InputStateType;
@@ -519,8 +550,7 @@ export type SelectThemedDefaultProps = {
 
 export interface SelectThemedStyledProps
   extends SelectThemedDefaultProps,
-    SpaceProps,
-    BorderProps,
+    Omit<ThemeStyledProps, 'size'>,
     Omit<LayoutProps, 'size'> {}
 
 export interface PortalThemedDefaultProps {
@@ -824,7 +854,7 @@ export interface AvatarThemedDefaultProps {
 }
 
 export interface AvatarThemedStyledProps
-  extends Omit<LayoutThemeStyledProps, 'size'>,
+  extends Omit<ThemeStyledProps, 'size'>,
     ComponentsDefaultProps,
     AvatarThemedDefaultProps {}
 
@@ -869,8 +899,7 @@ export interface IndicatorThemedDefaultProps {
 }
 
 export interface BadgeThemedDefaultProps
-  extends TypographyProps,
-    ColorProps,
+  extends ThemeStyledProps,
     ComponentsDefaultProps {
   children?: React.ReactNode;
 
@@ -1197,10 +1226,7 @@ export interface SkeletonThemedDefaultProps
   rounded?: boolean;
 }
 
-export interface ImageThemedDefaultProps
-  extends LayoutProps,
-    BorderProps,
-    SpaceProps {
+export interface ImageThemedDefaultProps extends ThemeStyledProps {
   /**
    * image source
    */

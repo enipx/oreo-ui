@@ -1,5 +1,5 @@
 // @imports
-import { border, compose } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   inputDefaultStyle,
@@ -47,7 +47,7 @@ export const StyledInput = styled(
 
   ${(props) => componentDefaultStyle({ ...props } as any)}
 
-  ${compose(border)};
+  ${allStyleWithoutSize()};
 `;
 
 export const PinInput: React.FC<PinInputProps> = (props) => {

@@ -1,3 +1,27 @@
+import {
+  compose,
+  width,
+  height,
+  minWidth,
+  maxWidth,
+  minHeight,
+  maxHeight,
+  display,
+  verticalAlign,
+  overflow,
+  overflowX,
+  overflowY,
+  background,
+  border,
+  color,
+  flexbox,
+  grid,
+  position,
+  shadow,
+  space,
+  typography,
+} from 'styled-system';
+
 // @imports
 export {
   width,
@@ -77,5 +101,44 @@ export {
   compose,
   shadow,
 } from 'styled-system';
+
+export const layoutWithoutSize = () =>
+  compose(
+    width,
+    height,
+    minWidth,
+    maxWidth,
+    minHeight,
+    maxHeight,
+    display,
+    verticalAlign,
+    overflow,
+    overflowX,
+    overflowY
+  );
+
+export const allStyleWithoutSize = () =>
+  compose(
+    width,
+    height,
+    minWidth,
+    maxWidth,
+    minHeight,
+    maxHeight,
+    display,
+    verticalAlign,
+    overflow,
+    overflowX,
+    overflowY,
+    space,
+    color,
+    typography,
+    flexbox,
+    grid,
+    background,
+    border,
+    position,
+    shadow
+  );
 
 export * from './system.types';

@@ -15,7 +15,7 @@ export interface InputProps
   extends InputThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width'
+      'size' | 'height' | 'width' | 'color'
     > {}
 
 export interface InputTextProps

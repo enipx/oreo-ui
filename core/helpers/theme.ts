@@ -1,9 +1,13 @@
-import type { ApplyDefaultThemeHandlerProps } from '../constants/index.types';
-import { MediaStyleType } from '../styled/components.types';
+import type {
+  ApplyDefaultThemeHandlerProps,
+  ObjectTypes,
+} from '../constants/index.types';
+import { MediaStyleKeyType, MediaStyleType } from '../styled/components.types';
+import { ResponsiveValue } from '../styled/index.types';
 import { DefaultTheme } from '../styled/web';
 import defaultTheme, { ThemeKeys, ThemeType } from '../theme';
 import { getBreakpoints } from '../theme/utilities/breakpoints';
-import { convertNestObjectToNonNestedObject, isObject } from './base';
+import { convertNestObjectToNonNestedObject, isArray, isObject } from './base';
 import { convertToKebabCaseHandler } from './string';
 
 /**
@@ -154,18 +158,101 @@ export const convertMediaStylesToCss = (
 
     const style = convertReactCSSToCSSHandler(value as any);
 
-    let mediaCss = `${key} {${style};}`;
+    let mediaCss = `${key} {${style}}`;
 
     if (breakpoint) {
-      mediaCss = `@media screen and (min-width: ${breakpoint}) {${style};}`;
+      mediaCss = `@media screen and (min-width: ${breakpoint}) {${style}}`;
     }
 
     if (key === 'base') {
-      mediaCss = `${style};`;
+      mediaCss = `${style}`;
     }
 
     css += mediaCss;
   });
+
+  return css;
+};
+
+type GetResponsiveStyleHandlerOptions = {
+  props?: ResponsiveValue<any>[];
+  prependStyle?: string | string[];
+  property?: string[];
+  replaceValue?: ObjectTypes;
+  theme?: DefaultTheme;
+};
+
+export const getResponsiveStyleHandler = (
+  options: GetResponsiveStyleHandlerOptions
+) => {
+  const { prependStyle = '', props, theme, property, replaceValue } = options;
+
+  if (!props || props.length <= 0 || !property || property.length <= 0)
+    return '';
+
+  let mediaStyle: MediaStyleType = {
+    'base': {},
+    'xs': {},
+    'sm': {},
+    'md': {},
+    'lg': {},
+    'xl': {},
+    '2xl': {},
+  };
+
+  let mediaCss = '';
+
+  let css = '';
+
+  // 1. map through props array
+  props.forEach((prop, index) => {
+    const newPrependStyle = isArray(prependStyle)
+      ? prependStyle[index]
+      : prependStyle;
+
+    // 2. check if prop is an object, Hence a responsive props
+    if (isObject(prop)) {
+      // 2.1. map through responsive prop
+      Object.keys(prop).forEach((key) => {
+        const newKey = key as MediaStyleKeyType;
+
+        // 2.2. get current breakpoint value
+        const keyValue = prop[newKey];
+
+        // 2.3. prepend breakpoint value
+        const value = `${newPrependStyle || ''} ${
+          replaceValue?.[keyValue] || keyValue
+        }`.trim();
+
+        // 2.4. get css property of this particular props
+        const newProps = property[index];
+
+        // 2.5. finally add key/value props to all media styles object
+        const newMediaStyle: MediaStyleType = {
+          ...mediaStyle,
+          [newKey]: {
+            ...mediaStyle[newKey],
+            [newProps]: value,
+          },
+        };
+
+        mediaStyle = newMediaStyle;
+      });
+
+      return;
+    }
+
+    // 3. if props is not an object then it's not a responsive props
+    const value = `${newPrependStyle || ''} ${
+      replaceValue?.[props as unknown as keyof typeof replaceValue] || props
+    }`.trim();
+
+    css += `${property}: ${value}`;
+  });
+
+  mediaCss = convertMediaStylesToCss(mediaStyle, theme);
+
+  css += mediaCss;
 
   return css;
 };

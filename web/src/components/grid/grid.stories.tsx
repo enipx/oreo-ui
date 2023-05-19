@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { View } from '../view';
 import { Grid } from './grid';
 
 export default {
@@ -14,11 +13,11 @@ export default {
 
 const Template: ComponentStory<typeof Grid> = (args) => (
   <Grid {...args}>
-    <View bg="blue.500" height="40px" />
-    <View bg="red.500" height="40px" />
-    <View bg="green.500" height="40px" />
-    <View bg="green.500" height="40px" />
-    <View bg="green.500" height="40px" />
+    <Grid.Item col={{ base: 2, md: 3, lg: 1 }} bg="blue.500" height="40px" />
+    <Grid.Item bg="red.500" height="40px" />
+    <Grid.Item bg="green.500" height="40px" />
+    <Grid.Item bg="green.500" height="40px" />
+    <Grid.Item bg="green.500" height="40px" />
   </Grid>
 );
 

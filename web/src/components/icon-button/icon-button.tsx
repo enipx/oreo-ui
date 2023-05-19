@@ -1,6 +1,6 @@
 // @imports
 
-import { border } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@/core/styled/system';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 import {
   iconButtonDefaultStyle,
@@ -20,7 +20,7 @@ export const StyledIconButton = styled(
   ${(props) => iconButtonSizeVariant({ ...props } as any)};
   ${(props) => buttonStateVariant({ ...props } as any)};
   ${(props) => componentDefaultStyle({ ...props } as any)}
-  ${border}
+  ${allStyleWithoutSize()}
 `;
 
 export const IconButton: React.FC<IconButtonProps> = (props) => {
