@@ -66,7 +66,11 @@ export interface ContainerThemedStyledProps extends ViewThemedStyledProps {
   type?: BreakpointsKeys;
 }
 
-export interface FlexThemedStyledProps extends ViewThemedStyledProps {
+export interface FlexThemedStyledProps
+  extends Omit<
+    ViewThemedStyledProps,
+    'flexCenter' | 'flexCenterY' | 'flexCenterX'
+  > {
   /**
    * set flex-direction to row
    */
@@ -128,7 +132,7 @@ export interface FlexRowThemedDefaultProps {
 
 export interface FlexRowThemedStyledProps
   extends FlexRowThemedDefaultProps,
-    ViewThemedStyledProps {}
+    FlexThemedStyledProps {}
 
 export interface GridThemedStyledProps extends ThemeStyledProps {
   /**

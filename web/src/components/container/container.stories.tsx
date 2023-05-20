@@ -20,4 +20,6 @@ Small.args = {
   type: 'sm',
   backgroundColor: 'gray.500',
   height: '100vh',
+  children: 'This is a container',
+  px: 'lg',
 };
