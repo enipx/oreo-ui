@@ -32,7 +32,6 @@ export const StyledInputContainer = styled(
   baseStyled('div', ['layout'])
 )<InputContainerProps>`
   ${(props) => inputContainerDefaultStyle({ ...props, type: 'web' } as any)};
-  ${(props) => inputSizeVariant({ ...props, type: 'web' } as any)};
 `;
 
 export const StyledInput = styled(baseStyled('input'))<InputProps>`
@@ -45,6 +44,7 @@ export const StyledInput = styled(baseStyled('input'))<InputProps>`
   }
 
   ${(props) => inputDefaultStyle({ ...props, type: 'web' } as any)};
+  ${(props) => inputSizeVariant({ ...props, type: 'web' } as any)};
 
   background-color: ${backgroundColor};
   border-color: ${borderColor};
