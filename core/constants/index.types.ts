@@ -23,4 +23,6 @@ export type Subset<K> = {
     : K[attr] extends object | null | undefined
     ? Subset<K[attr]> | null | undefined
     : K[attr];
+} & {
+  [attr in Exclude<string, keyof K>]?: any;
 };

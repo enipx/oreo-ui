@@ -149,6 +149,8 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     colorSchemeVariant,
   } = options;
 
+  const styles = getTabsStyleHandler(options);
+
   const { color: defaultColor } = getColorSchemeStyle({
     theme,
     colorScheme: colorScheme || 'blue',
@@ -161,7 +163,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
   const borderBottomColor = isActive ? color : theme.colors.transparent;
 
-  if (getTabsStyleHandler(options).isUnstyled) {
+  if (styles.isUnstyled) {
     const { color: baseColor } = getBaseStyle(options);
 
     const baseStyle = `
@@ -188,7 +190,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     return res[type];
   }
 
-  if (getTabsStyleHandler(options).isFenced) {
+  if (styles.isFenced) {
     const { backgroundColor } = getBaseStyle(options);
 
     const baseStyle = `
@@ -226,7 +228,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
     return res[type];
   }
 
-  if (getTabsStyleHandler(options).isPills) {
+  if (styles.isPills) {
     const { color: defaultColor, backgroundColor } = getBaseStyle(options);
 
     const color =
@@ -376,7 +378,7 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
 };
 
 export const tabsItemCustomStyle = (options: TabsItemSystemThemeParams) => {
-  const { type = 'web', isActive, _selected, _active, _hover } = options;
+  const { type = 'web', isActive, _selected, _itemStyle } = options;
 
   const baseStyle = `
   `;
@@ -387,16 +389,8 @@ export const tabsItemCustomStyle = (options: TabsItemSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    ${convertReactCSSToCSSHandler(_itemStyle)}
     ${isActive ? convertReactCSSToCSSHandler(_selected) : ''}
-
-    
-    &:hover {
-      ${convertReactCSSToCSSHandler(_hover)}
-    }
-
-    &.active {
-      ${convertReactCSSToCSSHandler(_active)}
-    }
   `;
 
   const res: SystemThemeReturnType = {

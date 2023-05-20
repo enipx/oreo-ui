@@ -4,6 +4,7 @@ import {
   tabsItemVariantStyle,
   tabsItemCustomStyle,
 } from '@/core/styled/themed/tabs';
+import { allStyle } from '@/core/styled/system';
 import { baseStyled, styled } from '@/core/styled/web';
 import { useEffect, memo } from 'react';
 
@@ -18,6 +19,7 @@ export const StyledTabsItem = styled(baseStyled('button'))<any>`
   ${(props) => tabsItemVariantStyle({ ...props } as any)}
   ${(props) => tabsItemCustomStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
+  ${allStyle()}
 `;
 
 export const TabsItem = memo((props: TabsItemProps) => {

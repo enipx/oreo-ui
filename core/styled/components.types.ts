@@ -934,6 +934,8 @@ export interface TabsThemedDefaultProps {
 
   onTabChange?: (arg: string) => void;
 
+  _itemStyle?: CSSProperties;
+
   _selected?: CSSProperties;
 
   _hover?: CSSProperties;
@@ -987,7 +989,7 @@ export interface TabsPanelThemedStyledProps
 
 export interface TabsItemThemedStyledProps
   extends TabsItemThemedDefaultProps,
-    TypographyThemeStyledProps,
+    ThemeStyledProps,
     ComponentsDefaultProps {}
 
 export type TableThemedSizeTypes = 'sm' | 'md' | 'lg';
