@@ -17,9 +17,12 @@ import { componentDefaultStyle } from '@/core/styled/themed/base';
 export const StyledTabsItem = styled(baseStyled('button'))<any>`
   ${(props) => tabsItemDefaultStyle({ ...props } as any)}
   ${(props) => tabsItemVariantStyle({ ...props } as any)}
-  ${(props) => tabsItemCustomStyle({ ...props } as any)}
-  ${(props) => componentDefaultStyle({ ...props } as any)}
+
   ${allStyle()}
+  
+  ${(props) => tabsItemCustomStyle({ ...props } as any)}
+
+  ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
 export const TabsItem = memo((props: TabsItemProps) => {

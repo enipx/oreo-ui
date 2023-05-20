@@ -89,4 +89,13 @@ export const Unstyled = Template.bind({});
 Unstyled.args = {
   withEqualWidth: true,
   variant: 'unstyled',
+  _itemStyle: {
+    border: `1px solid #fff`,
+    padding: '1rem',
+    fontSize: '1rem',
+  },
+  _selected: {
+    backgroundColor: '#fff',
+    color: '#000',
+  },
 };
