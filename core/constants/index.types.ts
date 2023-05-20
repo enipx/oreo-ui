@@ -18,11 +18,11 @@ export type DimensionsUnitTypes = 'px' | 'em' | 'rem';
 export type Subset<K> = {
   [attr in keyof K]?: K[attr] extends object
     ? Subset<K[attr]>
-    : K[attr] extends object | null
+    : K[attr & any] extends object | null
     ? Subset<K[attr]> | null
-    : K[attr] extends object | null | undefined
+    : K[attr & any] extends object | null | undefined
     ? Subset<K[attr]> | null | undefined
-    : K[attr];
+    : K[attr & any];
 } & {
   [attr in Exclude<string, keyof K>]?: any;
 };
