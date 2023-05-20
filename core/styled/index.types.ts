@@ -110,4 +110,6 @@ export type NativeSvgProps = SVGProps<SVGElement> &
     altColor?: string;
   };
 
-export type ResponsiveValue<T> = T | Record<BreakpointsObjectKeys | 'base', T>;
+export type ResponsiveValue<T> =
+  | T
+  | Partial<Record<BreakpointsObjectKeys | 'base', T>>;
