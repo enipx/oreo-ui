@@ -31,7 +31,7 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
     border-width: 1px;
     border-style: solid;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
     min-height: ${theme.components.textarea.height};
     outline: 0;
     border-radius: ${theme.radii.md};
@@ -39,6 +39,7 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
     padding-right: ${theme.space.md};
     padding-top: ${theme.space.sm};
     padding-bottom: ${theme.space.sm};
+    vertical-align: top;
   `;
 
   const native = `
@@ -48,9 +49,8 @@ export const textareaDefaultStyle = (option: SystemThemeParams) => {
   const web = `
     ${baseStyle}
     appearance: none;
-    white-space: nowrap;
     font-size: ${theme.fontSizes.sm};
-    resize: ${resize || 'auto'};
+    resize: ${resize || 'vertical'};
     color: ${color};
 
     ::placeholder {

@@ -43,9 +43,6 @@ export const Textarea: React.FC<TextareaProps> = (props) => {
     disabled: defaultDisabled,
     hint,
     label,
-    onFocus,
-    onBlur,
-    type,
     ...otherProps
   } = props;
 
