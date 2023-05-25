@@ -1,12 +1,7 @@
 // @imports
-
-import {
-  flexCenterStyle,
-  flexCenterYStyle,
-  flexCenterXStyle,
-} from '@/core/styled/css/';
 import { color } from '@/core/styled/system';
 import { styled, baseStyled } from '@/core/styled/web';
+import { viewDefaultStyle } from '@/core/styled/themed/view';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 import type { ViewProps } from './view.types';
@@ -14,9 +9,7 @@ import { forwardRef } from 'react';
 
 // @exports
 export const StyledView = styled(baseStyled('div'))<ViewProps>`
-  ${({ flexCenter }) => flexCenter && flexCenterStyle}
-  ${({ flexCenterY }) => flexCenterY && flexCenterYStyle}
-  ${({ flexCenterX }) => flexCenterX && flexCenterXStyle}
+  ${(props) => viewDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
   ${color}
 `;

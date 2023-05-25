@@ -149,7 +149,11 @@ export const convertMediaStylesToCss = (
   mediaStyle?: MediaStyleType,
   theme?: DefaultTheme
 ) => {
-  if (!mediaStyle) return '';
+  const isMediaStyleEmpty = Object.values(mediaStyle || {}).every(
+    (media) => Object.keys(media).length === 0
+  );
+
+  if (!mediaStyle || isMediaStyleEmpty) return '';
 
   let css = '';
 
@@ -180,15 +184,22 @@ type GetResponsiveStyleHandlerOptions = {
   property?: string[];
   replaceValue?: ObjectTypes;
   theme?: DefaultTheme;
+  replaceStyle?: React.CSSProperties;
 };
 
 export const getResponsiveStyleHandler = (
   options: GetResponsiveStyleHandlerOptions
 ) => {
-  const { prependStyle = '', props, theme, property, replaceValue } = options;
+  const {
+    prependStyle = '',
+    props,
+    theme,
+    property,
+    replaceValue,
+    replaceStyle,
+  } = options;
 
-  if (!props || props.length <= 0 || !property || property.length <= 0)
-    return '';
+  if (!props || props.length <= 0) return '';
 
   let mediaStyle: MediaStyleType = {
     'base': {},
@@ -225,14 +236,16 @@ export const getResponsiveStyleHandler = (
         }`.trim();
 
         // 2.4. get css property of this particular props
-        const newProps = property[index];
+        const newProps = property ? property?.[index] : '';
+
+        const newkeyObjects = replaceStyle || { [newProps]: value };
 
         // 2.5. finally add key/value props to all media styles object
         const newMediaStyle: MediaStyleType = {
           ...mediaStyle,
           [newKey]: {
             ...mediaStyle[newKey],
-            [newProps]: value,
+            ...newkeyObjects,
           },
         };
 
@@ -243,11 +256,18 @@ export const getResponsiveStyleHandler = (
     }
 
     // 3. if props is not an object then it's not a responsive props
+    const valueProp = props?.[index];
+
     const value = `${newPrependStyle || ''} ${
-      replaceValue?.[props as unknown as keyof typeof replaceValue] || props
+      replaceValue?.[valueProp as unknown as keyof typeof replaceValue] || props
     }`.trim();
 
-    css += `${property}: ${value}`;
+    // 3.1 if replace value exists b
+    const valueCss = replaceStyle
+      ? convertReactCSSToCSSHandler(replaceStyle)
+      : `${property?.[index] || ''}: ${value};`;
+
+    css += valueCss;
   });
 
   mediaCss = convertMediaStylesToCss(mediaStyle, theme);

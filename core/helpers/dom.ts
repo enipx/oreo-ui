@@ -286,4 +286,5 @@ export const IgnorePropsFromDOM = [
   'allValues',
   'storeValues',
   'colorSchemeVariant',
+  'wrap',
 ];

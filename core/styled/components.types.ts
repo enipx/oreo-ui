@@ -17,9 +17,8 @@ import type {
 import type { SpaceProps, LayoutProps, BorderProps } from './system';
 import type { CSSProperties } from './web';
 
-export type MediaStyleType = Record<
-  BreakpointsObjectKeys | 'base',
-  CSSProperties
+export type MediaStyleType = Partial<
+  Record<BreakpointsObjectKeys | 'base', CSSProperties>
 >;
 
 export type MediaStyleKeyType = keyof MediaStyleType;
@@ -27,7 +26,7 @@ export type MediaStyleKeyType = keyof MediaStyleType;
 export interface ComponentsDefaultProps {
   as?: any;
 
-  _mediaStyle?: MediaStyleType;
+  _mediaStyle?: Partial<MediaStyleType>;
 
   _css?: string;
 
@@ -48,15 +47,15 @@ export interface ViewThemedStyledProps
   /**
    * align children horizontally and vertically
    */
-  flexCenter?: boolean;
+  flexCenter?: ResponsiveValue<boolean>;
   /**
    * align children vertically
    */
-  flexCenterY?: boolean;
+  flexCenterY?: ResponsiveValue<boolean>;
   /**
    * align children horizontally
    */
-  flexCenterX?: boolean;
+  flexCenterX?: ResponsiveValue<boolean>;
 }
 
 export interface ContainerThemedStyledProps extends ViewThemedStyledProps {
