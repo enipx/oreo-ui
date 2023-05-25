@@ -26,7 +26,7 @@ export type MediaStyleKeyType = keyof MediaStyleType;
 export interface ComponentsDefaultProps {
   as?: any;
 
-  _mediaStyle?: Partial<MediaStyleType>;
+  _mediaStyle?: MediaStyleType;
 
   _css?: string;
 
