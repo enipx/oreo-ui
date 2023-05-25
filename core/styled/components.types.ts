@@ -1285,7 +1285,7 @@ export interface DividerThemedDefaultProps {
 
 export interface DividerThemedStyledProps
   extends DividerThemedDefaultProps,
-    SpaceProps {}
+    Omit<ThemeStyledProps, 'size'> {}
 
 export interface ShowThemedDefaultProps {
   children?: React.ReactNode;
