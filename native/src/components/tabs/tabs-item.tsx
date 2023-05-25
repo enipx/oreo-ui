@@ -17,12 +17,12 @@ import { useTabs } from './use-tabs';
 
 // @exports
 export const StyledTabsItem = styled(BaseButton)<TabsItemProps & TabsProps>`
-  ${(props) => tabsItemDefaultStyle({ ...props, type: 'native' } as any)}
-  ${(props) => tabsItemVariantStyle({ ...props, type: 'native' } as any)}
+  ${(props) => tabsItemDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) => tabsItemVariantStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const StyledTabsItemText = styled(Text)<TabsItemTextProps & TabsProps>`
-  ${(props) => tabsItemTextDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => tabsItemTextDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const TabsItem = (props: TabsItemProps) => {

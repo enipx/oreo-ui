@@ -63,9 +63,9 @@ export const TabsItem = memo((props: TabsItemProps) => {
       aria-selected={isActive}
       onClick={onClickHandler}
       {...tabsContextValue}
+      {...otherProps}
       isActive={isActive}
-      disabled={disabled}
-      {...otherProps}>
+      disabled={disabled}>
       {children}
     </StyledTabsItem>
   );

@@ -966,6 +966,8 @@ export interface TabsItemThemedDefaultProps {
 
   disabled?: boolean;
 
+  _itemStyle?: CSSProperties;
+
   _selected?: CSSProperties;
 
   _hover?: CSSProperties;
