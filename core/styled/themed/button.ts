@@ -74,9 +74,14 @@ export const buttonStateVariant = (options: ButtonSystemThemeParams) => {
 };
 
 export const buttonSizeVariant = (options: ButtonSystemThemeParams) => {
-  const { theme, type = 'web', rounded, size = buttonDefaults.size } = options;
+  const {
+    theme,
+    packageType = 'web',
+    rounded,
+    size = buttonDefaults.size,
+  } = options;
 
-  const isNative = isPackageNative(type);
+  const isNative = isPackageNative(packageType);
 
   const {
     height: heights,
@@ -107,7 +112,7 @@ export const buttonSizeVariant = (options: ButtonSystemThemeParams) => {
 };
 
 export const buttonBaseStyle = (options: ButtonSystemThemeParams) => {
-  const { theme, type = 'web' } = options;
+  const { theme, packageType = 'web' } = options;
 
   const baseStyle = `
     appearance: none;
@@ -133,13 +138,13 @@ export const buttonBaseStyle = (options: ButtonSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
   const {
     theme,
-    type = 'web',
+    packageType = 'web',
     disabled,
     colorScheme,
     variant,
@@ -228,11 +233,17 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
-  const { theme, type = 'web', colorScheme, variant, buttonSize } = options;
+  const {
+    theme,
+    packageType = 'web',
+    colorScheme,
+    variant,
+    buttonSize,
+  } = options;
 
   const { color } = getColorSchemeStyle({
     theme,
@@ -265,7 +276,7 @@ export const buttonTextDefaultStyle = (options: ButtonSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 // @Icon Button
@@ -274,7 +285,7 @@ export const iconButtonDefaultStyle = (
 ) => {
   const {
     theme,
-    type = 'web',
+    packageType = 'web',
     disabled,
     colorScheme,
     variant,
@@ -352,7 +363,7 @@ export const iconButtonDefaultStyle = (
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const iconButtonSizeVariant = (options: IconButtonSystemThemeParams) => {

@@ -31,7 +31,7 @@ import type {
 export const StyledInputContainer = styled(
   baseStyled('div', ['layout'])
 )<InputContainerProps>`
-  ${(props) => inputContainerDefaultStyle({ ...props, type: 'web' } as any)};
+  ${(props) => inputContainerDefaultStyle({ ...props } as any)};
 `;
 
 export const StyledInput = styled(baseStyled('input'))<InputProps>`
@@ -43,8 +43,8 @@ export const StyledInput = styled(baseStyled('input'))<InputProps>`
     border-color: ${focusBorderColor};
   }
 
-  ${(props) => inputDefaultStyle({ ...props, type: 'web' } as any)};
-  ${(props) => inputSizeVariant({ ...props, type: 'web' } as any)};
+  ${(props) => inputDefaultStyle({ ...props } as any)};
+  ${(props) => inputSizeVariant({ ...props } as any)};
 
   background-color: ${backgroundColor};
   border-color: ${borderColor};

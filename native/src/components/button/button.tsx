@@ -27,9 +27,9 @@ export const StyledButton = styled(
     'background',
   ])
 )<ButtonProps>`
-  ${(props) => buttonDefaultStyle({ ...props, type: 'native' } as any)}
-  ${(props) => buttonSizeVariant({ ...props, type: 'native' } as any)}
-  ${(props) => buttonStateVariant({ ...props, type: 'native' } as any)}
+  ${(props) => buttonDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) => buttonSizeVariant({ ...props, packageType: 'native' } as any)}
+  ${(props) => buttonStateVariant({ ...props, packageType: 'native' } as any)}
   ${width}
   ${minWidth}
   ${height}
@@ -37,7 +37,7 @@ export const StyledButton = styled(
 `;
 
 export const StyleButtonText = styled(Text)<TextProps>`
-  ${(props) => buttonTextDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => buttonTextDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const BaseButton = styled(

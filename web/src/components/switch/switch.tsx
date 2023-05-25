@@ -16,11 +16,13 @@ import type { SwitchProps } from './switch.types';
 import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
-export const StyledSwitch = styled(baseStyled('input'))<SwitchProps>`
-  ${(props) => switchDefaultStyle({ ...props, type: 'web' } as any)};
-  ${(props) => switchBaseStyle({ ...props, type: 'web' } as any)};
-  ${(props) => switchSizeVariant({ ...props, type: 'web' } as any)};
-  ${(props) => switchCheckedStyle({ ...props, type: 'web' } as any)};
+export const StyledSwitch = styled(
+  baseStyled('input', ['layout'])
+)<SwitchProps>`
+  ${(props) => switchDefaultStyle({ ...props, packageType: 'web' } as any)};
+  ${(props) => switchBaseStyle({ ...props, packageType: 'web' } as any)};
+  ${(props) => switchSizeVariant({ ...props, packageType: 'web' } as any)};
+  ${(props) => switchCheckedStyle({ ...props, packageType: 'web' } as any)};
   ${(props) => componentDefaultStyle({ ...props } as any)}
   ${allStyleWithoutSize()}
 `;

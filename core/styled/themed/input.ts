@@ -73,9 +73,9 @@ export const hintColor: any = variantModeHandler('state', {
 });
 
 export const inputSizeVariant = (options: InputSystemThemeParams) => {
-  const { theme, type = 'web', size = inputDefaults.size } = options;
+  const { theme, packageWeb = 'web', size = inputDefaults.size } = options;
 
-  const isNative = isPackageNative(type);
+  const isNative = isPackageNative(packageWeb);
 
   const {
     height: inputHeights,
@@ -102,7 +102,7 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
 export const inputPseudoStyle = (option: InputSystemThemeParams) => {
   const {
     theme,
-    type = 'web',
+    packageWeb = 'web',
     focus,
     _active,
     _focus,
@@ -137,26 +137,26 @@ export const inputPseudoStyle = (option: InputSystemThemeParams) => {
   const web = `
     ${baseStyle}
 
-    :active {
+    &:active {
       ${convertReactCSSToCSSHandler(_active)}
     }
 
-    :disabled {
+    &:disabled {
       cursor: not-allowed;
       ${convertReactCSSToCSSHandler(_disabled)}
     }
 
-    :focus {
+    &:focus {
       ${focus || ''}
       box-shadow: ${boxShadow};
       ${convertReactCSSToCSSHandler(_focus)}
     }
 
-    :hover {
+    &:hover {
       ${convertReactCSSToCSSHandler(_hover)}
     }
 
-    ::placeholder {
+    &::placeholder {
       ${convertReactCSSToCSSHandler(_placeholder)}
     }
   `;
@@ -166,11 +166,11 @@ export const inputPseudoStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageWeb];
 };
 
 export const inputDefaultStyle = (option: InputSystemThemeParams) => {
-  const { theme, type = 'web', size = inputDefaults.size } = option;
+  const { theme, packageWeb = 'web', size = inputDefaults.size } = option;
   const {
     fontSizes,
     placeholderFontSizes,
@@ -241,11 +241,11 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageWeb];
 };
 
 export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
-  const { theme, type = 'web', disabled } = option;
+  const { theme, packageWeb = 'web', disabled } = option;
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
 
@@ -287,13 +287,13 @@ export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageWeb];
 };
 
 export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
   const {
     theme,
-    type = 'web',
+    packageWeb = 'web',
     disabled,
     resize,
     size = inputDefaults.size,
@@ -341,7 +341,7 @@ export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageWeb];
 };
 
 // @utilities

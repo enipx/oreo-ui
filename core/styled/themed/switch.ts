@@ -32,7 +32,7 @@ export const switchSizing = (options: SystemThemeParams) => {
 };
 
 export const switchCheckedStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web', size = switchDefaults.size } = options;
+  const { theme, packageType = 'web', size = switchDefaults.size } = options;
 
   const { width: controlWidth } = switchSizing({
     ...options,
@@ -56,10 +56,10 @@ export const switchCheckedStyle = (options: SystemThemeParams) => {
   `;
 
   const web = `
-    :checked {
+    &:checked {
       ${baseStyle}
 
-      :after {
+      &::after {
         left: auto;
         right: ${controlWidth};
         transform: translate(100%, -50%);
@@ -72,13 +72,13 @@ export const switchCheckedStyle = (options: SystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const switchBaseStyle = (options: SystemThemeParams) => {
   const {
     theme,
-    type = 'web',
+    packageType = 'web',
     disabled,
     size = switchDefaults.size,
     checked,
@@ -124,7 +124,8 @@ export const switchBaseStyle = (options: SystemThemeParams) => {
   const web = `
     ${baseStyle}
 
-    :after {
+    &::after {
+      content: '';
       width: ${width};
       height: ${height};
       border-radius: 50%;
@@ -143,11 +144,11 @@ export const switchBaseStyle = (options: SystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const switchControlBaseStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web', size = switchDefaults.size } = options;
+  const { theme, packageType = 'web', size = switchDefaults.size } = options;
 
   const { width, height } = switchSizing({ ...options, size });
 
@@ -174,7 +175,7 @@ export const switchControlBaseStyle = (options: SystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const switchDefaultStyle = checkboxDefaultStyle;

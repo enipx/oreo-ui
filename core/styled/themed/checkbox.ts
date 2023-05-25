@@ -15,8 +15,8 @@ export const checkboxDefaults = {
 export const checkboxCheckedStyle = (options: SystemThemeParams) => {
   const {
     theme,
-    type = 'web',
     indeterminate,
+    packageType = 'web',
     size = checkboxDefaults.size,
   } = options;
 
@@ -66,15 +66,17 @@ export const checkboxCheckedStyle = (options: SystemThemeParams) => {
   `;
 
   const web = `
-    :checked:after {
-      ${baseStyle}
-      width: ${sizes[size as SizeKey].width};
-      height: ${sizes[size as SizeKey].height};
-      border: ${borderWidth()} solid ${theme.colors.white};
-      border-top: 0;
-      border-right: 0;
-      ${positionCenterStyle({ transform: rotateProperty })}
-      top: ${isSmall ? getTop('49%') : getTop('45%')};
+    &:checked {
+      &::after {
+        ${baseStyle}
+        width: ${sizes[size as SizeKey].width};
+        height: ${sizes[size as SizeKey].height};
+        border: ${borderWidth()} solid ${theme.colors.white};
+        border-top: 0;
+        border-right: 0;
+        ${positionCenterStyle({ transform: rotateProperty })}
+        top: ${isSmall ? getTop('49%') : getTop('45%')};
+      }
     }
   `;
 
@@ -83,11 +85,11 @@ export const checkboxCheckedStyle = (options: SystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const checkboxDefaultStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web', disabled, checked } = options;
+  const { theme, packageType = 'web', disabled, checked } = options;
 
   const cursor = disabled ? 'not-allowed' : 'pointer';
 
@@ -172,18 +174,18 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
       cursor: ${cursor};
     }
 
-    :after {
+    &::after {
       content: '';
       display: block;
       ${positionCenterStyle()}
     }
 
-    :checked {
+    &:checked {
       background-color: ${checkedBackgroundColor};
       border-color: ${checkedBorderColor};
     }
 
-    :hover {
+    &:hover {
       border-color: ${hoverBorderColor};
     }
 
@@ -192,7 +194,7 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
       focus: `border-color: ${hoverBorderColor};`,
     })}
 
-    :disabled {
+    &:disabled {
       cursor: not-allowed;
     
       + label {
@@ -206,7 +208,7 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const getInputsSizing = (options: SystemThemeParams) => {
