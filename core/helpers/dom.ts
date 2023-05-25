@@ -180,6 +180,7 @@ export const IgnorePropsFromDOM = [
   '_active',
   '_handle',
   '_track',
+  '_itemStyle',
   'flexCenter',
   'flexCenterY',
   'flexCenterX',
@@ -282,4 +283,8 @@ export const IgnorePropsFromDOM = [
   'col',
   'colStart',
   'colEnd',
+  'allValues',
+  'storeValues',
+  'colorSchemeVariant',
+  'wrap',
 ];

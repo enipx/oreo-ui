@@ -16,9 +16,9 @@ import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledCheckbox = styled(baseStyled('input'))<CheckboxProps>`
-  ${(props) => checkboxDefaultStyle({ ...props, type: 'web' } as any)};
-  ${(props) => checkboxSizeVariant({ ...props, type: 'web' } as any)};
-  ${(props) => checkboxCheckedStyle({ ...props, type: 'web' } as any)};
+  ${(props) => checkboxDefaultStyle({ ...props } as any)};
+  ${(props) => checkboxSizeVariant({ ...props } as any)};
+  ${(props) => checkboxCheckedStyle({ ...props } as any)};
   ${(props) => componentDefaultStyle({ ...props } as any)}
   ${allStyleWithoutSize()}
 `;

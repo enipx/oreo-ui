@@ -4,6 +4,7 @@ import {
   tabsItemVariantStyle,
   tabsItemCustomStyle,
 } from '@/core/styled/themed/tabs';
+import { allStyle } from '@/core/styled/system';
 import { baseStyled, styled } from '@/core/styled/web';
 import { useEffect, memo } from 'react';
 
@@ -16,7 +17,11 @@ import { componentDefaultStyle } from '@/core/styled/themed/base';
 export const StyledTabsItem = styled(baseStyled('button'))<any>`
   ${(props) => tabsItemDefaultStyle({ ...props } as any)}
   ${(props) => tabsItemVariantStyle({ ...props } as any)}
+
+  ${allStyle()}
+  
   ${(props) => tabsItemCustomStyle({ ...props } as any)}
+
   ${(props) => componentDefaultStyle({ ...props } as any)}
 `;
 
@@ -58,9 +63,9 @@ export const TabsItem = memo((props: TabsItemProps) => {
       aria-selected={isActive}
       onClick={onClickHandler}
       {...tabsContextValue}
+      {...otherProps}
       isActive={isActive}
-      disabled={disabled}
-      {...otherProps}>
+      disabled={disabled}>
       {children}
     </StyledTabsItem>
   );

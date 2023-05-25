@@ -6,7 +6,7 @@ import type {
 export interface TextareaProps
   extends TextareaThemedStyledProps,
     Omit<
-      React.InputHTMLAttributes<HTMLTextAreaElement>,
+      React.TextareaHTMLAttributes<HTMLTextAreaElement>,
       'size' | 'height' | 'width' | 'color'
     > {
   resize?: TextareaResizeType;

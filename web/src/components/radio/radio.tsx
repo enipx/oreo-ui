@@ -18,9 +18,9 @@ import { componentDefaultStyle } from '@/core/styled/themed/base';
 
 // @exports
 export const StyledRadio = styled(baseStyled('input'))<RadioProps>`
-  ${(props) => radioDefaultStyle({ ...props, type: 'web' } as any)};
-  ${(props) => radioSizeVariant({ ...props, type: 'web' } as any)};
-  ${(props) => radioCheckedStyle({ ...props, type: 'web' } as any)};
+  ${(props) => radioDefaultStyle({ ...props } as any)};
+  ${(props) => radioSizeVariant({ ...props } as any)};
+  ${(props) => radioCheckedStyle({ ...props } as any)};
   ${(props) => componentDefaultStyle({ ...props } as any)}
   ${allStyleWithoutSize()}
 `;

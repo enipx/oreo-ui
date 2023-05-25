@@ -20,6 +20,7 @@ import {
   shadow,
   space,
   typography,
+  layout,
 } from 'styled-system';
 
 // @imports
@@ -130,6 +131,20 @@ export const allStyleWithoutSize = () =>
     overflow,
     overflowX,
     overflowY,
+    space,
+    color,
+    typography,
+    flexbox,
+    grid,
+    background,
+    border,
+    position,
+    shadow
+  );
+
+export const allStyle = () =>
+  compose(
+    layout,
     space,
     color,
     typography,

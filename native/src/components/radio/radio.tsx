@@ -20,8 +20,8 @@ import { useModeTheme } from '../../hooks';
 
 // @exports
 export const StyledRadio = styled(StyledButton)<RadioProps>`
-  ${(props) => radioDefaultStyle({ ...props, type: 'native' } as any)};
-  ${(props) => radioSizeVariant({ ...props, type: 'native' } as any)};
+  ${(props) => radioDefaultStyle({ ...props, packageType: 'native' } as any)};
+  ${(props) => radioSizeVariant({ ...props, packageType: 'native' } as any)};
 `;
 
 export const RadioControl: React.FC<RadioProps> = (props) => {

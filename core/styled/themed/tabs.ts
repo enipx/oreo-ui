@@ -142,12 +142,14 @@ export const tabsListDefaultStyle = (options: TabsListSystemThemeParams) => {
 export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
   const {
     theme,
-    type = 'web',
+    packageType = 'web',
     isActive,
     color: customColor,
     colorScheme,
     colorSchemeVariant,
   } = options;
+
+  const styles = getTabsStyleHandler(options);
 
   const { color: defaultColor } = getColorSchemeStyle({
     theme,
@@ -161,7 +163,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 
   const borderBottomColor = isActive ? color : theme.colors.transparent;
 
-  if (getTabsStyleHandler(options).isUnstyled) {
+  if (styles.isUnstyled) {
     const { color: baseColor } = getBaseStyle(options);
 
     const baseStyle = `
@@ -185,10 +187,10 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
       web,
     };
 
-    return res[type];
+    return res[packageType];
   }
 
-  if (getTabsStyleHandler(options).isFenced) {
+  if (styles.isFenced) {
     const { backgroundColor } = getBaseStyle(options);
 
     const baseStyle = `
@@ -223,10 +225,10 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
       web,
     };
 
-    return res[type];
+    return res[packageType];
   }
 
-  if (getTabsStyleHandler(options).isPills) {
+  if (styles.isPills) {
     const { color: defaultColor, backgroundColor } = getBaseStyle(options);
 
     const color =
@@ -267,7 +269,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
       web,
     };
 
-    return res[type];
+    return res[packageType];
   }
 
   if (colorScheme) {
@@ -302,7 +304,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
       web,
     };
 
-    return res[type];
+    return res[packageType];
   }
 
   return `
@@ -316,7 +318,7 @@ export const tabsItemVariantStyle = (options: TabsItemSystemThemeParams) => {
 export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
   const {
     theme,
-    type = 'web',
+    packageType = 'web',
     isActive,
     colorScheme,
     disabled,
@@ -372,11 +374,11 @@ export const tabsItemDefaultStyle = (options: TabsItemSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const tabsItemCustomStyle = (options: TabsItemSystemThemeParams) => {
-  const { type = 'web', isActive, _selected, _active, _hover } = options;
+  const { packageType = 'web', isActive, _selected, _itemStyle } = options;
 
   const baseStyle = `
   `;
@@ -387,16 +389,8 @@ export const tabsItemCustomStyle = (options: TabsItemSystemThemeParams) => {
 
   const web = `
     ${baseStyle}
+    ${convertReactCSSToCSSHandler(_itemStyle)}
     ${isActive ? convertReactCSSToCSSHandler(_selected) : ''}
-
-    
-    &:hover {
-      ${convertReactCSSToCSSHandler(_hover)}
-    }
-
-    &.active {
-      ${convertReactCSSToCSSHandler(_active)}
-    }
   `;
 
   const res: SystemThemeReturnType = {
@@ -404,7 +398,7 @@ export const tabsItemCustomStyle = (options: TabsItemSystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const tabsItemTextDefaultStyle = (
@@ -412,7 +406,7 @@ export const tabsItemTextDefaultStyle = (
 ) => {
   const {
     theme,
-    type = 'web',
+    packageType = 'web',
     colorScheme,
     colorSchemeVariant,
     isActive,
@@ -452,7 +446,7 @@ export const tabsItemTextDefaultStyle = (
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 // @utilities

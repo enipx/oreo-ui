@@ -27,9 +27,11 @@ export const StyledIconButton = styled(
     'background',
   ])
 )<IconButtonProps>`
-  ${(props) => iconButtonDefaultStyle({ ...props, type: 'native' } as any)}
-  ${(props) => iconButtonSizeVariant({ ...props, type: 'native' } as any)}
-  ${(props) => buttonStateVariant({ ...props, type: 'native' } as any)}
+  ${(props) =>
+    iconButtonDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) =>
+    iconButtonSizeVariant({ ...props, packageType: 'native' } as any)}
+  ${(props) => buttonStateVariant({ ...props, packageType: 'native' } as any)}
   ${border}
   ${width}
   ${minWidth}

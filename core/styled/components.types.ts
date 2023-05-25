@@ -17,9 +17,8 @@ import type {
 import type { SpaceProps, LayoutProps, BorderProps } from './system';
 import type { CSSProperties } from './web';
 
-export type MediaStyleType = Record<
-  BreakpointsObjectKeys | 'base',
-  CSSProperties
+export type MediaStyleType = Partial<
+  Record<BreakpointsObjectKeys | 'base', CSSProperties>
 >;
 
 export type MediaStyleKeyType = keyof MediaStyleType;
@@ -48,15 +47,15 @@ export interface ViewThemedStyledProps
   /**
    * align children horizontally and vertically
    */
-  flexCenter?: boolean;
+  flexCenter?: ResponsiveValue<boolean>;
   /**
    * align children vertically
    */
-  flexCenterY?: boolean;
+  flexCenterY?: ResponsiveValue<boolean>;
   /**
    * align children horizontally
    */
-  flexCenterX?: boolean;
+  flexCenterX?: ResponsiveValue<boolean>;
 }
 
 export interface ContainerThemedStyledProps extends ViewThemedStyledProps {
@@ -66,7 +65,11 @@ export interface ContainerThemedStyledProps extends ViewThemedStyledProps {
   type?: BreakpointsKeys;
 }
 
-export interface FlexThemedStyledProps extends ViewThemedStyledProps {
+export interface FlexThemedStyledProps
+  extends Omit<
+    ViewThemedStyledProps,
+    'flexCenter' | 'flexCenterY' | 'flexCenterX'
+  > {
   /**
    * set flex-direction to row
    */
@@ -128,7 +131,7 @@ export interface FlexRowThemedDefaultProps {
 
 export interface FlexRowThemedStyledProps
   extends FlexRowThemedDefaultProps,
-    ViewThemedStyledProps {}
+    FlexThemedStyledProps {}
 
 export interface GridThemedStyledProps extends ThemeStyledProps {
   /**
@@ -930,6 +933,8 @@ export interface TabsThemedDefaultProps {
 
   onTabChange?: (arg: string) => void;
 
+  _itemStyle?: CSSProperties;
+
   _selected?: CSSProperties;
 
   _hover?: CSSProperties;
@@ -961,6 +966,8 @@ export interface TabsItemThemedDefaultProps {
 
   disabled?: boolean;
 
+  _itemStyle?: CSSProperties;
+
   _selected?: CSSProperties;
 
   _hover?: CSSProperties;
@@ -983,7 +990,7 @@ export interface TabsPanelThemedStyledProps
 
 export interface TabsItemThemedStyledProps
   extends TabsItemThemedDefaultProps,
-    TypographyThemeStyledProps,
+    ThemeStyledProps,
     ComponentsDefaultProps {}
 
 export type TableThemedSizeTypes = 'sm' | 'md' | 'lg';
@@ -1279,7 +1286,7 @@ export interface DividerThemedDefaultProps {
 
 export interface DividerThemedStyledProps
   extends DividerThemedDefaultProps,
-    SpaceProps {}
+    Omit<ThemeStyledProps, 'size'> {}
 
 export interface ShowThemedDefaultProps {
   children?: React.ReactNode;

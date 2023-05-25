@@ -10,7 +10,7 @@ export const radioDefaults = {
 };
 
 export const radioCheckedStyle = (options: SystemThemeParams) => {
-  const { theme, type = 'web', size = radioDefaults.size } = options;
+  const { theme, packageType = 'web', size = radioDefaults.size } = options;
 
   const { checked } = theme.components.radio;
 
@@ -26,16 +26,18 @@ export const radioCheckedStyle = (options: SystemThemeParams) => {
   `;
 
   const web = `
-    :checked:after {
-      ${baseStyle}
-      width: ${checkedWidth};
-      height: ${checkedHeight};
-      border-radius: 50%;
-      background-color: ${styleModeHandler({
-        light: 'white',
-        dark: 'gray.900',
-        theme,
-      })};
+    &:checked {
+      &::after {
+        ${baseStyle}
+        width: ${checkedWidth};
+        height: ${checkedHeight};
+        border-radius: 50%;
+        background-color: ${styleModeHandler({
+          light: 'white',
+          dark: 'gray.900',
+          theme,
+        })};
+      }
     }
   `;
 
@@ -44,7 +46,7 @@ export const radioCheckedStyle = (options: SystemThemeParams) => {
     web,
   };
 
-  return res[type];
+  return res[packageType];
 };
 
 export const radioDefaultStyle = checkboxDefaultStyle;
