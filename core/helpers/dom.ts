@@ -287,4 +287,5 @@ export const IgnorePropsFromDOM = [
   'storeValues',
   'colorSchemeVariant',
   'wrap',
+  'dropdown',
 ];

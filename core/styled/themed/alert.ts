@@ -83,7 +83,9 @@ export const getAlertColors = (option: AlertSystemThemeParams) => {
 
 // @styles
 export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
-  const { theme, type = 'web', showBorder } = option;
+  const { theme, type = 'web', showBorder, toast } = option;
+
+  const { xs } = theme.breakpoints;
 
   const { backgroundColor, color, contentColor } = getAlertColors(option);
 
@@ -110,6 +112,7 @@ export const alertDefaultStyle = (option: AlertSystemThemeParams) => {
     display: flex;
     padding: ${theme.space[3]} ${theme.space[3]};
     color: ${color};
+    ${toast ? `max-width: ${xs};` : ''}
     ${addTransitionsHandler([{ name: 'fade' }])}
 
     .alert__icon,

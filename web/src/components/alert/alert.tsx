@@ -9,6 +9,7 @@ import {
   alertDefaults,
   getAlertIconType,
 } from '@/core/styled/themed/alert';
+import { allStyle } from '@/core/styled/system';
 import { styled } from '@/core/styled/web';
 import { useRef, useState } from 'react';
 
@@ -28,6 +29,7 @@ import type { AlertProps, AlertIconObjectType } from './alert.types';
 export const StyledAlert = styled(View)<AlertProps>`
   ${(props) => alertDefaultStyle({ ...props } as any)}
   ${(props) => componentDefaultStyle({ ...props } as any)}
+  ${allStyle()}
 `;
 
 export const AlertIcon = (props: AlertProps) => {
