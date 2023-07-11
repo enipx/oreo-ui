@@ -57,6 +57,10 @@ Default.args = {
 
   text: 'Button',
   size: 'md',
+
+  onClick: () => {
+    alert('Clicked');
+  },
 };
 
 export const Rounded = Template.bind({});

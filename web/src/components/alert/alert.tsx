@@ -93,6 +93,8 @@ export const Alert = (props: AlertProps) => {
 
   const alertRef = useRef<HTMLDivElement>(null);
 
+  const alertContent = children || content;
+
   const onCloseHandler = () => {
     if (transitionClassName.inactive) {
       alertRef.current?.classList.remove(transitionClassName.active);
@@ -127,11 +129,13 @@ export const Alert = (props: AlertProps) => {
             colorScheme={colorScheme}
             variant={variant}
           />
-          <Text>{title}</Text>
+          {title ? <Text>{title}</Text> : null}
         </View>
-        <View className={alertDefaults.contentDescrClassName}>
-          {content || children}
-        </View>
+        {alertContent ? (
+          <View className={alertDefaults.contentDescrClassName}>
+            {content || children}
+          </View>
+        ) : null}
       </View>
       <AlertCloseButton
         withCloseButton={withCloseButton}

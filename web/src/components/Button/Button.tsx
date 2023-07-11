@@ -34,8 +34,11 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
     loading,
     loadingText,
     loadingIcon,
+    disabled: _disabled,
     ...otherProps
   } = props;
+
+  const disabled = _disabled || props?.state === 'disabled';
 
   const renderChildren = () => {
     if (loading) {
@@ -73,6 +76,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
       colorScheme={colorScheme}
       size={size}
       ref={ref}
+      disabled={disabled}
       {...(otherProps as any)}>
       {renderChildren()}
     </StyledButton>

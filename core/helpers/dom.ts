@@ -206,7 +206,6 @@ export const IgnorePropsFromDOM = [
   'colorScheme',
   'state',
   'text',
-  'disabled',
   'rounded',
   'loading',
   'loadingText',

@@ -29,13 +29,17 @@ export const IconButton: React.FC<IconButtonProps> = (props) => {
     size = iconButtonDefaults.size,
     colorScheme = iconButtonDefaults.colorScheme,
     children,
+    disabled: _disabled,
     ...otherProps
   } = props;
+
+  const disabled = _disabled || props?.state === 'disabled';
 
   return (
     <StyledIconButton
       size={size}
       colorScheme={colorScheme}
+      disabled={disabled}
       {...(otherProps as any)}>
       {icon ? icon : children || null}
     </StyledIconButton>

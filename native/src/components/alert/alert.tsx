@@ -125,16 +125,20 @@ export const Alert = (props: AlertProps) => {
             colorScheme={colorScheme}
             variant={variant}
           />
-          <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
-            {title}
-          </StyledAlertTitle>
+          {title ? (
+            <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
+              {title}
+            </StyledAlertTitle>
+          ) : null}
         </View>
 
-        <View mt="md" bg="transparent">
-          <StyledAlertContent colorScheme={colorScheme} variant={variant}>
-            {content}
-          </StyledAlertContent>
-        </View>
+        {content ? (
+          <View mt="md" bg="transparent">
+            <StyledAlertContent colorScheme={colorScheme} variant={variant}>
+              {content}
+            </StyledAlertContent>
+          </View>
+        ) : null}
       </View>
       <AlertCloseButton
         withCloseButton={withCloseButton}

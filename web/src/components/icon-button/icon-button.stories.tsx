@@ -38,4 +38,8 @@ Blue.args = {
     </svg>
   ),
   size: 'md',
+
+  onClick: () => {
+    alert('Clicked');
+  },
 };
