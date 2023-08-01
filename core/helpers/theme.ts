@@ -236,7 +236,7 @@ export const getResponsiveStyleHandler = (
         }`.trim();
 
         // 2.4. get css property of this particular props
-        const newProps = property ? property?.[index] : '';
+        const newProps: any = property ? property?.[index] : '';
 
         const newkeyObjects = replaceStyle || { [newProps]: value };
 

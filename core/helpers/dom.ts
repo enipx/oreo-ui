@@ -5,15 +5,20 @@
  */
 export const domExistsHandler = () => {
   const domExists =
+    // @ts-ignore
     typeof window !== 'undefined' &&
+    // @ts-ignore
     window.document &&
+    // @ts-ignore
     window.document.createElement;
 
   return !!domExists;
 };
 
 export const preventPageScrollingHandler = (prevent?: boolean) => {
+  // @ts-ignore
   if (domExistsHandler() && document.body) {
+    // @ts-ignore
     document.body.style.overflow = prevent ? 'hidden' : 'unset';
   }
 };

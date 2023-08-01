@@ -13,7 +13,7 @@ import type {
 
 export interface InputProps
   extends InputThemedStyledProps,
-    Omit<TextInputProps, 'disabled'> {
+    Omit<TextInputProps, 'disabled' | 'textAlign'> {
   type?: KeyboardTypeOptions | 'password';
 }
 

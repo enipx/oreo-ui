@@ -3,6 +3,6 @@ import type { KeyboardTypeOptions, TextInputProps } from 'react-native';
 
 export interface TextareaProps
   extends TextareaThemedStyledProps,
-    Omit<TextInputProps, 'disabled'> {
+    Omit<TextInputProps, 'disabled' | 'textAlign'> {
   type?: KeyboardTypeOptions | 'password';
 }
