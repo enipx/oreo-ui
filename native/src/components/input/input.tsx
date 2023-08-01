@@ -29,8 +29,9 @@ import { styled, baseStyled, useTheme } from '@/core/styled/native';
 export const StyledInputContainer = styled(
   baseStyled('View', ['layout', 'flexbox', 'grid'])
 )<InputContainerProps>`
-  ${(props) => inputContainerDefaultStyle({ ...props, type: 'native' } as any)};
-  ${(props) => inputSizeVariant({ ...props, type: 'native' } as any)};
+  ${(props) =>
+    inputContainerDefaultStyle({ ...props, packageType: 'native' } as any)};
+  ${(props) => inputSizeVariant({ ...props, packageType: 'native' } as any)};
   border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
 `;
@@ -45,7 +46,7 @@ export const StyledInput = styled(
     'space',
   ])
 )<InputProps>`
-  ${(props) => inputDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) => inputDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const StyledHintText = styled(Text)<InputTextProps>`

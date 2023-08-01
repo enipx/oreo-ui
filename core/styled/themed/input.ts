@@ -73,9 +73,9 @@ export const hintColor: any = variantModeHandler('state', {
 });
 
 export const inputSizeVariant = (options: InputSystemThemeParams) => {
-  const { theme, packageWeb = 'web', size = inputDefaults.size } = options;
+  const { theme, packageType = 'web', size = inputDefaults.size } = options;
 
-  const isNative = isPackageNative(packageWeb);
+  const isNative = isPackageNative(packageType);
 
   const {
     height: inputHeights,
@@ -102,7 +102,7 @@ export const inputSizeVariant = (options: InputSystemThemeParams) => {
 export const inputPseudoStyle = (option: InputSystemThemeParams) => {
   const {
     theme,
-    packageWeb = 'web',
+    packageType = 'web',
     focus,
     _active,
     _focus,
@@ -166,11 +166,11 @@ export const inputPseudoStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[packageWeb];
+  return res[packageType];
 };
 
 export const inputDefaultStyle = (option: InputSystemThemeParams) => {
-  const { theme, packageWeb = 'web', size = inputDefaults.size } = option;
+  const { theme, packageType = 'web', size = inputDefaults.size } = option;
   const {
     fontSizes,
     placeholderFontSizes,
@@ -241,11 +241,11 @@ export const inputDefaultStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[packageWeb];
+  return res[packageType];
 };
 
 export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
-  const { theme, packageWeb = 'web', disabled } = option;
+  const { theme, packageType = 'web', disabled } = option;
 
   const opacity = disabled ? inputDefaults.disabledOpacity : 1;
 
@@ -287,13 +287,13 @@ export const inputContainerDefaultStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[packageWeb];
+  return res[packageType];
 };
 
 export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
   const {
     theme,
-    packageWeb = 'web',
+    packageType = 'web',
     disabled,
     resize,
     size = inputDefaults.size,
@@ -341,7 +341,7 @@ export const inputFieldDefaultStyle = (option: InputSystemThemeParams) => {
     web,
   };
 
-  return res[packageWeb];
+  return res[packageType];
 };
 
 // @utilities
