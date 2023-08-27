@@ -72,9 +72,11 @@ export const AccordionButton: React.FC<AccordionButtonProps> = (props) => {
 
   return (
     <StyledAccordionButton onPress={onPressHandler} isActive={isActive}>
-      {renderChildren()}
+      <>
+        {renderChildren()}
 
-      {renderIcon()}
+        {renderIcon()}
+      </>
     </StyledAccordionButton>
   );
 };

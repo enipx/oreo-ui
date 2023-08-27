@@ -86,8 +86,8 @@ export type SystemThemeParams = Record<string, any> & {
   mode?: ThemeModeKeys;
   colorScheme?: string;
   rounded?: boolean;
-  icon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  icon?: JSX.Element;
+  rightIcon?: JSX.Element;
   resize?: string;
   index?: number;
   styleType?: 'css' | 'react';

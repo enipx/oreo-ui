@@ -5,7 +5,9 @@ import type {
 } from '@/core/styled/css/transitions';
 import type { ViewProps } from 'react-native';
 
-export interface AnimatedProps extends AnimatedThemedDefaultProps, ViewProps {
+export interface AnimatedProps
+  extends AnimatedThemedDefaultProps,
+    Omit<ViewProps, keyof AnimatedThemedDefaultProps> {
   name?: TransitionsType;
   onAnimationEnd?: () => void;
 }

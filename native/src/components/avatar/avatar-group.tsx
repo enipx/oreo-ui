@@ -48,11 +48,9 @@ export const AvatarGroup = (props: AvatarGroupProps) => {
         })}
         {maxExists ? (
           <AvatarBase isGrouped isLastItem size={size}>
-            <StyledAvatarText
-              colorScheme={colorScheme}
-              variant={
-                variant
-              }>{`+${numberOfUnrenderedAvatar}`}</StyledAvatarText>
+            <StyledAvatarText colorScheme={colorScheme} variant={variant}>
+              <>{`+${numberOfUnrenderedAvatar || '-'}`}</>
+            </StyledAvatarText>
           </AvatarBase>
         ) : null}
       </>
