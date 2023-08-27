@@ -4,7 +4,7 @@ import type {
   SelectThemedDefaultProps,
 } from '@/core/styled/components.types';
 import type { TouchableOpacityProps } from 'react-native';
-import type { FlatListRenderProps } from '@components/flat-list/flat-list.types';
+import type { FlatListRenderProps } from '../flat-list/flat-list.types';
 
 export interface SelectContainerProps
   extends Omit<ViewProps, 'size'>,

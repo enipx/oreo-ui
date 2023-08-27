@@ -24,7 +24,7 @@ import {
   pinInputDefaultStyle,
 } from '@/core/styled/themed/pin-input';
 import { styled, baseStyled, useTheme } from '@/core/styled/native';
-import type { InputFocusEventType } from '@components/input/input.types';
+import type { InputFocusEventType } from '../input/input.types';
 
 // @exports
 export const StyledPinInputField = styled(
