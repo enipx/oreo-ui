@@ -33,7 +33,9 @@ export const Indicator = (props: IndicatorProps) => {
       alignSelf="flex-start"
       flexWrap="wrap">
       <StyledIndicator {...otherProps}>
-        <StyledIndicatorText>{value}</StyledIndicatorText>
+        <StyledIndicatorText>
+          <>{value}</>
+        </StyledIndicatorText>
       </StyledIndicator>
       {renderChildren()}
     </View>

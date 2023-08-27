@@ -4,13 +4,15 @@ import type {
 } from 'react-native';
 import type { ViewThemedStyledProps } from '@/core/styled/components.types';
 
-export interface ViewProps extends DefaultViewProps, ViewThemedStyledProps {
+export interface ViewProps
+  extends DefaultViewProps,
+    Omit<ViewThemedStyledProps, keyof DefaultViewProps> {
   /**
-   * enable keyboard avoding view on scroll view
+   * enable keyboard avoiding view on scroll view
    */
   enableKeyboardAvoidingView?: boolean;
   /**
-   * enable keyboard avoding view on scroll view
+   * enable keyboard avoiding view on scroll view
    */
   keyboardAvoidingViewProps?: KeyboardAvoidingViewProps;
 }

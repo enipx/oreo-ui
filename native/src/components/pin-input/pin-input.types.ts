@@ -9,7 +9,7 @@ import type {
 
 export interface PinInputFieldProps
   extends PinInputThemedDefaultProps,
-    Omit<TextInputProps, 'disabled' | 'size' | 'onChange' | 'textAlign'> {
+    Omit<TextInputProps, keyof PinInputThemedDefaultProps> {
   type?: KeyboardTypeOptions | 'password';
 }
 

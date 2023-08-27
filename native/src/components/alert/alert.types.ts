@@ -5,5 +5,5 @@ import type {
 export interface AlertProps extends AlertThemedStyledProps {}
 
 export type AlertIconObjectType = {
-  [key in AlertIconTypeTypes]: React.ReactNode;
+  [key in AlertIconTypeTypes]: JSX.Element;
 };

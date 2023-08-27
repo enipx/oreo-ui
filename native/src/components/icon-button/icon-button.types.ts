@@ -3,4 +3,4 @@ import type { TouchableOpacityProps } from 'react-native';
 
 export interface IconButtonProps
   extends IconButtonThemedStyledProps,
-    Omit<TouchableOpacityProps, 'disabled'> {}
+    Omit<TouchableOpacityProps, keyof IconButtonThemedStyledProps> {}

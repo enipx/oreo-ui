@@ -26,13 +26,13 @@ export const Grid = (props: GridProps) => {
     columns: otherProps.columns,
   });
 
-  return (
-    <>
-      {rows.map((row, _index) => {
-        const key = `grid-row-${_index}`;
+  if (rows && rows.length > 0) {
+    return rows.map((row, _index) => {
+      const key = `grid-row-${_index}`;
 
-        return (
-          <StyledGrid key={key}>
+      return (
+        <StyledGrid key={key}>
+          <>
             {row.map((_rowItem, _rowIndex) => {
               const rowKey = `grid-row-${_rowIndex}`;
 
@@ -44,13 +44,15 @@ export const Grid = (props: GridProps) => {
                   key={rowKey}
                   {...otherProps}
                   {...({ isFirstItem, isLastItem } as any)}>
-                  {_rowItem}
+                  <>{_rowItem}</>
                 </GridItem>
               );
             })}
-          </StyledGrid>
-        );
-      })}
-    </>
-  );
+          </>
+        </StyledGrid>
+      );
+    });
+  }
+
+  return null;
 };

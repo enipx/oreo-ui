@@ -111,22 +111,24 @@ export const ToastProvider = (props: ToastProviderProps) => {
 
           return (
             <ToastContainer key={key} pos={containerPosition as any}>
-              {filteredToast.map((toast) => {
-                const { id, onHide, ...otherProps } = toast;
+              <>
+                {filteredToast.map((toast) => {
+                  const { id, onHide, ...otherProps } = toast;
 
-                // return null;
+                  // return null;
 
-                return (
-                  <Toast
-                    key={id}
-                    onHide={() => {
-                      hide(id);
-                      onHide?.();
-                    }}
-                    {...(otherProps as any)}
-                  />
-                );
-              })}
+                  return (
+                    <Toast
+                      key={id}
+                      onHide={() => {
+                        hide(id);
+                        onHide?.();
+                      }}
+                      {...(otherProps as any)}
+                    />
+                  );
+                })}
+              </>
             </ToastContainer>
           );
         })}

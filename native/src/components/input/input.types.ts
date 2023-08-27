@@ -13,16 +13,16 @@ import type {
 
 export interface InputProps
   extends InputThemedStyledProps,
-    Omit<TextInputProps, 'disabled' | 'textAlign'> {
+    Omit<TextInputProps, keyof InputThemedStyledProps> {
   type?: KeyboardTypeOptions | 'password';
 }
 
 export interface InputContainerProps
-  extends Omit<ViewProps, 'size'>,
+  extends Omit<ViewProps, keyof InputThemedDefaultProps>,
     InputThemedDefaultProps {}
 
 export interface InputTextProps
-  extends Omit<TextProps, 'size'>,
+  extends Omit<TextProps, keyof InputThemedDefaultProps>,
     InputThemedDefaultProps {}
 
 export type InputFocusEventType = NativeSyntheticEvent<TextInputFocusEventData>;

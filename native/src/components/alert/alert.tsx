@@ -127,7 +127,7 @@ export const Alert = (props: AlertProps) => {
           />
           {title ? (
             <StyledAlertTitle colorScheme={colorScheme} variant={variant}>
-              {title}
+              <>{title}</>
             </StyledAlertTitle>
           ) : null}
         </View>
@@ -135,7 +135,7 @@ export const Alert = (props: AlertProps) => {
         {content ? (
           <View mt="md" bg="transparent">
             <StyledAlertContent colorScheme={colorScheme} variant={variant}>
-              {content}
+              <>{content}</>
             </StyledAlertContent>
           </View>
         ) : null}

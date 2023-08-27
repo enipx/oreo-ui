@@ -116,21 +116,23 @@ export const Select: React.FC<SelectProps> = (props) => {
 
       return (
         <BaseButton onPress={onPressHandler}>
-          <View
-            py="base"
-            px="base"
-            flexDirection="row"
-            justifyContent="space-between"
-            flexCenterX>
-            <Text fontSize="md">{itemValue}</Text>
+          <>
+            <View
+              py="base"
+              px="base"
+              flexDirection="row"
+              justifyContent="space-between"
+              flexCenterX>
+              <Text fontSize="md">{itemValue}</Text>
 
-            {isActive ? (
-              <View>
-                <CheckMarkIcon strokeWidth={2.5} size="2xs" />
-              </View>
-            ) : null}
-          </View>
-          {isLastItem ? null : <Divider />}
+              {isActive ? (
+                <View>
+                  <CheckMarkIcon strokeWidth={2.5} size="2xs" />
+                </View>
+              ) : null}
+            </View>
+            {isLastItem ? null : <Divider />}
+          </>
         </BaseButton>
       );
     },

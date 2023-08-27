@@ -38,7 +38,7 @@ export interface ComponentsDefaultProps {
 
   _disabled?: CSSProperties;
 
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface ViewThemedStyledProps
@@ -137,7 +137,7 @@ export interface GridThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * set grid columns
@@ -163,7 +163,7 @@ export interface GridItemThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   col?: ResponsiveValue<number>;
 
@@ -195,11 +195,11 @@ export interface ButtonThemedStyledProps
   /**
    * set left icon
    */
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
   /**
    * set right icon
    */
-  rightIcon?: React.ReactNode;
+  rightIcon?: JSX.Element;
   /**
    * button color scheme
    */
@@ -251,9 +251,9 @@ export interface ButtonThemedStyledProps
   /**
    * set loading state icon
    */
-  loadingIcon?: React.ReactNode;
+  loadingIcon?: JSX.Element;
 
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface IconButtonThemedStyledProps
@@ -262,7 +262,7 @@ export interface IconButtonThemedStyledProps
   /**
    * set left icon
    */
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
   /**
    * icon button color scheme
    */
@@ -305,11 +305,11 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * set left icon
    */
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
   /**
    * set right icon
    */
-  rightIcon?: React.ReactNode;
+  rightIcon?: JSX.Element;
   /**
    * button state
    */
@@ -331,9 +331,9 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
    */
   hint?: string;
 
-  showPasswordIcon?: React.ReactNode;
+  showPasswordIcon?: JSX.Element;
 
-  hidePasswordIcon?: React.ReactNode;
+  hidePasswordIcon?: JSX.Element;
 
   _placeholder?: CSSProperties;
 }
@@ -397,7 +397,7 @@ export interface TextareaThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * set left icon
    */
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
   /**
    * button state
    */
@@ -519,7 +519,7 @@ export type SelectThemedDefaultProps = {
   /**
    * replace dropdown icon
    */
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
   /**
    * button state
    */
@@ -562,7 +562,7 @@ export interface PortalThemedDefaultProps {
    */
   domNode?: HTMLElement;
 
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export type ModalSizesType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full' | string;
@@ -607,11 +607,11 @@ export interface ModalThemedDefaultProps {
   /**
    * modal content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
   /**
    * set modal title
    */
-  title?: string | React.ReactNode;
+  title?: string | JSX.Element;
   /**
    * set if to show modal header close icon or not
    */
@@ -627,7 +627,7 @@ export interface ModalThemedDefaultProps {
   /**
    * set footer display alternative
    */
-  footerContent?: React.ReactNode;
+  footerContent?: JSX.Element;
   /**
    * set modal content position
    */
@@ -681,7 +681,7 @@ export interface AccordionThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * Allow multiple items to be opened at a time
@@ -691,12 +691,12 @@ export interface AccordionThemedDefaultProps {
   /**
    * replace item icon
    */
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
 
   /**
    * replace item icon when active
    */
-  activeIcon?: React.ReactNode;
+  activeIcon?: JSX.Element;
 
   /**
    * change icon position
@@ -720,7 +720,7 @@ export interface AccordionItemThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * item value
@@ -733,7 +733,7 @@ export interface AccordionButtonThemedDefaultProps
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   text?: string;
 }
@@ -742,7 +742,7 @@ export interface AccordionPanelThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   content?: string;
 }
@@ -762,7 +762,7 @@ export interface AlertThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   content?: string;
 
@@ -770,13 +770,13 @@ export interface AlertThemedDefaultProps {
 
   variant?: AlertVariantTypes;
 
-  title?: string | React.ReactNode;
+  title?: string | JSX.Element;
 
   withCloseButton?: boolean;
 
   onClose?: () => void;
 
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
 
   withIcon?: boolean;
 
@@ -821,7 +821,7 @@ export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
   /**
    * used to display custom components
    */
-  render?: React.ReactNode;
+  render?: JSX.Element;
 
   /**
    * used to disabled auto hiding of toast after the duration
@@ -837,7 +837,7 @@ export interface AvatarThemedDefaultProps {
    */
   alt?: string;
 
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   size?: AvatarSizeTypes;
 
@@ -864,7 +864,7 @@ export interface AvatarThemedStyledProps
 export interface AvatarGroupThemedDefaultProps {
   size?: AvatarSizeTypes;
 
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   max?: number;
 
@@ -888,7 +888,7 @@ export type IndicatorPositionTypes =
 export interface IndicatorThemedDefaultProps {
   value?: string;
 
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   max?: number;
 
@@ -904,7 +904,7 @@ export interface IndicatorThemedDefaultProps {
 export interface BadgeThemedDefaultProps
   extends ThemeStyledProps,
     ComponentsDefaultProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   colorScheme?: DefaultColorsSchemeKeys;
 
@@ -916,7 +916,7 @@ export interface BadgeThemedDefaultProps
 export type TabsVariantThemedDefaultProps = 'fenced' | 'unstyled' | 'pills';
 
 export interface TabsThemedDefaultProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   colorScheme?: DefaultColorsSchemeKeys;
 
@@ -946,7 +946,7 @@ export interface TabsListThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TabsListThemedStyledProps
@@ -957,7 +957,7 @@ export interface TabsItemThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * item value
@@ -979,7 +979,7 @@ export interface TabsPanelThemedDefaultProps {
   /**
    * item content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   value?: string;
 }
@@ -998,7 +998,7 @@ export interface TableThemedDefaultProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   striped?: 'odd' | 'even';
 
@@ -1018,63 +1018,63 @@ export interface TableContainerThemedDefaultProps
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TableHeadThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TableBodyThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TableFootThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface ThThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TrThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TdThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface TableCaptionThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface AnimatedThemedDefaultProps {
   /**
    * animated content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export type PopperThemedPlacementTypes =
@@ -1098,7 +1098,7 @@ export interface TooltipThemedDefaultProps {
   /**
    * tooltip content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * label
@@ -1149,7 +1149,7 @@ export interface PopoverThemedDefaultProps {
   /**
    * tooltip content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * tooltip placement
@@ -1205,7 +1205,7 @@ export interface SkeletonThemedDefaultProps
   /**
    * tooltip content
    */
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * check if content is loading
@@ -1251,7 +1251,7 @@ export interface ImageThemedDefaultProps extends ThemeStyledProps {
 
   fallbackSrc?: string;
 
-  fallback?: React.ReactNode;
+  fallback?: JSX.Element;
 }
 
 export type SpinnerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -1289,7 +1289,7 @@ export interface DividerThemedStyledProps
     Omit<ThemeStyledProps, 'size'> {}
 
 export interface ShowThemedDefaultProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * show item at breakpoint
@@ -1308,7 +1308,7 @@ export interface ShowThemedDefaultProps {
 }
 
 export interface ShowNativeThemedDefaultProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
   /**
    * show item when breakpoint is above the specified point
    */
@@ -1323,7 +1323,7 @@ export interface ShowNativeThemedDefaultProps {
 export interface HideThemedDefaultProps extends ShowThemedDefaultProps {}
 
 export interface ScrollbarThemedDefaultProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   /**
    * set scrollbar track style

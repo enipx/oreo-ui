@@ -37,7 +37,8 @@ export const StyledButton = styled(
 `;
 
 export const StyleButtonText = styled(Text)<TextProps>`
-  ${(props) => buttonTextDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) =>
+    buttonTextDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const BaseButton = styled(
