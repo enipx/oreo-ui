@@ -1,7 +1,7 @@
 // @imports
 import themeUtilities from '../utilities/';
 
-import type { PackageTypes } from '@/core/constants/index.types';
+import type { PackageTypes } from '@/constants/index.types';
 
 // @file declarations
 const iconButton = (arg?: PackageTypes) => {

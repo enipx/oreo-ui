@@ -1,9 +1,9 @@
 // @imports
 import themeUtilities from '../utilities/';
 
-import type { PackageTypes } from '@/core/constants/index.types';
-import { isPackageNative } from '@/core/helpers/base';
-import { add } from '@/core/helpers/number';
+import type { PackageTypes } from '@/constants/index.types';
+import { isPackageNative } from '@/helpers/base';
+import { add } from '@/helpers/number';
 
 // @file declarations
 

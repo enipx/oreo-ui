@@ -1,7 +1,7 @@
 // @imports
-import type { PackageTypes } from '@/core/constants/index.types';
-import { isPackageWeb } from '@/core/helpers/base';
-import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
+import type { PackageTypes } from '@/constants/index.types';
+import { isPackageWeb } from '@/helpers/base';
+import { convertObjectDimensionsUnit } from '@/helpers/layout';
 
 // @file declarations
 const drawerSizes = {

@@ -8,8 +8,8 @@ import _space, { SpacingTypes } from './spacing';
 import typography from './typography';
 import zIndices from './z-index';
 
-import { isPackageWeb } from '@/core/helpers/base';
-import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
+import { isPackageWeb } from '@/helpers/base';
+import { convertObjectDimensionsUnit } from '@/helpers/layout';
 
 // @file declarations
 const utilities = (arg?: PackageTypes) => {

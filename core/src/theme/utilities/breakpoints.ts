@@ -1,8 +1,8 @@
 // @imports
 import type { PackageTypes } from '../../constants/index.types';
 
-import { isPackageWeb } from '@/core/helpers/base';
-import { convertObjectDimensionsUnit } from '@/core/helpers/layout';
+import { isPackageWeb } from '@/helpers/base';
+import { convertObjectDimensionsUnit } from '@/helpers/layout';
 
 // @file declarations
 const breakpoints: any = ['375', '576', '768', '992', '1280', '1440'];
