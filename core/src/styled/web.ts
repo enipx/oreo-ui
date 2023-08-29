@@ -1,13 +1,11 @@
 // @imports
+import type { CSSProperties } from 'react';
 import defaultStyled, {
   keyframes,
   css,
   ThemeProvider,
-  DefaultTheme,
   useTheme as useStyledTheme,
   createGlobalStyle,
-  CSSProperties,
-  ThemeProviderProps,
 } from 'styled-components';
 import themer from 'styled-theming';
 
@@ -65,8 +63,9 @@ const baseStyled = (
   const _position = isStyledIgnored('position') ? '' : position;
   const _shadow = isStyledIgnored('shadow') ? '' : shadow;
 
+  // @ts-ignore
   return styled[tag].withConfig({
-    shouldForwardProp: (prop) =>
+    shouldForwardProp: (prop: string) =>
       ![...IgnorePropsFromDOM, ...(options?.ignoreProps || [])].includes(prop),
   })`
     ${_space}
@@ -82,9 +81,11 @@ const baseStyled = (
   `;
 };
 
-const useTheme: () => ThemeType = useStyledTheme;
+const useTheme = useStyledTheme as () => ThemeType;
 
-export type { DefaultTheme, CSSProperties, ThemeProviderProps };
+type DefaultTheme = ThemeType;
+
+export type { DefaultTheme, CSSProperties };
 
 export {
   styled,

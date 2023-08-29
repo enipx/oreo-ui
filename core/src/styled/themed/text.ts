@@ -2,12 +2,12 @@ import type { TextThemedStyledProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, getUtilitiesValue } from './base';
 
-import { isPackageNative } from '@/core/helpers/base';
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
+import { isPackageNative } from '@/helpers/base';
+import { convertReactCSSToCSSHandler } from '@/helpers/theme';
 import type {
   FontSizeKeys,
   FontWeightKeys,
-} from '@/core/theme/utilities/typography';
+} from '@/theme/utilities/typography';
 
 // @types
 type TextSystemThemeParams = SystemThemeParams & TextThemedStyledProps;

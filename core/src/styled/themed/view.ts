@@ -1,7 +1,7 @@
 import type { ViewThemedStyledProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import { getResponsiveStyleHandler } from '@/core/helpers/theme';
+import { getResponsiveStyleHandler } from '@/helpers/theme';
 
 // @types
 type ViewSystemThemeParams = SystemThemeParams & ViewThemedStyledProps;

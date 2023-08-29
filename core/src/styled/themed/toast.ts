@@ -6,8 +6,8 @@ import type {
 import { addTransitionsHandler, TransitionsType } from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import type { PackageTypes } from '@/core/constants/index.types';
-import { isPackageNative } from '@/core/helpers/base';
+import type { PackageTypes } from '@/constants/index.types';
+import { isPackageNative } from '@/helpers/base';
 
 // @defaults
 export const toastDefaults = {

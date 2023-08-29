@@ -2,7 +2,7 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, styleModeHandler } from './base';
 import { buttonBaseStyle } from './button';
 
-import { convertHexToRgbaHandler } from '@/core/helpers/theme';
+import { convertHexToRgbaHandler } from '@/helpers/theme';
 
 // @defaults
 export const dropdownDefaults = {};

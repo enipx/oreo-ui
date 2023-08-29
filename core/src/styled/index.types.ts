@@ -58,7 +58,7 @@ export interface TypographyThemeStyledProps
     ThemeTypeProps {}
 
 // @styled types definitions
-export type WebThemeStyledTagProps = keyof ReactHTML;
+export type WebThemeStyledTagProps = Omit<keyof ReactHTML, 'center'>;
 
 export type NativeThemeStyledTagProps =
   keyof ReactNativeStyledInterface<DefaultTheme>;

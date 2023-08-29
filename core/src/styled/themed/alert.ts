@@ -10,8 +10,8 @@ import { addTransitionsHandler } from '../css/transitions';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 
-import { add } from '@/core/helpers/number';
-import { convertHexToRgbaHandler } from '@/core/helpers/theme';
+import { add } from '@/helpers/number';
+import { convertHexToRgbaHandler } from '@/helpers/theme';
 
 // @defaults
 export const alertDefaults = {

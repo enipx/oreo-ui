@@ -4,7 +4,7 @@ import type { ReactNativeStyledInterface } from 'styled-components/native';
 import themer from 'styled-theming';
 
 import { arrayIncludesValueHandler } from '../helpers/base';
-import defaultThemeHandler, { ThemeType } from '../theme';
+import { theme as defaultThemeHandler, ThemeType } from '../theme';
 import type {
   NativeThemeStyledTagProps,
   ThemeStyledCategoriesArrayProps,

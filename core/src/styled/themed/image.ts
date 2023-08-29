@@ -1,8 +1,8 @@
 import type { ImageThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import { getDimensionsUnitHandler } from '@/core/helpers/layout';
-import spacing from '@/core/theme/utilities/spacing';
+import { getDimensionsUnitHandler } from '@/helpers/layout';
+import spacing from '@/theme/utilities/spacing';
 
 // @defaults
 export const imageDefaults = {

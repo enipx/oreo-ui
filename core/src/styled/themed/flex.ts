@@ -7,7 +7,7 @@ import { flexCenterStyle, flexCenterXStyle, flexCenterYStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getUtilitiesValue } from './base';
 
-import { getResponsiveStyleHandler } from '@/core/helpers/theme';
+import { getResponsiveStyleHandler } from '@/helpers/theme';
 
 // @defaults
 export const flexDefaults = {};

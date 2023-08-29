@@ -1,9 +1,9 @@
 // @imports
 import { useEffect } from 'react';
 
-import { domExistsHandler } from '@/core/helpers/dom';
+import { domExistsHandler } from '@/helpers/dom';
 
-type UseOutsideElementClickOptionsType = {
+export type UseOutsideElementClickOptionsType = {
   element?: (HTMLElement | null | undefined)[];
   callback?: () => void;
   enabled?: boolean;

@@ -14,14 +14,14 @@ import {
   getThemeMode,
 } from './base';
 
-import { packagePrefix } from '@/core/constants';
-import { isPackageNative } from '@/core/helpers/base';
+import { packagePrefix } from '@/constants';
+import { isPackageNative } from '@/helpers/base';
 import {
   convertHexToRgbaHandler,
   convertReactCSSToCSSHandler,
-} from '@/core/helpers/theme';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
-import type { FontSizeKeys } from '@/core/theme/utilities/typography';
+} from '@/helpers/theme';
+import type { SpacingKeys } from '@/theme/utilities/spacing';
+import type { FontSizeKeys } from '@/theme/utilities/typography';
 
 // @types
 type ButtonSystemThemeParams = SystemThemeParams & ButtonThemedStyledProps;

@@ -1,9 +1,9 @@
 // @imports
 import { useEffect, useCallback } from 'react';
 
-import { domExistsHandler } from '@/core/helpers/dom';
+import { domExistsHandler } from '@/helpers/dom';
 
-type UseKeydownkOptionsType = {
+export type UseKeydownkOptionsType = {
   key: KeyboardEvent['key'];
   callback?: () => void;
   enabled?: boolean;

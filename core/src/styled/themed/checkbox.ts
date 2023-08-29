@@ -3,7 +3,7 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 import { inputPseudoStyle } from './input';
 
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
+import { convertReactCSSToCSSHandler } from '@/helpers/theme';
 
 // @checkbox themes
 export const checkboxDefaults = {

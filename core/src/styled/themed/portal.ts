@@ -1,5 +1,5 @@
-import { packageName } from '@/core/constants';
-import { domExistsHandler } from '@/core/helpers/dom';
+import { packageName } from '@/constants';
+import { domExistsHandler } from '@/helpers/dom';
 
 // @portal defaults
 const portalClassName = `${packageName}-portal`;

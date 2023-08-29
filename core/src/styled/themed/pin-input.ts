@@ -2,9 +2,9 @@ import type { PackageTypes } from '../../constants/index.types';
 import type { PinInputThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import { isPackageNative, isPackageWeb } from '@/core/helpers/base';
-import { minus, add } from '@/core/helpers/number';
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
+import { isPackageNative, isPackageWeb } from '@/helpers/base';
+import { minus, add } from '@/helpers/number';
+import { convertReactCSSToCSSHandler } from '@/helpers/theme';
 
 // @defaults
 export const pinInputDefaults = {

@@ -4,8 +4,8 @@ import type {
 } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 
-import { getResponsiveStyleHandler } from '@/core/helpers/theme';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+import { getResponsiveStyleHandler } from '@/helpers/theme';
+import type { SpacingKeys } from '@/theme/utilities/spacing';
 
 // @defaults
 export const gridDefaults = {

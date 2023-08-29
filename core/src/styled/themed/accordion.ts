@@ -13,7 +13,7 @@ import {
   styleModeHandler,
 } from './base';
 
-import { convertHexToRgbaHandler } from '@/core/helpers/theme';
+import { convertHexToRgbaHandler } from '@/helpers/theme';
 
 // @defaults
 export const accordionDefaults = {

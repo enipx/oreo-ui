@@ -3,8 +3,8 @@ import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getSpacingValue, styleModeHandler } from './base';
 
-import { convertReactCSSToCSSHandler } from '@/core/helpers/theme';
-import { SpacingKeys } from '@/core/theme/utilities/spacing';
+import { convertReactCSSToCSSHandler } from '@/helpers/theme';
+import { SpacingKeys } from '@/theme/utilities/spacing';
 
 // @types
 type ScrollbarSystemThemeParams = SystemThemeParams &

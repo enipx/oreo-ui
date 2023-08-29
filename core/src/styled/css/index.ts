@@ -1,3 +1,5 @@
+export * from './transitions';
+
 // @styles
 export const transitionStyle = (option?: {
   property: string;

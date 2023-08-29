@@ -5,7 +5,7 @@ import type {
 import { MediaStyleKeyType, MediaStyleType } from '../styled/components.types';
 import { ResponsiveValue } from '../styled/index.types';
 import { DefaultTheme } from '../styled/web';
-import defaultTheme, { ThemeKeys, ThemeType } from '../theme';
+import { theme as defaultTheme, ThemeKeys, ThemeType } from '../theme';
 import { getBreakpoints } from '../theme/utilities/breakpoints';
 import { convertNestObjectToNonNestedObject, isArray, isObject } from './base';
 import { convertToKebabCaseHandler } from './string';

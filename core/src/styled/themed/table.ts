@@ -6,7 +6,7 @@ import { transitionStyle } from '../css';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getColorSchemeStyle, styleModeHandler } from './base';
 
-import { convertHexToRgbaHandler } from '@/core/helpers/theme';
+import { convertHexToRgbaHandler } from '@/helpers/theme';
 
 // @defaults
 export const tableDefaults = {

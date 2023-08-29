@@ -37,5 +37,6 @@
   "bugs": {
     "url": "https://github.com/enipx/oreo-ui/issues"
   },
-  "homepage": "https://github.com/enipx/oreo-ui#readme"
+  "homepage": "https://github.com/enipx/oreo-ui#readme",
+  "dependencies": {}
 }

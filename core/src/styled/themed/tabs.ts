@@ -16,7 +16,7 @@ import {
 import {
   convertHexToRgbaHandler,
   convertReactCSSToCSSHandler,
-} from '@/core/helpers/theme';
+} from '@/helpers/theme';
 
 // @defaults
 export const tabsDefaults = {

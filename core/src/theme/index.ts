@@ -23,4 +23,4 @@ export type ThemeType = ReturnType<typeof theme>;
 export type ThemeKeys = keyof ThemeType;
 
 // @exports
-export default theme;
+export { theme };

@@ -2,7 +2,7 @@ import type { DividerThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { styleModeHandler } from './base';
 
-import { isPackageNative } from '@/core/helpers/base';
+import { isPackageNative } from '@/helpers/base';
 
 // @defaults
 export const dividerDefaults = {

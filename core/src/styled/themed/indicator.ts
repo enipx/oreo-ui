@@ -7,7 +7,7 @@ import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, getColorSchemeStyle } from './base';
 import { getNativeTextFont } from './text';
 
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+import type { SpacingKeys } from '@/theme/utilities/spacing';
 
 // @defaults
 export const indicatorDefaults = {};

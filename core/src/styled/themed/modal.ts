@@ -12,8 +12,8 @@ import { mediaQueryStyle } from '../mixins';
 import { getBaseStyle, modeHandler, styleModeHandler } from './base';
 import { drawerContentDefaultStyle, drawerDefaultTransitions } from './drawer';
 
-import { isPackageNative } from '@/core/helpers/base';
-import type { ModalSizesKeys } from '@/core/theme/components/modal';
+import { isPackageNative } from '@/helpers/base';
+import type { ModalSizesKeys } from '@/theme/components/modal';
 
 // @defaults
 export const modalDefaults = {

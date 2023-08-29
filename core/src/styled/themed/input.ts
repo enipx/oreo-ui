@@ -9,12 +9,12 @@ import {
 } from './base';
 import { getNativeTextFont } from './text';
 
-import { packagePrefix } from '@/core/constants';
-import { isPackageNative } from '@/core/helpers/base';
+import { packagePrefix } from '@/constants';
+import { isPackageNative } from '@/helpers/base';
 import {
   convertHexToRgbaHandler,
   convertReactCSSToCSSHandler,
-} from '@/core/helpers/theme';
+} from '@/helpers/theme';
 
 // @defaults
 export const inputDefaults = {

@@ -6,19 +6,19 @@ import type {
 } from '../index.types';
 import { themer } from '../web';
 
-import type { ThemeModeKeys } from '@/core/constants/index.types';
+import type { ThemeModeKeys } from '@/constants/index.types';
 import {
   convertHexToRgbaHandler,
   convertReactCSSToCSSHandler,
   getThemeValueHandler,
   convertMediaStylesToCss,
-} from '@/core/helpers/theme';
-import type { ThemeKeys, ThemeType } from '@/core/theme';
+} from '@/helpers/theme';
+import type { ThemeKeys, ThemeType } from '@/theme';
 import type {
   DefaultColorsSchemeKeys,
   DefaultColorsVariantsType,
-} from '@/core/theme/utilities/colors';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+} from '@/theme/utilities/colors';
+import type { SpacingKeys } from '@/theme/utilities/spacing';
 
 // @defaults
 export const baseDefaults = {

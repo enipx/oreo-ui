@@ -2,12 +2,9 @@ import type { SpinnerThemedDefaultProps } from '../components.types';
 import type { SystemThemeParams, SystemThemeReturnType } from '../index.types';
 import { getBaseStyle, getColorSchemeStyle } from './base';
 
-import { isPackageNative } from '@/core/helpers/base';
-import { divide } from '@/core/helpers/number';
-import {
-  convertHexToRgbaHandler,
-  getThemeValueHandler,
-} from '@/core/helpers/theme';
+import { isPackageNative } from '@/helpers/base';
+import { divide } from '@/helpers/number';
+import { convertHexToRgbaHandler, getThemeValueHandler } from '@/helpers/theme';
 
 // @defaults
 export const spinnerDefaults = {
