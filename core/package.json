@@ -1,0 +1,41 @@
+{
+  "name": "@oreo-ui/core",
+  "version": "1.0.0",
+  "description": "Oreo ui core package",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "@types/styled-components-react-native": "^5.2.1",
+    "@types/styled-system": "^5.1.17",
+    "@types/styled-theming": "^2.2.5",
+    "styled-components": "^6.0.7",
+    "styled-system": "^5.1.5",
+    "styled-theming": "^2.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enipx/oreo-ui.git"
+  },
+  "keywords": [
+    "core",
+    "styled-components",
+    "ui",
+    "oreo",
+    "design-system",
+    "native",
+    "ui"
+  ],
+  "author": "enipx <progenipx@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enipx/oreo-ui/issues"
+  },
+  "homepage": "https://github.com/enipx/oreo-ui#readme"
+}
