@@ -6,7 +6,7 @@
   "module": "./dist/module/index",
   "types": "./dist/typescript/native/src/index.d.ts",
   "react-native": "./src/index",
-  "source": "./dist/commonjs/index",
+  "source": "./src/index",
   "files": [
     "dist",
     "src",
@@ -136,6 +136,7 @@
       "@react-native-community",
       "plugin:prettier/recommended"
     ],
+    "parserOptions": { "ecmaVersion": 2020 },
     "settings": {
       "import/resolver": {
         "alias": {
@@ -190,7 +191,12 @@
           "configFile": true
         }
       ],
-      "module",
+      [
+        "module",
+        {
+          "configFile": true
+        }
+      ],
       [
         "typescript",
         {
