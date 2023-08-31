@@ -57,6 +57,7 @@ const baseStyled = (
   const _position = isStyledIgnored('position') ? '' : position;
   const _shadow = isStyledIgnored('shadow') ? '' : shadow;
 
+  // @ts-ignore
   return styled[tag]`
     ${
       // @ts-ignore
