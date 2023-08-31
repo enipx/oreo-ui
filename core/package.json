@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Oreo ui core package",
   "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@types/node": "^20.5.7",
     "@types/styled-components": "^5.1.26",
