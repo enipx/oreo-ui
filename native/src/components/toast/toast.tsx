@@ -5,15 +5,15 @@ import { ToastContextProvider } from './toast-context';
 import type { ToastProviderProps, ToastProps } from './toast.types';
 import { useToastConfig } from './use-toast';
 
-import { useTimeout } from '@/core/hooks/use-timeout';
+import { useTimeout } from '@oreo-ui/core/dist/hooks/use-timeout';
 import {
   getToastPositions,
   toastContainerDefaultStyle,
   toastBaseContainerDefaultStyle,
   toastDefaults,
   getToastTransition,
-} from '@/core/styled/themed/toast';
-import { styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/toast';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { View } from '../view';
 import { Animated, useAnimation } from '../animated';
 

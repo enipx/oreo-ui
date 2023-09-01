@@ -7,8 +7,8 @@ import type { IndicatorProps } from './indicator.types';
 import {
   indicatorDefaultStyle,
   indicatorTextDefaultStyle,
-} from '@/core/styled/themed/indicator';
-import { styled, baseStyled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/indicator';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledIndicator = styled(View)<IndicatorProps>`

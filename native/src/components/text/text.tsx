@@ -1,10 +1,10 @@
 // @imports
 import type { TextProps } from './text.types';
-import { styled, baseStyled } from '@/core/styled/native';
-import { baseColor } from '@/core/styled/themed/base';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
+import { baseColor } from '@oreo-ui/core/dist/styled/themed/base';
 
-import { typography, color } from '@/core/styled/system';
-import { textDefaultStyle } from '@/core/styled/themed/text';
+import { typography, color } from '@oreo-ui/core/dist/styled/system';
+import { textDefaultStyle } from '@oreo-ui/core/dist/styled/themed/text';
 
 // @exports
 export const Text = styled(

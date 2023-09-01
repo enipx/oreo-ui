@@ -1,4 +1,4 @@
-import type { ShowNativeThemedDefaultProps } from '@/core/styled/components.types';
+import type { ShowNativeThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface ShowProps extends ShowNativeThemedDefaultProps {}
 

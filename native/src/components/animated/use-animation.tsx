@@ -1,4 +1,4 @@
-import spacing from '@/core/theme/utilities/spacing';
+import spacing from '@oreo-ui/core/dist/theme/utilities/spacing';
 import { useCallback, useRef } from 'react';
 import { Animated } from 'react-native';
 import type {

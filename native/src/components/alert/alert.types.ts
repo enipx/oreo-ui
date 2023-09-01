@@ -1,7 +1,7 @@
 import type {
   AlertThemedStyledProps,
   AlertIconTypeTypes,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 export interface AlertProps extends AlertThemedStyledProps {}
 
 export type AlertIconObjectType = {

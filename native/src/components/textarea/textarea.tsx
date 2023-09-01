@@ -6,9 +6,9 @@ import { InputHint, InputLabel } from '../input/input';
 import { InputField } from '../input/input-field';
 import type { TextareaProps } from './textarea.types';
 
-import { textareaDefaults } from '@/core/styled/themed/textarea';
+import { textareaDefaults } from '@oreo-ui/core/dist/styled/themed/textarea';
 
-import { useTheme } from '@/core/styled/native';
+import { useTheme } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const Textarea: React.FC<TextareaProps> = (props) => {

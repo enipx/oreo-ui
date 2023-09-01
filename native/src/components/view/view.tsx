@@ -1,12 +1,12 @@
 // @imports
 import React from 'react';
 import type { ViewProps } from './view.types';
-import { styled, baseStyled } from '@/core/styled/native';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import {
   flexCenterStyle,
   flexCenterYStyle,
   flexCenterXStyle,
-} from '@/core/styled/css/';
+} from '@oreo-ui/core/dist/styled/css/';
 import { KeyboardAvoidingView } from 'react-native';
 import { isIOS } from '../../helpers/base';
 

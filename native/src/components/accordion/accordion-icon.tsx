@@ -2,8 +2,8 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
 
-import type { NativeSvgProps } from '@/core/styled/index.types';
-import { iconSizing } from '@/core/theme/utilities/sizing';
+import type { NativeSvgProps } from '@oreo-ui/core/dist/styled/index.types';
+import { iconSizing } from '@oreo-ui/core/dist/theme/utilities/sizing';
 
 export const ChevronUpIcon: React.FC<NativeSvgProps> = (props) => {
   const { size } = props;

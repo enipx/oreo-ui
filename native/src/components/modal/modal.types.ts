@@ -1,5 +1,5 @@
 import type { ModalProps as DefaultModalProps } from 'react-native';
-import type { ModalThemedDefaultProps } from '@/core/styled/components.types';
+import type { ModalThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import type { ButtonProps } from '../button';
 
 export interface ModalProps

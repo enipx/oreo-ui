@@ -10,7 +10,7 @@ import {
   getAlertIconType,
   alertTitleDefaultStyle,
   getAlertColors,
-} from '@/core/styled/themed/alert';
+} from '@oreo-ui/core/dist/styled/themed/alert';
 import {
   WarningIcon,
   InfoIcon,
@@ -18,7 +18,7 @@ import {
   DangerIcon,
   CloseIcon,
 } from './alert-icon';
-import { styled, useTheme } from '@/core/styled/native';
+import { styled, useTheme } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledAlert = styled(StyledView)<AlertProps>`

@@ -1,6 +1,6 @@
 {
   "name": "oreo-ui",
-  "private": false,
+  "private": true,
   "devDependencies": {
     "@babel/runtime": "^7.20.7",
     "eslint": "^8.31.0",

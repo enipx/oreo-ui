@@ -14,8 +14,8 @@ import {
   checkboxDefaults,
   checkboxDefaultStyle,
   checkboxSizeVariant,
-} from '@/core/styled/themed/checkbox';
-import { styled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/checkbox';
+import { styled } from '@oreo-ui/core/dist/styled/native';
 import { CheckedIcon, IndeterminateIcon } from './checkbox-icon';
 
 // @exports

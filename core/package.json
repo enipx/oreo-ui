@@ -16,8 +16,8 @@
     "styled-theming": "^2.2.0"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "styled-components": "^6.0.7"
+    "react": "*",
+    "styled-components": "*"
   },
   "scripts": {
     "build": "tsup",

@@ -13,8 +13,8 @@ import {
   switchBaseStyle,
   switchSizeVariant,
   switchControlBaseStyle,
-} from '@/core/styled/themed/switch';
-import { baseStyled, styled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/switch';
+import { baseStyled, styled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledSwitch = styled(StyledButton)<SwitchProps>`

@@ -11,8 +11,8 @@ import {
   tabsItemDefaultStyle,
   tabsItemVariantStyle,
   tabsItemTextDefaultStyle,
-} from '@/core/styled/themed/tabs';
-import { styled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/tabs';
+import { styled } from '@oreo-ui/core/dist/styled/native';
 import { useTabs } from './use-tabs';
 
 // @exports

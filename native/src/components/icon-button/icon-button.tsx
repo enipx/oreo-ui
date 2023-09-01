@@ -6,14 +6,14 @@ import {
   minHeight,
   height,
   border,
-} from '@/core/styled/system';
-import { styled, baseStyled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/system';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import {
   iconButtonDefaultStyle,
   iconButtonSizeVariant,
   buttonStateVariant,
   iconButtonDefaults,
-} from '@/core/styled/themed/button';
+} from '@oreo-ui/core/dist/styled/themed/button';
 
 import type { IconButtonProps } from './icon-button.types';
 

@@ -2,8 +2,8 @@
 import { Path, Svg } from 'react-native-svg';
 import React from 'react';
 
-import type { NativeSvgProps } from '@/core/styled/index.types';
-import { iconSizing } from '@/core/theme/utilities/sizing';
+import type { NativeSvgProps } from '@oreo-ui/core/dist/styled/index.types';
+import { iconSizing } from '@oreo-ui/core/dist/theme/utilities/sizing';
 import { useModeTheme } from '../../hooks';
 
 export const ArrowDownIcon: React.FC<NativeSvgProps> = (props) => {

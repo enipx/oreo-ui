@@ -3,14 +3,14 @@ import React, { useRef, useEffect } from 'react';
 import { AnimatedBase } from '../animated';
 import type { SkeletonProps } from './skeleton.types';
 
-import { layout, border, space } from '@/core/styled/system';
+import { layout, border, space } from '@oreo-ui/core/dist/styled/system';
 import {
   skeletonDefaultStyle,
   skeletonBaseDefaultStyle,
-} from '@/core/styled/themed/skeleton';
-import { styled, baseStyled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/skeleton';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import { getLayout } from '../../../src/helpers/base';
-import spacing from '@/core/theme/utilities/spacing';
+import spacing from '@oreo-ui/core/dist/theme/utilities/spacing';
 
 // @exports
 export const StyledSkeleton = styled(

@@ -2,8 +2,8 @@
 import React from 'react';
 import { Spinner } from '../spinner';
 import { Text, TextProps } from '../text';
-import { width, minWidth, minHeight, height } from '@/core/styled/system';
-import { styled, baseStyled } from '@/core/styled/native';
+import { width, minWidth, minHeight, height } from '@oreo-ui/core/dist/styled/system';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import {
   buttonDefaultStyle,
   buttonSizeVariant,
@@ -12,7 +12,7 @@ import {
   buttonTextsize,
   buttonDefaults,
   buttonTextDefaultStyle,
-} from '@/core/styled/themed/button';
+} from '@oreo-ui/core/dist/styled/themed/button';
 
 import type { ButtonProps } from './button.types';
 import { View } from '../view';

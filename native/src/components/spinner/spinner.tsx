@@ -7,9 +7,9 @@ import type { SpinnerProps } from './spinner.types';
 import {
   spinnerDefaultStyle,
   spinnerDefaults,
-} from '@/core/styled/themed/spinner';
-import { styled } from '@/core/styled/native';
-import { width, height, compose } from '@/core/styled/system';
+} from '@oreo-ui/core/dist/styled/themed/spinner';
+import { styled } from '@oreo-ui/core/dist/styled/native';
+import { width, height, compose } from '@oreo-ui/core/dist/styled/system';
 import { AnimatedBase } from '../animated';
 import { Easing } from 'react-native';
 

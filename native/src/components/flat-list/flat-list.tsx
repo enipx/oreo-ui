@@ -1,5 +1,5 @@
 // @imports
-import spacing from '@/core/theme/utilities/spacing';
+import spacing from '@oreo-ui/core/dist/theme/utilities/spacing';
 import React, { forwardRef } from 'react';
 
 import { FlatList as DefaultFlatList } from 'react-native';

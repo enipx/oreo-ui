@@ -4,7 +4,7 @@ import type {
   AccordionContextProps,
 } from './accordion.types';
 
-import { createContext } from '@/core/utils/context';
+import { createContext } from '@oreo-ui/core/dist/utils/context';
 
 // @exports
 export const [AccordionContextProvider, useAccordionContext] =

@@ -1,4 +1,4 @@
-import type { IconButtonThemedStyledProps } from '@/core/styled/components.types';
+import type { IconButtonThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 import type { TouchableOpacityProps } from 'react-native';
 
 export interface IconButtonProps

@@ -5,8 +5,8 @@ import { Children, cloneElement } from 'react';
 import { AvatarBase, StyledAvatarText } from './avatar-base';
 import type { AvatarGroupProps, AvatarProps } from './avatar.types';
 
-import { avatarGroupDefaultStyle } from '@/core/styled/themed/avatar';
-import { styled, baseStyled } from '@/core/styled/native';
+import { avatarGroupDefaultStyle } from '@oreo-ui/core/dist/styled/themed/avatar';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledAvatarGroup = styled(

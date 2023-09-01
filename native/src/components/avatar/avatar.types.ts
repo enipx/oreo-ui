@@ -1,7 +1,7 @@
 import type {
   AvatarThemedStyledProps,
   AvatarGroupThemedStyledProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 import type { ImageProps } from 'react-native';
 

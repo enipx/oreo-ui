@@ -4,12 +4,12 @@ import React, { Children, cloneElement } from 'react';
 
 import type { FlexProps } from './flex.types';
 
-import { isString } from '@/core/helpers/base';
+import { isString } from '@oreo-ui/core/dist/helpers/base';
 import {
   flexDefaultStyle,
   flexSpacerDefaultStyle,
-} from '@/core/styled/themed/flex';
-import { styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/flex';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 // @exports
 export const StyledFlex = styled(View)<FlexProps>`

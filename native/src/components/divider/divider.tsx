@@ -1,9 +1,9 @@
 // @imports
 import type { DividerProps } from './divider.types';
 
-import { width, height, compose } from '@/core/styled/system';
-import { dividerDefaultStyle } from '@/core/styled/themed/divider';
-import { styled, baseStyled } from '@/core/styled/native';
+import { width, height, compose } from '@oreo-ui/core/dist/styled/system';
+import { dividerDefaultStyle } from '@oreo-ui/core/dist/styled/themed/divider';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const Divider = styled(

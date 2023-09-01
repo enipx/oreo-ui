@@ -12,10 +12,10 @@ import {
   radioDefaultStyle,
   radioSizeVariant,
   radioDataExist,
-} from '@/core/styled/themed/radio';
-import { styled } from '@/core/styled/native';
-import { isArrayLastItem } from '@/core/helpers/base';
-import { divide } from '@/core/helpers/number';
+} from '@oreo-ui/core/dist/styled/themed/radio';
+import { styled } from '@oreo-ui/core/dist/styled/native';
+import { isArrayLastItem } from '@oreo-ui/core/dist/helpers/base';
+import { divide } from '@oreo-ui/core/dist/helpers/number';
 import { useModeTheme } from '../../hooks';
 
 // @exports

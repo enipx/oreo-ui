@@ -2,7 +2,7 @@ import type { ViewProps } from '../view';
 import type {
   SelectThemedStyledProps,
   SelectThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type { TouchableOpacityProps } from 'react-native';
 import type { FlatListRenderProps } from '../flat-list/flat-list.types';
 

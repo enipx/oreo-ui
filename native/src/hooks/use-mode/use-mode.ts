@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useColorScheme } from 'react-native';
 
-import type { ThemeModeKeys } from '@/core/constants/index.types';
+import type { ThemeModeKeys } from '@oreo-ui/core/dist/constants/index.types';
 
 export type UseModeOptionsType = {
   mode: ThemeModeKeys;

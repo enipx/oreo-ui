@@ -3,7 +3,7 @@ import type {
   TabsItemThemedDefaultProps,
   TabsListThemedDefaultProps,
   TabsPanelThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type { ViewProps } from '../view';
 import type { StyleProp, ButtonProps } from 'react-native';
 import type { TextProps } from '../text';

@@ -22,8 +22,8 @@ import {
   hintColor,
   isInputDisabled,
   inputDefaults,
-} from '@/core/styled/themed/input';
-import { styled, baseStyled, useTheme } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/input';
+import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledInputContainer = styled(
