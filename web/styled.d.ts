@@ -1,5 +1,5 @@
 import 'styled-components';
-import type { ThemeType } from '../core/theme';
+import type { ThemeType } from '@oreo-ui/core/dist/theme';
 
 // @extends
 declare module 'styled-components' {
