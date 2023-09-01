@@ -1,8 +1,13 @@
 // @imports
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Spinner } from '../spinner';
 import { Text, TextProps } from '../text';
-import { width, minWidth, minHeight, height } from '@oreo-ui/core/dist/styled/system';
+import {
+  width,
+  minWidth,
+  minHeight,
+  height,
+} from '@oreo-ui/core/dist/styled/system';
 import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import {
   buttonDefaultStyle,
@@ -41,7 +46,7 @@ export const StyleButtonText = styled(Text)<TextProps>`
     buttonTextDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
-export const BaseButton = styled(
+export const StyledBaseButton = styled(
   baseStyled('TouchableOpacity', [
     'layout',
     'shadow',
@@ -51,7 +56,11 @@ export const BaseButton = styled(
   ])
 )<ButtonProps>``;
 
-export const Button: React.FC<ButtonProps> = (props) => {
+export const BaseButton: React.FC<ButtonProps> = forwardRef((props, ref) => {
+  return <StyledBaseButton {...props} ref={ref} />;
+});
+
+export const Button: React.FC<ButtonProps> = forwardRef((props, ref) => {
   const {
     icon,
     rightIcon,
@@ -124,11 +133,12 @@ export const Button: React.FC<ButtonProps> = (props) => {
       colorScheme={colorScheme}
       variant={variant}
       size={size}
-      {...(otherProps as any)}>
+      {...(otherProps as any)}
+      ref={ref}>
       {renderChildren()}
     </StyledButton>
   );
-};
+});
 
 BaseButton.defaultProps = {
   activeOpacity: 1,

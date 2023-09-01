@@ -1,5 +1,5 @@
 // @imports
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import type { InputProps, InputFocusEventType } from './input.types';
 
 import {
@@ -19,7 +19,7 @@ export const StyledInputField = styled(
   background-color: ${backgroundColor};
 `;
 
-export const InputField: React.FC<InputProps> = (props) => {
+export const InputField: React.FC<InputProps> = forwardRef((props, ref) => {
   const {
     state = inputDefaults.state as InputProps['state'],
     disabled,
@@ -65,6 +65,7 @@ export const InputField: React.FC<InputProps> = (props) => {
       state={inputState}
       underlineColorAndroid="transparent"
       {...(otherProps as any)}
+      ref={ref}
     />
   );
-};
+});
