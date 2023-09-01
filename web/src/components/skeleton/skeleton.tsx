@@ -1,8 +1,8 @@
 // @imports
 
-import { layout, border, space } from '@/core/styled/system';
-import { skeletonDefaultStyle } from '@/core/styled/themed/skeleton';
-import { styled, baseStyled } from '@/core/styled/web';
+import { layout, border, space } from '@oreo-ui/core/dist/styled/system';
+import { skeletonDefaultStyle } from '@oreo-ui/core/dist/styled/themed/skeleton';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
 import { FadeIn } from '../transitions';
 import type { SkeletonProps } from './skeleton.types';

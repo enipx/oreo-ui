@@ -3,7 +3,7 @@ import type {
   TabsListThemedStyledProps,
   TabsPanelThemedStyledProps,
   TabsItemThemedStyledProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type { RefObject } from 'react';
 
 export interface TabsProps extends TabsThemedDefaultProps {

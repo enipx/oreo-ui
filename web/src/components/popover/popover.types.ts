@@ -1,7 +1,7 @@
 import type {
   PopoverThemedDefaultProps,
   PopoverContentThemedStyledProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type { usePopper } from 'react-popper';
 
 export interface PopoverProps extends PopoverThemedDefaultProps {}

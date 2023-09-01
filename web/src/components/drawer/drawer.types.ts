@@ -1,4 +1,4 @@
-import type { DrawerThemedDefaultProps } from '@/core/styled/components.types';
+import type { DrawerThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 import type { ModalProps } from '../modal';
 

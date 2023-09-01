@@ -1,13 +1,13 @@
 // @imports
 
-import { isString } from '@/core/helpers/base';
+import { isString } from '@oreo-ui/core/dist/helpers/base';
 import {
   domExistsHandler,
   preventPageScrollingHandler,
-} from '@/core/helpers/dom';
-import { useKeydown } from '@/core/hooks/use-keydown';
-import { getTransitionClassName } from '@/core/styled/css/transitions';
-import { border, compose } from '@/core/styled/system';
+} from '@oreo-ui/core/dist/helpers/dom';
+import { useKeydown } from '@oreo-ui/core/dist/hooks/use-keydown';
+import { getTransitionClassName } from '@oreo-ui/core/dist/styled/css/transitions';
+import { border, compose } from '@oreo-ui/core/dist/styled/system';
 import {
   modalOverlayDefaultStyle,
   modalOverlayBackgroundColor,
@@ -17,8 +17,8 @@ import {
   modalFooterDefaultStyle,
   modalDefaultStyle,
   modalDefaultTransitions,
-} from '@/core/styled/themed/modal';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/modal';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { useEffect, useRef } from 'react';
 
 import { Button } from '@components/button';

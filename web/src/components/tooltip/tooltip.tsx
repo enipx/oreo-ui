@@ -1,7 +1,7 @@
 // @imports
-import { isString } from '@/core/helpers/base';
-import { tooltipDefaultStyle } from '@/core/styled/themed/tooltip';
-import { styled } from '@/core/styled/web';
+import { isString } from '@oreo-ui/core/dist/helpers/base';
+import { tooltipDefaultStyle } from '@oreo-ui/core/dist/styled/themed/tooltip';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { useState, Children, cloneElement, SetStateAction } from 'react';
 
 import { usePopover } from '@components/popover/use-popover';

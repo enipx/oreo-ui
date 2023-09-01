@@ -1,7 +1,7 @@
 // @imports
-import { imageDefaultStyle } from '@/core/styled/themed/image';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
-import { styled, baseStyled } from '@/core/styled/web';
+import { imageDefaultStyle } from '@oreo-ui/core/dist/styled/themed/image';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { forwardRef, useState, useEffect } from 'react';
 
 import type { ImageProps } from './image.types';

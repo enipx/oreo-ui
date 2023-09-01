@@ -4,8 +4,8 @@ import {
   flexSpacerDefaultStyle,
   flexColDefaultStyle,
   flexRowDefaultStyle,
-} from '@/core/styled/themed/flex';
-import { styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/flex';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 import { View } from '@components/view';
 

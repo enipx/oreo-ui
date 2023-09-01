@@ -1,4 +1,4 @@
-import type { ButtonThemedStyledProps } from '@/core/styled/components.types';
+import type { ButtonThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface ButtonProps
   extends ButtonThemedStyledProps,

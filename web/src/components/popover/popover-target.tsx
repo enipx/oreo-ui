@@ -1,5 +1,5 @@
 // @imports
-import { isString } from '@/core/helpers/base';
+import { isString } from '@oreo-ui/core/dist/helpers/base';
 import { Children, cloneElement } from 'react';
 
 import { usePopoverContext } from './popover-context';

@@ -1,7 +1,7 @@
 // @imports
 
-import { tableDefaultStyle } from '@/core/styled/themed/table';
-import { styled, baseStyled } from '@/core/styled/web';
+import { tableDefaultStyle } from '@oreo-ui/core/dist/styled/themed/table';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
 import {
   TableContainer,

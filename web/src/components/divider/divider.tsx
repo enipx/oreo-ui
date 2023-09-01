@@ -1,9 +1,9 @@
 // @imports
 
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { dividerDefaultStyle } from '@/core/styled/themed/divider';
-import { styled, baseStyled } from '@/core/styled/web';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { dividerDefaultStyle } from '@oreo-ui/core/dist/styled/themed/divider';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import type { DividerProps } from './divider.types';
 import { forwardRef } from 'react';

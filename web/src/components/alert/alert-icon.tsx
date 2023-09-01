@@ -1,6 +1,6 @@
 // @imports
-import type { WebSvgProps } from '@/core/styled/index.types';
-import { iconSizing } from '@/core/theme/utilities/sizing';
+import type { WebSvgProps } from '@oreo-ui/core/dist/styled/index.types';
+import { iconSizing } from '@oreo-ui/core/dist/theme/utilities/sizing';
 import React from 'react';
 
 import { CloseIcon } from '../modal/modal-icon';

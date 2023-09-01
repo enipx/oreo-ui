@@ -7,13 +7,13 @@ import {
   overflowY,
   display,
   compose,
-} from '@/core/styled/system';
+} from '@oreo-ui/core/dist/styled/system';
 import {
   tableContainerDefaultStyle,
   tableCaptionDefaultStyle,
-} from '@/core/styled/themed/table';
-import { styled, baseStyled } from '@/core/styled/web';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+} from '@oreo-ui/core/dist/styled/themed/table';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import type {
   TableContainerProps,

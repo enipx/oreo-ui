@@ -1,6 +1,6 @@
 // @imports
-import { avatarGroupDefaultStyle } from '@/core/styled/themed/avatar';
-import { baseStyled, styled } from '@/core/styled/web';
+import { avatarGroupDefaultStyle } from '@oreo-ui/core/dist/styled/themed/avatar';
+import { baseStyled, styled } from '@oreo-ui/core/dist/styled/web';
 import { Children, cloneElement } from 'react';
 
 import { AvatarBase } from './avatar-base';

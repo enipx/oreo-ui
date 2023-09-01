@@ -1,6 +1,6 @@
 // @imports
-import { tabsListDefaultStyle } from '@/core/styled/themed/tabs';
-import { styled } from '@/core/styled/web';
+import { tabsListDefaultStyle } from '@oreo-ui/core/dist/styled/themed/tabs';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 import { View } from '../view';
 import { useTabsContext } from './tabs-context';

@@ -1,13 +1,13 @@
 // @imports
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import {
   buttonDefaultStyle,
   buttonSizeVariant,
   buttonStateVariant,
   buttonDefaults,
-} from '@/core/styled/themed/button';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/button';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { forwardRef } from 'react';
 
 import { Spinner } from '../spinner';

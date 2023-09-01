@@ -1,3 +1,3 @@
-import type { BadgeThemedDefaultProps } from '@/core/styled/components.types';
+import type { BadgeThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface BadgeProps extends BadgeThemedDefaultProps {}

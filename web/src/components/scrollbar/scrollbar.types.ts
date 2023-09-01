@@ -1,3 +1,3 @@
-import type { ScrollbarThemedStyledProps } from '@/core/styled/components.types';
+import type { ScrollbarThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface ScrollbarProps extends ScrollbarThemedStyledProps {}

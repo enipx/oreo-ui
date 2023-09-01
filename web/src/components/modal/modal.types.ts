@@ -1,7 +1,7 @@
 import type {
   ModalThemedDefaultProps,
   ViewThemedStyledProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 import type { ButtonProps } from '../button';
 

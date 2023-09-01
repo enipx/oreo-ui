@@ -1,9 +1,9 @@
 import type {
   IndicatorThemedDefaultProps,
   ComponentsDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
-import type { ThemeStyledProps } from '@/core/styled/index.types';
+import type { ThemeStyledProps } from '@oreo-ui/core/dist/styled/index.types';
 
 export interface IndicatorProps
   extends IndicatorThemedDefaultProps,

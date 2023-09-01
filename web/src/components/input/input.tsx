@@ -1,6 +1,6 @@
 // @imports
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import {
   inputSizeVariant,
   inputContainerDefaultStyle,
@@ -12,8 +12,8 @@ import {
   hintColor,
   isInputDisabled,
   inputDefaults,
-} from '@/core/styled/themed/input';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/input';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { useEffect, useState, forwardRef } from 'react';
 
 import { IconButton } from '../icon-button';

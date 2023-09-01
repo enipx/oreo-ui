@@ -1,7 +1,7 @@
 import type {
   TextareaThemedStyledProps,
   TextareaResizeType,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 export interface TextareaProps
   extends TextareaThemedStyledProps,

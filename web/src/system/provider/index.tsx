@@ -1,11 +1,11 @@
 // @imports
 
-import type { Subset } from '@/core/constants/index.types';
-import { mergedObjectsHandler } from '@/core/helpers/base';
-import type { ModeContextProviderProps } from '@/core/styled/components.types';
-import { ThemeProvider } from '@/core/styled/web';
-import defaultTheme, { ThemeType } from '@/core/theme';
-import { createContext } from '@/core/utils/context';
+import type { Subset } from '@oreo-ui/core/dist/constants/index.types';
+import { mergedObjectsHandler } from '@oreo-ui/core/dist/helpers/base';
+import type { ModeContextProviderProps } from '@oreo-ui/core/dist/styled/components.types';
+import { ThemeProvider } from '@oreo-ui/core/dist/styled/web';
+import defaultTheme, { ThemeType } from '@oreo-ui/core/dist/theme';
+import { createContext } from '@oreo-ui/core/dist/utils/context';
 
 import { ModalProvider } from '@components/modal';
 import { ToastProvider } from '@components/toast';

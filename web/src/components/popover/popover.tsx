@@ -1,6 +1,6 @@
 // @imports
-import { tooltipDefaultStyle } from '@/core/styled/themed/tooltip';
-import { styled } from '@/core/styled/web';
+import { tooltipDefaultStyle } from '@oreo-ui/core/dist/styled/themed/tooltip';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { useState } from 'react';
 
 import { View } from '@components/view';

@@ -1,4 +1,4 @@
-import type { SwitchThemedStyledProps } from '@/core/styled/components.types';
+import type { SwitchThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 import React from 'react';
 
 export type CheckboxDataType = SwitchThemedStyledProps &

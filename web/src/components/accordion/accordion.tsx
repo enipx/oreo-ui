@@ -1,7 +1,7 @@
 // @imports
-import { accordionContainerDefaultStyle } from '@/core/styled/themed/accordion';
-import { baseBorderColor } from '@/core/styled/themed/base';
-import { styled } from '@/core/styled/web';
+import { accordionContainerDefaultStyle } from '@oreo-ui/core/dist/styled/themed/accordion';
+import { baseBorderColor } from '@oreo-ui/core/dist/styled/themed/base';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { useState } from 'react';
 
 import { View } from '../view';

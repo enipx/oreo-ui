@@ -1,9 +1,9 @@
 // @imports
 
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { badgeDefaultStyle } from '@/core/styled/themed/badge';
-import { styled, baseStyled } from '@/core/styled/web';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { badgeDefaultStyle } from '@oreo-ui/core/dist/styled/themed/badge';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import type { BadgeProps } from './badge.types';
 import { forwardRef } from 'react';

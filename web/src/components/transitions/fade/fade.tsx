@@ -6,8 +6,8 @@ import {
   fadeLeft,
   fadeRight,
   fadeTop,
-} from '@/core/styled/css/transitions';
-import { styled, baseStyled, keyframes, css } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/css/transitions';
+import { styled, baseStyled, keyframes, css } from '@oreo-ui/core/dist/styled/web';
 
 import type { FadeProps } from './fade.types';
 
