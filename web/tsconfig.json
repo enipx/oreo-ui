@@ -18,7 +18,6 @@
     "jsx": "react-jsx",
     "outDir": "./dist",
     "paths": {
-      "@/*": ["../*"],
       "@system/*": ["./src/system/*"],
       "@components/*": ["./src/components/*"],
     },
