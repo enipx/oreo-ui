@@ -4,7 +4,7 @@ import type { Subset } from '@oreo-ui/core/dist/constants/index.types';
 import { mergedObjectsHandler } from '@oreo-ui/core/dist/helpers/base';
 import type { ModeContextProviderProps } from '@oreo-ui/core/dist/styled/components.types';
 import { ThemeProvider } from '@oreo-ui/core/dist/styled/web';
-import defaultTheme, { ThemeType } from '@oreo-ui/core/dist/theme';
+import { theme as defaultTheme, ThemeType } from '@oreo-ui/core/dist/theme';
 import { createContext } from '@oreo-ui/core/dist/utils/context';
 
 import { ModalProvider } from '@components/modal';
