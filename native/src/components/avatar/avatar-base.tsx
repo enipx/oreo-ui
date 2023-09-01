@@ -12,7 +12,13 @@ import {
   avatarTextDefaultStyle,
   avatarDefaults,
 } from '@oreo-ui/core/dist/styled/themed/avatar';
-import { width, height, border, space, compose } from '@oreo-ui/core/dist/styled/system';
+import {
+  width,
+  height,
+  border,
+  space,
+  compose,
+} from '@oreo-ui/core/dist/styled/system';
 import { useTheme, styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports

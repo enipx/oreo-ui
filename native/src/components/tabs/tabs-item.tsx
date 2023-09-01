@@ -22,7 +22,8 @@ export const StyledTabsItem = styled(BaseButton)<TabsItemProps & TabsProps>`
 `;
 
 export const StyledTabsItemText = styled(Text)<TabsItemTextProps & TabsProps>`
-  ${(props) => tabsItemTextDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) =>
+    tabsItemTextDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const TabsItem = (props: TabsItemProps) => {
