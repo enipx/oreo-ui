@@ -14,19 +14,27 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
+    - name: Setup Node.js and Yarn
       uses: actions/setup-node@v2
       with:
         node-version: 14 # You can change this to your preferred Node.js version
 
-    - name: Install Dependencies
-      run: npm install
+    - name: Install Yarn
+      run: npm install -g yarn
 
+    - name: Install Dependencies in 'native' directory
+      run: cd native && yarn install
+      working-directory: ./native  # Update the path as per your project structure
+
+    - name: Install Dependencies in 'web' directory
+      run: cd web && yarn install
+      working-directory: ./web  # Update the path as per your project structure
+    
     - name: Lint Core
-      run: npm run lint:core
+      run: yarn lint:core
 
     - name: Lint Web
-      run: npm run lint:web
+      run: yarn lint:web
 
     - name: Lint Native
-      run: npm run lint:native
+      run: yarn lint:native
