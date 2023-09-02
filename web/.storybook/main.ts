@@ -21,6 +21,8 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
+      'react': path.resolve(__dirname, '../node_modules/react'),
+      'styled-components': path.resolve(__dirname, '../node_modules/styled-components'),
       '@system': path.resolve(__dirname, '../src/system/'),
       '@components': path.resolve(__dirname, '../src/components/'),
     };
