@@ -1,14 +1,14 @@
 // @imports
 
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import {
   iconButtonDefaultStyle,
   iconButtonSizeVariant,
   buttonStateVariant,
   iconButtonDefaults,
-} from '@/core/styled/themed/button';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/button';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
 import type { IconButtonProps } from './icon-button.types';
 

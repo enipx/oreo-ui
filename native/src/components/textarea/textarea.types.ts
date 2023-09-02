@@ -1,4 +1,4 @@
-import type { TextareaThemedStyledProps } from '@/core/styled/components.types';
+import type { TextareaThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 import type { KeyboardTypeOptions, TextInputProps } from 'react-native';
 
 export interface TextareaProps

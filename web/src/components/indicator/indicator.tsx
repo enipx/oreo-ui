@@ -1,9 +1,9 @@
 // @imports
 
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { indicatorDefaultStyle } from '@/core/styled/themed/indicator';
-import { styled, baseStyled } from '@/core/styled/web';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { indicatorDefaultStyle } from '@oreo-ui/core/dist/styled/themed/indicator';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import { View } from '@components/view';
 

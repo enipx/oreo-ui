@@ -51,7 +51,6 @@ export default [
       }),
       alias({
         entries: [
-          { find: '@', replacement: path.resolve(__dirname, '..') },
           {
             find: '@system',
             replacement: path.resolve(__dirname, 'src/system'),

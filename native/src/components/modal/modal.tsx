@@ -8,7 +8,7 @@ import { Button, BaseButton } from '../button';
 import { IconButton } from '../icon-button';
 import type { ModalProps } from './modal.types';
 
-import { styled } from '@/core/styled/native';
+import { styled } from '@oreo-ui/core/dist/styled/native';
 import {
   modalBodyDefaultStyle,
   modalOverlayDefaultStyle,
@@ -16,10 +16,10 @@ import {
   modalHeaderDefaultStyle,
   modalFooterDefaultStyle,
   isModalFull,
-} from '@/core/styled/themed/modal';
+} from '@oreo-ui/core/dist/styled/themed/modal';
 import { CloseIcon } from './modal-icon';
 import { ScrollView } from '../scroll-view';
-import { isString } from '@/core/helpers/base';
+import { isString } from '@oreo-ui/core/dist/helpers/base';
 
 // @styles
 export const ModalOverlay = styled(StyledView)<ModalProps>`

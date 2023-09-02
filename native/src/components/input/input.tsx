@@ -1,5 +1,5 @@
 // @imports
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import { IconButton } from '../icon-button';
 import { Text } from '../text';
 import { View } from '../view/view';
@@ -22,8 +22,8 @@ import {
   hintColor,
   isInputDisabled,
   inputDefaults,
-} from '@/core/styled/themed/input';
-import { styled, baseStyled, useTheme } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/input';
+import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledInputContainer = styled(
@@ -83,7 +83,7 @@ export const InputHint = ({ hint, state, ...otherProps }: InputHintProps) => {
   );
 };
 
-export const Input: React.FC<InputProps> = (props) => {
+export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
   const {
     icon,
     rightIcon,
@@ -179,10 +179,11 @@ export const Input: React.FC<InputProps> = (props) => {
           underlineColorAndroid="transparent"
           size={size}
           {...(otherProps as any)}
+          ref={ref}
         />
         {renderRightIcon()}
       </StyledInputContainer>
       <InputHint hint={hint} state={inputState} />
     </View>
   );
-};
+});

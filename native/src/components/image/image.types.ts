@@ -1,4 +1,4 @@
-import type { ImageThemedDefaultProps } from '@/core/styled/components.types';
+import type { ImageThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import type {
   ImageProps as DefaultImageProps,
   ImageResizeMode,
@@ -6,15 +6,6 @@ import type {
 
 export interface ImageProps
   extends Omit<ImageThemedDefaultProps, 'fit'>,
-    Omit<
-      DefaultImageProps,
-      | 'borderRadius'
-      | 'borderTopRightRadius'
-      | 'borderTopLeftRadius'
-      | 'borderBottomRightRadius'
-      | 'borderBottomLeftRadius'
-      | 'borderLeftRadius'
-      | 'borderRightRadius'
-    > {
+    Omit<DefaultImageProps, keyof ImageThemedDefaultProps> {
   fit?: ImageResizeMode;
 }

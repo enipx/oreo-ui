@@ -1,8 +1,8 @@
 import type {
   RadioThemedDefaultProps,
   RadioSizeType,
-} from '@/core/styled/components.types';
-import type { SpacingKeys } from '@/core/theme/utilities/spacing';
+} from '@oreo-ui/core/dist/styled/components.types';
+import type { SpacingKeys } from '@oreo-ui/core/dist/theme/utilities/spacing';
 import type { TouchableOpacityProps } from 'react-native';
 
 export type RadioDataType = RadioThemedDefaultProps &

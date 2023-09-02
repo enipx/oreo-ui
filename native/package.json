@@ -4,7 +4,7 @@
   "description": "Cross-platform UI components library built for React and React Native",
   "main": "./dist/commonjs/index",
   "module": "./dist/module/index",
-  "types": "./dist/typescript/native/src/index.d.ts",
+  "types": "./dist/typescript/index.d.ts",
   "react-native": "./src/index",
   "source": "./src/index",
   "files": [
@@ -58,7 +58,7 @@
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
     "@types/react": "~17.0.21",
-    "@types/react-native": "0.70.0",
+    "@types/react-native": "^0.70.5",
     "@types/styled-components": "^5.1.26",
     "@types/styled-components-react-native": "^5.2.0",
     "@types/styled-system": "^5.1.16",
@@ -71,8 +71,10 @@
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-ft-flow": "^3.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "hermes-eslint": "^0.15.1",
     "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
@@ -89,13 +91,14 @@
   },
   "resolutions": {
     "@types/react": "18.0.21",
-    "@types/react-native": "0.70.0"
+    "@types/react-native": "0.70.5"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "@oreo-ui/core": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
@@ -136,7 +139,6 @@
       "@react-native-community",
       "plugin:prettier/recommended"
     ],
-    "parserOptions": { "ecmaVersion": 2020 },
     "settings": {
       "import/resolver": {
         "alias": {
@@ -186,16 +188,10 @@
     "output": "./dist",
     "targets": [
       [
-        "commonjs",
-        {
-          "configFile": true
-        }
+        "commonjs"
       ],
       [
-        "module",
-        {
-          "configFile": true
-        }
+        "module"
       ],
       [
         "typescript",

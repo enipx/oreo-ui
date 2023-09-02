@@ -1,25 +1,25 @@
 // @imports
-import { allStyleWithoutSize } from '@/core/styled/system';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 import {
   inputDefaultStyle,
   backgroundColor,
   borderColor,
   hoverBorderColor,
   focusBorderColor,
-} from '@/core/styled/themed/input';
+} from '@oreo-ui/core/dist/styled/themed/input';
 import {
   selectDefaults,
   selectBaseStyle,
   selectContainerBaseStyle,
-} from '@/core/styled/themed/select';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/select';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
 import { IconButton } from '../icon-button';
 import { InputLabel, InputHint, StyledInputContainer } from '../input/input';
 import { View } from '../view';
 import { ArrowDownIcon } from './select-icon';
 import type { SelectProps, SelectContainerProps } from './select.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 // @exports
 export const StyledSelectContainer = styled(

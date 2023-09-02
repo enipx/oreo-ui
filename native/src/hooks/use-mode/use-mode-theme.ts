@@ -1,5 +1,5 @@
 // @imports
-import { useTheme } from '@/core/styled/native';
+import { useTheme } from '@oreo-ui/core/dist/styled/native';
 
 export type useModeThemeOptionsType = object;
 

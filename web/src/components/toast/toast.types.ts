@@ -1,4 +1,4 @@
-import type { ToastThemedDefaultProps } from '@/core/styled/components.types';
+import type { ToastThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface ToastProps extends ToastThemedDefaultProps {
   newest?: ToastStateProps;

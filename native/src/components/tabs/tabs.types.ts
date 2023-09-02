@@ -3,7 +3,7 @@ import type {
   TabsItemThemedDefaultProps,
   TabsListThemedDefaultProps,
   TabsPanelThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type { ViewProps } from '../view';
 import type { StyleProp, ButtonProps } from 'react-native';
 import type { TextProps } from '../text';
@@ -18,7 +18,7 @@ export interface TabsListProps
 
 export interface TabsItemProps
   extends Omit<TabsItemThemedDefaultProps, '_active' | '_hover' | '_selected'>,
-    Omit<ButtonProps, 'title'> {
+    Omit<ButtonProps, keyof TabsItemThemedDefaultProps | 'title'> {
   title?: string;
   _selected?: StyleProp<ButtonProps>;
   textStyle?: StyleProp<TextProps>;

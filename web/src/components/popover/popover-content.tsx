@@ -1,13 +1,13 @@
 // @imports
-import { popoverContentDefaultStyle } from '@/core/styled/themed/popover';
-import { styled } from '@/core/styled/web';
+import { popoverContentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/popover';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 import { View } from '@components/view';
 
 import { usePopoverContext } from './popover-context';
 import type { PopoverContentProps } from './popover.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
-import { allStyle } from '@/core/styled/system';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
+import { allStyle } from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledPopover = styled(View)<PopoverContentProps>`

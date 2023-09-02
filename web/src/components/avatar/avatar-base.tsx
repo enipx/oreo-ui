@@ -1,18 +1,18 @@
 // @imports
-import { getNameInitialsHandler } from '@/core/helpers/string';
-import { allStyleWithoutSize } from '@/core/styled/system';
+import { getNameInitialsHandler } from '@oreo-ui/core/dist/helpers/string';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 import {
   avatarDefaultStyle,
   avatarDefaults,
-} from '@/core/styled/themed/avatar';
-import { styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/avatar';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 import { View } from '@components/view';
 
 import { Image } from '../image';
 import { ProfileIcon } from './avatar-icon';
 import type { AvatarProps } from './avatar.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 // @exports
 export const StyledAvatar = styled(View)<AvatarProps>`

@@ -1,7 +1,7 @@
 // @imports
-import { baseBackgroundColor, baseColor } from '@/core/styled/themed/base';
-import { createGlobalStyle } from '@/core/styled/web';
-import defaultTheme from '@/core/theme';
+import { baseBackgroundColor, baseColor } from '@oreo-ui/core/dist/styled/themed/base';
+import { createGlobalStyle } from '@oreo-ui/core/dist/styled/web';
+import { theme as defaultTheme } from '@oreo-ui/core/dist/theme';
 
 // @file declarations
 export const GlobalStyle = createGlobalStyle`

@@ -1,6 +1,6 @@
 // @imports
-import { accordionPanelDefaultStyle } from '@/core/styled/themed/accordion';
-import { styled } from '@/core/styled/web';
+import { accordionPanelDefaultStyle } from '@oreo-ui/core/dist/styled/themed/accordion';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { useEffect, useRef } from 'react';
 
 import { View } from '@components/view';

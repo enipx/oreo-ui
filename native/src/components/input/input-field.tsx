@@ -1,5 +1,5 @@
 // @imports
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import type { InputProps, InputFocusEventType } from './input.types';
 
 import {
@@ -7,8 +7,8 @@ import {
   borderColor,
   backgroundColor,
   inputDefaults,
-} from '@/core/styled/themed/input';
-import { styled, baseStyled, useTheme } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/input';
+import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledInputField = styled(
@@ -19,7 +19,7 @@ export const StyledInputField = styled(
   background-color: ${backgroundColor};
 `;
 
-export const InputField: React.FC<InputProps> = (props) => {
+export const InputField: React.FC<InputProps> = forwardRef((props, ref) => {
   const {
     state = inputDefaults.state as InputProps['state'],
     disabled,
@@ -65,6 +65,7 @@ export const InputField: React.FC<InputProps> = (props) => {
       state={inputState}
       underlineColorAndroid="transparent"
       {...(otherProps as any)}
+      ref={ref}
     />
   );
-};
+});

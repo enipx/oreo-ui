@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+  },
+  "include": ["src"],
+  
+}

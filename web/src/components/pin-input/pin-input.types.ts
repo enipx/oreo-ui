@@ -1,11 +1,11 @@
-import type { PinInputThemedDefaultProps } from '@/core/styled/components.types';
+import type { PinInputThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import React from 'react';
 
 export interface PinInputProps
   extends PinInputThemedDefaultProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width' | 'onChange' | 'value' | 'color'
+      keyof PinInputThemedDefaultProps
     > {}
 
 export type PinInputFieldElementType = HTMLInputElement;

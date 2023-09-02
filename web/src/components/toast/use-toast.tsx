@@ -1,6 +1,6 @@
 // @imports
-import { generateUIDHandler } from '@/core/helpers/base';
-import { toastDefaults } from '@/core/styled/themed/toast';
+import { generateUIDHandler } from '@oreo-ui/core/dist/helpers/base';
+import { toastDefaults } from '@oreo-ui/core/dist/styled/themed/toast';
 import { useState } from 'react';
 
 import { useToastContext } from './toast-context';

@@ -8,7 +8,6 @@ module.exports = {
       {
         extensions: ['.tsx', '.ts', '.js', '.json'],
         alias: {
-          ['@']: path.join(__dirname, '../'),
           ['@system']: path.join(__dirname, './src/system/'),
           ['@components']: path.join(__dirname, './src/components/'),
           ['@helpers']: path.join(__dirname, './src/helpers/'),

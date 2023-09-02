@@ -1,3 +1,3 @@
-import type { IndicatorThemedDefaultProps } from '@/core/styled/components.types';
+import type { IndicatorThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface IndicatorProps extends IndicatorThemedDefaultProps {}

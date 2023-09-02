@@ -1,9 +1,9 @@
 // @imports
 
-import { typography, border } from '@/core/styled/system';
-import { textDefaultStyle } from '@/core/styled/themed/text';
-import { styled, baseStyled } from '@/core/styled/web';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { typography, border } from '@oreo-ui/core/dist/styled/system';
+import { textDefaultStyle } from '@oreo-ui/core/dist/styled/themed/text';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import type { TextProps } from './text.types';
 import { forwardRef } from 'react';

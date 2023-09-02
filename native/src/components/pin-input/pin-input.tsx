@@ -15,15 +15,15 @@ import {
   inputContainerDefaultStyle,
   backgroundColor,
   nativeBorderColor,
-} from '@/core/styled/themed/input';
+} from '@oreo-ui/core/dist/styled/themed/input';
 import {
   pinInputSizeVariant,
   pinInputDefaults,
   pinInputOnChangeHandler,
   pinInputOnKeyDownHandler,
   pinInputDefaultStyle,
-} from '@/core/styled/themed/pin-input';
-import { styled, baseStyled, useTheme } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/pin-input';
+import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 import type { InputFocusEventType } from '../input/input.types';
 
 // @exports

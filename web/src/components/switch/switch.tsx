@@ -5,15 +5,15 @@ import {
   switchSizeVariant,
   switchCheckedStyle,
   switchBaseStyle,
-} from '@/core/styled/themed/switch';
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/switch';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { useId } from 'react';
 
 import { InputLabel, InputHint } from '../input/input';
 import { View } from '../view';
 import type { SwitchProps } from './switch.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 // @exports
 export const StyledSwitch = styled(

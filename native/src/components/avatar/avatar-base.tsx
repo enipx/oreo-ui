@@ -6,14 +6,20 @@ import { Image } from '../image';
 import { ProfileIcon } from './avatar-icon';
 import type { AvatarProps } from './avatar.types';
 
-import { getNameInitialsHandler } from '@/core/helpers/string';
+import { getNameInitialsHandler } from '@oreo-ui/core/dist/helpers/string';
 import {
   avatarDefaultStyle,
   avatarTextDefaultStyle,
   avatarDefaults,
-} from '@/core/styled/themed/avatar';
-import { width, height, border, space, compose } from '@/core/styled/system';
-import { useTheme, styled, baseStyled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/avatar';
+import {
+  width,
+  height,
+  border,
+  space,
+  compose,
+} from '@oreo-ui/core/dist/styled/system';
+import { useTheme, styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledAvatar = styled(

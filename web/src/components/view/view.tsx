@@ -1,8 +1,8 @@
 // @imports
-import { color } from '@/core/styled/system';
-import { styled, baseStyled } from '@/core/styled/web';
-import { viewDefaultStyle } from '@/core/styled/themed/view';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { color } from '@oreo-ui/core/dist/styled/system';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
+import { viewDefaultStyle } from '@oreo-ui/core/dist/styled/themed/view';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import type { ViewProps } from './view.types';
 import { forwardRef } from 'react';

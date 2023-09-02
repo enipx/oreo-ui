@@ -3,7 +3,7 @@ import type {
   RefreshControlProps,
   KeyboardAvoidingViewProps,
 } from 'react-native';
-import type { ViewThemedStyledProps } from '@/core/styled/components.types';
+import type { ViewThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface ScrollViewProps extends DefaultScrollViewProps {
   /**

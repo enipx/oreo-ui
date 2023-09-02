@@ -1,4 +1,4 @@
-import type { ContainerThemedStyledProps } from '@/core/styled/components.types';
+import type { ContainerThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 import type { StatusBarProps, StatusBarStyle } from 'react-native';
 import type { ScrollViewProps } from '../scroll-view';
 

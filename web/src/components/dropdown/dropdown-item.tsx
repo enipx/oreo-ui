@@ -1,11 +1,11 @@
 // @imports
-import { dropdownItemDefaultStyle } from '@/core/styled/themed/dropdown';
-import { styled, baseStyled } from '@/core/styled/web';
+import { dropdownItemDefaultStyle } from '@oreo-ui/core/dist/styled/themed/dropdown';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
 import { Text } from '../text';
 import { View } from '../view';
 import type { DropdownItemProps } from './dropdown.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 // @exports
 export const StyledDropdownItem = styled(

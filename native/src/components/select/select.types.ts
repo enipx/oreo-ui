@@ -2,17 +2,18 @@ import type { ViewProps } from '../view';
 import type {
   SelectThemedStyledProps,
   SelectThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type { TouchableOpacityProps } from 'react-native';
 import type { FlatListRenderProps } from '../flat-list/flat-list.types';
+import type { ReactChildrenType } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface SelectContainerProps
-  extends Omit<ViewProps, 'size'>,
+  extends Omit<ViewProps, keyof SelectThemedDefaultProps>,
     SelectThemedDefaultProps {}
 
 export interface SelectProps
   extends SelectThemedStyledProps,
-    Omit<TouchableOpacityProps, 'disabled' | 'size'> {
+    Omit<TouchableOpacityProps, keyof SelectThemedStyledProps> {
   /**
    * select options
    */
@@ -47,12 +48,12 @@ export interface SelectProps
    * @param data : any[]
    * @returns used to render custom select modal
    */
-  renderSelect?: (data: any[]) => JSX.Element;
+  renderSelect?: (data: any[]) => ReactChildrenType;
 
   /**
    *
    * @param item : FlatListRenderProps
    * @returns used to render custom options
    */
-  renderOptions?: (item: FlatListRenderProps) => JSX.Element;
+  renderOptions?: (item: FlatListRenderProps) => ReactChildrenType;
 }

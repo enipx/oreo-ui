@@ -1,9 +1,9 @@
 // @imports
 
-import { useKeydown } from '@/core/hooks/use-keydown';
-import { useOutsideElementClick } from '@/core/hooks/use-outside-element-click';
-import { getTransitionClassName } from '@/core/styled/css/transitions';
-import spacing from '@/core/theme/utilities/spacing';
+import { useKeydown } from '@oreo-ui/core/dist/hooks/use-keydown';
+import { useOutsideElementClick } from '@oreo-ui/core/dist/hooks/use-outside-element-click';
+import { getTransitionClassName } from '@oreo-ui/core/dist/styled/css/transitions';
+import spacing from '@oreo-ui/core/dist/theme/utilities/spacing';
 import { useCallback, useState } from 'react';
 import { usePopper } from 'react-popper';
 

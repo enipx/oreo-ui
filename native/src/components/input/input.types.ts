@@ -3,7 +3,7 @@ import type { ViewProps } from '../view';
 import type {
   InputThemedStyledProps,
   InputThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 import type {
   KeyboardTypeOptions,
   NativeSyntheticEvent,

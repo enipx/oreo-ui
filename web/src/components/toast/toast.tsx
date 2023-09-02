@@ -1,17 +1,17 @@
 // @imports
-import { useTimeout } from '@/core/hooks/use-timeout';
+import { useTimeout } from '@oreo-ui/core/dist/hooks/use-timeout';
 import {
   getTransitionClassName,
   transitionDefaults,
-} from '@/core/styled/css/transitions';
+} from '@oreo-ui/core/dist/styled/css/transitions';
 import {
   getToastPositions,
   toastContainerDefaultStyle,
   toastBaseContainerDefaultStyle,
   toastDefaults,
   getToastTransition,
-} from '@/core/styled/themed/toast';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/toast';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { useEffect, useMemo, useRef } from 'react';
 
 import { Alert } from '../alert';

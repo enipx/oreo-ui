@@ -1,5 +1,5 @@
 // @imports
-import { createContext } from '@/core/utils/context';
+import { createContext } from '@oreo-ui/core/dist/utils/context';
 
 import type { TabsContextProps } from './tabs.types';
 

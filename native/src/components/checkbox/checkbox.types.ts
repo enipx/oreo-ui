@@ -1,8 +1,8 @@
-import type { CheckboxThemedDefaultProps } from '@/core/styled/components.types';
+import type { CheckboxThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import type { TouchableOpacityProps } from 'react-native';
 
-import type { CheckboxSizeType } from '@/core/styled/components.types';
-import type { IconSizingKeys } from '@/core/theme/utilities/sizing';
+import type { CheckboxSizeType } from '@oreo-ui/core/dist/styled/components.types';
+import type { IconSizingKeys } from '@oreo-ui/core/dist/theme/utilities/sizing';
 
 export interface CheckboxProps
   extends CheckboxThemedDefaultProps,

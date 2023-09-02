@@ -11,8 +11,8 @@ import {
   tabsItemDefaultStyle,
   tabsItemVariantStyle,
   tabsItemTextDefaultStyle,
-} from '@/core/styled/themed/tabs';
-import { styled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/tabs';
+import { styled } from '@oreo-ui/core/dist/styled/native';
 import { useTabs } from './use-tabs';
 
 // @exports
@@ -22,7 +22,8 @@ export const StyledTabsItem = styled(BaseButton)<TabsItemProps & TabsProps>`
 `;
 
 export const StyledTabsItemText = styled(Text)<TabsItemTextProps & TabsProps>`
-  ${(props) => tabsItemTextDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) =>
+    tabsItemTextDefaultStyle({ ...props, packageType: 'native' } as any)}
 `;
 
 export const TabsItem = (props: TabsItemProps) => {

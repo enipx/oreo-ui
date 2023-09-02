@@ -1,20 +1,20 @@
 // @imports
-import { isArrayLastItem } from '@/core/helpers/base';
-import { allStyleWithoutSize } from '@/core/styled/system';
+import { isArrayLastItem } from '@oreo-ui/core/dist/helpers/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 import {
   radioDefaults,
   radioDefaultStyle,
   radioSizeVariant,
   radioCheckedStyle,
   radioDataExist,
-} from '@/core/styled/themed/radio';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/radio';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { useId } from 'react';
 
 import { InputLabel, InputHint } from '../input/input';
 import { View } from '../view';
 import type { RadioProps, RadioDataType } from './radio.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 // @exports
 export const StyledRadio = styled(baseStyled('input'))<RadioProps>`

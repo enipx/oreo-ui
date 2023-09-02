@@ -1,8 +1,8 @@
-import type { AnimatedThemedDefaultProps } from '@/core/styled/components.types';
+import type { AnimatedThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import type {
   TransitionsKeyframeOptions,
   TransitionsType,
-} from '@/core/styled/css/transitions';
+} from '@oreo-ui/core/dist/styled/css/transitions';
 import type { ViewProps } from 'react-native';
 
 export interface AnimatedProps

@@ -2520,10 +2520,17 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-native@*", "@types/react-native@0.70.0":
-  version "0.70.0"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.0.tgz#f8cdcdd542d36467d7591585b93d27e0563676e0"
-  integrity sha512-yBN7qJDfs0Vwr34NyfW1SWzalHQoYtpUWf0t4UJY9C5ft58BRr46+r92I0v+l3QX4VNsSRMHVAAWqLLCbIkM+g==
+"@types/react-native@*", "@types/react-native@0.70.5":
+  version "0.70.5"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.5.tgz#f963d6921deb901dc2be8b96d9179a77b5406a23"
+  integrity sha512-Z+NdP5EB1qGSHPSOcsrXqxXrxlFyp/GBllajUIEQ0+XVSFd1l/B+nmHBvACiZvDwRVE/l2hL2pBWeOUPi2C1JA==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-native@^0.70.5":
+  version "0.70.14"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.14.tgz#8619b8c94296f6456c5362d74a3d1b4fad3f54ab"
+  integrity sha512-Kwc+BYBrnDqvacNxKp1UtcZJnJJnTih2NYmi/ieAKlHdxEPN6sYMwmIwgHdoLHggvml6bf3DYRaH2jt+gzaLjw==
   dependencies:
     "@types/react" "*"
 
@@ -4668,6 +4675,14 @@ eslint-plugin-ft-flow@^2.0.1:
     lodash "^4.17.21"
     string-natural-compare "^3.0.1"
 
+eslint-plugin-ft-flow@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ft-flow/-/eslint-plugin-ft-flow-3.0.0.tgz#e9cbe4531089c2a85726928baa2d30d24d9af3b5"
+  integrity sha512-fz5ep5V2jh5aNBHoCKOdq+xxGenxYMfmOq8F6MUnFGyeEncJgV91O7mOWyKTZN0h/ofP+yW1CS7fZq8iEglNxw==
+  dependencies:
+    lodash "^4.17.21"
+    string-natural-compare "^3.0.1"
+
 eslint-plugin-import@^2.26.0:
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.26.0.tgz#f812dc47be4f2b72b478a021605a59fc6fe8b88b"
@@ -5631,10 +5646,31 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hermes-eslint@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/hermes-eslint/-/hermes-eslint-0.15.1.tgz#c5919a6fdbd151febc3d5ed8ff17e5433913528c"
+  integrity sha512-ArfT3oASsYOkCa29GOw34GR+kpHXqrhhYgXDadK3daJBejrMPbGlUbBTzTlGBuz1CGLxxdC5lwwv3OegPJzfDA==
+  dependencies:
+    esrecurse "^4.3.0"
+    hermes-estree "0.15.1"
+    hermes-parser "0.15.1"
+
+hermes-estree@0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.15.1.tgz#d06d4ddf87e91857b0130a083a9d7696d7aec61f"
+  integrity sha512-XrQH+GATG/8DYbzlrVs6Vf/EDxLhYEHXvzt/Xve4b/NXXpsNLDN8bdBEKp5z0XeOMoL1XMEexxIIf1a5bH6kYA==
+
 hermes-estree@0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.8.0.tgz#530be27243ca49f008381c1f3e8b18fb26bf9ec0"
   integrity sha512-W6JDAOLZ5pMPMjEiQGLCXSSV7pIBEgRR5zGkxgmzGSXHOxqV5dC/M1Zevqpbm9TZDE5tu358qZf8Vkzmsc+u7Q==
+
+hermes-parser@0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.15.1.tgz#f02587be85228b22841d50f6839ae42a308e5100"
+  integrity sha512-38Re105dr4UZ0/EPRApWxtIOWWynQpdOYWO+7nFO8ADd2mXdaHKMCFAxIjkqACa1GLrAtrXqqaJdUYHi/QUbkA==
+  dependencies:
+    hermes-estree "0.15.1"
 
 hermes-parser@0.8.0:
   version "0.8.0"

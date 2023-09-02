@@ -1,21 +1,21 @@
 // @imports
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import {
   inputDefaultStyle,
   backgroundColor,
   borderColor,
   hoverBorderColor,
   focusBorderColor,
-} from '@/core/styled/themed/input';
+} from '@oreo-ui/core/dist/styled/themed/input';
 import {
   pinInputSizeVariant,
   pinInputDefaults,
   pinInputOnChangeHandler,
   pinInputOnKeyDownHandler,
   pinInputDefaultStyle,
-} from '@/core/styled/themed/pin-input';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/pin-input';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 import { useRef, useEffect, useState } from 'react';
 
 import { InputLabel, InputHint } from '../input/input';

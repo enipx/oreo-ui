@@ -1,9 +1,9 @@
-import type { CheckboxThemedStyledProps } from '@/core/styled/components.types';
+import type { CheckboxThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 import React from 'react';
 
 export interface CheckboxProps
   extends CheckboxThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width' | 'color'
+      keyof CheckboxThemedStyledProps
     > {}

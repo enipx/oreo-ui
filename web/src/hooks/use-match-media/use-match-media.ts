@@ -1,10 +1,10 @@
 // @imports
 
-import { domExistsHandler } from '@/core/helpers/dom';
+import { domExistsHandler } from '@oreo-ui/core/dist/helpers/dom';
 import {
   BreakpointsObjectKeys,
   getBreakpoints,
-} from '@/core/theme/utilities/breakpoints';
+} from '@oreo-ui/core/dist/theme/utilities/breakpoints';
 import { useEffect, useState } from 'react';
 
 // @types

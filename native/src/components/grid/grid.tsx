@@ -7,8 +7,8 @@ import type { GridProps } from './grid.types';
 import {
   gridDefaultStyle,
   getChildrenGridRows,
-} from '@/core/styled/themed/grid';
-import { styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/grid';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { GridItem } from './grid-item';
 
 // @exports

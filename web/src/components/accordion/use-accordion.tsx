@@ -1,5 +1,5 @@
 // @imports
-import { isArray, isString } from '@/core/helpers/base';
+import { isArray, isString } from '@oreo-ui/core/dist/helpers/base';
 
 import type { UserAccordionProps } from './accordion.types';
 

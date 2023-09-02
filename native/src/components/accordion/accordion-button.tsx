@@ -15,8 +15,8 @@ import {
   accordionButtonDefaultStyle,
   borderBottomColor,
   accordionDefaults,
-} from '@/core/styled/themed/accordion';
-import { styled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/accordion';
+import { styled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
 export const StyledAccordionButton = styled(BaseButton)<AccordionProps>`

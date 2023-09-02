@@ -1,10 +1,10 @@
-import type { RadioThemedStyledProps } from '@/core/styled/components.types';
+import type { RadioThemedStyledProps } from '@oreo-ui/core/dist/styled/components.types';
 import React from 'react';
 
 export type RadioDataType = RadioThemedStyledProps &
   Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    'size' | 'height' | 'width'
+    keyof RadioThemedStyledProps
   >;
 
 export interface RadioProps extends RadioDataType {

@@ -1,6 +1,9 @@
 // @imports
-import { domExistsHandler } from '@/core/helpers/dom';
-import { createPortalNode, getPortalNode } from '@/core/styled/themed/portal';
+import { domExistsHandler } from '@oreo-ui/core/dist/helpers/dom';
+import {
+  createPortalNode,
+  getPortalNode,
+} from '@oreo-ui/core/dist/styled/themed/portal';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 

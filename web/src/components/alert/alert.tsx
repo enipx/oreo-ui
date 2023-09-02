@@ -2,15 +2,15 @@
 import {
   getTransitionClassName,
   transitionDefaults,
-} from '@/core/styled/css/transitions';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+} from '@oreo-ui/core/dist/styled/css/transitions';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import {
   alertDefaultStyle,
   alertDefaults,
   getAlertIconType,
-} from '@/core/styled/themed/alert';
-import { allStyle } from '@/core/styled/system';
-import { styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/alert';
+import { allStyle } from '@oreo-ui/core/dist/styled/system';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 import { useRef, useState } from 'react';
 
 import { IconButton } from '../icon-button';
@@ -48,7 +48,7 @@ export const AlertIcon = (props: AlertProps) => {
     return <View className={alertDefaults.iconClassName}>{Icon[type]}</View>;
   }
 
-  if (icon) return icon as JSX.Element;
+  if (icon) return <>{icon}</>;
 
   return null;
 };
@@ -133,7 +133,7 @@ export const Alert = (props: AlertProps) => {
         </View>
         {alertContent ? (
           <View className={alertDefaults.contentDescrClassName}>
-            {content || children}
+            {alertContent}
           </View>
         ) : null}
       </View>

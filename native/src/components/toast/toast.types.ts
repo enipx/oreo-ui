@@ -1,7 +1,7 @@
 import type {
   ToastThemedDefaultProps,
   ToastNativePositionTypes,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 export interface ToastProps extends Omit<ToastThemedDefaultProps, 'pos'> {
   pos?: ToastNativePositionTypes;

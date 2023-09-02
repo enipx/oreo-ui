@@ -8,9 +8,9 @@ import { AccordionItem } from './accordion-item';
 import { AccordionPanel } from './accordion-panel';
 import { useAccordion } from './use-accordion';
 
-import { accordionContainerDefaultStyle } from '@/core/styled/themed/accordion';
-import { baseBorderColor } from '@/core/styled/themed/base';
-import { styled } from '@/core/styled/native';
+import { accordionContainerDefaultStyle } from '@oreo-ui/core/dist/styled/themed/accordion';
+import { baseBorderColor } from '@oreo-ui/core/dist/styled/themed/base';
+import { styled } from '@oreo-ui/core/dist/styled/native';
 
 import { View } from '../view';
 

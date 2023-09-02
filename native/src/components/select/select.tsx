@@ -12,8 +12,8 @@ import {
   selectDefaults,
   selectContainerBaseStyle,
   selectPlaceholderBaseStyle,
-} from '@/core/styled/themed/select';
-import { styled, baseStyled } from '@/core/styled/native';
+} from '@oreo-ui/core/dist/styled/themed/select';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import { useModal } from '../modal';
 import { BaseButton } from '../button';
 import { getWidowLayout } from '../../helpers/base';

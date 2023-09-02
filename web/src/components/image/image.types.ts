@@ -1,4 +1,4 @@
-import type { ImageThemedDefaultProps } from '@/core/styled/components.types';
+import type { ImageThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 type DefaultImageProps = React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
@@ -7,4 +7,4 @@ type DefaultImageProps = React.DetailedHTMLProps<
 
 export interface ImageProps
   extends ImageThemedDefaultProps,
-    Omit<DefaultImageProps, 'width' | 'height' | 'color'> {}
+    Omit<DefaultImageProps, keyof ImageThemedDefaultProps> {}

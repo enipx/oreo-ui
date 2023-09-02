@@ -1,3 +1,3 @@
-import type { SpinnerThemedDefaultProps } from '@/core/styled/components.types';
+import type { SpinnerThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface SpinnerProps extends SpinnerThemedDefaultProps {}

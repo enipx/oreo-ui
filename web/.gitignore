@@ -30,6 +30,6 @@ yarn-error.log*
 
 # others
 /dist-analysis.html
-
-
+/storybook.log
+/*-storybook.log
 

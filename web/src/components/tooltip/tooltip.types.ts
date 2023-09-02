@@ -1,4 +1,4 @@
-import type { TooltipThemedDefaultProps } from '@/core/styled/components.types';
+import type { TooltipThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface TooltipProps extends TooltipThemedDefaultProps {}
 

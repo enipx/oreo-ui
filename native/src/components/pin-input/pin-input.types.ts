@@ -1,4 +1,4 @@
-import type { PinInputThemedDefaultProps } from '@/core/styled/components.types';
+import type { PinInputThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import type {
   KeyboardTypeOptions,
   NativeSyntheticEvent,

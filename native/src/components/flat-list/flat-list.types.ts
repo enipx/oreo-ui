@@ -1,4 +1,5 @@
 import type { FlatListProps as DefaultFlatListProps } from 'react-native';
+import type { ReactChildrenType } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface FlatListRenderProps {
   item: any;
@@ -12,5 +13,5 @@ export interface FlatListRenderProps {
 
 export interface FlatListProps extends Partial<DefaultFlatListProps<any>> {
   data: any[];
-  renderComponent?: (item: FlatListRenderProps) => JSX.Element;
+  renderComponent?: (item: FlatListRenderProps) => ReactChildrenType;
 }

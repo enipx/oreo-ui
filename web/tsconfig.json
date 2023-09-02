@@ -18,11 +18,10 @@
     "jsx": "react-jsx",
     "outDir": "./dist",
     "paths": {
-      "@/*": ["../*"],
       "@system/*": ["./src/system/*"],
       "@components/*": ["./src/components/*"],
     },
   },
-  "include": ["src", "src/**/*", "./jest-setup.ts", "./styled.d.ts"],
+  "include": ["./src/**/*", "./styled.d.ts"],
   "exclude": ["./node_modules", "./dist", "**/*.stories.tsx", "**/*.test.tsx", "./jest-setup.ts"],
 }

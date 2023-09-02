@@ -4,8 +4,8 @@ import { View } from '../view';
 
 import type { GridItemProps } from './grid.types';
 
-import { gridItemDefaultStyle } from '@/core/styled/themed/grid';
-import { styled } from '@/core/styled/web';
+import { gridItemDefaultStyle } from '@oreo-ui/core/dist/styled/themed/grid';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 // @exports
 export const StyledGridItem = styled(View)<GridItemProps>`

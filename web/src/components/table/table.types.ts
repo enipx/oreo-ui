@@ -8,7 +8,7 @@ import type {
   TdThemedDefaultProps,
   TableCaptionThemedDefaultProps,
   TableContainerThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 export interface TableProps extends TableThemedDefaultProps {}
 

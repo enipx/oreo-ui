@@ -3,15 +3,15 @@ import {
   tabsItemDefaultStyle,
   tabsItemVariantStyle,
   tabsItemCustomStyle,
-} from '@/core/styled/themed/tabs';
-import { allStyle } from '@/core/styled/system';
-import { baseStyled, styled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/tabs';
+import { allStyle } from '@oreo-ui/core/dist/styled/system';
+import { baseStyled, styled } from '@oreo-ui/core/dist/styled/web';
 import { useEffect, memo } from 'react';
 
 import { useTabsContext } from './tabs-context';
 import type { TabsItemProps } from './tabs.types';
 import { useTabs } from './use-tabs';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 // @exports
 export const StyledTabsItem = styled(baseStyled('button'))<any>`

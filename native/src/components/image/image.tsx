@@ -7,9 +7,9 @@ import {
   imageDefaults,
   imageDefaultStyle,
   isSvgHandler,
-} from '@/core/styled/themed/image';
-import { styled, baseStyled } from '@/core/styled/native';
-import { layout } from '@/core/styled/system';
+} from '@oreo-ui/core/dist/styled/themed/image';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
+import { layout } from '@oreo-ui/core/dist/styled/system';
 import { SvgUri } from 'react-native-svg';
 
 // @exports

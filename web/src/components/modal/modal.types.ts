@@ -1,13 +1,13 @@
 import type {
   ModalThemedDefaultProps,
   ViewThemedStyledProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 import type { ButtonProps } from '../button';
 
 export interface ModalProps
   extends ModalThemedDefaultProps,
-    Omit<ViewThemedStyledProps, 'size' | 'overflow' | 'color'> {
+    Omit<ViewThemedStyledProps, keyof ModalThemedDefaultProps> {
   /**
    * update footer close button props
    */

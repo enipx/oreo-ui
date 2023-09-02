@@ -3,7 +3,7 @@ import type {
   FlexColThemedStyledProps,
   FlexRowThemedStyledProps,
   FlexRowThemedDefaultProps,
-} from '@/core/styled/components.types';
+} from '@oreo-ui/core/dist/styled/components.types';
 
 export interface FlexProps extends FlexThemedStyledProps {
   wrap?: boolean;

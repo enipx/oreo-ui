@@ -5,9 +5,9 @@ import {
   accordionDefaults,
   accordionIconOrderHandler,
   buttonColor,
-} from '@/core/styled/themed/accordion';
-import { baseStyled, styled } from '@/core/styled/web';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+} from '@oreo-ui/core/dist/styled/themed/accordion';
+import { baseStyled, styled } from '@oreo-ui/core/dist/styled/web';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 
 import { IconButton } from '../icon-button';
 import { View } from '../view';

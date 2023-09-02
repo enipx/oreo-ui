@@ -1,6 +1,6 @@
 // @imports
-import { allStyleWithoutSize } from '@/core/styled/system';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import {
   textareaDefaultStyle,
   textareaDefaults,
@@ -8,8 +8,8 @@ import {
   backgroundColor,
   focusBorderColor,
   hoverBorderColor,
-} from '@/core/styled/themed/textarea';
-import { styled, baseStyled } from '@/core/styled/web';
+} from '@oreo-ui/core/dist/styled/themed/textarea';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
 import { IconButton } from '../icon-button';
 import { InputLabel, InputHint } from '../input/input';

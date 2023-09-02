@@ -1,4 +1,4 @@
-import type { RadioThemedDefaultProps } from '@/core/styled/components.types';
+import type { RadioThemedDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
 import type { TouchableOpacityProps } from 'react-native';
 
 export type SwitchDefaultType = RadioThemedDefaultProps &

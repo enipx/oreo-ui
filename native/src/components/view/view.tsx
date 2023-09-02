@@ -1,12 +1,12 @@
 // @imports
-import React from 'react';
+import React, { forwardRef } from 'react';
 import type { ViewProps } from './view.types';
-import { styled, baseStyled } from '@/core/styled/native';
+import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import {
   flexCenterStyle,
   flexCenterYStyle,
   flexCenterXStyle,
-} from '@/core/styled/css/';
+} from '@oreo-ui/core/dist/styled/css/';
 import { KeyboardAvoidingView } from 'react-native';
 import { isIOS } from '../../helpers/base';
 
@@ -17,7 +17,7 @@ export const StyledView = styled(baseStyled('View'))<ViewProps>`
   ${({ flexCenterX }) => flexCenterX && flexCenterYStyle}
 `;
 
-export const View = (props: ViewProps) => {
+export const View = forwardRef((props: ViewProps, ref) => {
   const {
     enableKeyboardAvoidingView,
     keyboardAvoidingViewProps,
@@ -26,7 +26,11 @@ export const View = (props: ViewProps) => {
   } = props;
 
   const renderChildren = () => {
-    return <StyledView {...(otherProps as any)}>{children}</StyledView>;
+    return (
+      <StyledView {...(otherProps as any)} ref={ref}>
+        {children}
+      </StyledView>
+    );
   };
 
   if (enableKeyboardAvoidingView) {
@@ -40,4 +44,4 @@ export const View = (props: ViewProps) => {
   }
 
   return renderChildren();
-};
+});

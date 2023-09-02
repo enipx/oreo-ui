@@ -1,9 +1,9 @@
 // @imports
-import { styled } from '@/core/styled/web';
+import { styled } from '@oreo-ui/core/dist/styled/web';
 
 import { View } from '../view';
 import type { ContainerProps } from './container.types';
-import { componentDefaultStyle } from '@/core/styled/themed/base';
+import { componentDefaultStyle } from '@oreo-ui/core/dist/styled/themed/base';
 import { forwardRef } from 'react';
 
 // @exports
