@@ -42,5 +42,13 @@
     "url": "https://github.com/enipx/oreo-ui/issues"
   },
   "homepage": "https://github.com/enipx/oreo-ui#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/"
+  ],
+  "prettierIgnore": [
+    "node_modules/",
+    "dist/"
+  ]
 }

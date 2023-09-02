@@ -15,7 +15,9 @@
   "peerDependencies": {},
   "dependencies": {},
   "scripts": {
-    "lint": "eslint \"**/*.{ts,tsx}\""
+    "lint:core": "cd core && eslint \"**/*.{ts,tsx}\"",
+    "lint:web": "cd web && eslint \"**/*.{ts,tsx}\"",
+    "lint:native": "cd native && eslint \"**/*.{ts,tsx}\""
   },
   "eslintConfig": {
     "root": true,
