@@ -1,6 +1,11 @@
 // @imports
 
-import { width, height, compose, border } from '@oreo-ui/core/dist/styled/system';
+import {
+  width,
+  height,
+  compose,
+  border,
+} from '@oreo-ui/core/dist/styled/system';
 import { spinnerDefaultStyle } from '@oreo-ui/core/dist/styled/themed/spinner';
 import { styled, baseStyled } from '@oreo-ui/core/dist/styled/web';
 
