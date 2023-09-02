@@ -17,7 +17,10 @@ export interface AccordionButtonProps
 
 export interface AccordionPanelProps
   extends AccordionPanelThemedDefaultProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      keyof AccordionPanelThemedDefaultProps
+    > {
   ref?: RefObject<HTMLDivElement>;
 }
 

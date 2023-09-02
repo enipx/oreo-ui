@@ -5,5 +5,5 @@ export interface CheckboxProps
   extends CheckboxThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width' | 'color'
+      keyof CheckboxThemedStyledProps
     > {}

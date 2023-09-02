@@ -13,5 +13,5 @@ export interface SelectProps
   extends SelectThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width' | 'color'
+      keyof SelectThemedStyledProps
     > {}

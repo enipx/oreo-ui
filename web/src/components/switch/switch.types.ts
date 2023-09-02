@@ -4,7 +4,7 @@ import React from 'react';
 export type CheckboxDataType = SwitchThemedStyledProps &
   Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    'size' | 'height' | 'width'
+    keyof SwitchThemedStyledProps
   >;
 
 export interface SwitchProps extends CheckboxDataType {}

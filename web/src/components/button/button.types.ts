@@ -4,5 +4,5 @@ export interface ButtonProps
   extends ButtonThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLButtonElement>,
-      'width' | 'height' | 'color' | 'size'
+      keyof ButtonThemedStyledProps
     > {}

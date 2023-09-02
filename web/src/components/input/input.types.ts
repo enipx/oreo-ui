@@ -8,18 +8,18 @@ import type { TextProps } from '../text';
 import type { ViewProps } from '../view';
 
 export interface InputContainerProps
-  extends Omit<ViewProps, 'size'>,
+  extends Omit<ViewProps, keyof InputThemedDefaultProps>,
     InputThemedDefaultProps {}
 
 export interface InputProps
   extends InputThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width' | 'color'
+      keyof InputThemedStyledProps
     > {}
 
 export interface InputTextProps
-  extends Omit<TextProps, 'size'>,
+  extends Omit<TextProps, keyof InputThemedDefaultProps>,
     InputThemedDefaultProps {}
 
 export type InputFocusEventType = FocusEvent<HTMLInputElement, Element>;

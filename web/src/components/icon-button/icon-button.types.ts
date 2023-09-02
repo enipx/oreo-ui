@@ -4,5 +4,5 @@ export interface IconButtonProps
   extends IconButtonThemedStyledProps,
     Omit<
       React.InputHTMLAttributes<HTMLButtonElement>,
-      'color' | 'width' | 'height' | 'size'
+      keyof IconButtonThemedStyledProps
     > {}

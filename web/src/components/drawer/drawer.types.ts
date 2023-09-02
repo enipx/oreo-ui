@@ -3,5 +3,5 @@ import type { DrawerThemedDefaultProps } from '@oreo-ui/core/dist/styled/compone
 import type { ModalProps } from '../modal';
 
 export interface DrawerProps
-  extends Omit<ModalProps, 'pos'>,
+  extends Omit<ModalProps, keyof DrawerThemedDefaultProps>,
     DrawerThemedDefaultProps {}

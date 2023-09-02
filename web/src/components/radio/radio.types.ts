@@ -4,7 +4,7 @@ import React from 'react';
 export type RadioDataType = RadioThemedStyledProps &
   Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    'size' | 'height' | 'width'
+    keyof RadioThemedStyledProps
   >;
 
 export interface RadioProps extends RadioDataType {

@@ -2,4 +2,7 @@ import type { ContainerThemedStyledProps } from '@oreo-ui/core/dist/styled/compo
 
 export interface ContainerProps
   extends ContainerThemedStyledProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {}
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      keyof ContainerThemedStyledProps
+    > {}

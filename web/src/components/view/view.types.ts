@@ -2,6 +2,6 @@ import type { ViewThemedStyledProps } from '@oreo-ui/core/dist/styled/components
 
 export interface ViewProps
   extends ViewThemedStyledProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> {
+    Omit<React.HTMLAttributes<HTMLDivElement>, keyof ViewThemedStyledProps> {
   ref?: React.RefObject<HTMLDivElement>;
 }

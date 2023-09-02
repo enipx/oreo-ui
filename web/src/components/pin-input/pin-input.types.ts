@@ -5,7 +5,7 @@ export interface PinInputProps
   extends PinInputThemedDefaultProps,
     Omit<
       React.InputHTMLAttributes<HTMLInputElement>,
-      'size' | 'height' | 'width' | 'onChange' | 'value' | 'color'
+      keyof PinInputThemedDefaultProps
     > {}
 
 export type PinInputFieldElementType = HTMLInputElement;

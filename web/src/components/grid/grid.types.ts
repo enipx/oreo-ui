@@ -3,7 +3,6 @@ import type {
   GridItemThemedStyledProps,
 } from '@oreo-ui/core/dist/styled/components.types';
 
-export interface GridProps extends Omit<GridThemedStyledProps, 'color'> {}
+export interface GridProps extends GridThemedStyledProps {}
 
-export interface GridItemProps
-  extends Omit<GridItemThemedStyledProps, 'color'> {}
+export interface GridItemProps extends GridItemThemedStyledProps {}

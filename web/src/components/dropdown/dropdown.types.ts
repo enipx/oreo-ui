@@ -10,13 +10,13 @@ export interface DropdownContentProps extends PopoverContentProps {}
 export interface DropdownItemProps
   extends React.InputHTMLAttributes<HTMLButtonElement>,
     ComponentsDefaultProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
 
   text?: string;
 
   description?: string;
 
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
 
-  iconRight?: React.ReactNode;
+  iconRight?: JSX.Element;
 }

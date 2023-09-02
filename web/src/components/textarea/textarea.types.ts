@@ -7,7 +7,7 @@ export interface TextareaProps
   extends TextareaThemedStyledProps,
     Omit<
       React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-      'size' | 'height' | 'width' | 'color'
+      keyof TextareaThemedStyledProps
     > {
   resize?: TextareaResizeType;
 }

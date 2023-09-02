@@ -15,12 +15,12 @@ export interface UsePopoverOptions extends PopoverProps {
 }
 
 export interface PopoverTargetProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
   trigger?: 'hover' | 'click';
 }
 
 export interface PopoverContentProps extends PopoverContentThemedStyledProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
 }
 
 export interface PopoverContextProps
