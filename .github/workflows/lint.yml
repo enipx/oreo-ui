@@ -24,20 +24,15 @@ jobs:
 
     - name: Install Dependencies
       run: yarn install
-
-    - name: Install Dependencies in 'native' directory
-      run: yarn install
-      working-directory: ./native  # Update the path as per your project structure
-
-    - name: Install Dependencies in 'web' directory
-      run: yarn install
-      working-directory: ./web  # Update the path as per your project structure
-    
+  
     - name: Lint Core
-      run: yarn lint:core
+      run: yarn lint
+      working-directory: ./core
 
     - name: Lint Web
-      run: yarn lint:web
+      run: yarn install && yarn lint
+      working-directory: ./web
 
     - name: Lint Native
-      run: yarn lint:native
+      run: yarn install && yarn lint
+      working-directory: ./native

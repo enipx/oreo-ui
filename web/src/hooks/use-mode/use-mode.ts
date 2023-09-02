@@ -2,7 +2,10 @@
 
 import type { ThemeModeKeys } from '@oreo-ui/core/dist/constants/index.types';
 import { domExistsHandler } from '@oreo-ui/core/dist/helpers/dom';
-import { getLocalStorage, setLocalStorage } from '@oreo-ui/core/dist/helpers/storage';
+import {
+  getLocalStorage,
+  setLocalStorage,
+} from '@oreo-ui/core/dist/helpers/storage';
 import { useKeydown } from '@oreo-ui/core/dist/hooks/use-keydown';
 import { useCallback, useState, useEffect } from 'react';
 
