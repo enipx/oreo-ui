@@ -22,8 +22,15 @@ jobs:
     - name: Install Yarn
       run: npm install -g yarn
 
+    - name: Install Dependencies
+      run: yarn install
+
     - name: Install Dependencies in 'native' directory
-      run: cd native && yarn install
+      run: |
+        cd native
+        ls -al  # Debug: List directory contents
+        pwd     # Debug: Print current working directory
+        yarn install
       working-directory: ./native  # Update the path as per your project structure
 
     - name: Install Dependencies in 'web' directory
