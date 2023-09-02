@@ -26,15 +26,11 @@ jobs:
       run: yarn install
 
     - name: Install Dependencies in 'native' directory
-      run: |
-        cd native
-        ls -al  # Debug: List directory contents
-        pwd     # Debug: Print current working directory
-        yarn install
+      run: yarn install
       working-directory: ./native  # Update the path as per your project structure
 
     - name: Install Dependencies in 'web' directory
-      run: cd web && yarn install
+      run: yarn install
       working-directory: ./web  # Update the path as per your project structure
     
     - name: Lint Core
