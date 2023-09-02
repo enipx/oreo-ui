@@ -23,7 +23,7 @@ export type MediaStyleType = Partial<
 
 export type MediaStyleKeyType = keyof MediaStyleType;
 
-export type ReactChildrenType = JSX.Element | JSX.Element[] | string | number;
+export type ReactChildrenType = React.ReactNode;
 
 export interface ComponentsDefaultProps {
   as?: any;
