@@ -54,7 +54,6 @@
     "@babel/core": "^7.22.9",
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.2.2",
-    "@oreo-ui/core": "*",
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
@@ -98,7 +97,8 @@
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "@oreo-ui/core": "*"
   },
   "engines": {
     "node": ">= 16.0.0"
