@@ -133,7 +133,7 @@ export const Alert = (props: AlertProps) => {
         </View>
         {alertContent ? (
           <View className={alertDefaults.contentDescrClassName}>
-            {content || children}
+            {alertContent}
           </View>
         ) : null}
       </View>

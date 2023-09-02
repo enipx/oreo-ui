@@ -1,6 +1,7 @@
 import type {
   PopoverThemedDefaultProps,
   PopoverContentThemedStyledProps,
+  ReactChildrenType,
 } from '@oreo-ui/core/dist/styled/components.types';
 import type { usePopper } from 'react-popper';
 
@@ -15,12 +16,12 @@ export interface UsePopoverOptions extends PopoverProps {
 }
 
 export interface PopoverTargetProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
   trigger?: 'hover' | 'click';
 }
 
 export interface PopoverContentProps extends PopoverContentThemedStyledProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface PopoverContextProps

@@ -23,6 +23,8 @@ export type MediaStyleType = Partial<
 
 export type MediaStyleKeyType = keyof MediaStyleType;
 
+export type ReactChildrenType = JSX.Element | JSX.Element[] | string | number;
+
 export interface ComponentsDefaultProps {
   as?: any;
 
@@ -38,7 +40,7 @@ export interface ComponentsDefaultProps {
 
   _disabled?: CSSProperties;
 
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface ViewThemedStyledProps
@@ -137,7 +139,7 @@ export interface GridThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * set grid columns
@@ -163,7 +165,7 @@ export interface GridItemThemedStyledProps extends ThemeStyledProps {
   /**
    * grid content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   col?: ResponsiveValue<number>;
 
@@ -195,11 +197,11 @@ export interface ButtonThemedStyledProps
   /**
    * set left icon
    */
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
   /**
    * set right icon
    */
-  rightIcon?: JSX.Element;
+  rightIcon?: ReactChildrenType;
   /**
    * button color scheme
    */
@@ -251,9 +253,9 @@ export interface ButtonThemedStyledProps
   /**
    * set loading state icon
    */
-  loadingIcon?: JSX.Element;
+  loadingIcon?: ReactChildrenType;
 
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface IconButtonThemedStyledProps
@@ -262,7 +264,7 @@ export interface IconButtonThemedStyledProps
   /**
    * set left icon
    */
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
   /**
    * icon button color scheme
    */
@@ -305,11 +307,11 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * set left icon
    */
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
   /**
    * set right icon
    */
-  rightIcon?: JSX.Element;
+  rightIcon?: ReactChildrenType;
   /**
    * button state
    */
@@ -331,9 +333,9 @@ export interface InputThemedDefaultProps extends ComponentsDefaultProps {
    */
   hint?: string;
 
-  showPasswordIcon?: JSX.Element;
+  showPasswordIcon?: ReactChildrenType;
 
-  hidePasswordIcon?: JSX.Element;
+  hidePasswordIcon?: ReactChildrenType;
 
   _placeholder?: CSSProperties;
 }
@@ -397,7 +399,7 @@ export interface TextareaThemedDefaultProps extends ComponentsDefaultProps {
   /**
    * set left icon
    */
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
   /**
    * button state
    */
@@ -519,7 +521,7 @@ export type SelectThemedDefaultProps = {
   /**
    * replace dropdown icon
    */
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
   /**
    * button state
    */
@@ -562,7 +564,7 @@ export interface PortalThemedDefaultProps {
    */
   domNode?: HTMLElement;
 
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export type ModalSizesType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full' | string;
@@ -607,11 +609,11 @@ export interface ModalThemedDefaultProps {
   /**
    * modal content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
   /**
    * set modal title
    */
-  title?: string | JSX.Element;
+  title?: ReactChildrenType;
   /**
    * set if to show modal header close icon or not
    */
@@ -627,7 +629,7 @@ export interface ModalThemedDefaultProps {
   /**
    * set footer display alternative
    */
-  footerContent?: JSX.Element;
+  footerContent?: ReactChildrenType;
   /**
    * set modal content position
    */
@@ -681,7 +683,7 @@ export interface AccordionThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * Allow multiple items to be opened at a time
@@ -691,12 +693,12 @@ export interface AccordionThemedDefaultProps {
   /**
    * replace item icon
    */
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
 
   /**
    * replace item icon when active
    */
-  activeIcon?: JSX.Element;
+  activeIcon?: ReactChildrenType;
 
   /**
    * change icon position
@@ -720,7 +722,7 @@ export interface AccordionItemThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * item value
@@ -733,7 +735,7 @@ export interface AccordionButtonThemedDefaultProps
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   text?: string;
 }
@@ -742,7 +744,7 @@ export interface AccordionPanelThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   content?: string;
 }
@@ -762,7 +764,7 @@ export interface AlertThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   content?: string;
 
@@ -770,13 +772,13 @@ export interface AlertThemedDefaultProps {
 
   variant?: AlertVariantTypes;
 
-  title?: string | JSX.Element;
+  title?: ReactChildrenType;
 
   withCloseButton?: boolean;
 
   onClose?: () => void;
 
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
 
   withIcon?: boolean;
 
@@ -821,7 +823,7 @@ export interface ToastThemedDefaultProps extends AlertThemedDefaultProps {
   /**
    * used to display custom components
    */
-  render?: JSX.Element;
+  render?: ReactChildrenType;
 
   /**
    * used to disabled auto hiding of toast after the duration
@@ -837,7 +839,7 @@ export interface AvatarThemedDefaultProps {
    */
   alt?: string;
 
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   size?: AvatarSizeTypes;
 
@@ -864,7 +866,7 @@ export interface AvatarThemedStyledProps
 export interface AvatarGroupThemedDefaultProps {
   size?: AvatarSizeTypes;
 
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   max?: number;
 
@@ -888,7 +890,7 @@ export type IndicatorPositionTypes =
 export interface IndicatorThemedDefaultProps {
   value?: string;
 
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   max?: number;
 
@@ -904,7 +906,7 @@ export interface IndicatorThemedDefaultProps {
 export interface BadgeThemedDefaultProps
   extends ThemeStyledProps,
     ComponentsDefaultProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   colorScheme?: DefaultColorsSchemeKeys;
 
@@ -916,7 +918,7 @@ export interface BadgeThemedDefaultProps
 export type TabsVariantThemedDefaultProps = 'fenced' | 'unstyled' | 'pills';
 
 export interface TabsThemedDefaultProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   colorScheme?: DefaultColorsSchemeKeys;
 
@@ -946,7 +948,7 @@ export interface TabsListThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TabsListThemedStyledProps
@@ -957,7 +959,7 @@ export interface TabsItemThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * item value
@@ -979,7 +981,7 @@ export interface TabsPanelThemedDefaultProps {
   /**
    * item content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   value?: string;
 }
@@ -998,7 +1000,7 @@ export interface TableThemedDefaultProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   striped?: 'odd' | 'even';
 
@@ -1018,63 +1020,63 @@ export interface TableContainerThemedDefaultProps
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TableHeadThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TableBodyThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TableFootThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface ThThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TrThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TdThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface TableCaptionThemedDefaultProps extends ViewThemedStyledProps {
   /**
    * table content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export interface AnimatedThemedDefaultProps {
   /**
    * animated content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 }
 
 export type PopperThemedPlacementTypes =
@@ -1098,7 +1100,7 @@ export interface TooltipThemedDefaultProps {
   /**
    * tooltip content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * label
@@ -1149,7 +1151,7 @@ export interface PopoverThemedDefaultProps {
   /**
    * tooltip content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * tooltip placement
@@ -1205,7 +1207,7 @@ export interface SkeletonThemedDefaultProps
   /**
    * tooltip content
    */
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * check if content is loading
@@ -1251,7 +1253,7 @@ export interface ImageThemedDefaultProps extends ThemeStyledProps {
 
   fallbackSrc?: string;
 
-  fallback?: JSX.Element;
+  fallback?: ReactChildrenType;
 }
 
 export type SpinnerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -1289,7 +1291,7 @@ export interface DividerThemedStyledProps
     Omit<ThemeStyledProps, 'size'> {}
 
 export interface ShowThemedDefaultProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * show item at breakpoint
@@ -1308,7 +1310,7 @@ export interface ShowThemedDefaultProps {
 }
 
 export interface ShowNativeThemedDefaultProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
   /**
    * show item when breakpoint is above the specified point
    */
@@ -1323,7 +1325,7 @@ export interface ShowNativeThemedDefaultProps {
 export interface HideThemedDefaultProps extends ShowThemedDefaultProps {}
 
 export interface ScrollbarThemedDefaultProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   /**
    * set scrollbar track style

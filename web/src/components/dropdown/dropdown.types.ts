@@ -1,7 +1,10 @@
 import React from 'react';
 
 import { PopoverProps, PopoverContentProps } from '../popover';
-import { ComponentsDefaultProps } from '@oreo-ui/core/dist/styled/components.types';
+import {
+  ComponentsDefaultProps,
+  ReactChildrenType,
+} from '@oreo-ui/core/dist/styled/components.types';
 
 export interface DropdownProps extends PopoverProps {}
 
@@ -10,13 +13,13 @@ export interface DropdownContentProps extends PopoverContentProps {}
 export interface DropdownItemProps
   extends React.InputHTMLAttributes<HTMLButtonElement>,
     ComponentsDefaultProps {
-  children?: JSX.Element;
+  children?: ReactChildrenType;
 
   text?: string;
 
   description?: string;
 
-  icon?: JSX.Element;
+  icon?: ReactChildrenType;
 
-  iconRight?: JSX.Element;
+  iconRight?: ReactChildrenType;
 }
