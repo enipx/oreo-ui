@@ -62,7 +62,7 @@ export const AlertIcon = (props: AlertProps) => {
     );
   }
 
-  if (icon) return icon as JSX.Element;
+  if (icon) return icon;
 
   return null;
 };

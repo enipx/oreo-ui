@@ -48,7 +48,7 @@ export const AlertIcon = (props: AlertProps) => {
     return <View className={alertDefaults.iconClassName}>{Icon[type]}</View>;
   }
 
-  if (icon) return icon as JSX.Element;
+  if (icon) return icon;
 
   return null;
 };
