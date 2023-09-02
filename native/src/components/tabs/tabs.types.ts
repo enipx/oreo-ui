@@ -18,7 +18,7 @@ export interface TabsListProps
 
 export interface TabsItemProps
   extends Omit<TabsItemThemedDefaultProps, '_active' | '_hover' | '_selected'>,
-    Omit<ButtonProps, 'title'> {
+    Omit<ButtonProps, keyof TabsItemThemedDefaultProps | 'title'> {
   title?: string;
   _selected?: StyleProp<ButtonProps>;
   textStyle?: StyleProp<TextProps>;

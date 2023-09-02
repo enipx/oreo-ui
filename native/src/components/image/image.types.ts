@@ -6,15 +6,6 @@ import type {
 
 export interface ImageProps
   extends Omit<ImageThemedDefaultProps, 'fit'>,
-    Omit<
-      DefaultImageProps,
-      | 'borderRadius'
-      | 'borderTopRightRadius'
-      | 'borderTopLeftRadius'
-      | 'borderBottomRightRadius'
-      | 'borderBottomLeftRadius'
-      | 'borderLeftRadius'
-      | 'borderRightRadius'
-    > {
+    Omit<DefaultImageProps, keyof ImageThemedDefaultProps> {
   fit?: ImageResizeMode;
 }

@@ -8,12 +8,12 @@ import type { FlatListRenderProps } from '../flat-list/flat-list.types';
 import type { ReactChildrenType } from '@oreo-ui/core/dist/styled/components.types';
 
 export interface SelectContainerProps
-  extends Omit<ViewProps, 'size'>,
+  extends Omit<ViewProps, keyof SelectThemedDefaultProps>,
     SelectThemedDefaultProps {}
 
 export interface SelectProps
   extends SelectThemedStyledProps,
-    Omit<TouchableOpacityProps, 'disabled' | 'size'> {
+    Omit<TouchableOpacityProps, keyof SelectThemedStyledProps> {
   /**
    * select options
    */

@@ -4,6 +4,6 @@ import type { TextProps } from '../text';
 
 export interface ButtonProps
   extends ButtonThemedStyledProps,
-    Omit<TouchableOpacityProps, 'disabled' | 'children'> {
+    Omit<TouchableOpacityProps, keyof ButtonThemedStyledProps> {
   textProps?: TextProps;
 }
