@@ -1,6 +1,7 @@
 {
   "name": "@oreo-ui/core",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha1",
+  "private": false,
   "description": "Oreo ui core package",
   "main": "src/index.ts",
   "files": [
