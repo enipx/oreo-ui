@@ -139,9 +139,7 @@
       "@react-native-community",
       "plugin:prettier/recommended"
     ],
-    "rules": {
-      "react/react-in-jsx-scope": "off"
-    },
+    "rules": {},
     "settings": {
       "import/resolver": {
         "alias": {
