@@ -55,7 +55,7 @@ export default function App() {
 
   return (
     <OreoProvider theme={{ ...customTheme }}>
-      <Container px="lg" scrollable pb="xl">
+      <Container bg="gray.900" px="lg" scrollable pb="xl">
         <ModeButton />
 
         <PreviewCard title="Text" description="Used to render a text.">
