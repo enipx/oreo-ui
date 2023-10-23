@@ -33,8 +33,7 @@
     "build": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install",
-    "prepare": "bob build"
+    "bootstrap": "yarn example && yarn install"
   },
   "keywords": [
     "react-native",
