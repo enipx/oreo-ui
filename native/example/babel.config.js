@@ -16,6 +16,7 @@ module.exports = function (api) {
             [pak.name]: path.join(__dirname, '..', pak.source),
             ['@']: path.join(__dirname, '../../'),
             ['@components']: path.join(__dirname, '../src/components/'),
+            ['styled-components/native']: path.join(__dirname, '../node_modules/styled-components/native/')
           },
         },
       ],

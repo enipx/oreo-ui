@@ -24,13 +24,7 @@ import { View } from '../view';
 
 // @exports
 export const StyledButton = styled(
-  baseStyled('TouchableOpacity', [
-    'layout',
-    'shadow',
-    'grid',
-    'position',
-    'background',
-  ])
+  baseStyled('TouchableOpacity', ['layout', 'shadow', 'grid', 'position'])
 )<ButtonProps>`
   ${(props) => buttonDefaultStyle({ ...props, packageType: 'native' } as any)}
   ${(props) => buttonSizeVariant({ ...props, packageType: 'native' } as any)}
