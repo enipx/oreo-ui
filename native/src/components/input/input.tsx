@@ -37,6 +37,7 @@ export const StyledInputContainer = styled(
   ${(props) => inputSizeVariant({ ...props, packageType: 'native' } as any)};
   border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
+  ${allStyleWithoutSize()}
 `;
 
 export const StyledInput = styled(
@@ -50,6 +51,8 @@ export const StyledInput = styled(
   ])
 )<InputProps>`
   ${(props) => inputDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${({ icon }) => (icon ? 'paddingLeft: 0' : '')}
+  ${({ rightIcon }) => (rightIcon ? 'paddingRight: 0' : '')}
 `;
 
 export const StyledHintText = styled(Text)<InputTextProps>`
@@ -192,6 +195,8 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
           keyboardType={keyboardType}
           underlineColorAndroid="transparent"
           size={size}
+          icon={icon}
+          rightIcon={rightIcon}
           placeholderTextColor={
             placeholderTextColor
               ? getThemeValueHandler?.({
