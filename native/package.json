@@ -1,6 +1,6 @@
 {
   "name": "@oreo-ui/native",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Cross-platform UI components library built for React and React Native",
   "main": "dist\\commonjs\\index.js",
   "module": "dist\\module\\index.js",
