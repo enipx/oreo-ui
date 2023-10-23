@@ -4,21 +4,24 @@ import type { InputProps, InputFocusEventType } from './input.types';
 
 import {
   inputFieldDefaultStyle,
-  borderColor,
+  nativeBorderColor,
   backgroundColor,
   inputDefaults,
 } from '@oreo-ui/core/dist/styled/themed/input';
 import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 import { getThemeValueHandler } from '@oreo-ui/core/dist/helpers/theme';
 import { useModeTheme } from '../../hooks';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledInputField = styled(
   baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
 )<InputProps>`
-  ${(props) => inputFieldDefaultStyle({ ...props, type: 'native' } as any)};
-  border-color: ${borderColor};
+  ${(props) =>
+    inputFieldDefaultStyle({ ...props, packageType: 'native' } as any)};
+  border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
+  ${allStyleWithoutSize()}
 `;
 
 export const InputField: React.FC<InputProps> = forwardRef((props, ref) => {

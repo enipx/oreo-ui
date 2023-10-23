@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import {
   Container,
   View,
@@ -161,6 +159,16 @@ export default function App() {
               onFilled={(code) => console.log(code)}
               type="password"
               state="invalid"
+            />
+          </View>
+
+          <View mb="lg">
+            <PinInput
+              label="OTP"
+              hint="Please enter a valid one time password"
+              onFilled={(code) => console.log(code)}
+              bg="red.500"
+              borderColor="white"
             />
           </View>
 
