@@ -26,6 +26,7 @@ import {
 import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 import { getThemeValueHandler } from '@oreo-ui/core/dist/helpers/theme';
 import { useModeTheme } from '../../hooks';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledInputContainer = styled(
@@ -55,6 +56,7 @@ export const StyledHintText = styled(Text)<InputTextProps>`
   color: ${hintColor};
   opacity: ${({ state }) =>
     isInputDisabled(state) ? inputDefaults.disabledOpacity : 1};
+  ${allStyleWithoutSize()}
 `;
 
 export const InputLabel = ({ label, ...otherProps }: InputLabelProps) => {
@@ -99,6 +101,9 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
     type,
     keyboardType: _keyboardType,
     placeholderTextColor,
+    hintProps,
+    showPasswordIcon,
+    hidePasswordIcon,
     ...otherProps
   } = props;
 
@@ -149,7 +154,11 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
           onPress={toggledPasswordHandler}
           size={size}
           variant="link"
-          icon={toggledPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}
+          icon={
+            toggledPassword
+              ? showPasswordIcon || <ShowPasswordIcon />
+              : hidePasswordIcon || <HidePasswordIcon />
+          }
         />
       );
     }
@@ -196,7 +205,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         />
         {renderRightIcon()}
       </StyledInputContainer>
-      <InputHint hint={hint} state={inputState} />
+      <InputHint hint={hint} state={inputState} {...hintProps} />
     </View>
   );
 });

@@ -15,6 +15,9 @@ export interface InputProps
   extends InputThemedStyledProps,
     Omit<TextInputProps, keyof InputThemedStyledProps> {
   type?: KeyboardTypeOptions | 'password';
+  hintProps?: TextProps;
+  showPasswordIcon?: JSX.Element;
+  hidePasswordIcon?: JSX.Element;
 }
 
 export interface InputContainerProps
