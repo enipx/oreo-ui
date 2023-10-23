@@ -1,5 +1,5 @@
 // @imports
-import React, { Children } from 'react';
+import { Children } from 'react';
 import { View } from '../view';
 
 import type { GridProps } from './grid.types';
