@@ -17,21 +17,11 @@ Install dependencies:
 Web
 
 ```sh
-$ yarn add @oreo-ui/web styled-components
+$ yarn add @oreo-ui/web @oreo-ui/core styled-components
 
 # or
 
-$ npm i @oreo-ui/web styled-components
-```
-
-Native
-
-```sh
-$ yarn add @oreo-ui/native styled-components
-
-# or
-
-$ npm i @oreo-ui/native styled-components
+$ npm i @oreo-ui/web @oreo-ui/core styled-components
 ```
 
 ## Usage
@@ -39,7 +29,7 @@ $ npm i @oreo-ui/native styled-components
 Once you have installed the dependencies, the next step is to wrap your application root component with the `OreoProvider`.
 
 ```jsx
-import { OreoProvider } from "@oreo-ui/web" | "@oreo-ui/native"
+import { OreoProvider } from "@oreo-ui/web"
 
 export default function App() {
   return <OreoProvider>{children}</OreoProvider>
@@ -49,7 +39,7 @@ export default function App() {
 Great! You're all set. You can now use Oreo throughout your application.
 
 ```jsx
-import { Button } from "@oreo-ui/web" | "@oreo-ui/native"
+import { Button } from "@oreo-ui/web"
 
 function Example() {
   return <Button text="Button">
