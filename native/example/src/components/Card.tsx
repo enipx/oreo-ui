@@ -2,7 +2,7 @@ import { Divider, Text, useModeTheme, View } from '@oreo-ui/native';
 import React from 'react';
 
 interface PreviewCardProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
   title: string;
   description?: string;
 }
@@ -30,7 +30,7 @@ export const PreviewCard = (props: PreviewCardProps) => {
           ) : null}
         </View>
 
-        {children ? <View p="4">{<>{children}</>}</View> : null}
+        {children ? <View p="4">{children}</View> : null}
       </View>
 
       <Divider />
