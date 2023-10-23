@@ -2,12 +2,6 @@
 import React, { forwardRef } from 'react';
 import { Spinner } from '../spinner';
 import { Text, TextProps } from '../text';
-import {
-  width,
-  minWidth,
-  minHeight,
-  height,
-} from '@oreo-ui/core/dist/styled/system';
 import { styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 import {
   buttonDefaultStyle,
@@ -18,6 +12,7 @@ import {
   buttonDefaults,
   buttonTextDefaultStyle,
 } from '@oreo-ui/core/dist/styled/themed/button';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 
 import type { ButtonProps } from './button.types';
 import { View } from '../view';
@@ -29,15 +24,13 @@ export const StyledButton = styled(
   ${(props) => buttonDefaultStyle({ ...props, packageType: 'native' } as any)}
   ${(props) => buttonSizeVariant({ ...props, packageType: 'native' } as any)}
   ${(props) => buttonStateVariant({ ...props, packageType: 'native' } as any)}
-  ${width}
-  ${minWidth}
-  ${height}
-  ${minHeight}
+  ${allStyleWithoutSize()}
 `;
 
 export const StyleButtonText = styled(Text)<TextProps>`
   ${(props) =>
     buttonTextDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${allStyleWithoutSize()}
 `;
 
 export const StyledBaseButton = styled(
@@ -68,6 +61,7 @@ export const Button: React.FC<ButtonProps> = forwardRef((props, ref) => {
     loading,
     loadingText,
     loadingIcon,
+    font,
     ...otherProps
   } = props;
 
@@ -90,6 +84,7 @@ export const Button: React.FC<ButtonProps> = forwardRef((props, ref) => {
               fontSize={buttonTextsize[size]}
               variant={variant}
               buttonSize={size}
+              fontFamily={font}
               {...(textProps as any)}>
               {loadingText}
             </StyleButtonText>

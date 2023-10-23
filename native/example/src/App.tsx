@@ -67,7 +67,7 @@ export default function App() {
           description="Used to perform an action such as submission, cancellation, deletion or any other desired action.">
           <Button text="Button" mb="lg" />
 
-          <Button text="Button" fullWidth mb="lg" />
+          <Button bg="#f0f" text="Button" fullWidth mb="lg" />
 
           <Button
             loading
