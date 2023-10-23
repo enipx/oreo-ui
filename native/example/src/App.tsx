@@ -35,6 +35,7 @@ import { ModalApi } from './components/Modal';
 import { ModeButton } from './components/Button';
 import useFontsLoading from './hooks/useCachedResources';
 import { PreviewCard } from './components/Card';
+import { MailIcon } from './components/icon';
 
 const customTheme: DefaultTheme = {
   colors: {},
@@ -94,6 +95,16 @@ export default function App() {
               label="Email"
               hint="Please enter a valid email"
               state="invalid"
+            />
+          </View>
+
+          <View mb="lg">
+            <Input
+              icon={<MailIcon />}
+              type="email-address"
+              label="Email"
+              placeholder="Enter Email"
+              hint="Please enter a valid email"
             />
           </View>
 

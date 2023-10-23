@@ -9,6 +9,8 @@ import {
   inputDefaults,
 } from '@oreo-ui/core/dist/styled/themed/input';
 import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
+import { getThemeValueHandler } from '@oreo-ui/core/dist/helpers/theme';
+import { useModeTheme } from '../../hooks';
 
 // @exports
 export const StyledInputField = styled(
@@ -27,8 +29,11 @@ export const InputField: React.FC<InputProps> = forwardRef((props, ref) => {
     onFocus,
     type,
     keyboardType: _keyboardType,
+    placeholderTextColor,
     ...otherProps
   } = props;
+
+  const { iconColor, theme } = useModeTheme();
 
   const { components } = useTheme();
 
@@ -64,6 +69,14 @@ export const InputField: React.FC<InputProps> = forwardRef((props, ref) => {
       keyboardType={keyboardType}
       state={inputState}
       underlineColorAndroid="transparent"
+      placeholderTextColor={
+        placeholderTextColor
+          ? getThemeValueHandler?.({
+              theme,
+              value: placeholderTextColor as any,
+            })
+          : iconColor
+      }
       {...(otherProps as any)}
       ref={ref}
     />
