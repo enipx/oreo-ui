@@ -30,7 +30,7 @@ export const PreviewCard = (props: PreviewCardProps) => {
           ) : null}
         </View>
 
-        {children ? <View p="4">{children}</View> : null}
+        {children ? <View p="4">{<>{children}</>}</View> : null}
       </View>
 
       <Divider />
