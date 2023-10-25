@@ -16,6 +16,7 @@ import {
 import { styled } from '@oreo-ui/core/dist/styled/web';
 import { View } from '../view';
 import { Animated, useAnimation } from '../animated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // @exports
 export const ToastContainer = styled(View)<ToastProviderProps>`
@@ -111,7 +112,7 @@ export const ToastProvider = (props: ToastProviderProps) => {
 
           return (
             <ToastContainer key={key} pos={containerPosition as any}>
-              <>
+              <SafeAreaView>
                 {filteredToast.map((toast) => {
                   const { id, onHide, ...otherProps } = toast;
 
@@ -128,7 +129,7 @@ export const ToastProvider = (props: ToastProviderProps) => {
                     />
                   );
                 })}
-              </>
+              </SafeAreaView>
             </ToastContainer>
           );
         })}

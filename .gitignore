@@ -9,6 +9,7 @@ yarn-error.log
 **/yarn-error.
 log.yalc
 yalc.lock
+**/yalc
 
 # production
 /dist

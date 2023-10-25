@@ -4,6 +4,8 @@
 
 # XDE
 .expo/
+.yalc
+yalc.lock
 
 # VSCode
 .vscode/
