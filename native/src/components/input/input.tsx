@@ -156,7 +156,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         <IconButton
           onPress={toggledPasswordHandler}
           size={size}
-          variant="link"
+          bg="transparent"
           icon={
             toggledPassword
               ? showPasswordIcon || <ShowPasswordIcon />
@@ -167,7 +167,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
     }
 
     if (rightIcon) {
-      return <IconButton variant="link" size={size} icon={rightIcon} />;
+      return <IconButton bg="transparent" size={size} icon={rightIcon} />;
     }
 
     return null;
@@ -184,7 +184,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         icon={icon}
         keyboardType={type}
         {...(otherProps as any)}>
-        {icon ? <IconButton variant="link" size={size} icon={icon} /> : null}
+        {icon ? <IconButton bg="transparent" size={size} icon={icon} /> : null}
         <StyledInput
           editable={!isDisabled}
           selectionColor={components.input.selectionColor}

@@ -176,8 +176,12 @@ export const buttonDefaultStyle = (options: ButtonSystemThemeParams) => {
     ${flexCenterStyle}
     ${transitionStyle()}
     opacity: ${opacity};
-    background-color: ${backgroundColor};
-    border: ${variant === 'outline' ? '1px' : '0'} solid ${borderColor};
+    ${backgroundColor ? `background-color: ${backgroundColor};` : ''}
+    ${
+      borderColor
+        ? `border: ${variant === 'outline' ? '1px' : '0'} solid ${borderColor};`
+        : ''
+    }
   `;
 
   const native = `
