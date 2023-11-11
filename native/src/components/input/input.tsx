@@ -107,8 +107,13 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
     hintProps,
     showPasswordIcon,
     hidePasswordIcon,
+    bg,
+    background,
+    backgroundColor: inputBgColor,
     ...otherProps
   } = props;
+
+  const bgColor = bg || background || inputBgColor || 'transparent';
 
   const { iconColor, theme } = useModeTheme();
 
@@ -183,6 +188,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         rightIcon={renderRightIcon()}
         icon={icon}
         keyboardType={type}
+        bg={bgColor}
         {...(otherProps as any)}>
         {icon ? <IconButton bg="transparent" size={size} icon={icon} /> : null}
         <StyledInput
