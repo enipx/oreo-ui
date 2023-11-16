@@ -89,7 +89,14 @@ export const checkboxCheckedStyle = (options: SystemThemeParams) => {
 };
 
 export const checkboxDefaultStyle = (options: SystemThemeParams) => {
-  const { theme, packageType = 'web', disabled, checkedBg, checked } = options;
+  const {
+    theme,
+    packageType = 'web',
+    disabled,
+    checkedBg,
+    unCheckedBg,
+    checked,
+  } = options;
 
   const cursor = disabled ? 'not-allowed' : 'pointer';
 
@@ -111,8 +118,8 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
     }
 
     return styleModeHandler({
-      light: 'gray.100',
-      dark: 'gray.700',
+      light: unCheckedBg || 'gray.100',
+      dark: unCheckedBg || 'gray.700',
       theme,
     });
   };
@@ -134,7 +141,7 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
       });
     }
 
-    return theme.colors.transparent;
+    return unCheckedBg || theme.colors.transparent;
   };
 
   const checkedBackgroundColor = disabled
