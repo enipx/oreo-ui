@@ -89,15 +89,15 @@ export const checkboxCheckedStyle = (options: SystemThemeParams) => {
 };
 
 export const checkboxDefaultStyle = (options: SystemThemeParams) => {
-  const { theme, packageType = 'web', disabled, checked } = options;
+  const { theme, packageType = 'web', disabled, checkedBg, checked } = options;
 
   const cursor = disabled ? 'not-allowed' : 'pointer';
 
   const borderColor = () => {
     if (checked) {
       return styleModeHandler({
-        light: 'blue.500',
-        dark: 'blue.600',
+        light: checkedBg || 'blue.500',
+        dark: checkedBg || 'blue.600',
         theme,
       });
     }
@@ -120,8 +120,8 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
   const backgroundColor = () => {
     if (checked) {
       return styleModeHandler({
-        light: 'blue.500',
-        dark: 'blue.600',
+        light: checkedBg || 'blue.500',
+        dark: checkedBg || 'blue.600',
         theme,
       });
     }
@@ -139,7 +139,7 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
 
   const checkedBackgroundColor = disabled
     ? theme.colors.gray[200]
-    : theme.colors.blue[500];
+    : checkedBg || theme.colors.blue[500];
 
   const checkedBorderColor = checkedBackgroundColor;
 
