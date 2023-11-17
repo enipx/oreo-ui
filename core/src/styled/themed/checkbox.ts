@@ -95,6 +95,7 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
     disabled,
     checkedBg,
     unCheckedBg,
+    borderColor: bdColor,
     checked,
   } = options;
 
@@ -118,8 +119,8 @@ export const checkboxDefaultStyle = (options: SystemThemeParams) => {
     }
 
     return styleModeHandler({
-      light: unCheckedBg || 'gray.100',
-      dark: unCheckedBg || 'gray.700',
+      light: bdColor || unCheckedBg || 'gray.100',
+      dark: bdColor || unCheckedBg || 'gray.700',
       theme,
     });
   };

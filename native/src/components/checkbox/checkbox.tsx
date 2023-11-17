@@ -34,6 +34,8 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     label,
     checked: defaultChecked,
     indeterminate,
+    labelProps,
+    hintProps,
     onChange,
     ...otherProps
   } = props;
@@ -55,8 +57,8 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     if (label) {
       return (
         <View ml="md">
-          <InputLabel label={label} mb="0" />
-          <InputHint state="default" hint={description} mt="0" />
+          <InputLabel label={label} mb="0" {...labelProps} />
+          <InputHint state="default" hint={description} mt="0" {...hintProps} />
         </View>
       );
     }
