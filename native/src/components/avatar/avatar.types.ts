@@ -8,8 +8,8 @@ import { TextProps } from '../text/text.types';
 import type { ViewProps } from '../view/view.types';
 
 export interface AvatarProps
-  extends ViewProps,
-    Omit<AvatarThemedStyledProps, keyof ViewProps> {
+  extends Omit<ViewProps, keyof AvatarThemedStyledProps>,
+    AvatarThemedStyledProps {
   imgProps?: ImageProps;
   textProps?: TextProps;
 }
