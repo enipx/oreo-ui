@@ -26,7 +26,11 @@ import {
 import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 import { getThemeValueHandler } from '@oreo-ui/core/dist/helpers/theme';
 import { useModeTheme } from '../../hooks';
-import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
+import {
+  color,
+  compose,
+  allStyleWithoutSize,
+} from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledInputContainer = styled(
@@ -53,6 +57,7 @@ export const StyledInput = styled(
   ${(props) => inputDefaultStyle({ ...props, packageType: 'native' } as any)}
   ${({ icon }) => (icon ? 'paddingLeft: 0' : '')}
   ${({ rightIcon }) => (rightIcon ? 'paddingRight: 0' : '')}
+  ${compose(color)}
 `;
 
 export const StyledHintText = styled(Text)<InputTextProps>`
