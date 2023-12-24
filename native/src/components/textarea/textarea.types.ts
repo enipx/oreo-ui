@@ -8,4 +8,5 @@ export interface TextareaProps
     Omit<TextInputProps, keyof TextareaThemedStyledProps> {
   type?: KeyboardTypeOptions | 'password';
   hintProps?: TextProps;
+  ref?: React.Ref<TextInputProps>;
 }

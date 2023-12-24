@@ -28,6 +28,7 @@ import { getThemeValueHandler } from '@oreo-ui/core/dist/helpers/theme';
 import { useModeTheme } from '../../hooks';
 import {
   color,
+  typography,
   compose,
   allStyleWithoutSize,
 } from '@oreo-ui/core/dist/styled/system';
@@ -57,7 +58,7 @@ export const StyledInput = styled(
   ${(props) => inputDefaultStyle({ ...props, packageType: 'native' } as any)}
   ${({ icon }) => (icon ? 'paddingLeft: 0' : '')}
   ${({ rightIcon }) => (rightIcon ? 'paddingRight: 0' : '')}
-  ${compose(color)}
+  ${compose(color, typography)}
 `;
 
 export const StyledHintText = styled(Text)<InputTextProps>`
@@ -115,6 +116,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
     bg,
     background,
     backgroundColor: inputBgColor,
+    color: inputColor,
     ...otherProps
   } = props;
 
@@ -216,6 +218,7 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
                 })
               : iconColor
           }
+          color={inputColor}
           {...(otherProps as any)}
           ref={ref}
         />

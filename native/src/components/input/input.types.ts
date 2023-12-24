@@ -18,6 +18,7 @@ export interface InputProps
   hintProps?: TextProps;
   showPasswordIcon?: JSX.Element;
   hidePasswordIcon?: JSX.Element;
+  ref?: React.Ref<TextInputProps>;
 }
 
 export interface InputContainerProps
