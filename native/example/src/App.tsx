@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {
   Container,
@@ -35,6 +35,7 @@ import { ModalApi } from './components/Modal';
 import { ModeButton } from './components/Button';
 import useFontsLoading from './hooks/useCachedResources';
 import { PreviewCard } from './components/Card';
+import { MailIcon } from './components/icon';
 
 const customTheme: DefaultTheme = {
   colors: {},
@@ -55,7 +56,7 @@ export default function App() {
 
   return (
     <OreoProvider theme={{ ...customTheme }}>
-      <Container px="lg" scrollable pb="xl">
+      <Container bg="gray.900" px="lg" scrollable pb="xl">
         <ModeButton />
 
         <PreviewCard title="Text" description="Used to render a text.">
@@ -67,7 +68,7 @@ export default function App() {
           description="Used to perform an action such as submission, cancellation, deletion or any other desired action.">
           <Button text="Button" mb="lg" />
 
-          <Button text="Button" fullWidth mb="lg" />
+          <Button bg="#f0f" text="Button" fullWidth mb="lg" />
 
           <Button
             loading
@@ -94,6 +95,16 @@ export default function App() {
               label="Email"
               hint="Please enter a valid email"
               state="invalid"
+            />
+          </View>
+
+          <View mb="lg">
+            <Input
+              icon={<MailIcon />}
+              type="email-address"
+              label="Email"
+              placeholder="Enter Email"
+              hint="Please enter a valid email"
             />
           </View>
 
@@ -150,6 +161,16 @@ export default function App() {
               onFilled={(code) => console.log(code)}
               type="password"
               state="invalid"
+            />
+          </View>
+
+          <View mb="lg">
+            <PinInput
+              label="OTP"
+              hint="Please enter a valid one time password"
+              onFilled={(code) => console.log(code)}
+              bg="red.500"
+              borderColor="white"
             />
           </View>
 

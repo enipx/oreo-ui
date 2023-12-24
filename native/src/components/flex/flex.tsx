@@ -10,10 +10,12 @@ import {
   flexSpacerDefaultStyle,
 } from '@oreo-ui/core/dist/styled/themed/flex';
 import { styled } from '@oreo-ui/core/dist/styled/web';
+import { allStyle } from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledFlex = styled(View)<FlexProps>`
   ${(props) => flexDefaultStyle({ ...props, type: 'native' } as any)}
+  ${allStyle()}
 `;
 
 export const Spacer = styled(View)<FlexProps>`

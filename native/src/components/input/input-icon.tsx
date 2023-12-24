@@ -16,7 +16,7 @@ export const ShowPasswordIcon: React.FC<NativeSvgProps> = (props) => {
     <Svg width={iconSize} height={iconSize} fill="none" viewBox="0 0 24 24">
       <G
         clipRule="evenodd"
-        stroke={stroke || '#000'}
+        stroke={props?.stroke || stroke || '#000'}
         strokeWidth={props.strokeWidth || 1.5}
         strokeLinecap="round"
         strokeLinejoin="round">
@@ -37,7 +37,7 @@ export const HidePasswordIcon: React.FC<NativeSvgProps> = (props) => {
     <Svg width={iconSize} height={iconSize} fill="none" viewBox="0 0 24 24">
       <G
         clipRule="evenodd"
-        stroke={stroke || '#000'}
+        stroke={props?.stroke || stroke || '#000'}
         strokeWidth={props.strokeWidth || 1.5}
         strokeLinecap="round"
         strokeLinejoin="round">

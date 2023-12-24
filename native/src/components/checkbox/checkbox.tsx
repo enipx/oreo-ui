@@ -16,6 +16,7 @@ import {
   checkboxSizeVariant,
 } from '@oreo-ui/core/dist/styled/themed/checkbox';
 import { styled } from '@oreo-ui/core/dist/styled/native';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 import { CheckedIcon, IndeterminateIcon } from './checkbox-icon';
 
 // @exports
@@ -23,6 +24,7 @@ export const StyledCheckbox = styled(StyledButton)<CheckboxProps>`
   ${(props) =>
     checkboxDefaultStyle({ ...props, packageType: 'native' } as any)};
   ${(props) => checkboxSizeVariant({ ...props, packageType: 'native' } as any)};
+  ${allStyleWithoutSize()}
 `;
 
 export const Checkbox: React.FC<CheckboxProps> = (props) => {
@@ -32,6 +34,8 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     label,
     checked: defaultChecked,
     indeterminate,
+    labelProps,
+    hintProps,
     onChange,
     ...otherProps
   } = props;
@@ -53,8 +57,8 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     if (label) {
       return (
         <View ml="md">
-          <InputLabel label={label} mb="0" />
-          <InputHint state="default" hint={description} mt="0" />
+          <InputLabel label={label} mb="0" {...labelProps} />
+          <InputHint state="default" hint={description} mt="0" {...hintProps} />
         </View>
       );
     }

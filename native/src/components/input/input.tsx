@@ -24,6 +24,14 @@ import {
   inputDefaults,
 } from '@oreo-ui/core/dist/styled/themed/input';
 import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
+import { getThemeValueHandler } from '@oreo-ui/core/dist/helpers/theme';
+import { useModeTheme } from '../../hooks';
+import {
+  color,
+  typography,
+  compose,
+  allStyleWithoutSize,
+} from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledInputContainer = styled(
@@ -34,6 +42,7 @@ export const StyledInputContainer = styled(
   ${(props) => inputSizeVariant({ ...props, packageType: 'native' } as any)};
   border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
+  ${allStyleWithoutSize()}
 `;
 
 export const StyledInput = styled(
@@ -47,12 +56,16 @@ export const StyledInput = styled(
   ])
 )<InputProps>`
   ${(props) => inputDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${({ icon }) => (icon ? 'paddingLeft: 0' : '')}
+  ${({ rightIcon }) => (rightIcon ? 'paddingRight: 0' : '')}
+  ${compose(color, typography)}
 `;
 
 export const StyledHintText = styled(Text)<InputTextProps>`
   color: ${hintColor};
   opacity: ${({ state }) =>
     isInputDisabled(state) ? inputDefaults.disabledOpacity : 1};
+  ${allStyleWithoutSize()}
 `;
 
 export const InputLabel = ({ label, ...otherProps }: InputLabelProps) => {
@@ -96,8 +109,20 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
     onFocus,
     type,
     keyboardType: _keyboardType,
+    placeholderTextColor,
+    hintProps,
+    showPasswordIcon,
+    hidePasswordIcon,
+    bg,
+    background,
+    backgroundColor: inputBgColor,
+    color: inputColor,
     ...otherProps
   } = props;
+
+  const bgColor = bg || background || inputBgColor || 'transparent';
+
+  const { iconColor, theme } = useModeTheme();
 
   const { components } = useTheme();
 
@@ -143,14 +168,18 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         <IconButton
           onPress={toggledPasswordHandler}
           size={size}
-          variant="link"
-          icon={toggledPassword ? <ShowPasswordIcon /> : <HidePasswordIcon />}
+          bg="transparent"
+          icon={
+            toggledPassword
+              ? showPasswordIcon || <ShowPasswordIcon />
+              : hidePasswordIcon || <HidePasswordIcon />
+          }
         />
       );
     }
 
     if (rightIcon) {
-      return <IconButton variant="link" size={size} icon={rightIcon} />;
+      return <IconButton bg="transparent" size={size} icon={rightIcon} />;
     }
 
     return null;
@@ -166,8 +195,9 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         rightIcon={renderRightIcon()}
         icon={icon}
         keyboardType={type}
+        bg={bgColor}
         {...(otherProps as any)}>
-        {icon ? <IconButton variant="link" size={size} icon={icon} /> : null}
+        {icon ? <IconButton bg="transparent" size={size} icon={icon} /> : null}
         <StyledInput
           editable={!isDisabled}
           selectionColor={components.input.selectionColor}
@@ -178,12 +208,23 @@ export const Input: React.FC<InputProps> = forwardRef((props, ref) => {
           keyboardType={keyboardType}
           underlineColorAndroid="transparent"
           size={size}
+          icon={icon}
+          rightIcon={rightIcon}
+          placeholderTextColor={
+            placeholderTextColor
+              ? getThemeValueHandler?.({
+                  theme,
+                  value: placeholderTextColor as any,
+                })
+              : iconColor
+          }
+          color={inputColor}
           {...(otherProps as any)}
           ref={ref}
         />
         {renderRightIcon()}
       </StyledInputContainer>
-      <InputHint hint={hint} state={inputState} />
+      <InputHint hint={hint} state={inputState} {...hintProps} />
     </View>
   );
 });

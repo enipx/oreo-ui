@@ -19,7 +19,7 @@ export const useModeTheme = () => {
 
   const linkColor = isDark ? theme.colors.blue[300] : theme.colors.blue[500];
 
-  const iconColor = isDark ? theme.colors.gray[300] : theme.colors.gray[500];
+  const iconColor = isDark ? theme.colors.gray[100] : theme.colors.gray[800];
 
   return {
     theme,

@@ -18,6 +18,7 @@ export const Textarea: React.FC<TextareaProps> = forwardRef((props, ref) => {
     disabled: defaultDisabled,
     icon,
     hint,
+    hintProps,
     ...otherProps
   } = props;
 
@@ -46,7 +47,7 @@ export const Textarea: React.FC<TextareaProps> = forwardRef((props, ref) => {
           ref={ref}
         />
       </View>
-      <InputHint hint={hint} state={textareaState} />
+      <InputHint hint={hint} state={textareaState} {...hintProps} />
     </View>
   );
 });

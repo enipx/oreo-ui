@@ -12,13 +12,7 @@ import {
   avatarTextDefaultStyle,
   avatarDefaults,
 } from '@oreo-ui/core/dist/styled/themed/avatar';
-import {
-  width,
-  height,
-  border,
-  space,
-  compose,
-} from '@oreo-ui/core/dist/styled/system';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 import { useTheme, styled, baseStyled } from '@oreo-ui/core/dist/styled/native';
 
 // @exports
@@ -26,17 +20,18 @@ export const StyledAvatar = styled(
   baseStyled('View', ['layout', 'space'])
 )<AvatarProps>`
   ${(props) => avatarDefaultStyle({ ...props, type: 'native' } as any)}
-  ${compose(space, width, height, border)}
+  ${allStyleWithoutSize()}
 `;
 
 export const StyledAvatarText = styled(
   baseStyled('Text', ['layout', 'shadow', 'space'])
 )<AvatarProps>`
   ${(props) => avatarTextDefaultStyle({ ...props, type: 'native' } as any)}
+  ${allStyleWithoutSize()}
 `;
 
 export const AvatarBase = (props: AvatarProps) => {
-  const { src, children, alt: _alt, imgProps, name } = props;
+  const { src, children, alt: _alt, imgProps, textProps, name } = props;
 
   const theme = useTheme();
 
@@ -56,7 +51,7 @@ export const AvatarBase = (props: AvatarProps) => {
           name
             ? children || (
                 <View bg="transparent">
-                  <StyledAvatarText {...props}>
+                  <StyledAvatarText {...textProps}>
                     {getNameInitialsHandler(name)}
                   </StyledAvatarText>
                 </View>

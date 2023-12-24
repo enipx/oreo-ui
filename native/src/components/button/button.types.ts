@@ -6,4 +6,5 @@ export interface ButtonProps
   extends ButtonThemedStyledProps,
     Omit<TouchableOpacityProps, keyof ButtonThemedStyledProps> {
   textProps?: TextProps;
+  font?: string;
 }

@@ -2,7 +2,7 @@ import { Divider, Text, useModeTheme, View } from '@oreo-ui/native';
 import React from 'react';
 
 interface PreviewCardProps {
-  children?: React.ReactNode;
+  children?: JSX.Element;
   title: string;
   description?: string;
 }

@@ -27,11 +27,11 @@ $ npm i @oreo-ui/web styled-components
 Native
 
 ```sh
-$ yarn add @oreo-ui/native styled-components
+$ yarn add @oreo-ui/native @oreo-ui/core styled-components react-native-svg react-native-safe-area-context
 
 # or
 
-$ npm i @oreo-ui/native styled-components
+$ npm i @oreo-ui/native @oreo-ui/core styled-components react-native-svg react-native-safe-area-context
 ```
 
 ## Usage

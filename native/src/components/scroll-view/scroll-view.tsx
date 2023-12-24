@@ -9,6 +9,7 @@ import {
 import type { ScrollViewProps } from './scroll-view.types';
 import { View } from '../view';
 import { isIOS } from '../../helpers/base';
+import { BaseButton } from '../button';
 
 // @exports
 export const ScrollView = forwardRef(
@@ -48,7 +49,9 @@ export const ScrollView = forwardRef(
           ref={ref}
           refreshControl={renderRefreshControl()}
           {...otherProps}>
-          <View {...viewProps}>{children}</View>
+          <BaseButton>
+            <View {...viewProps}>{children}</View>
+          </BaseButton>
         </DefaultScrollView>
       );
     };

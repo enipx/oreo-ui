@@ -25,21 +25,24 @@ import {
 } from '@oreo-ui/core/dist/styled/themed/pin-input';
 import { styled, baseStyled, useTheme } from '@oreo-ui/core/dist/styled/native';
 import type { InputFocusEventType } from '../input/input.types';
+import { allStyleWithoutSize } from '@oreo-ui/core/dist/styled/system';
 
 // @exports
 export const StyledPinInputField = styled(
   baseStyled('TextInput', ['shadow', 'grid', 'position', 'background'])
 )<PinInputFieldProps & { inputIndex?: number }>`
-  ${(props) => inputContainerDefaultStyle({ ...props, type: 'native' } as any)}
-  ${(props) => pinInputDefaultStyle({ ...props, type: 'native' } as any)}
+  ${(props) =>
+    inputContainerDefaultStyle({ ...props, packageType: 'native' } as any)}
+  ${(props) => pinInputDefaultStyle({ ...props, packageType: 'native' } as any)}
 ${(props) =>
     pinInputSizeVariant({
       ...props,
       index: props.inputIndex,
-      type: 'native',
+      packageType: 'native',
     } as any)}
   border-color: ${nativeBorderColor};
   background-color: ${backgroundColor};
+  ${allStyleWithoutSize()}
 `;
 
 export const PinInputField: React.FC<

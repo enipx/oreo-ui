@@ -140,9 +140,11 @@ export const convertHexToRgbaHandler = (hex: string, alpha?: number) => {
     })`;
   }
 
-  console.error('Bad Hex: ', hex);
+  // When code reach here that means hex isn't a valid hex color code so we are returning empty string
+  // console.error('Bad Hex: ', hex);
+  // return hex;
 
-  return hex;
+  return '';
 };
 
 export const convertMediaStylesToCss = (

@@ -446,6 +446,10 @@ export type CheckboxThemedDefaultProps = {
    * description
    */
   description?: string;
+
+  checkedBg?: string;
+
+  unCheckedBg?: string;
 };
 export interface CheckboxThemedStyledProps
   extends CheckboxThemedDefaultProps,

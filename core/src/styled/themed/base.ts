@@ -147,12 +147,12 @@ export const getBaseStyle = (options: SystemThemeParams) => {
 };
 
 type ColorSchemeStyleOptionsType = SystemThemeParams & {
-  colorScheme: DefaultColorsSchemeKeys;
-  variant: DefaultColorsVariantsType;
+  colorScheme?: DefaultColorsSchemeKeys;
+  variant?: DefaultColorsVariantsType;
 };
 
 export const getColorSchemeStyle = (options: ColorSchemeStyleOptionsType) => {
-  const { theme, colorScheme, variant } = options;
+  const { theme, colorScheme = 'blue', variant = 'solid' } = options;
 
   const subtleModeStyle = {
     base: styleModeHandler({

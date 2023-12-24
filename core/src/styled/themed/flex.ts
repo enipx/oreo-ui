@@ -114,7 +114,7 @@ export const flexColDefaultStyle = (options: FlexColSystemThemeParams) => {
   const getColWidth = (_col: number) => {
     const totalColWidth = 100 / 12;
 
-    return (totalColWidth * _col).toFixed(2) + '%';
+    return (totalColWidth * _col).toFixed(4) + '%';
   };
 
   const colStyle = getResponsiveStyleHandler({
